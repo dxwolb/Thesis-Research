@@ -344,8 +344,10 @@ Model Main_Thesis_Research {
             }
             DeclarationSection RenewableGeneratorDeclaration {
                 Parameter PD_RenewableGenerationCapacity {
-                    IndexDomain: (iYearCalendar,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
-                    Definition: PI_MaximumGenerationMW(iGenerator) * PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator));
+                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
+                    Definition: {
+                        !PI_MaximumGenerationMW(iGenerator) * PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
+                    }
                 }
             }
             DeclarationSection ParametersPageDeclaration {
