@@ -222,3 +222,6 @@ Warning: The units associated with the expression (VC_Model0ED_PowerOutput(iTime
 Warning: The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
 Warning: The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
 Warning: The unit [] of constraint "CG_Model0_MininumGeneration" is not commensurate with the unit [W] of its "definition".
+Input/output error at line 1 in user-defined function section "ImportIEEData".
+The file "ieedataIEEReliabilityTestDataSetAimmsFormat_V2.txt" cannot be opened: No such file or directory.
+

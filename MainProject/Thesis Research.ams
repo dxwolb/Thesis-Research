@@ -373,7 +373,7 @@ Model Main_Thesis_Research {
         StringParameter PS_IEEEData;
         StringParameter PS_IEEETestCaseFileName {
             InitialData: {
-                "ieedata\IEEReliabilityTestDataSetAimmsFormat_V2.txt" ;
+                "ieedata\\IEEReliabilityTestDataSetAimmsFormat_V2.txt" ;
             }
         }
         Procedure ImportIEEData {
