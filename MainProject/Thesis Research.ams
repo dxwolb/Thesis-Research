@@ -373,7 +373,7 @@ Model Main_Thesis_Research {
         StringParameter PS_IEEEData;
         StringParameter PS_IEEETestCaseFileName {
             InitialData: {
-                "D:\\Thesis\\IEEE Data\\IEEReliabilityTestDataSetAimmsFormat_V2.txt" ;
+                "ieedata\IEEReliabilityTestDataSetAimmsFormat_V2.txt" ;
             }
         }
         Procedure ImportIEEData {
@@ -435,7 +435,11 @@ Model Main_Thesis_Research {
             Section Model0ED_Constraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
-                    Definition: VC_Model0ED_PowerOutput(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator);
+                    Definition: {
+                        VC_Model0ED_PowerOutput(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator)
+                        
+                        !VC_Model0ED_PowerOutput(iTime,iGenerator) <= 100
+                    }
                 }
                 Constraint CL_Model0_RampUpRateRequirements {
                     IndexDomain: (iTime,iGenerator);
