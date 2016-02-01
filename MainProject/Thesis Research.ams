@@ -347,6 +347,17 @@ Model Main_Thesis_Research {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
                     Definition: {
                         !PI_MaximumGenerationMW(iGenerator) * PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
+                        !TimeslotCharacteristic(iTime,'hour')
+                        !TimeslotCharacteristic(iTime,'minute')
+                        sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
+                        and TimeslotCharacteristic(iYearCalendar,'minute') = TimeslotCharacteristic(iTime,'minute')
+                        and TimeslotCharacteristic(iYearCalendar,'second') = TimeslotCharacteristic(iTime,'second')
+                        and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
+                        and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
+                        
+                        ,
+                        PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator)) * PI_MaximumGenerationMW(iGenerator))
+                        !TimeslotCharacteristic(iTime,'second')
                     }
                 }
             }
@@ -424,7 +435,7 @@ Model Main_Thesis_Research {
             Section Model0ED_Constraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
-                    Definition: VC_Model0ED_PowerOutput(iTime,iGenerator) <= 1000;
+                    Definition: VC_Model0ED_PowerOutput(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator);
                 }
                 Constraint CL_Model0_RampUpRateRequirements {
                     IndexDomain: (iTime,iGenerator);
