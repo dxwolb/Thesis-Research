@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-12-29 23:55:25">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Table">
+		<Location top="18" left="12" bottom="522" right="1098" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<RowIndentation>3</RowIndentation>
+		<ExplicitIdentifier>
+			<Identifier>PE_GeneratorBus( iGenerator )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="15" Decimals="0" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_MaximumGenerationMW( iGenerator )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="4" Decimals="0" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PE_GeneratorType( iGenerator )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="15" Decimals="0" />
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PE_UnitGroup( iGenerator )</Identifier>
+			<FirstColumn>1</FirstColumn>
+			<NumberFormat Width="15" Decimals="0" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PE_GeneratorBus</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
+			<Symbol>PE_UnitGroup</Symbol>
+			<Symbol>PI_MaximumGenerationMW</Symbol>
+			<Symbol>iGenerator</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

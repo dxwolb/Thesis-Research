@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-01-12 17:10:55">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="36" left="30" bottom="480" right="1032" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<RemoveDefaults>true</RemoveDefaults>
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>PO_PowerOutputByGeneratorType( iTime, iGeneratorType )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<LineWidth>3</LineWidth>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PO_PowerOutputByGeneratorType</Symbol>
+			<Symbol>iTime</Symbol>
+			<Symbol>iGeneratorType</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

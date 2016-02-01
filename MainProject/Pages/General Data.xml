@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-01-12 17:10:55">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Date Time Picker">
+		<Location top="24" left="126" bottom="42" right="258" />
+		<TabOrder>3</TabOrder>
+		<Display>
+			<Time_format>
+				<Show_time_component ID="1020">"Yes"</Show_time_component>
+			</Time_format>
+		</Display>
+		<Contents>
+			<Identifier ID="2001">PS_StartDate</Identifier>
+			<Procedures>
+				<On_change ID="3">UpdateTimeCalendar</On_change>
+			</Procedures>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="24" left="18" bottom="42" right="144" />
+		<StaticText>Horizon Start Date</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Date Time Picker">
+		<Location top="48" left="126" bottom="66" right="258" />
+		<TabOrder>1</TabOrder>
+		<Display>
+			<Time_format>
+				<Show_time_component ID="1020">"Yes"</Show_time_component>
+			</Time_format>
+		</Display>
+		<Contents>
+			<Identifier ID="2001">PS_EndDate</Identifier>
+			<First_date_allowed ID="2002">PS_StartDate</First_date_allowed>
+			<Procedures>
+				<On_change ID="3">UpdateTimeCalendar</On_change>
+			</Procedures>
+		</Contents>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="18" bottom="66" right="144" />
+		<StaticText>Horizon End Date</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="102" left="18" bottom="300" right="264" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SI_Buses(SI_Buses)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="84" left="18" bottom="102" right="264" />
+		<StaticText>Buses</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="102" left="276" bottom="300" right="522" />
+		<TabOrder>5</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SI_UnitGroups(SI_UnitGroups)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="84" left="276" bottom="102" right="522" />
+		<StaticText>Unit Groups
+</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>ListBox</SelectionType>
+		<SingleSelect>true</SingleSelect>
+		<Location top="102" left="564" bottom="300" right="840" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<EditField>AtTop</EditField>
+		<AddAndRemoveButtons>true</AddAndRemoveButtons>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>SI_Generators(SI_Generators)</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="84" left="564" bottom="102" right="810" />
+		<StaticText>Generators</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="30" left="360" bottom="60" right="750" />
+		<TabOrder>6</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ProcedureUponChange>UpdateGranularity</ProcedureUponChange>
+		<ExplicitIdentifier>
+			<Identifier>PE_SelectedGranularity</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="36" left="288" bottom="54" right="360" />
+		<StaticText>Granularity:</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="318" left="18" bottom="504" right="1074" />
+		<TabOrder>13</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>PO_TotalLoad( iTime )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>UpdateGranularity</Symbol>
+			<Symbol>UpdateTimeCalendar</Symbol>
+			<Symbol>PE_SelectedGranularity</Symbol>
+			<Symbol>S_Granularity</Symbol>
+			<Symbol>PS_StartDate</Symbol>
+			<Symbol>PS_EndDate</Symbol>
+			<Symbol>PO_TotalLoad</Symbol>
+			<Symbol>SI_Buses</Symbol>
+			<Symbol>SI_Generators</Symbol>
+			<Symbol>SI_UnitGroups</Symbol>
+			<Symbol>iTime</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

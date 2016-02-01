@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Page Name="Data Page" PageGUID="3C679A7D-00BF-485F-9BBD-297F980607FD" />
+	<Page Name="Data Import" PageGUID="A3E8518D-90F5-4D7F-8F21-FEFD6F72DF07" />
+	<Page Name="General Data" PageGUID="0A4D6ED7-BAF5-478F-AE1C-3CF51F7940D3" />
+	<Page Name="Buses Specification" PageGUID="BE80D9CD-E449-44EA-A64E-5174B4C22858" />
+	<Page Name="Generators Speficication" PageGUID="606B477A-44BA-4EFF-9393-6B9D1167748C" />
+	<Page Name="Result" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4" />
+	<Page Name="Load Distribution" PageGUID="4337962B-24EB-4ED9-ABE4-0B403ED6DC92" />
+	<Page Name="Costs" PageGUID="0F4D5A8C-7995-49E4-974C-102EF67091E9" />
+	<Page Name="Power Output Result" PageGUID="469D2C0E-6DEC-40BF-9A8D-1AD5991583F1" />
+	<Page Name="Summary" PageGUID="291CA5AA-2FE4-4474-AB78-34A214AF0B5F" />
+	<Page Name="Main Page" PageGUID="042C7CB8-3A7D-41AA-8A6E-2B6A59B420E8" />
+	<Page Name="Optimization Settings" PageGUID="9E21DF6B-28CC-4DD5-9A34-9911FDCA613B" />
+	<Page Name="Average Load Distribution" PageGUID="418857CB-0FD2-44BB-A3CA-EABCFF9BD742" />
+</TemplateManager>

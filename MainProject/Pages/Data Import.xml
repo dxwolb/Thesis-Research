@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2015-10-21 20:05:33">
+	<PageEditSize Type="Specified">
+		<Size Width="1054" Height="612" />
+	</PageEditSize>
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background>
+		<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+	</Background>
+	<PageObject Type="Button">
+		<Location top="90" left="138" bottom="120" right="246" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Browse"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>BrowseFile</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="54" left="30" bottom="72" right="480" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>IEEETestCaseFileName</StringParameter>
+		<Alignment>Center</Alignment>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Rectangle">
+		<Location top="48" left="30" bottom="78" right="480" />
+		<Shape>Open</Shape>
+		<FillColor>
+			<UserColor GUID="33BB2465-9D09-4035-9765-4D4D12BABAAE">white</UserColor>
+		</FillColor>
+		<LineColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Button">
+		<Location top="90" left="270" bottom="120" right="378" />
+		<TabOrder>1</TabOrder>
+		<LeaveOnEnter>false</LeaveOnEnter>
+		<ButtonType>Text</ButtonType>
+		<Title>"Import Data"</Title>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>ImportIEEData</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>IEEETestCaseFileName</Symbol>
+			<Symbol>ImportIEEData</Symbol>
+			<Symbol>BrowseFile</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
