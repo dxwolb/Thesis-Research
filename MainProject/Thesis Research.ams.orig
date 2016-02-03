@@ -1,0 +1,544 @@
+## ams_version=1.0
+
+Model Main_Thesis_Research {
+    Section Page_Parameters {
+        DeclarationSection OptimizationSettingsPage {
+            Parameter PI_EnableReserveConstraints;
+            Parameter PI_EnableRampingConstraints;
+            Parameter PI_EnableTranmissionConstraints;
+        }
+    }
+    Section Input_and_Output_Data {
+        Section Time {
+            Procedure UpdateGranularity {
+                Body: {
+                    if PE_SelectedGranularity = 'Day' then
+                    	PI_TimeGranularity := 60*24;
+                    
+                    elseif PE_SelectedGranularity = 'Hour' then
+                    	PI_TimeGranularity := 60;
+                    
+                    elseif PE_SelectedGranularity = 'Quarter Hour' then
+                    
+                    	PI_TimeGranularity := 15;
+                    
+                    else
+                    	PI_TimeGranularity := 1;
+                    endif
+                }
+            }
+            Procedure UpdateTimeCalendar {
+                Body: {
+                    update P_TimeCalendar;
+                }
+            }
+            DeclarationSection TimeDeclaration {
+                ElementParameter PE_SelectedGranularity {
+                    Range: S_Granularity;
+                }
+                Set S_Granularity {
+                    Index: iGranularity;
+                    InitialData: data { 'Day', 'Hour', 'Quarter Hour', 'Minute' };
+                }
+                Parameter PI_TimeGranularity {
+                    Range: integer;
+                    InitialData: 1;
+                }
+                UnitParameter UP_TimeUnitParameter {
+                    Quantity: SI_Time_Duration;
+                    Definition: hour;
+                }
+                Quantity SI_WattPerTimeUnit {
+                    BaseUnit: W/minute;
+                }
+                Quantity SI_Power {
+                    BaseUnit: W;
+                    Comment: "Expresses the value for the amount of energy per time unit.";
+                }
+                UnitParameter Q_RampRateDuration;
+                Set S_DayOfWeekTypes {
+                    Index: iDayofWeekType;
+                    Definition: data { Wkdy, Wknd };
+                }
+                Set S_Seasons {
+                    Index: iSeason;
+                    Definition: data { Winter, Summer, Spring, Fall };
+                }
+                Set S_Hours {
+                    Index: iHour;
+                    Definition: {
+                        {0..23}
+                    }
+                }
+                Set S_DaysOfWeek {
+                    Index: iDayOfWeek;
+                    Definition: {
+                        {1..7}
+                    }
+                }
+                Set S_Weeks {
+                    Index: iWeek;
+                    Definition: {
+                        {1..52}
+                    }
+                }
+                StringParameter PS_StartDate;
+                StringParameter PS_EndDate;
+                Calendar P_TimeCalendar {
+                    Index: iTime;
+                    Unit: PI_TimeGranularity * minute;
+                    BeginDate: PS_StartDate;
+                    EndDate: PS_EndDate;
+                    TimeslotFormat: "%c%y-%m-%d %H:%M:%S";
+                }
+                Calendar P_YearCalendar {
+                    Index: iYearCalendar;
+                    Unit: hour;
+                    BeginDate: "2015-01-01 00:00:00";
+                    EndDate: "2015-12-31 23:59:59";
+                    TimeslotFormat: "%m/%d %H:%M:%S";
+                }
+                Quantity SI_Time_Duration {
+                    BaseUnit: minute;
+                    Conversions: {
+                        hour -> minute : # -> # * 60,
+                        quarterhour -> minute : # -> # * 15
+                    }
+                }
+            }
+        }
+        Section Costs {
+            DeclarationSection Generation_Costs {
+                Parameter PI_UnitGroupVariableCost {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PD_VariableCost {
+                    IndexDomain: iGenerator;
+                    Definition: PI_UnitGroupVariableCost(PE_UnitGroup(iGenerator));
+                    Comment: {
+                        "Variable cost per MW generated in every generator G. Include fuel costs, carbon costs, maintenance cost, and etc.
+                        For now it is"
+                    }
+                }
+            }
+        }
+        Section Bus {
+            DeclarationSection WindAvailabilityDeclaration {
+                Parameter PI_WindPotential {
+                    IndexDomain: (iYearCalendar,iBus);
+                }
+            }
+            DeclarationSection DemandDeclaration {
+                Parameter PI_WeeklyPeakLoad {
+                    IndexDomain: iWeek;
+                }
+                Parameter PI_DailyPeekLoad {
+                    IndexDomain: iDayOfWeek;
+                }
+                Parameter PI_HourlyPeekLoad {
+                    IndexDomain: (iHour,iSeason,iDayofWeekType);
+                    Comment: "Has to be separated by period time.";
+                }
+                Parameter PD_SobHourlyPeekSlope {
+                    IndexDomain: (iHour,iSeason,iDayofWeekType);
+                    Definition: {
+                        if iHour = '23' then
+                        
+                        	(PI_HourlyPeekLoad('0',iSeason,iDayofWeekType) - PI_HourlyPeekLoad(iHour,iSeason,iDayofWeekType))/60
+                        
+                        else
+                        
+                        	(PI_HourlyPeekLoad(iHour + 1,iSeason,iDayofWeekType) - PI_HourlyPeekLoad(iHour,iSeason,iDayofWeekType))/60
+                        
+                        endif
+                    }
+                    Comment: "Check what happens at 23";
+                }
+            }
+            DeclarationSection ResultsDeclaration {
+                Parameter PO_TotalLoad {
+                    IndexDomain: iTime;
+                    Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
+                }
+                Parameter PO_PowerOutputByGeneratorType {
+                    IndexDomain: (iTime,iGeneratorType);
+                    Unit: W;
+                    Definition: sum(iGenerator |  PE_GeneratorType(iGenerator) = iGeneratorType ,VC_Model0ED_PowerOutput(iTime, iGenerator));
+                }
+            }
+            DeclarationSection GenerationResultsDeclaration {
+                Parameter PO_AverageGeneratiorByHour {
+                    IndexDomain: (iHour,iGeneratorType);
+                    Definition: average(iTime | ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = iHour,PO_GenerationByGeneratorType(iTime,iGeneratorType));
+                }
+                Parameter PO_GenerationByGeneratorType {
+                    IndexDomain: (iTime,iGeneratorType);
+                    Unit: W;
+                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, VC_Model0ED_PowerOutput(iTime,iGenerator));
+                }
+            }
+            DeclarationSection BusesDeclaration {
+                Set SI_Buses {
+                    Index: iBus, iBus2;
+                    Parameter: eBus;
+                }
+                StringParameter PS_BusName {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_MinimumMVAROrVoltageLimit {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_MaximumMVAROrVoltageLimit {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_DesiredVoltsPU {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_BaseKV {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_GenerationMVAR {
+                    IndexDomain: iGenerator;
+                }
+                Parameter PI_GenerationMW {
+                    IndexDomain: iGenerator;
+                }
+                Parameter PI_LoadMVAR {
+                    IndexDomain: iBus;
+                }
+                Parameter PD_LoadMW {
+                    IndexDomain: (iBus,iTime);
+                    Definition: {
+                        PI_WeeklyPeakLoad( ElementCast(S_Weeks,TimeslotCharacteristic(iTime,'weekyear')) ) *
+                        PI_DailyPeekLoad(ElementCast(S_DaysOfWeek,TimeslotCharacteristic(iTime,'weekday')))
+                        
+                        *
+                        (
+                        if(TimeslotCharacteristic(iTime,'weekday') <6) then
+                        
+                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wkdy') )
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wkdy'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wkdy'))
+                        	else
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wkdy'))
+                        
+                        	endif
+                        else
+                        
+                        
+                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wknd'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wknd'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wknd'))
+                        	else
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wknd'))
+                        
+                        	endif
+                        
+                        endif
+                        
+                        )
+                        *
+                        
+                        PI_PeakLoadMW(iBus)
+                        
+                        
+                        /1000000
+                    }
+                }
+                Parameter PI_PeakLoadMW {
+                    IndexDomain: iBus;
+                    Comment: "Total Load at Peak Time.";
+                }
+                Parameter PI_FinalAngleDegrees {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_FinalVoltagePU {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_BusType {
+                    IndexDomain: iBus;
+                    Range: {
+                        {1..3}
+                    }
+                    Comment: {
+                        "So, the busy types are:
+                        1 - Load Bus (No Generation)
+                        2 - Generator or Plant Bus
+                        3 - Swing Bus (?)"
+                    }
+                }
+                Parameter PI_LossZoneNumber {
+                    IndexDomain: iBus;
+                    Range: integer;
+                }
+                Parameter PI_LoadFlowAreaNumber {
+                    IndexDomain: iBus;
+                    Range: integer;
+                }
+            }
+        }
+        Section Generator {
+            DeclarationSection ReserveRequirementsDeclaration {
+                Parameter PI_SystemReserveRequirement {
+                    IndexDomain: (iTime,iReserveRequirement);
+                }
+                Set S_ReserveProductsRequirements;
+                Set S_ReserveRequirements {
+                    Index: iReserveRequirement;
+                    Definition: data { TMSR, T10, T30 };
+                }
+                Set S_ReserveProducts {
+                    Index: iReserveProduct;
+                    Definition: data { TSMR, TMNSR, TMOR };
+                }
+            }
+            DeclarationSection GeneratorsDeclaration {
+                Set SI_Generators {
+                    Index: iGenerator;
+                }
+                Set SI_UnitGroups {
+                    Index: iUnitGroup;
+                }
+                Set S_GeneratorTypes {
+                    Index: iGeneratorType;
+                    Definition: {
+                        data {
+                        Nuclear,
+                        'Coal/Steam',
+                        NGCC ,
+                        NGCT,
+                        'Oil/Steam',
+                        'Oil/CT',
+                        Wind,
+                        Solar,
+                        Sync,
+                        Hydro
+                        }
+                    }
+                }
+                ElementParameter PE_GeneratorBus {
+                    IndexDomain: iGenerator;
+                    Range: SI_Buses;
+                }
+                ElementParameter PE_GeneratorType {
+                    IndexDomain: iGenerator;
+                    Range: S_GeneratorTypes;
+                }
+                ElementParameter PE_UnitGroup {
+                    IndexDomain: iGenerator;
+                    Range: SI_UnitGroups;
+                }
+                Parameter PI_MaximumGenerationMW {
+                    IndexDomain: iGenerator;
+                    Unit: W/minute;
+                }
+                Parameter PI_MinimumGenerationMW {
+                    IndexDomain: iGenerator;
+                    Unit: W/minute;
+                }
+            }
+            DeclarationSection UnitCyclingRestrictionandRampingRates {
+                Parameter PI_MinDownTime {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_MinUpTime {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_StartTimeHot {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_StartTimeCold {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_WarmStartTime {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_RampDownRate {
+                    IndexDomain: iUnitGroup;
+                    Unit: minute;
+                }
+                Parameter PI_RampUpRate {
+                    IndexDomain: iUnitGroup;
+                    Unit: minute;
+                }
+            }
+            DeclarationSection UnitStartUpHeatInputDeclaration {
+                Parameter PI_HeatHotStart {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_HeatColdStart {
+                    IndexDomain: iUnitGroup;
+                }
+            }
+            DeclarationSection HeartRateAndIncrementalHeatRateDeclaration {
+                Parameter PI_NetPlantHeatRate {
+                    IndexDomain: (iUnitGroup,iOutputPercentage);
+                }
+                Parameter PI_IncrementalHeatRate {
+                    IndexDomain: (iUnitGroup,iOutputPercentage);
+                }
+                Set S_OutputPercentages {
+                    Index: iOutputPercentage;
+                    Definition: {
+                        {1..100}
+                    }
+                }
+                ElementParameter PE_GeneratorFuelType {
+                    IndexDomain: iUnitGroup;
+                    Range: S_FuelType;
+                }
+                Set S_FuelType {
+                    Index: iFuelType;
+                    Definition: data { '#6 Oil', '#2 Oil', Coal, LWR };
+                }
+            }
+            DeclarationSection RenewableGeneratorDeclaration {
+                Parameter PD_RenewableGenerationCapacity {
+                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
+                    Definition: {
+                        !PI_MaximumGenerationMW(iGenerator) * PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
+                        !TimeslotCharacteristic(iTime,'hour')
+                        !TimeslotCharacteristic(iTime,'minute')
+                        sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
+                        and TimeslotCharacteristic(iYearCalendar,'minute') = TimeslotCharacteristic(iTime,'minute')
+                        and TimeslotCharacteristic(iYearCalendar,'second') = TimeslotCharacteristic(iTime,'second')
+                        and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
+                        and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
+                        
+                        ,
+                        PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator)) * PI_MaximumGenerationMW(iGenerator))
+                        !TimeslotCharacteristic(iTime,'second')
+                    }
+                }
+            }
+            DeclarationSection ParametersPageDeclaration {
+                Parameter PO_GenerationCapability {
+                    IndexDomain: iGeneratorType;
+                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PI_MaximumGenerationMW(iGenerator));
+                }
+            }
+        }
+    }
+    Section Import_Procedures {
+        StringParameter PS_IEEEData;
+        StringParameter PS_IEEETestCaseFileName {
+            InitialData: {
+                "ieedata\\IEEReliabilityTestDataSetAimmsFormat_V2.txt" ;
+            }
+        }
+        Procedure ImportIEEData {
+            Body: {
+                read from file PS_IEEETestCaseFileName;
+            }
+        }
+        Procedure ExportData {
+            Body: {
+                write to file "D:\data.txt";
+            }
+        }
+        Procedure BrowseFile {
+            Body: {
+                FileSelect(PS_IEEETestCaseFileName);
+            }
+        }
+    }
+    Section Optimal_Power_Flow_Models;
+    Section Unit_Commitment_Models {
+        Section Model0_Unit_Commitment {
+            Section Model0DecisionVariables;
+        }
+    }
+    Section Economic_Dispatch_Models {
+        Section Model0_SimpleEDModel {
+            Comment: {
+                "Basic Economic Dispatch model, described in section A from article
+                \"Impact of Unit Commitment Constraints on Generation Expansion Planning with Renewables\", available in:
+                http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6038963
+                
+                Ignoring transmission effects."
+            }
+            Section Model0ED_Variables {
+                Variable VC_Model0ED_TotalCost {
+                    Range: free;
+                    Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerOutput[iTime,iGenerator]);
+                }
+                Variable VC_Model0ED_PowerOutput {
+                    IndexDomain: (iTime,iGenerator);
+                    Range: free;
+                    Unit: W;
+                }
+            }
+            Section Model0ED_ObjectiveFunction {
+                Procedure Model0ED_Optimize {
+                    Body: {
+                        solve M_Model0ED_MinimizeTotalCost;
+                    }
+                }
+                MathematicalProgram M_Model0ED_MinimizeTotalCost {
+                    Objective: VC_Model0ED_TotalCost;
+                    Direction: minimize;
+                    Constraints: AllConstraints;
+                    Variables: AllVariables;
+                    Type: Automatic;
+                }
+            }
+            Section Model0ED_Constraints {
+                Constraint CL_Model0_MaximumGenerationRenewableSources {
+                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
+                    Definition: {
+                        VC_Model0ED_PowerOutput(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator)
+                        
+                        !VC_Model0ED_PowerOutput(iTime,iGenerator) <= 100
+                    }
+                }
+                Constraint CL_Model0_RampUpRateRequirements {
+                    IndexDomain: (iTime,iGenerator);
+                    Definition: VC_Model0ED_PowerOutput[iTime+1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
+                }
+                Constraint CL_Model0_RampDownRateRequirements {
+                    IndexDomain: (iTime,iGenerator);
+                    Definition: VC_Model0ED_PowerOutput[iTime-1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
+                }
+                Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
+                    IndexDomain: iTime;
+                    Definition: sum(iGenerator,VC_Model0ED_PowerOutput[iTime,iGenerator]) = sum(iBus,PD_LoadMW[iBus,iTime]);
+                }
+                Constraint CL_Model0_MaximumGenerationNonRenewableSources {
+                    IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
+                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_MaximumGenerationMW[iGenerator];
+                }
+                Constraint CG_Model0_MininumGeneration {
+                    IndexDomain: (iGenerator,iTime);
+                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] >= PI_MinimumGenerationMW[iGenerator];
+                }
+                DeclarationSection ReserveContraints;
+            }
+        }
+    }
+    Section Output_Information;
+    Procedure MainInitialization;
+    Procedure MainExecution;
+    Procedure MainTermination {
+        Body: {
+            return DataManagementExit();
+        }
+    }
+}
