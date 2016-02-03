@@ -297,6 +297,9 @@ Model Main_Thesis_Research {
         }
         Section Generator {
             DeclarationSection ReserveRequirementsDeclaration {
+                Parameter PI_ReserveCapacity {
+                    IndexDomain: (iGenerator,iReserveRequirement);
+                }
                 Parameter PI_SystemReserveRequirement {
                     IndexDomain: (iTime,iReserveRequirement);
                 }

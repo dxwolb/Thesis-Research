@@ -1,220 +1,110 @@
-Warning at line 262.
+Warning at line 272.
 The unit [] of parameter "PO_AverageGeneratiorByHour" is not commensurate with the unit [W] of its "definition".
-Warning at line 332.
-The unit [] of parameter "PD_RenewableGenerationCapacity" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 334.
-The unit [] of parameter "PO_GenerationCapability" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 337.
-The unit [] of variable "VC_Model0ED_TotalCost" is not commensurate with the unit [W] of its "definition".
-Warning: The units associated with the expression 
-(VC_Model0ED_TotalCost)[]
-, and with the expression 
-(sum(  ( iGenerator, iTime ) , PD_VariableCost(iGenerator) * VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
- are not commensurate.
-Warning at line 340.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PD_RenewableGenerationCapacity(iTime,iGenerator))[]
- are not commensurate.
-Warning at line 341.
-The unit [] of constraint "CL_Model0_MaximumGenerationRenewableSources" is not commensurate with the unit [W] of its "definition".
 Warning at line 342.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime+1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampUpRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 343.
-The unit [] of constraint "CL_Model0_RampUpRateRequirements" is not commensurate with the unit [W] of its "definition".
+The unit [] of parameter "PD_RenewableGenerationCapacity" is not commensurate with the unit [W/minute] of its "definition".
 Warning at line 344.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime-1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampDownRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 345.
-The unit [] of constraint "CL_Model0_RampDownRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 346.
-The units associated with the expression 
-(sum( iGenerator, VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
-, and with the expression 
-(sum( iBus, PD_LoadMW(iBus,iTime) ) )[]
- are not commensurate.
+The unit [] of parameter "PO_GenerationCapability" is not commensurate with the unit [W/minute] of its "definition".
 Warning at line 347.
-The unit [] of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not commensurate with the unit [W] of its "definition".
-Warning at line 348.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MaximumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 349.
-The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
+The unit [] of variable "VC_Model0ED_TotalCost" is not commensurate with the unit [W] of its "definition".
+Warning: The units associated with the expression 
+(VC_Model0ED_TotalCost)[]
+, and with the expression 
+(sum(  ( iGenerator, iTime ) , PD_VariableCost(iGenerator) * VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
+ are not commensurate.
 Warning at line 350.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
+The units associated with the expression 
+(VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
+, and with the expression 
+(PD_RenewableGenerationCapacity(iTime,iGenerator))[]
+ are not commensurate.
 Warning at line 351.
+The unit [] of constraint "CL_Model0_MaximumGenerationRenewableSources" is not commensurate with the unit [W] of its "definition".
+Warning at line 352.
+The units associated with the expression 
+(VC_Model0ED_PowerOutput(iTime+1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
+, and with the expression 
+(PI_RampUpRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
+ are not commensurate.
+Warning at line 353.
+The unit [] of constraint "CL_Model0_RampUpRateRequirements" is not commensurate with the unit [W] of its "definition".
+Warning at line 354.
+The units associated with the expression 
+(VC_Model0ED_PowerOutput(iTime-1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
+, and with the expression 
+(PI_RampDownRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
+ are not commensurate.
+Warning at line 355.
+The unit [] of constraint "CL_Model0_RampDownRateRequirements" is not commensurate with the unit [W] of its "definition".
+Warning at line 356.
+The units associated with the expression 
+(sum( iGenerator, VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
+, and with the expression 
+(sum( iBus, PD_LoadMW(iBus,iTime) ) )[]
+ are not commensurate.
+Warning at line 357.
+The unit [] of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not commensurate with the unit [W] of its "definition".
+Warning at line 358.
+The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MaximumGenerationMW(iGenerator))[W/minute] are not commensurate.
+Warning at line 359.
+The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
+Warning at line 360.
+The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
+Warning at line 361.
 The unit [] of constraint "CG_Model0_MininumGeneration" is not commensurate with the unit [W] of its "definition".
-Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
-The maximum of 20 warnings reached, further warnings suppressed.  See also option maximal_number_of_warnings_reported
-Warning: The variable "VC_Model0ED_PowerOutput" is not initialized (default values are used).
-Warning at line 1 in user-defined function section "Model0ED_Optimize".
-The parameter "PI_MinimumGenerationMW" is not initialized (default values are used).
-Warning at line 27919.
+Semantic error.
+The undeclared "" is not an index.
+Semantic error.
+The undeclared "" is not an index.
+Warning at line 483.
 The unit [] of parameter "PO_AverageGeneratiorByHour" is not commensurate with the unit [W] of its "definition".
-Warning at line 28110.
+Warning at line 686.
 The unit [] of parameter "PD_RenewableGenerationCapacity" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28114.
+Warning at line 690.
 The unit [] of parameter "PO_GenerationCapability" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28121.
+Warning at line 697.
 The unit [] of variable "VC_Model0ED_TotalCost" is not commensurate with the unit [W] of its "definition".
 Warning: The units associated with the expression 
 (VC_Model0ED_TotalCost)[]
 , and with the expression 
 (sum(  ( iGenerator, iTime ) , PD_VariableCost(iGenerator) * VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
  are not commensurate.
-Warning at line 28142.
+Warning at line 718.
 The units associated with the expression 
 (VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
 , and with the expression 
 (PD_RenewableGenerationCapacity(iTime,iGenerator))[]
  are not commensurate.
-Warning at line 28143.
+Warning at line 719.
 The unit [] of constraint "CL_Model0_MaximumGenerationRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28148.
+Warning at line 724.
 The units associated with the expression 
 (VC_Model0ED_PowerOutput(iTime+1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
 , and with the expression 
 (PI_RampUpRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
  are not commensurate.
-Warning at line 28149.
+Warning at line 725.
 The unit [] of constraint "CL_Model0_RampUpRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28152.
+Warning at line 728.
 The units associated with the expression 
 (VC_Model0ED_PowerOutput(iTime-1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
 , and with the expression 
 (PI_RampDownRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
  are not commensurate.
-Warning at line 28153.
+Warning at line 729.
 The unit [] of constraint "CL_Model0_RampDownRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28156.
+Warning at line 732.
 The units associated with the expression 
 (sum( iGenerator, VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
 , and with the expression 
 (sum( iBus, PD_LoadMW(iBus,iTime) ) )[]
  are not commensurate.
-Warning at line 28157.
+Warning at line 733.
 The unit [] of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not commensurate with the unit [W] of its "definition".
-Warning at line 28160.
+Warning at line 736.
 The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MaximumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28161.
+Warning at line 737.
 The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28166.
+Warning at line 742.
 The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28167.
-The unit [] of constraint "CG_Model0_MininumGeneration" is not commensurate with the unit [W] of its "definition".
-Warning at line 28287.
-The unit [] of parameter "PO_AverageGeneratiorByHour" is not commensurate with the unit [W] of its "definition".
-Warning at line 28478.
-The unit [] of parameter "PD_RenewableGenerationCapacity" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28482.
-The unit [] of parameter "PO_GenerationCapability" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28489.
-The unit [] of variable "VC_Model0ED_TotalCost" is not commensurate with the unit [W] of its "definition".
-Warning: The units associated with the expression 
-(VC_Model0ED_TotalCost)[]
-, and with the expression 
-(sum(  ( iGenerator, iTime ) , PD_VariableCost(iGenerator) * VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
- are not commensurate.
-Warning at line 28510.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PD_RenewableGenerationCapacity(iTime,iGenerator))[]
- are not commensurate.
-Warning at line 28511.
-The unit [] of constraint "CL_Model0_MaximumGenerationRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28516.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime+1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampUpRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 28517.
-The unit [] of constraint "CL_Model0_RampUpRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28520.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime-1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampDownRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 28521.
-The unit [] of constraint "CL_Model0_RampDownRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28524.
-The units associated with the expression 
-(sum( iGenerator, VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
-, and with the expression 
-(sum( iBus, PD_LoadMW(iBus,iTime) ) )[]
- are not commensurate.
-Warning at line 28525.
-The unit [] of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not commensurate with the unit [W] of its "definition".
-Warning at line 28528.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MaximumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28529.
-The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28534.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28535.
-The unit [] of constraint "CG_Model0_MininumGeneration" is not commensurate with the unit [W] of its "definition".
-Warning at line 28657.
-The unit [] of parameter "PO_AverageGeneratiorByHour" is not commensurate with the unit [W] of its "definition".
-Warning at line 28850.
-The unit [] of parameter "PD_RenewableGenerationCapacity" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28854.
-The unit [] of parameter "PO_GenerationCapability" is not commensurate with the unit [W/minute] of its "definition".
-Warning at line 28861.
-The unit [] of variable "VC_Model0ED_TotalCost" is not commensurate with the unit [W] of its "definition".
-Warning: The units associated with the expression 
-(VC_Model0ED_TotalCost)[]
-, and with the expression 
-(sum(  ( iGenerator, iTime ) , PD_VariableCost(iGenerator) * VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
- are not commensurate.
-Warning at line 28882.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PD_RenewableGenerationCapacity(iTime,iGenerator))[]
- are not commensurate.
-Warning at line 28883.
-The unit [] of constraint "CL_Model0_MaximumGenerationRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28888.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime+1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampUpRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 28889.
-The unit [] of constraint "CL_Model0_RampUpRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28892.
-The units associated with the expression 
-(VC_Model0ED_PowerOutput(iTime-1,iGenerator) - VC_Model0ED_PowerOutput(iTime,iGenerator))[W]
-, and with the expression 
-(PI_RampDownRate(PE_UnitGroup(iGenerator)) * PI_TimeGranularity)[minute]
- are not commensurate.
-Warning at line 28893.
-The unit [] of constraint "CL_Model0_RampDownRateRequirements" is not commensurate with the unit [W] of its "definition".
-Warning at line 28896.
-The units associated with the expression 
-(sum( iGenerator, VC_Model0ED_PowerOutput(iTime,iGenerator) ) )[W]
-, and with the expression 
-(sum( iBus, PD_LoadMW(iBus,iTime) ) )[]
- are not commensurate.
-Warning at line 28897.
-The unit [] of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not commensurate with the unit [W] of its "definition".
-Warning at line 28900.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MaximumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28901.
-The unit [] of constraint "CL_Model0_MaximumGenerationNonRenewableSources" is not commensurate with the unit [W] of its "definition".
-Warning at line 28906.
-The units associated with the expression (VC_Model0ED_PowerOutput(iTime,iGenerator))[W], and with the expression (PI_MinimumGenerationMW(iGenerator))[W/minute] are not commensurate.
-Warning at line 28907.
+Warning at line 743.
 The unit [] of constraint "CG_Model0_MininumGeneration" is not commensurate with the unit [W] of its "definition".
