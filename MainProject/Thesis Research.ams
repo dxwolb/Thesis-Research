@@ -1,6 +1,13 @@
 ## ams_version=1.0
 
 Model Main_Thesis_Research {
+    Section Page_Parameters {
+        DeclarationSection OptimizationSettingsPage {
+            Parameter PI_EnableReserveConstraints;
+            Parameter PI_EnableRampingConstraints;
+            Parameter PI_EnableTranmissionConstraints;
+        }
+    }
     Section Input_and_Output_Data {
         Section Time {
             Procedure UpdateGranularity {
@@ -289,6 +296,20 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection ReserveRequirementsDeclaration {
+                Parameter PI_SystemReserveRequirement {
+                    IndexDomain: (iTime,iReserveRequirement);
+                }
+                Set S_ReserveProductsRequirements;
+                Set S_ReserveRequirements {
+                    Index: iReserveRequirement;
+                    Definition: data { TMSR, T10, T30 };
+                }
+                Set S_ReserveProducts {
+                    Index: iReserveProduct;
+                    Definition: data { TSMR, TMNSR, TMOR };
+                }
+            }
             DeclarationSection GeneratorsDeclaration {
                 Set SI_Generators {
                     Index: iGenerator;
@@ -333,6 +354,23 @@ Model Main_Thesis_Research {
                     IndexDomain: iGenerator;
                     Unit: W/minute;
                 }
+            }
+            DeclarationSection UnitCyclingRestrictionandRampingRates {
+                Parameter PI_MinDownTime {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_MinUpTime {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_StartTimeHot {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_StartTimeCold {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_WarmStartTime {
+                    IndexDomain: iUnitGroup;
+                }
                 Parameter PI_RampDownRate {
                     IndexDomain: iUnitGroup;
                     Unit: minute;
@@ -340,6 +378,36 @@ Model Main_Thesis_Research {
                 Parameter PI_RampUpRate {
                     IndexDomain: iUnitGroup;
                     Unit: minute;
+                }
+            }
+            DeclarationSection UnitStartUpHeatInputDeclaration {
+                Parameter PI_HeatHotStart {
+                    IndexDomain: iUnitGroup;
+                }
+                Parameter PI_HeatColdStart {
+                    IndexDomain: iUnitGroup;
+                }
+            }
+            DeclarationSection HeartRateAndIncrementalHeatRateDeclaration {
+                Parameter PI_NetPlantHeatRate {
+                    IndexDomain: (iUnitGroup,iOutputPercentage);
+                }
+                Parameter PI_IncrementalHeatRate {
+                    IndexDomain: (iUnitGroup,iOutputPercentage);
+                }
+                Set S_OutputPercentages {
+                    Index: iOutputPercentage;
+                    Definition: {
+                        {1..100}
+                    }
+                }
+                ElementParameter PE_GeneratorFuelType {
+                    IndexDomain: iUnitGroup;
+                    Range: S_FuelType;
+                }
+                Set S_FuelType {
+                    Index: iFuelType;
+                    Definition: data { '#6 Oil', '#2 Oil', Coal, LWR };
                 }
             }
             DeclarationSection RenewableGeneratorDeclaration {
@@ -461,9 +529,11 @@ Model Main_Thesis_Research {
                     IndexDomain: (iGenerator,iTime);
                     Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] >= PI_MinimumGenerationMW[iGenerator];
                 }
+                DeclarationSection ReserveContraints;
             }
         }
     }
+    Section Output_Information;
     Procedure MainInitialization;
     Procedure MainExecution;
     Procedure MainTermination {
