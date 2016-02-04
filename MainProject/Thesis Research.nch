@@ -93,3 +93,5 @@
 "PI_StartTimeCold" "PI_StartTimeHot" "2016-02-03 17:08:00"
 "PI_StartTimeWarm" "PI_StartTimeCold" "2016-02-03 17:08:08"
 "Copy_PI_StartTimeCold" "PI_WarmStartTime" "2016-02-03 17:08:36"
+"CG_Model0_MininumGeneration" "CG_Model0_MinimumGeneration" "2016-02-04 21:10:08"
+"CG_ReserveRequirementProducts" "CL_ReserveRequirementCapacity" "2016-02-04 21:39:12"

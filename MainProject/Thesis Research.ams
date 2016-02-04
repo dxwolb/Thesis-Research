@@ -299,6 +299,7 @@ Model Main_Thesis_Research {
             DeclarationSection ReserveRequirementsDeclaration {
                 Parameter PI_ReserveCapacity {
                     IndexDomain: (iGenerator,iReserveRequirement);
+                    Range: nonnegative;
                 }
                 Parameter PI_SystemReserveRequirement {
                     IndexDomain: (iTime,iReserveRequirement);
@@ -541,11 +542,16 @@ Model Main_Thesis_Research {
                     IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
                     Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];
                 }
-                Constraint CG_Model0_MininumGeneration {
+                Constraint CG_Model0_MinimumGeneration {
                     IndexDomain: (iGenerator,iTime);
                     Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >= PI_MinimumGenerationMW[iGenerator];
                 }
-                DeclarationSection ReserveContraints;
+                DeclarationSection ReserveContraints {
+                    Constraint CL_ReserveRequirementCapacity {
+                        IndexDomain: (iTime,iGenerator,iReserveRequirement);
+                        Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
+                    }
+                }
             }
         }
     }
