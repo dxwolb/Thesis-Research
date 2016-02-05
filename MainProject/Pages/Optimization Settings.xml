@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-01-12 17:10:55">
+<Page Version="4000" TimeStamp="2016-02-04 21:39:14">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<Background Inherited="true" />
 	<PageObject Type="Button">
-		<Location top="126" left="36" bottom="156" right="156" />
+		<Location top="54" left="30" bottom="84" right="150" />
 		<TabOrder>1</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
@@ -19,8 +19,38 @@
 			</Action>
 		</ActionSequence>
 	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>CheckBoxes</SelectionType>
+		<Location top="156" left="30" bottom="306" right="210" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>IdentifierText</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>PI_EnableRampingConstraints</Identifier>
+			<Description>"Ramping Constraints"</Description>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_EnableReserveConstraints</Identifier>
+			<Description>"Reserve Constraints"</Description>
+		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_EnableTranmissionConstraints</Identifier>
+			<Description>"Transmission Constraints"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="120" left="30" bottom="156" right="168" />
+		<StaticText>Constraints Options
+</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PI_EnableReserveConstraints</Symbol>
+			<Symbol>PI_EnableRampingConstraints</Symbol>
+			<Symbol>PI_EnableTranmissionConstraints</Symbol>
 			<Symbol>Model0ED_Optimize</Symbol>
 		</Model>
 	</UsedReferences>
