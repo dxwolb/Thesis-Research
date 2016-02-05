@@ -24,12 +24,15 @@ Model Main_Thesis_Research {
                     
                     else
                     	PI_TimeGranularity := 1;
-                    endif
+                    endif;
+                    
+                    UpdateTimeCalendar;
                 }
             }
             Procedure UpdateTimeCalendar {
                 Body: {
                     update P_TimeCalendar;
+                    update P_HourCalendar;
                 }
             }
             DeclarationSection TimeDeclaration {
@@ -97,6 +100,13 @@ Model Main_Thesis_Research {
                     BeginDate: "2015-01-01 00:00:00";
                     EndDate: "2015-12-31 23:59:59";
                     TimeslotFormat: "%m/%d %H:%M:%S";
+                }
+                Calendar P_HourCalendar {
+                    Index: iHourCalendar;
+                    Unit: PI_TimeGranularity * minute;
+                    BeginDate: "2015-01-01 00:00:00";
+                    EndDate: "2015-01-01 23:59:59";
+                    TimeslotFormat: "%H:%M:%S";
                 }
                 Quantity SI_Time_Duration {
                     BaseUnit: minute;
@@ -449,6 +459,7 @@ Model Main_Thesis_Research {
                 }
             }
         }
+        Section Transmission;
     }
     Section Import_Procedures {
         StringParameter PS_IEEEData;
