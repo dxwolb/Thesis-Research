@@ -551,6 +551,11 @@ Model Main_Thesis_Research {
                         IndexDomain: (iTime,iGenerator,iReserveRequirement);
                         Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
                     }
+                    Constraint CU_ReserveMinimumRequirement {
+                        IndexDomain: (iTime,iReserveRequirement);
+                        Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
+                        Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
+                    }
                 }
             }
         }
