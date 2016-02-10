@@ -133,6 +133,16 @@ Model Main_Thesis_Research {
             }
         }
         Section Bus {
+            DeclarationSection VoltageAngleDeclaration {
+                Parameter MinimumVoltageAngle {
+                    IndexDomain: iBus;
+                    Definition: -0.6;
+                }
+                Parameter MaximumVoltageAngle {
+                    IndexDomain: iBus;
+                    Definition: 0.6;
+                }
+            }
             DeclarationSection WindAvailabilityDeclaration {
                 Parameter PI_WindPotential {
                     IndexDomain: (iYearCalendar,iBus);
@@ -459,7 +469,24 @@ Model Main_Thesis_Research {
                 }
             }
         }
-        Section Transmission;
+        Section Transmission {
+            Set S_TransmissionLines {
+                Index: iTransmissionLine;
+            }
+            Parameter PI_TransmissionLineBranches {
+                IndexDomain: (iTransmissionLine,iBus,iBus2);
+                Range: binary;
+            }
+            Parameter PI_LineSusceptance {
+                IndexDomain: iTransmissionLine;
+            }
+            Parameter PI_LineMinimumCapacity {
+                IndexDomain: iTransmissionLine;
+            }
+            Parameter PI_LineMaximumCapacityLine {
+                IndexDomain: iTransmissionLine;
+            }
+        }
     }
     Section Import_Procedures {
         StringParameter PS_IEEEData;
@@ -492,6 +519,10 @@ Model Main_Thesis_Research {
     }
     Section Economic_Dispatch_Model {
         Section ED_Variables {
+            Variable VC_Model0ED_VoltageAngle {
+                IndexDomain: iBus;
+                Range: free;
+            }
             Variable VC_Model0ED_Reserve {
                 IndexDomain: (iTime,iGenerator,iReserveProduct);
                 Range: nonnegative;
@@ -521,6 +552,7 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_Constraints {
+            DeclarationSection TransmissionConstraints;
             DeclarationSection GenerationLimitsConstraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
