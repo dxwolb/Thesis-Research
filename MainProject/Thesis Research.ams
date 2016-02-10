@@ -459,7 +459,15 @@ Model Main_Thesis_Research {
                 }
             }
         }
-        Section Transmission;
+        Section Transmission {
+            Set S_TransmissionLines {
+                Index: iTransmissionLine;
+            }
+            Parameter PI_TransmissionLineBranches {
+                IndexDomain: (iTransmissionLine,iBus,iBus2);
+                Range: binary;
+            }
+        }
     }
     Section Import_Procedures {
         StringParameter PS_IEEEData;
@@ -521,6 +529,7 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_Constraints {
+            DeclarationSection TransmissionConstraints;
             DeclarationSection GenerationLimitsConstraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
