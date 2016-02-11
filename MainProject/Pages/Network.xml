@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-02-11 05:42:00">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="60" left="48" bottom="498" right="798" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>Scrollbars</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-2.52605991484</Left>
+			<Right>21.3895156673</Right>
+			<Top>14.0080797483</Top>
+			<Bottom>0.455920251739</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>iBus</Identifier>
+			<XCoordinate>PI_BusXCoordinate( iBus )</XCoordinate>
+			<YCoordinate>PI_BusYCoordinate( iBus )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>10</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>257CED91-8909-41AC-BED6-911268D7BBCE blue</Color>
+			<Size>PI_PeakLoadMW( iBus )</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>iGenerator</Identifier>
+			<XCoordinate>PI_GeneratorXCoordinate( iGenerator )</XCoordinate>
+			<YCoordinate>PI_GeneratorYCoordinate( iGenerator )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>15</MaximumSize>
+			<TextPosition>Bottom</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
+			<Size>5</Size>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>PI_TransmissionLineBranches( iTransmissionLine, iBus, iBus2 )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>4</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PI_BusXCoordinate</Symbol>
+			<Symbol>PI_BusYCoordinate</Symbol>
+			<Symbol>PI_PeakLoadMW</Symbol>
+			<Symbol>PI_TransmissionLineBranches</Symbol>
+			<Symbol>iBus</Symbol>
+			<Symbol>iBus2</Symbol>
+			<Symbol>iGenerator</Symbol>
+			<Symbol>iTransmissionLine</Symbol>
+			<Symbol>PI_GeneratorXCoordinate</Symbol>
+			<Symbol>PI_GeneratorYCoordinate</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

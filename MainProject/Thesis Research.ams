@@ -2,6 +2,21 @@
 
 Model Main_Thesis_Research {
     Section Page_Parameters {
+        DeclarationSection TransmissionMapPage {
+            Parameter PO_TransmissionBranchesIn {
+                IndexDomain: (iBus,iBus2);
+                Range: binary;
+                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus2,iBus) < 0;
+            }
+            Parameter PO_TransmissionBranchesOut {
+                IndexDomain: (iBus,iBus2);
+                Range: binary;
+                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus, iBus2) > 0;
+            }
+            ElementParameter PE_SelectedPeriod {
+                Range: P_TimeCalendar;
+            }
+        }
         DeclarationSection OptimizationSettingsPage {
             Parameter PI_EnableReserveConstraints;
             Parameter PI_EnableRampingConstraints;
@@ -133,12 +148,20 @@ Model Main_Thesis_Research {
             }
         }
         Section Bus {
+            DeclarationSection BusCoordinatesDeclaration {
+                Parameter PI_BusXCoordinate {
+                    IndexDomain: iBus;
+                }
+                Parameter PI_BusYCoordinate {
+                    IndexDomain: iBus;
+                }
+            }
             DeclarationSection VoltageAngleDeclaration {
-                Parameter MinimumVoltageAngle {
+                Parameter PI_MinimumVoltageAngle {
                     IndexDomain: iBus;
                     Definition: -0.6;
                 }
-                Parameter MaximumVoltageAngle {
+                Parameter PI_MaximumVoltageAngle {
                     IndexDomain: iBus;
                     Definition: 0.6;
                 }
@@ -183,7 +206,7 @@ Model Main_Thesis_Research {
                 Parameter PO_PowerOutputByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
                     Unit: W;
-                    Definition: sum(iGenerator |  PE_GeneratorType(iGenerator) = iGeneratorType ,VC_Model0ED_PowerOutput(iTime, iGenerator));
+                    Definition: sum(iGenerator |  PE_GeneratorType(iGenerator) = iGeneratorType ,VC_Model0ED_PowerGenerated(iTime, iGenerator));
                 }
             }
             DeclarationSection GenerationResultsDeclaration {
@@ -194,7 +217,7 @@ Model Main_Thesis_Research {
                 Parameter PO_GenerationByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
                     Unit: W;
-                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, VC_Model0ED_PowerOutput(iTime,iGenerator));
+                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, VC_Model0ED_PowerGenerated(iTime,iGenerator));
                 }
             }
             DeclarationSection BusesDeclaration {
@@ -316,6 +339,16 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection GeneratorsCoordinatesDeclaration {
+                Parameter PI_GeneratorXCoordinate {
+                    IndexDomain: iGenerator;
+                    Definition: PI_BusXCoordinate(PE_GeneratorBus(iGenerator));
+                }
+                Parameter PI_GeneratorYCoordinate {
+                    IndexDomain: iGenerator;
+                    Definition: PI_BusYCoordinate(PE_GeneratorBus(iGenerator));
+                }
+            }
             DeclarationSection ReserveRequirementsDeclaration {
                 Parameter PI_ReserveCapacity {
                     IndexDomain: (iGenerator,iReserveRequirement);
@@ -520,7 +553,7 @@ Model Main_Thesis_Research {
     Section Economic_Dispatch_Model {
         Section ED_Variables {
             Variable VC_Model0ED_VoltageAngle {
-                IndexDomain: iBus;
+                IndexDomain: (iTime,iBus);
                 Range: free;
             }
             Variable VC_Model0ED_Reserve {
@@ -529,12 +562,16 @@ Model Main_Thesis_Research {
             }
             Variable VC_Model0ED_TotalCost {
                 Range: free;
-                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerOutput[iTime,iGenerator]);
+                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerGenerated[iTime,iGenerator]);
             }
-            Variable VC_Model0ED_PowerOutput {
+            Variable VC_Model0ED_PowerGenerated {
                 IndexDomain: (iTime,iGenerator);
                 Range: free;
                 Unit: W;
+            }
+            Variable VC_Model0ED_PowerTransmitted {
+                IndexDomain: (iTime,iBus,iBus2);
+                Range: free;
             }
         }
         Section ED_ObjectiveFunction {
@@ -546,45 +583,130 @@ Model Main_Thesis_Research {
             MathematicalProgram M_Model0ED_MinimizeTotalCost {
                 Objective: VC_Model0ED_TotalCost;
                 Direction: minimize;
-                Constraints: AllConstraints;
+                Constraints: S_EDConstraints;
                 Variables: AllVariables;
                 Type: Automatic;
             }
         }
         Section ED_Constraints {
-            DeclarationSection TransmissionConstraints;
+            DeclarationSection ConstraintSetDeclarations {
+                Set S_EDConstraints {
+                    SubsetOf: AllConstraints;
+                    Definition: {
+                        Economic_Dispatch_Model*AllConstraints
+                        
+                        -
+                        
+                        if (not PI_EnableTranmissionConstraints) then
+                        
+                        
+                          TransmissionConstraints*AllConstraints
+                        
+                        
+                        
+                        endif
+                        
+                        -
+                        if (not PI_EnableRampingConstraints) then
+                        
+                        
+                          RampConstraints*AllConstraints
+                        
+                        
+                        endif
+                        
+                        -
+                        if (not PI_EnableReserveConstraints) then
+                        
+                        
+                          ReserveContraints*AllConstraints
+                        
+                        
+                        endif
+                    }
+                    Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
+                }
+            }
+            DeclarationSection TransmissionConstraints {
+                Constraint CL_Model0ED_MaximumVoltageAngle {
+                    IndexDomain: (iTime,iBus);
+                    Definition: VC_Model0ED_VoltageAngle(iTime, iBus) <= PI_MaximumVoltageAngle(iBus);
+                }
+                Constraint CG_Model0ED_MinimumVoltageAngle {
+                    IndexDomain: (iTime,iBus);
+                    Definition: VC_Model0ED_VoltageAngle(iTime, iBus) >= PI_MinimumVoltageAngle(iBus);
+                }
+                Constraint CE_Model0ED_EnergyBalance {
+                    IndexDomain: (iTime,iBus);
+                    Definition: {
+                        sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
+                        
+                        +sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
+                        VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2))
+                        
+                        
+                        
+                        =
+                        
+                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
+                        VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus))
+                        
+                        +PD_LoadMW(iBus, iTime)
+                    }
+                    Comment: "TODO: Add reserve in this constraint later";
+                }
+                Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
+                    IndexDomain: (iTime,iTransmissionLine);
+                    Definition: {
+                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
+                        
+                        PI_LineSusceptance(iTransmissionLine)*(
+                        VC_Model0ED_VoltageAngle(iTime,iBus)
+                        -
+                        VC_Model0ED_VoltageAngle(iTime,iBus2))
+                        
+                        -
+                        
+                        VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2)
+                        
+                        )
+                        
+                        = 0
+                    }
+                }
+            }
             DeclarationSection GenerationLimitsConstraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
                     Definition: {
-                        VC_Model0ED_PowerOutput(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator)
+                        VC_Model0ED_PowerGenerated(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator)
                         
                         !VC_Model0ED_PowerOutput(iTime,iGenerator) <= 100
                     }
                 }
                 Constraint CL_Model0_MaximumGenerationNonRenewableSources {
                     IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
-                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];
+                    Definition: VC_Model0ED_PowerGenerated[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];
                 }
                 Constraint CG_Model0_MinimumGeneration {
                     IndexDomain: (iGenerator,iTime);
-                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >= PI_MinimumGenerationMW[iGenerator];
+                    Definition: VC_Model0ED_PowerGenerated[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >= PI_MinimumGenerationMW[iGenerator];
                 }
             }
             DeclarationSection RampConstraints {
                 Constraint CL_Model0_RampUpRateRequirements {
                     IndexDomain: (iTime,iGenerator);
-                    Definition: VC_Model0ED_PowerOutput[iTime+1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
+                    Definition: VC_Model0ED_PowerGenerated[iTime+1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <= PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
                 }
                 Constraint CL_Model0_RampDownRateRequirements {
                     IndexDomain: (iTime,iGenerator);
-                    Definition: VC_Model0ED_PowerOutput[iTime-1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
+                    Definition: VC_Model0ED_PowerGenerated[iTime-1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <= PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
                 }
             }
             DeclarationSection LoadConstraints {
                 Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
                     IndexDomain: iTime;
-                    Definition: sum(iGenerator,VC_Model0ED_PowerOutput[iTime,iGenerator]) = sum(iBus,PD_LoadMW[iBus,iTime]);
+                    Definition: sum(iGenerator,VC_Model0ED_PowerGenerated[iTime,iGenerator]) = sum(iBus,PD_LoadMW[iBus,iTime]);
                 }
             }
             DeclarationSection ReserveContraints {
