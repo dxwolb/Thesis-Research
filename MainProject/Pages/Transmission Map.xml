@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-11 06:18:57">
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2016-02-11 18:32:18">
+	<PageEditSize Type="Specified">
+		<Size Width="560" Height="360" />
+	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="48" />
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Network Object">
-		<Location top="60" left="48" bottom="576" right="1026" />
+		<Location top="54" left="30" bottom="355" right="540" />
 		<TabOrder>1</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -16,10 +21,10 @@
 		<ScrollControl>Scrollbars</ScrollControl>
 		<AutoAdjust>Right</AutoAdjust>
 		<VisibleArea>
-			<Left>-2.52605991484</Left>
-			<Right>23.909016634</Right>
-			<Top>14.5671229382</Top>
-			<Bottom>1.01496344165</Bottom>
+			<Left>-2.48180354944</Left>
+			<Right>35.4153265648</Right>
+			<Top>14.8471437679</Top>
+			<Bottom>0.215973280793</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>iBus</Identifier>
@@ -27,10 +32,10 @@
 			<YCoordinate>PI_BusYCoordinate( iBus )</YCoordinate>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>10</MaximumSize>
-			<TextPosition>Bottom</TextPosition>
+			<TextPosition>Top</TextPosition>
 			<TextShowWhat>ElementName</TextShowWhat>
 			<Color>257CED91-8909-41AC-BED6-911268D7BBCE blue</Color>
-			<Size>PD_LoadMW( iBus, PE_SelectedPeriod )</Size>
+			<Size>9</Size>
 			<Shape>Circle</Shape>
 		</Node>
 		<Node>
@@ -42,7 +47,7 @@
 			<TextPosition>Bottom</TextPosition>
 			<TextShowWhat>Nothing</TextShowWhat>
 			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Size>5</Size>
+			<Size>PO_GeneratorUsed( PE_SelectedPeriod, iGenerator )</Size>
 			<Shape>Rectangle</Shape>
 		</Node>
 		<Arc>
@@ -51,26 +56,12 @@
 			<MaximumSize>8</MaximumSize>
 			<ScaleFactor>3</ScaleFactor>
 			<TextPosition>Right</TextPosition>
-			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<TextShowWhat>Nothing</TextShowWhat>
 			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Text>VC_Model0ED_PowerTransmitted( PE_SelectedPeriod, iBus2, iBus )</Text>
 			<Shape>Straight</Shape>
 			<FirstSegment>Horizontal</FirstSegment>
 			<TextAlongArc>true</TextAlongArc>
 			<ClickWhere>ArrowHead</ClickWhere>
-		</Arc>
-		<Arc>
-			<Identifier>PO_TransmissionBranchesOut( iBus, iBus2 )</Identifier>
-			<NumberFormat Width="6" Decimals="2" />
-			<MaximumSize>8</MaximumSize>
-			<ScaleFactor>3</ScaleFactor>
-			<TextPosition>Left</TextPosition>
-			<TextShowWhat>OtherIdentifier</TextShowWhat>
-			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Text>VC_Model0ED_PowerTransmitted( PE_SelectedPeriod, iBus, iBus2 )</Text>
-			<Shape>Straight</Shape>
-			<FirstSegment>Horizontal</FirstSegment>
-			<ClickWhere>GripPoint</ClickWhere>
 		</Arc>
 		<Arc>
 			<Identifier>PI_TransmissionLineBranches( iTransmissionLine, iBus, iBus2 )</Identifier>
@@ -85,7 +76,7 @@
 		</Arc>
 	</PageObject>
 	<PageObject Type="Floating Index">
-		<Location top="18" left="48" bottom="48" right="378" />
+		<Location top="12" left="30" bottom="42" right="540" />
 		<TabOrder>2</TabOrder>
 		<ObjectUUID>FDEF5576-1414-4FD3-9980-76A2764900F1</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -97,20 +88,18 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PO_GeneratorUsed</Symbol>
+			<Symbol>PO_TransmissionBranchesIn</Symbol>
 			<Symbol>PE_SelectedPeriod</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
-			<Symbol>PD_LoadMW</Symbol>
 			<Symbol>PI_GeneratorXCoordinate</Symbol>
 			<Symbol>PI_GeneratorYCoordinate</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
-			<Symbol>VC_Model0ED_PowerTransmitted</Symbol>
 			<Symbol>iBus</Symbol>
 			<Symbol>iBus2</Symbol>
 			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
-			<Symbol>PO_TransmissionBranchesIn</Symbol>
-			<Symbol>PO_TransmissionBranchesOut</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,11 +1,18 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-01-12 17:10:55">
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2016-02-11 06:18:57">
+	<PageEditSize Type="Specified">
+		<Size Width="846" Height="440" />
+	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="39">
+			<TopArea Line="FixedFromLeft" Value="137" />
+		</MainArea>
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Tabbed Page Object">
-		<Location top="48" left="12" bottom="480" right="1026" />
+		<Location top="42" left="12" bottom="432" right="846" />
 		<TabOrder>2</TabOrder>
 		<PrintingOccurrence>Never</PrintingOccurrence>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />

@@ -3,6 +3,14 @@
 Model Main_Thesis_Research {
     Section Page_Parameters {
         DeclarationSection TransmissionMapPage {
+            Parameter PO_AbsolutePowerTransmited {
+                IndexDomain: (iTime,iBus,iBus2);
+                Definition: Abs(VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2));
+            }
+            Parameter PO_GeneratorUsed {
+                IndexDomain: (iTime,iGenerator);
+                Definition: (VC_Model0ED_PowerGenerated(iTime, iGenerator) <> 0)*5;
+            }
             Parameter PO_TransmissionBranchesIn {
                 IndexDomain: (iBus,iBus2);
                 Range: binary;
@@ -11,7 +19,7 @@ Model Main_Thesis_Research {
             Parameter PO_TransmissionBranchesOut {
                 IndexDomain: (iBus,iBus2);
                 Range: binary;
-                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus, iBus2) > 0;
+                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus2, iBus) > 0;
             }
             ElementParameter PE_SelectedPeriod {
                 Range: P_TimeCalendar;
@@ -503,6 +511,9 @@ Model Main_Thesis_Research {
             }
         }
         Section Transmission {
+            Parameter PI_LineDistance {
+                IndexDomain: (iTransmissionLine);
+            }
             Set S_TransmissionLines {
                 Index: iTransmissionLine;
             }
@@ -566,7 +577,7 @@ Model Main_Thesis_Research {
             }
             Variable VC_Model0ED_PowerGenerated {
                 IndexDomain: (iTime,iGenerator);
-                Range: free;
+                Range: nonnegative;
                 Unit: W;
             }
             Variable VC_Model0ED_PowerTransmitted {
@@ -639,26 +650,26 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0ED_EnergyBalance {
                     IndexDomain: (iTime,iBus);
                     Definition: {
-                        sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
+                        -sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
                         
-                        +sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
+                        -
+                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
                         VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2))
                         
-                        
+                        - PD_LoadMW(iBus, iTime)
                         
                         =
                         
-                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
-                        VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus))
-                        
-                        +PD_LoadMW(iBus, iTime)
+                        0
+                        !sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
+                        !VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus))
                     }
                     Comment: "TODO: Add reserve in this constraint later";
                 }
                 Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
                     IndexDomain: (iTime,iTransmissionLine);
                     Definition: {
-                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
+                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus),
                         
                         PI_LineSusceptance(iTransmissionLine)*(
                         VC_Model0ED_VoltageAngle(iTime,iBus)
