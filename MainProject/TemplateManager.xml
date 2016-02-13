@@ -15,4 +15,5 @@
 	<Page Name="Average Load Distribution" PageGUID="418857CB-0FD2-44BB-A3CA-EABCFF9BD742" />
 	<Page Name="Transmission Map" PageGUID="879250B6-B476-4372-9DF0-8834D6D53D04" />
 	<Page Name="Network" PageGUID="2BE1AC84-4C91-46E9-BE0A-9F17053F4623" />
+	<Page Name="Demand, Load and Transmission" PageGUID="A9141943-53F5-4127-9481-ED9F7037F894" />
 </TemplateManager>

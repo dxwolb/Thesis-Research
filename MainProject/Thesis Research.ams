@@ -3,23 +3,44 @@
 Model Main_Thesis_Research {
     Section Page_Parameters {
         DeclarationSection TransmissionMapPage {
+            Parameter PO_GenerationByBus {
+                IndexDomain: (iTime,iBus);
+                Definition: sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus ,VC_Model0ED_PowerGenerated(iTime, iGenerator) );
+            }
+            Parameter PO_TransmissionOut {
+                IndexDomain: (iTime,iBus);
+                Definition: {
+                    
+                      -sum(iBus2 | iBus <> iBus2  and VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) < 0, VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2))
+                }
+            }
+            Parameter PO_TransmissionIn {
+                IndexDomain: (iTime,iBus);
+                Definition: sum(iBus2 | iBus <> iBus2  and VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) > 0, VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2));
+            }
+            Set SD_GeneratorsUsed {
+                SubsetOf: SI_Generators;
+                Index: iGeneratorUsed;
+                Definition: {
+                    {iGenerator | (VC_Model0ED_PowerGenerated(PE_SelectedPeriod, iGenerator)) > 0}
+                }
+            }
             Parameter PO_AbsolutePowerTransmited {
                 IndexDomain: (iTime,iBus,iBus2);
                 Definition: Abs(VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2));
             }
             Parameter PO_GeneratorUsed {
                 IndexDomain: (iTime,iGenerator);
-                Definition: (VC_Model0ED_PowerGenerated(iTime, iGenerator) <> 0)*5;
+                Definition: (VC_Model0ED_PowerGenerated(iTime, iGenerator)) > 0;
             }
-            Parameter PO_TransmissionBranchesIn {
+            Parameter PO_TransmissionBranchesDirection {
                 IndexDomain: (iBus,iBus2);
                 Range: binary;
-                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus2,iBus) < 0;
-            }
-            Parameter PO_TransmissionBranchesOut {
-                IndexDomain: (iBus,iBus2);
-                Range: binary;
-                Definition: VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus2, iBus) > 0;
+                Definition: {
+                    if VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus,iBus2) < 0 then
+                    	1
+                    endif
+                }
             }
             ElementParameter PE_SelectedPeriod {
                 Range: P_TimeCalendar;
@@ -207,6 +228,15 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection ResultsDeclaration {
+                Parameter PO_GenerationShadow {
+                    IndexDomain: iTime;
+                    Definition: CE_Model0_GenerationSatisfiesTotalLoadOverTime.ShadowPrice(iTime);
+                }
+                Parameter PO_LMP {
+                    IndexDomain: (iTime,iBus);
+                    Text: "Locational Marginal Price";
+                    Definition: CE_Model0ED_EnergyBalance.ShadowPrice(iTime, iBus);
+                }
                 Parameter PO_TotalLoad {
                     IndexDomain: iTime;
                     Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
@@ -573,7 +603,8 @@ Model Main_Thesis_Research {
             }
             Variable VC_Model0ED_TotalCost {
                 Range: free;
-                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerGenerated[iTime,iGenerator]);
+                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerGenerated[iTime,iGenerator])*PI_TimeGranularity;
+                Comment: "Add the time granularity in the objective sum";
             }
             Variable VC_Model0ED_PowerGenerated {
                 IndexDomain: (iTime,iGenerator);
@@ -650,10 +681,10 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0ED_EnergyBalance {
                     IndexDomain: (iTime,iBus);
                     Definition: {
-                        -sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
+                        sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
                         
-                        -
-                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
+                        +
+                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
                         VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2))
                         
                         - PD_LoadMW(iBus, iTime)
@@ -661,15 +692,14 @@ Model Main_Thesis_Research {
                         =
                         
                         0
-                        !sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1,
-                        !VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus))
                     }
                     Comment: "TODO: Add reserve in this constraint later";
                 }
                 Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
                     IndexDomain: (iTime,iTransmissionLine);
                     Definition: {
-                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus),
+                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2)
+                        OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus),
                         
                         PI_LineSusceptance(iTransmissionLine)*(
                         VC_Model0ED_VoltageAngle(iTime,iBus)
@@ -717,7 +747,10 @@ Model Main_Thesis_Research {
             DeclarationSection LoadConstraints {
                 Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
                     IndexDomain: iTime;
-                    Definition: sum(iGenerator,VC_Model0ED_PowerGenerated[iTime,iGenerator]) = sum(iBus,PD_LoadMW[iBus,iTime]);
+                    Definition: {
+                        sum(iGenerator,VC_Model0ED_PowerGenerated[iTime,iGenerator])
+                         = sum(iBus,PD_LoadMW[iBus,iTime])
+                    }
                 }
             }
             DeclarationSection ReserveContraints {

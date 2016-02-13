@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-11 18:32:18">
+<Page Version="4000" TimeStamp="2016-02-13 20:28:57">
 	<PageEditSize Type="Specified">
 		<Size Width="560" Height="360" />
 	</PageEditSize>
@@ -21,10 +21,10 @@
 		<ScrollControl>Scrollbars</ScrollControl>
 		<AutoAdjust>Right</AutoAdjust>
 		<VisibleArea>
-			<Left>-2.48180354944</Left>
-			<Right>35.4153265648</Right>
-			<Top>14.8471437679</Top>
-			<Bottom>0.215973280793</Bottom>
+			<Left>-1.34269210684</Left>
+			<Right>10.1834183474</Right>
+			<Top>10.0573008634</Top>
+			<Bottom>3.54985100279</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>iBus</Identifier>
@@ -35,43 +35,43 @@
 			<TextPosition>Top</TextPosition>
 			<TextShowWhat>ElementName</TextShowWhat>
 			<Color>257CED91-8909-41AC-BED6-911268D7BBCE blue</Color>
-			<Size>9</Size>
+			<Size>PD_LoadMW( iBus, PE_SelectedPeriod )</Size>
 			<Shape>Circle</Shape>
 		</Node>
 		<Node>
-			<Identifier>iGenerator</Identifier>
-			<XCoordinate>PI_GeneratorXCoordinate( iGenerator )</XCoordinate>
-			<YCoordinate>PI_GeneratorYCoordinate( iGenerator )</YCoordinate>
+			<Identifier>iGeneratorUsed</Identifier>
+			<XCoordinate>PI_GeneratorXCoordinate( iGeneratorUsed )</XCoordinate>
+			<YCoordinate>PI_GeneratorYCoordinate( iGeneratorUsed )</YCoordinate>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>15</MaximumSize>
 			<TextPosition>Bottom</TextPosition>
 			<TextShowWhat>Nothing</TextShowWhat>
 			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Size>PO_GeneratorUsed( PE_SelectedPeriod, iGenerator )</Size>
+			<Size>5</Size>
 			<Shape>Rectangle</Shape>
 		</Node>
-		<Arc>
-			<Identifier>PO_TransmissionBranchesIn( iBus, iBus2 )</Identifier>
-			<NumberFormat Width="6" Decimals="2" />
-			<MaximumSize>8</MaximumSize>
-			<ScaleFactor>3</ScaleFactor>
-			<TextPosition>Right</TextPosition>
-			<TextShowWhat>Nothing</TextShowWhat>
-			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Shape>Straight</Shape>
-			<FirstSegment>Horizontal</FirstSegment>
-			<TextAlongArc>true</TextAlongArc>
-			<ClickWhere>ArrowHead</ClickWhere>
-		</Arc>
 		<Arc>
 			<Identifier>PI_TransmissionLineBranches( iTransmissionLine, iBus, iBus2 )</Identifier>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>8</MaximumSize>
 			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
 			<Color>486FBD8D-1F7C-467B-9130-D05049EA3E34 light grey</Color>
 			<Shape>Straight</Shape>
 			<FirstSegment>Horizontal</FirstSegment>
 			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>PO_TransmissionBranchesDirection( iBus, iBus2 )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>OtherIdentifier</TextShowWhat>
+			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
+			<Text>PO_AbsolutePowerTransmited( PE_SelectedPeriod, iBus, iBus2 )</Text>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
 			<ClickWhere>EntireArc</ClickWhere>
 		</Arc>
 	</PageObject>
@@ -88,18 +88,19 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PO_GeneratorUsed</Symbol>
-			<Symbol>PO_TransmissionBranchesIn</Symbol>
+			<Symbol>PO_AbsolutePowerTransmited</Symbol>
+			<Symbol>PO_TransmissionBranchesDirection</Symbol>
 			<Symbol>PE_SelectedPeriod</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
+			<Symbol>PD_LoadMW</Symbol>
 			<Symbol>PI_GeneratorXCoordinate</Symbol>
 			<Symbol>PI_GeneratorYCoordinate</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
 			<Symbol>iBus</Symbol>
 			<Symbol>iBus2</Symbol>
-			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
+			<Symbol>iGeneratorUsed</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

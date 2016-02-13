@@ -24,12 +24,15 @@ Model Main_Thesis_Research {
                     
                     else
                     	PI_TimeGranularity := 1;
-                    endif
+                    endif;
+                    
+                    UpdateTimeCalendar;
                 }
             }
             Procedure UpdateTimeCalendar {
                 Body: {
                     update P_TimeCalendar;
+                    update P_HourCalendar;
                 }
             }
             DeclarationSection TimeDeclaration {
@@ -98,6 +101,13 @@ Model Main_Thesis_Research {
                     EndDate: "2015-12-31 23:59:59";
                     TimeslotFormat: "%m/%d %H:%M:%S";
                 }
+                Calendar P_HourCalendar {
+                    Index: iHourCalendar;
+                    Unit: PI_TimeGranularity * minute;
+                    BeginDate: "2015-01-01 00:00:00";
+                    EndDate: "2015-01-01 23:59:59";
+                    TimeslotFormat: "%H:%M:%S";
+                }
                 Quantity SI_Time_Duration {
                     BaseUnit: minute;
                     Conversions: {
@@ -123,6 +133,16 @@ Model Main_Thesis_Research {
             }
         }
         Section Bus {
+            DeclarationSection VoltageAngleDeclaration {
+                Parameter MinimumVoltageAngle {
+                    IndexDomain: iBus;
+                    Definition: -0.6;
+                }
+                Parameter MaximumVoltageAngle {
+                    IndexDomain: iBus;
+                    Definition: 0.6;
+                }
+            }
             DeclarationSection WindAvailabilityDeclaration {
                 Parameter PI_WindPotential {
                     IndexDomain: (iYearCalendar,iBus);
@@ -297,10 +317,23 @@ Model Main_Thesis_Research {
         }
         Section Generator {
             DeclarationSection ReserveRequirementsDeclaration {
+                Parameter PI_ReserveCapacity {
+                    IndexDomain: (iGenerator,iReserveRequirement);
+                    Range: nonnegative;
+                }
                 Parameter PI_SystemReserveRequirement {
                     IndexDomain: (iTime,iReserveRequirement);
                 }
-                Set S_ReserveProductsRequirements;
+                Set S_ReserveProductsRequirements {
+                    IndexDomain: iReserveProduct;
+                    SubsetOf: S_ReserveRequirements;
+                    Definition: {
+                        data
+                            { TSMR  : { TMSR, T10 , T30  } ,
+                              TMNSR : { T10 , T30  } ,
+                              TMOR  : { T30  } } ;
+                    }
+                }
                 Set S_ReserveRequirements {
                     Index: iReserveRequirement;
                     Definition: data { TMSR, T10, T30 };
@@ -436,6 +469,27 @@ Model Main_Thesis_Research {
                 }
             }
         }
+        Section Transmission {
+            Set S_TransmissionLines {
+                Index: iTransmissionLine;
+            }
+            Parameter PI_TransmissionLineBranches {
+                IndexDomain: (iTransmissionLine,iBus,iBus2);
+                Range: binary;
+            }
+<<<<<<< HEAD
+            Parameter PI_LineSusceptance {
+                IndexDomain: iTransmissionLine;
+            }
+            Parameter PI_LineMinimumCapacity {
+                IndexDomain: iTransmissionLine;
+            }
+            Parameter PI_LineMaximumCapacityLine {
+                IndexDomain: iTransmissionLine;
+            }
+=======
+>>>>>>> 181070c9ad8894d45b72ba3e8298782abf3b4327
+        }
     }
     Section Import_Procedures {
         StringParameter PS_IEEEData;
@@ -461,46 +515,48 @@ Model Main_Thesis_Research {
         }
     }
     Section Optimal_Power_Flow_Models;
-    Section Unit_Commitment_Models {
+    Section Unit_Commitment_Model {
         Section Model0_Unit_Commitment {
             Section Model0DecisionVariables;
         }
     }
-    Section Economic_Dispatch_Models {
-        Section Model0_SimpleEDModel {
-            Comment: {
-                "Basic Economic Dispatch model, described in section A from article
-                \"Impact of Unit Commitment Constraints on Generation Expansion Planning with Renewables\", available in:
-                http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6038963
-                
-                Ignoring transmission effects."
+    Section Economic_Dispatch_Model {
+        Section ED_Variables {
+            Variable VC_Model0ED_VoltageAngle {
+                IndexDomain: iBus;
+                Range: free;
             }
-            Section Model0ED_Variables {
-                Variable VC_Model0ED_TotalCost {
-                    Range: free;
-                    Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerOutput[iTime,iGenerator]);
-                }
-                Variable VC_Model0ED_PowerOutput {
-                    IndexDomain: (iTime,iGenerator);
-                    Range: free;
-                    Unit: W;
-                }
+            Variable VC_Model0ED_Reserve {
+                IndexDomain: (iTime,iGenerator,iReserveProduct);
+                Range: nonnegative;
             }
-            Section Model0ED_ObjectiveFunction {
-                Procedure Model0ED_Optimize {
-                    Body: {
-                        solve M_Model0ED_MinimizeTotalCost;
-                    }
-                }
-                MathematicalProgram M_Model0ED_MinimizeTotalCost {
-                    Objective: VC_Model0ED_TotalCost;
-                    Direction: minimize;
-                    Constraints: AllConstraints;
-                    Variables: AllVariables;
-                    Type: Automatic;
+            Variable VC_Model0ED_TotalCost {
+                Range: free;
+                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerOutput[iTime,iGenerator]);
+            }
+            Variable VC_Model0ED_PowerOutput {
+                IndexDomain: (iTime,iGenerator);
+                Range: free;
+                Unit: W;
+            }
+        }
+        Section ED_ObjectiveFunction {
+            Procedure Model0ED_Optimize {
+                Body: {
+                    solve M_Model0ED_MinimizeTotalCost;
                 }
             }
-            Section Model0ED_Constraints {
+            MathematicalProgram M_Model0ED_MinimizeTotalCost {
+                Objective: VC_Model0ED_TotalCost;
+                Direction: minimize;
+                Constraints: AllConstraints;
+                Variables: AllVariables;
+                Type: Automatic;
+            }
+        }
+        Section ED_Constraints {
+            DeclarationSection TransmissionConstraints;
+            DeclarationSection GenerationLimitsConstraints {
                 Constraint CL_Model0_MaximumGenerationRenewableSources {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
                     Definition: {
@@ -509,6 +565,16 @@ Model Main_Thesis_Research {
                         !VC_Model0ED_PowerOutput(iTime,iGenerator) <= 100
                     }
                 }
+                Constraint CL_Model0_MaximumGenerationNonRenewableSources {
+                    IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
+                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];
+                }
+                Constraint CG_Model0_MinimumGeneration {
+                    IndexDomain: (iGenerator,iTime);
+                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >= PI_MinimumGenerationMW[iGenerator];
+                }
+            }
+            DeclarationSection RampConstraints {
                 Constraint CL_Model0_RampUpRateRequirements {
                     IndexDomain: (iTime,iGenerator);
                     Definition: VC_Model0ED_PowerOutput[iTime+1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
@@ -517,19 +583,23 @@ Model Main_Thesis_Research {
                     IndexDomain: (iTime,iGenerator);
                     Definition: VC_Model0ED_PowerOutput[iTime-1,iGenerator] - VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity;
                 }
+            }
+            DeclarationSection LoadConstraints {
                 Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
                     IndexDomain: iTime;
                     Definition: sum(iGenerator,VC_Model0ED_PowerOutput[iTime,iGenerator]) = sum(iBus,PD_LoadMW[iBus,iTime]);
                 }
-                Constraint CL_Model0_MaximumGenerationNonRenewableSources {
-                    IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
-                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] <= PI_MaximumGenerationMW[iGenerator];
+            }
+            DeclarationSection ReserveContraints {
+                Constraint CL_ReserveRequirementCapacity {
+                    IndexDomain: (iTime,iGenerator,iReserveRequirement);
+                    Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
                 }
-                Constraint CG_Model0_MininumGeneration {
-                    IndexDomain: (iGenerator,iTime);
-                    Definition: VC_Model0ED_PowerOutput[iTime,iGenerator] >= PI_MinimumGenerationMW[iGenerator];
+                Constraint CU_ReserveMinimumRequirement {
+                    IndexDomain: (iTime,iReserveRequirement);
+                    Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
+                    Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
                 }
-                DeclarationSection ReserveContraints;
             }
         }
     }
