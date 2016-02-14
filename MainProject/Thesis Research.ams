@@ -2,6 +2,11 @@
 
 Model Main_Thesis_Research {
     Section Page_Parameters {
+        DeclarationSection AverageLoadDistributionPage {
+            Parameter PD_LoadDistributionPrecision {
+                Definition: 120/PI_TimeGranularity;
+            }
+        }
         DeclarationSection TransmissionMapPage {
             Parameter PO_GenerationByBus {
                 IndexDomain: (iTime,iBus);
@@ -249,8 +254,18 @@ Model Main_Thesis_Research {
             }
             DeclarationSection GenerationResultsDeclaration {
                 Parameter PO_AverageGeneratiorByHour {
-                    IndexDomain: (iHour,iGeneratorType);
-                    Definition: average(iTime | ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = iHour,PO_GenerationByGeneratorType(iTime,iGeneratorType));
+                    IndexDomain: (iHourCalendar,iGeneratorType);
+                    Definition: {
+                        average(iTime |
+                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'hour'))
+                        and
+                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'minute')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'minute'))
+                        and
+                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'second')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'second'))
+                        ,
+                        
+                        PO_GenerationByGeneratorType(iTime,iGeneratorType))
+                    }
                 }
                 Parameter PO_GenerationByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
@@ -515,6 +530,10 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection RenewableGeneratorDeclaration {
+                Parameter PD_WindPotentialSubhourlyPeakSlope {
+                    IndexDomain: (iYearCalendar,iBus);
+                    Definition: (PI_WindPotential(iYearCalendar + 1, iBus) - PI_WindPotential(iYearCalendar, iBus))/60;
+                }
                 Parameter PD_RenewableGenerationCapacity {
                     IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
                     Definition: {
@@ -522,13 +541,18 @@ Model Main_Thesis_Research {
                         !TimeslotCharacteristic(iTime,'hour')
                         !TimeslotCharacteristic(iTime,'minute')
                         sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
-                        and TimeslotCharacteristic(iYearCalendar,'minute') = TimeslotCharacteristic(iTime,'minute')
-                        and TimeslotCharacteristic(iYearCalendar,'second') = TimeslotCharacteristic(iTime,'second')
                         and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
                         and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
                         
                         ,
-                        PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator)) * PI_MaximumGenerationMW(iGenerator))
+                        (PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
+                        +
+                        TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iGenerator))
+                        )
+                        
+                        * PI_MaximumGenerationMW(iGenerator)
+                        
+                        )
                         !TimeslotCharacteristic(iTime,'second')
                     }
                 }
@@ -631,6 +655,16 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_Constraints {
+            DeclarationSection RenewableGeneratorsDeclaration {
+                Constraint CE_RenewableGeneratorsProduction {
+                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Solar' OR PE_GeneratorType(iGenerator) = 'Wind';
+                    Definition: VC_Model0ED_PowerGenerated(iTime, iGenerator) = PD_RenewableGenerationCapacity(iTime, iGenerator);
+                    Comment: {
+                        "This constraint states that everything is produced for the renewable generators should be used.
+                         Therefore the decision variable is how much to produce for now-renewable resources."
+                    }
+                }
+            }
             DeclarationSection ConstraintSetDeclarations {
                 Set S_EDConstraints {
                     SubsetOf: AllConstraints;

@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <Page Version="4000" TimeStamp="2016-02-13 20:28:57">
-	<PageEditSize Type="Inherited" />
+	<PageEditSize Type="Specified">
+		<Size Width="530" Height="300" />
+	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="46" />
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Floating Index">
-		<Location top="24" left="78" bottom="54" right="588" />
+		<Location top="12" left="18" bottom="42" right="528" />
 		<TabOrder>1</TabOrder>
 		<ObjectUUID>57DBE6D8-E958-4AC8-9C5D-B6C817CA9D97</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -16,7 +21,7 @@
 		<Identifier>PE_SelectedPeriod</Identifier>
 	</PageObject>
 	<PageObject Type="Pivot Table">
-		<Location top="84" left="84" bottom="384" right="804" />
+		<Location top="48" left="18" bottom="288" right="528" />
 		<TabOrder>2</TabOrder>
 		<ObjectUUID>21D6388A-CB3A-4638-AD34-BA35BA7C9B44</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
