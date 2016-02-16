@@ -8,6 +8,10 @@ Model Main_Thesis_Research {
             }
         }
         DeclarationSection TransmissionMapPage {
+            StringParameter PD_GeneratorColor {
+                IndexDomain: iGenerator;
+                Definition: 'yellow';
+            }
             Parameter PO_GenerationByBus {
                 IndexDomain: (iTime,iBus);
                 Definition: sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus ,VC_Model0ED_PowerGenerated(iTime, iGenerator) );
@@ -193,11 +197,11 @@ Model Main_Thesis_Research {
             DeclarationSection VoltageAngleDeclaration {
                 Parameter PI_MinimumVoltageAngle {
                     IndexDomain: iBus;
-                    Definition: -0.6;
+                    Definition: -0.1;
                 }
                 Parameter PI_MaximumVoltageAngle {
                     IndexDomain: iBus;
-                    Definition: 0.6;
+                    Definition: 0.1;
                 }
             }
             DeclarationSection WindAvailabilityDeclaration {
@@ -568,6 +572,9 @@ Model Main_Thesis_Research {
             Parameter PI_LineDistance {
                 IndexDomain: (iTransmissionLine);
             }
+            Parameter PI_MVABase {
+                InitialData: 100;
+            }
             Set S_TransmissionLines {
                 Index: iTransmissionLine;
             }
@@ -697,13 +704,18 @@ Model Main_Thesis_Research {
                         
                           ReserveContraints*AllConstraints
                         
-                        
                         endif
+                        
+                        - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
                     }
                     Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
                 }
             }
             DeclarationSection TransmissionConstraints {
+                Constraint CE_TransmissionEquality {
+                    IndexDomain: (iTime,iBus,iBus2) | iBus <> iBus2;
+                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) + VC_Model0ED_PowerTransmitted(iTime,iBus2,iBus) = 0;
+                }
                 Constraint CL_Model0ED_MaximumVoltageAngle {
                     IndexDomain: (iTime,iBus);
                     Definition: VC_Model0ED_VoltageAngle(iTime, iBus) <= PI_MaximumVoltageAngle(iBus);
@@ -732,10 +744,9 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
                     IndexDomain: (iTime,iTransmissionLine);
                     Definition: {
-                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2)
-                        OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus),
+                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
                         
-                        PI_LineSusceptance(iTransmissionLine)*(
+                        PI_MVABase*PI_LineSusceptance(iTransmissionLine)*(
                         VC_Model0ED_VoltageAngle(iTime,iBus)
                         -
                         VC_Model0ED_VoltageAngle(iTime,iBus2))
@@ -751,14 +762,6 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection GenerationLimitsConstraints {
-                Constraint CL_Model0_MaximumGenerationRenewableSources {
-                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
-                    Definition: {
-                        VC_Model0ED_PowerGenerated(iTime,iGenerator) <= PD_RenewableGenerationCapacity(iTime,iGenerator)
-                        
-                        !VC_Model0ED_PowerOutput(iTime,iGenerator) <= 100
-                    }
-                }
                 Constraint CL_Model0_MaximumGenerationNonRenewableSources {
                     IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
                     Definition: VC_Model0ED_PowerGenerated[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];

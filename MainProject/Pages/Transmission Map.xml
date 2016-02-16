@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-13 20:28:57">
+<Page Version="4000" TimeStamp="2016-02-14 19:46:30">
 	<PageEditSize Type="Specified">
 		<Size Width="560" Height="360" />
 	</PageEditSize>
@@ -23,8 +23,8 @@
 		<VisibleArea>
 			<Left>-1.34269210684</Left>
 			<Right>10.1834183474</Right>
-			<Top>10.0573008634</Top>
-			<Bottom>3.54985100279</Bottom>
+			<Top>12.0095358216</Top>
+			<Bottom>5.50208596097</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>iBus</Identifier>
@@ -39,14 +39,14 @@
 			<Shape>Circle</Shape>
 		</Node>
 		<Node>
-			<Identifier>iGeneratorUsed</Identifier>
-			<XCoordinate>PI_GeneratorXCoordinate( iGeneratorUsed )</XCoordinate>
-			<YCoordinate>PI_GeneratorYCoordinate( iGeneratorUsed )</YCoordinate>
+			<Identifier>iGenerator</Identifier>
+			<XCoordinate>PI_GeneratorXCoordinate( iGenerator )</XCoordinate>
+			<YCoordinate>PI_GeneratorYCoordinate( iGenerator )</YCoordinate>
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>15</MaximumSize>
 			<TextPosition>Bottom</TextPosition>
 			<TextShowWhat>Nothing</TextShowWhat>
-			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
+			<Color>ELEMENT( iGenerator )-&gt;AllColors := If PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar' then 'green' elseif iGenerator in SD_GeneratorsUsed then 'red' else 'grey' endif</Color>
 			<Size>5</Size>
 			<Shape>Rectangle</Shape>
 		</Node>
@@ -88,6 +88,8 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>AllColors</Symbol>
+			<Symbol>SD_GeneratorsUsed</Symbol>
 			<Symbol>PO_AbsolutePowerTransmited</Symbol>
 			<Symbol>PO_TransmissionBranchesDirection</Symbol>
 			<Symbol>PE_SelectedPeriod</Symbol>
@@ -96,11 +98,12 @@
 			<Symbol>PD_LoadMW</Symbol>
 			<Symbol>PI_GeneratorXCoordinate</Symbol>
 			<Symbol>PI_GeneratorYCoordinate</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
 			<Symbol>iBus</Symbol>
 			<Symbol>iBus2</Symbol>
+			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
-			<Symbol>iGeneratorUsed</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
