@@ -123,3 +123,5 @@
 "PO_TransmissionOutByBus" "PO_TransmissionOut" "2016-02-13 20:27:56"
 "Copy_PO_TransmissionOut" "PO_TransmissionIn" "2016-02-13 20:28:55"
 "PD_RenewableGenerationSubhourlyPeakSlope" "PD_WindPotentialSubhourlyPeakSlope" "2016-02-14 19:46:28"
+"Copy_PI_WindGenerationPercentage" "PI_SolarGenerationPercentage" "2016-02-17 20:38:54"
+"Copy_SD_RenewableGenerators" "SD_NonRenewableGenerators" "2016-02-18 17:25:00"

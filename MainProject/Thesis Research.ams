@@ -63,31 +63,6 @@ Model Main_Thesis_Research {
     }
     Section Input_and_Output_Data {
         Section Time {
-            Procedure UpdateGranularity {
-                Body: {
-                    if PE_SelectedGranularity = 'Day' then
-                    	PI_TimeGranularity := 60*24;
-                    
-                    elseif PE_SelectedGranularity = 'Hour' then
-                    	PI_TimeGranularity := 60;
-                    
-                    elseif PE_SelectedGranularity = 'Quarter Hour' then
-                    
-                    	PI_TimeGranularity := 15;
-                    
-                    else
-                    	PI_TimeGranularity := 1;
-                    endif;
-                    
-                    UpdateTimeCalendar;
-                }
-            }
-            Procedure UpdateTimeCalendar {
-                Body: {
-                    update P_TimeCalendar;
-                    update P_HourCalendar;
-                }
-            }
             DeclarationSection TimeDeclaration {
                 ElementParameter PE_SelectedGranularity {
                     Range: S_Granularity;
@@ -252,7 +227,6 @@ Model Main_Thesis_Research {
                 }
                 Parameter PO_PowerOutputByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
-                    Unit: W;
                     Definition: sum(iGenerator |  PE_GeneratorType(iGenerator) = iGeneratorType ,VC_Model0ED_PowerGenerated(iTime, iGenerator));
                 }
             }
@@ -273,7 +247,6 @@ Model Main_Thesis_Research {
                 }
                 Parameter PO_GenerationByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
-                    Unit: W;
                     Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, VC_Model0ED_PowerGenerated(iTime,iGenerator));
                 }
             }
@@ -434,6 +407,20 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection GeneratorsDeclaration {
+                Set SD_RenewableGenerators {
+                    SubsetOf: SI_Generators;
+                    Index: iRenewableGenerator;
+                    Definition: {
+                        { iGenerator | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar'}
+                    }
+                }
+                Set SD_NonRenewableGenerators {
+                    SubsetOf: SI_Generators;
+                    Index: iNonRenewableGenerator;
+                    Definition: {
+                        { iGenerator | PE_GeneratorType(iGenerator) <> 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar'}
+                    }
+                }
                 Set SI_Generators {
                     Index: iGenerator;
                 }
@@ -471,11 +458,9 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_MaximumGenerationMW {
                     IndexDomain: iGenerator;
-                    Unit: W/minute;
                 }
                 Parameter PI_MinimumGenerationMW {
                     IndexDomain: iGenerator;
-                    Unit: W/minute;
                 }
             }
             DeclarationSection UnitCyclingRestrictionandRampingRates {
@@ -496,11 +481,9 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_RampDownRate {
                     IndexDomain: iUnitGroup;
-                    Unit: minute;
                 }
                 Parameter PI_RampUpRate {
                     IndexDomain: iUnitGroup;
-                    Unit: minute;
                 }
             }
             DeclarationSection UnitStartUpHeatInputDeclaration {
@@ -534,29 +517,38 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection RenewableGeneratorDeclaration {
+                Parameter PD_TotalSolarGenerator;
+                Parameter PD_TotalWindGenerators {
+                    Definition: count(iRenewableGenerator | PE_GeneratorType(iRenewableGenerator) = 'Wind');
+                }
+                Parameter PI_WindGenerationPercentage {
+                    Range: [0, 100];
+                    InitialData: 35;
+                }
+                Parameter PI_SolarGenerationPercentage {
+                    Range: [0, 100];
+                    Definition: 10;
+                }
                 Parameter PD_WindPotentialSubhourlyPeakSlope {
                     IndexDomain: (iYearCalendar,iBus);
                     Definition: (PI_WindPotential(iYearCalendar + 1, iBus) - PI_WindPotential(iYearCalendar, iBus))/60;
                 }
                 Parameter PD_RenewableGenerationCapacity {
-                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Wind' OR PE_GeneratorType(iGenerator) = 'Solar';
-                    Definition: {
-                        !PI_MaximumGenerationMW(iGenerator) * PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
-                        !TimeslotCharacteristic(iTime,'hour')
-                        !TimeslotCharacteristic(iTime,'minute')
-                        sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
-                        and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
-                        and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
-                        
-                        ,
-                        (PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
-                        +
-                        TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iGenerator))
-                        )
-                        
-                        * PI_MaximumGenerationMW(iGenerator)
-                        
-                        )
+                    IndexDomain: (iTime,iRenewableGenerator);
+                    InitialData: {
+                        !sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
+                        !and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
+                        !and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
+                        !
+                        !,
+                        !(PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
+                        !+
+                        !TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iGenerator))
+                        !)
+                        !
+                        !* PI_MaximumGenerationMW(iGenerator)
+                        !
+                        !)
                         !TimeslotCharacteristic(iTime,'second')
                     }
                 }
@@ -594,6 +586,66 @@ Model Main_Thesis_Research {
         }
     }
     Section Import_Procedures {
+        Procedure UpdateWindGeneratorCapacity {
+            Body: {
+                if(PD_TotalWindGenerators > 0) then
+                
+                PI_MaximumGenerationMW(iGenerator | PE_GeneratorType(iGenerator) = 'Wind') :=
+                
+                (sum(iBus,PI_PeakLoadMW(iBus))*PI_WindGenerationPercentage/100)/PD_TotalWindGenerators
+                
+                endif;
+                
+                
+                
+                for ((iTime,iRenewableGenerator)) do
+                
+                PD_RenewableGenerationCapacity(iTime, iRenewableGenerator) :=
+                
+                sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
+                and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
+                and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
+                
+                ,
+                (PI_WindPotential(iYearCalendar,PE_GeneratorBus(iRenewableGenerator))
+                +
+                TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iRenewableGenerator))
+                )
+                
+                * PI_MaximumGenerationMW(iRenewableGenerator)
+                
+                )
+                
+                endfor
+            }
+        }
+        Procedure UpdateTimeCalendar {
+            Body: {
+                update P_TimeCalendar;
+                update P_HourCalendar;
+                
+                UpdateWindGeneratorCapacity;
+            }
+        }
+        Procedure UpdateGranularity {
+            Body: {
+                if PE_SelectedGranularity = 'Day' then
+                	PI_TimeGranularity := 60*24;
+                
+                elseif PE_SelectedGranularity = 'Hour' then
+                	PI_TimeGranularity := 60;
+                
+                elseif PE_SelectedGranularity = 'Quarter Hour' then
+                
+                	PI_TimeGranularity := 15;
+                
+                else
+                	PI_TimeGranularity := 1;
+                endif;
+                
+                UpdateTimeCalendar;
+            }
+        }
         StringParameter PS_IEEEData;
         StringParameter PS_IEEETestCaseFileName {
             InitialData: {
@@ -603,6 +655,9 @@ Model Main_Thesis_Research {
         Procedure ImportIEEData {
             Body: {
                 read from file PS_IEEETestCaseFileName;
+                UpdateGranularity;
+                
+                UpdateWindGeneratorCapacity;
             }
         }
         Procedure ExportData {
@@ -640,7 +695,6 @@ Model Main_Thesis_Research {
             Variable VC_Model0ED_PowerGenerated {
                 IndexDomain: (iTime,iGenerator);
                 Range: nonnegative;
-                Unit: W;
             }
             Variable VC_Model0ED_PowerTransmitted {
                 IndexDomain: (iTime,iBus,iBus2);
