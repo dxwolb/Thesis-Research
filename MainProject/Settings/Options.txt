@@ -1,0 +1,14 @@
+﻿* AIMMS
+always_store_marginals 1
+* AOA
+* CBC 2.9
+* CONOPT 3.14V
+* CPLEX 12.6.2
+* CPOptimizer 12.6
+* GUROBI 6.0
+* IPOPT 3.11
+* MINOS
+* SNOPT 7.2
+* XA 15
+* NETSOL
+* Environment

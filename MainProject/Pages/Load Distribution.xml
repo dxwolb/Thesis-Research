@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-01-12 17:10:55">
+<Page Version="4000" TimeStamp="2016-02-18 18:03:17">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -18,14 +18,14 @@
 		<X-Labels>true</X-Labels>
 		<StatusLine>true</StatusLine>
 		<ExplicitIdentifier>
-			<Identifier>PO_PowerOutputByGeneratorType( iTime, iGeneratorType )</Identifier>
+			<Identifier>PO_GenerationByGeneratorType( iTime, iGeneratorType )</Identifier>
 		</ExplicitIdentifier>
 		<DrawLines>true</DrawLines>
 		<LineWidth>3</LineWidth>
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PO_PowerOutputByGeneratorType</Symbol>
+			<Symbol>PO_GenerationByGeneratorType</Symbol>
 			<Symbol>iTime</Symbol>
 			<Symbol>iGeneratorType</Symbol>
 		</Model>

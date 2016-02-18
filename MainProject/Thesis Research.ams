@@ -14,7 +14,7 @@ Model Main_Thesis_Research {
             }
             Parameter PO_GenerationByBus {
                 IndexDomain: (iTime,iBus);
-                Definition: sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus ,VC_Model0ED_PowerGenerated(iTime, iGenerator) );
+                Definition: sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus ,PO_PowerGenerated(iTime, iGenerator) );
             }
             Parameter PO_TransmissionOut {
                 IndexDomain: (iTime,iBus);
@@ -225,10 +225,6 @@ Model Main_Thesis_Research {
                     IndexDomain: iTime;
                     Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
                 }
-                Parameter PO_PowerOutputByGeneratorType {
-                    IndexDomain: (iTime,iGeneratorType);
-                    Definition: sum(iGenerator |  PE_GeneratorType(iGenerator) = iGeneratorType ,VC_Model0ED_PowerGenerated(iTime, iGenerator));
-                }
             }
             DeclarationSection GenerationResultsDeclaration {
                 Parameter PO_AverageGeneratiorByHour {
@@ -247,7 +243,7 @@ Model Main_Thesis_Research {
                 }
                 Parameter PO_GenerationByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
-                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, VC_Model0ED_PowerGenerated(iTime,iGenerator));
+                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PO_PowerGenerated(iTime,iGenerator));
                 }
             }
             DeclarationSection BusesDeclaration {
@@ -369,6 +365,22 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection GeneratorsResultsDeclaration {
+                Parameter PO_PowerGenerated {
+                    IndexDomain: (iTime,iGenerator);
+                    Definition: {
+                        if(iGenerator in SD_RenewableGenerators) then
+                        
+                        	PD_RenewableGenerationCapacity(iTime, iGenerator)
+                        
+                        else
+                        
+                        	VC_Model0ED_PowerGenerated(iTime, iGenerator)
+                        
+                        endif
+                    }
+                }
+            }
             DeclarationSection GeneratorsCoordinatesDeclaration {
                 Parameter PI_GeneratorXCoordinate {
                     IndexDomain: iGenerator;
@@ -689,11 +701,11 @@ Model Main_Thesis_Research {
             }
             Variable VC_Model0ED_TotalCost {
                 Range: free;
-                Definition: sum((iGenerator,iTime),PD_VariableCost[iGenerator]*VC_Model0ED_PowerGenerated[iTime,iGenerator])*PI_TimeGranularity;
+                Definition: sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity;
                 Comment: "Add the time granularity in the objective sum";
             }
             Variable VC_Model0ED_PowerGenerated {
-                IndexDomain: (iTime,iGenerator);
+                IndexDomain: (iTime,iNonRenewableGenerator);
                 Range: nonnegative;
             }
             Variable VC_Model0ED_PowerTransmitted {
@@ -716,16 +728,7 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_Constraints {
-            DeclarationSection RenewableGeneratorsDeclaration {
-                Constraint CE_RenewableGeneratorsProduction {
-                    IndexDomain: (iTime,iGenerator) | PE_GeneratorType(iGenerator) = 'Solar' OR PE_GeneratorType(iGenerator) = 'Wind';
-                    Definition: VC_Model0ED_PowerGenerated(iTime, iGenerator) = PD_RenewableGenerationCapacity(iTime, iGenerator);
-                    Comment: {
-                        "This constraint states that everything is produced for the renewable generators should be used.
-                         Therefore the decision variable is how much to produce for now-renewable resources."
-                    }
-                }
-            }
+            DeclarationSection RenewableGeneratorsDeclaration;
             DeclarationSection ConstraintSetDeclarations {
                 Set S_EDConstraints {
                     SubsetOf: AllConstraints;
@@ -766,9 +769,9 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection TransmissionConstraints {
-                Constraint CE_TransmissionEquality {
-                    IndexDomain: (iTime,iBus,iBus2) | iBus <> iBus2;
-                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) + VC_Model0ED_PowerTransmitted(iTime,iBus2,iBus) = 0;
+                Constraint CE_Model0ED_TransmissionEquality {
+                    IndexDomain: (iTime,iBus,iBus2) | iBus <> iBus2 and exists(iTransmissionLine | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2));
+                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) + VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus) = 0;
                 }
                 Constraint CL_Model0ED_MaximumVoltageAngle {
                     IndexDomain: (iTime,iBus);
@@ -781,7 +784,14 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0ED_EnergyBalance {
                     IndexDomain: (iTime,iBus);
                     Definition: {
-                        sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus,VC_Model0ED_PowerGenerated(iTime, iGenerator))
+                        sum(iNonRenewableGenerator | PE_GeneratorBus(iNonRenewableGenerator) = iBus,
+                        VC_Model0ED_PowerGenerated(iTime, iNonRenewableGenerator)
+                        )
+                        
+                        +
+                        
+                        sum(iRenewableGenerator | PE_GeneratorBus(iRenewableGenerator) = iBus,
+                        PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
                         
                         +
                         sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
@@ -817,12 +827,22 @@ Model Main_Thesis_Research {
             }
             DeclarationSection GenerationLimitsConstraints {
                 Constraint CL_Model0_MaximumGenerationNonRenewableSources {
-                    IndexDomain: (iGenerator,iTime) | PE_GeneratorType(iGenerator) <> 'Wind' and PE_GeneratorType(iGenerator) <> 'Solar';
-                    Definition: VC_Model0ED_PowerGenerated[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints <= PI_MaximumGenerationMW[iGenerator];
+                    IndexDomain: (iNonRenewableGenerator,iTime);
+                    Definition: {
+                        VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator] +
+                        sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
+                        
+                        <= PI_MaximumGenerationMW[iNonRenewableGenerator]
+                    }
                 }
-                Constraint CG_Model0_MinimumGeneration {
+                Constraint CG_Model0_MinimumGenerationNonRenewableSources {
                     IndexDomain: (iGenerator,iTime);
-                    Definition: VC_Model0ED_PowerGenerated[iTime,iGenerator] + sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >= PI_MinimumGenerationMW[iGenerator];
+                    Definition: {
+                        VC_Model0ED_PowerGenerated[iTime,iGenerator] +
+                        sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
+                        
+                        PI_MinimumGenerationMW[iGenerator]
+                    }
                 }
             }
             DeclarationSection RampConstraints {
@@ -839,7 +859,7 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
                     IndexDomain: iTime;
                     Definition: {
-                        sum(iGenerator,VC_Model0ED_PowerGenerated[iTime,iGenerator])
+                        sum(iNonRenewableGenerator,VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator]) + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
                          = sum(iBus,PD_LoadMW[iBus,iTime])
                     }
                 }
