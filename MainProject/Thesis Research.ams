@@ -161,6 +161,72 @@ Model Main_Thesis_Research {
             }
         }
         Section Bus {
+            DeclarationSection LoadDeclaration {
+                Parameter PI_PeakLoadMW {
+                    IndexDomain: iBus;
+                    Comment: "Total Load at Peak Time.";
+                }
+                Parameter PD_TotalPeakLoad {
+                    Definition: sum(iBus,PI_PeakLoadMW(iBus));
+                }
+                Parameter PD_LoadMW {
+                    IndexDomain: (iBus,iTime);
+                    Definition: {
+                        PI_WeeklyPeakLoad( ElementCast(S_Weeks,TimeslotCharacteristic(iTime,'weekyear')) ) *
+                        PI_DailyPeekLoad(ElementCast(S_DaysOfWeek,TimeslotCharacteristic(iTime,'weekday')))
+                        
+                        *
+                        (
+                        if(TimeslotCharacteristic(iTime,'weekday') <6) then
+                        
+                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wkdy') )
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wkdy'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wkdy'))
+                        	else
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wkdy'))
+                        
+                        	endif
+                        else
+                        
+                        
+                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wknd'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wknd'))
+                        
+                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wknd'))
+                        	else
+                        
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wknd'))
+                        
+                        	endif
+                        
+                        endif
+                        
+                        )
+                        *
+                        
+                        PI_PeakLoadMW(iBus)
+                        
+                        
+                        /1000000
+                    }
+                }
+            }
             DeclarationSection BusCoordinatesDeclaration {
                 Parameter PI_BusXCoordinate {
                     IndexDomain: iBus;
@@ -179,8 +245,11 @@ Model Main_Thesis_Research {
                     Definition: 0.1;
                 }
             }
-            DeclarationSection WindAvailabilityDeclaration {
+            DeclarationSection RenewableSourcesAvailabilityDeclaration {
                 Parameter PI_WindPotential {
+                    IndexDomain: (iYearCalendar,iBus);
+                }
+                Parameter PI_SolarPotential {
                     IndexDomain: (iYearCalendar,iBus);
                 }
             }
@@ -274,67 +343,6 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_LoadMVAR {
                     IndexDomain: iBus;
-                }
-                Parameter PD_LoadMW {
-                    IndexDomain: (iBus,iTime);
-                    Definition: {
-                        PI_WeeklyPeakLoad( ElementCast(S_Weeks,TimeslotCharacteristic(iTime,'weekyear')) ) *
-                        PI_DailyPeekLoad(ElementCast(S_DaysOfWeek,TimeslotCharacteristic(iTime,'weekday')))
-                        
-                        *
-                        (
-                        if(TimeslotCharacteristic(iTime,'weekday') <6) then
-                        
-                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wkdy') )
-                        
-                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wkdy'))
-                        
-                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wkdy'))
-                        	else
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wkdy'))
-                        
-                        	endif
-                        else
-                        
-                        
-                        	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wknd'))
-                        
-                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wknd'))
-                        
-                        	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wknd'))
-                        	else
-                        
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wknd'))
-                        
-                        	endif
-                        
-                        endif
-                        
-                        )
-                        *
-                        
-                        PI_PeakLoadMW(iBus)
-                        
-                        
-                        /1000000
-                    }
-                }
-                Parameter PI_PeakLoadMW {
-                    IndexDomain: iBus;
-                    Comment: "Total Load at Peak Time.";
                 }
                 Parameter PI_FinalAngleDegrees {
                     IndexDomain: iBus;
@@ -547,21 +555,20 @@ Model Main_Thesis_Research {
                 }
                 Parameter PD_RenewableGenerationCapacity {
                     IndexDomain: (iTime,iRenewableGenerator);
-                    InitialData: {
-                        !sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
-                        !and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
-                        !and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
-                        !
-                        !,
-                        !(PI_WindPotential(iYearCalendar,PE_GeneratorBus(iGenerator))
-                        !+
-                        !TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iGenerator))
-                        !)
-                        !
-                        !* PI_MaximumGenerationMW(iGenerator)
-                        !
-                        !)
-                        !TimeslotCharacteristic(iTime,'second')
+                    Definition: {
+                        sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
+                        and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
+                        and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
+                        
+                        ,
+                        (PI_WindPotential(iYearCalendar,PE_GeneratorBus(iRenewableGenerator))
+                        +
+                        TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iRenewableGenerator))
+                        )
+                        
+                        * PI_MaximumGenerationMW(iRenewableGenerator)
+                        
+                        )
                     }
                 }
             }
@@ -597,46 +604,21 @@ Model Main_Thesis_Research {
             }
         }
     }
-    Section Import_Procedures {
-        Procedure UpdateWindGeneratorCapacity {
+    Section Procedures {
+        Procedure UpdateRenewableGenerationCapacity {
             Body: {
-                if(PD_TotalWindGenerators > 0) then
+                for(iRenewableGenerator) do
                 
-                PI_MaximumGenerationMW(iGenerator | PE_GeneratorType(iGenerator) = 'Wind') :=
+                PI_MaximumGenerationMW(iRenewableGenerator) := ((PI_WindGenerationPercentage/100)*PD_TotalPeakLoad) / PD_TotalWindGenerators;
                 
-                (sum(iBus,PI_PeakLoadMW(iBus))*PI_WindGenerationPercentage/100)/PD_TotalWindGenerators
-                
-                endif;
-                
-                
-                
-                for ((iTime,iRenewableGenerator)) do
-                
-                PD_RenewableGenerationCapacity(iTime, iRenewableGenerator) :=
-                
-                sum(iYearCalendar | TimeslotCharacteristic(iYearCalendar,'hour') = TimeslotCharacteristic(iTime,'hour')
-                and TimeslotCharacteristic(iYearCalendar,'monthday') = TimeslotCharacteristic(iTime,'monthday')
-                and TimeslotCharacteristic(iYearCalendar,'month') = TimeslotCharacteristic(iTime,'month')
-                
-                ,
-                (PI_WindPotential(iYearCalendar,PE_GeneratorBus(iRenewableGenerator))
-                +
-                TimeslotCharacteristic(iTime,'minute')*PD_WindPotentialSubhourlyPeakSlope(iYearCalendar, PE_GeneratorBus(iRenewableGenerator))
-                )
-                
-                * PI_MaximumGenerationMW(iRenewableGenerator)
-                
-                )
-                
-                endfor
+                endfor;
             }
         }
+        Procedure UpdateTime;
         Procedure UpdateTimeCalendar {
             Body: {
                 update P_TimeCalendar;
                 update P_HourCalendar;
-                
-                UpdateWindGeneratorCapacity;
             }
         }
         Procedure UpdateGranularity {
@@ -669,7 +651,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 UpdateGranularity;
                 
-                UpdateWindGeneratorCapacity;
+                UpdateRenewableGenerationCapacity;
             }
         }
         Procedure ExportData {
