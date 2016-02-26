@@ -15,7 +15,9 @@
 		<Page Name="Demand, Load and Transmission" PageGUID="A9141943-53F5-4127-9481-ED9F7037F894" />
 		<Page Name="Transmission Map" PageGUID="879250B6-B476-4372-9DF0-8834D6D53D04" />
 		<Page Name="Average Load Distribution" PageGUID="418857CB-0FD2-44BB-A3CA-EABCFF9BD742" />
-		<Page Name="Power Output Result" PageGUID="469D2C0E-6DEC-40BF-9A8D-1AD5991583F1" />
+		<Page Name="Average Ramping" PageGUID="26C2A04B-AB88-4B84-BD18-373DF1CAA201" />
 		<Page Name="Load Distribution" PageGUID="4337962B-24EB-4ED9-ABE4-0B403ED6DC92" />
+		<Page Name="Power Output Result" PageGUID="469D2C0E-6DEC-40BF-9A8D-1AD5991583F1" />
+		<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
 	</Page>
 </PageManager>

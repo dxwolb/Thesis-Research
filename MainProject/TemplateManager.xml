@@ -16,4 +16,6 @@
 	<Page Name="Transmission Map" PageGUID="879250B6-B476-4372-9DF0-8834D6D53D04" />
 	<Page Name="Network" PageGUID="2BE1AC84-4C91-46E9-BE0A-9F17053F4623" />
 	<Page Name="Demand, Load and Transmission" PageGUID="A9141943-53F5-4127-9481-ED9F7037F894" />
+	<Page Name="Average Ramping" PageGUID="26C2A04B-AB88-4B84-BD18-373DF1CAA201" />
+	<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
 </TemplateManager>
