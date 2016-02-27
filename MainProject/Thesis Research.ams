@@ -167,7 +167,9 @@ Model Main_Thesis_Research {
         }
         Section Bus {
             DeclarationSection LoadDeclaration {
-                Parameter PI_PerturbationInterpolationLevel;
+                Parameter PI_PerturbationInterpolationLevel {
+                    Range: [0, 100];
+                }
                 Parameter PI_PeakLoadMW {
                     IndexDomain: iBus;
                     Comment: "Total Load at Peak Time.";
@@ -247,7 +249,7 @@ Model Main_Thesis_Research {
                         *(
                         if TimeslotCharacteristic(iTime,'minute') > 0 then
                         
-                        uniform(0.8,1.2)
+                        uniform(1 - PI_PerturbationInterpolationLevel/100,1 + PI_PerturbationInterpolationLevel/100)
                         else
                         	1
                         endif

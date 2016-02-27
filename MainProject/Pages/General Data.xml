@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-17 20:38:56">
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2016-02-27 21:21:08">
+	<PageEditSize Type="Specified">
+		<Size Width="600" Height="410" />
+	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="274" />
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Date Time Picker">
-		<Location top="24" left="126" bottom="42" right="258" />
+		<Location top="18" left="126" bottom="36" right="258" />
 		<TabOrder>3</TabOrder>
 		<Display>
 			<Time_format>
@@ -20,13 +25,13 @@
 		</Contents>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="24" left="18" bottom="42" right="144" />
+		<Location top="18" left="18" bottom="36" right="144" />
 		<StaticText>Horizon Start Date</StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Date Time Picker">
-		<Location top="48" left="126" bottom="66" right="258" />
+		<Location top="42" left="126" bottom="60" right="258" />
 		<TabOrder>1</TabOrder>
 		<Display>
 			<Time_format>
@@ -42,7 +47,7 @@
 		</Contents>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="54" left="18" bottom="66" right="144" />
+		<Location top="48" left="18" bottom="60" right="144" />
 		<StaticText>Horizon End Date</StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
@@ -50,7 +55,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>ListBox</SelectionType>
 		<SingleSelect>true</SingleSelect>
-		<Location top="102" left="18" bottom="300" right="264" />
+		<Location top="120" left="18" bottom="270" right="204" />
 		<TabOrder>4</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>ElementName</TextShown>
@@ -63,7 +68,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="84" left="18" bottom="102" right="264" />
+		<Location top="102" left="18" bottom="120" right="264" />
 		<StaticText>Buses</StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
@@ -71,7 +76,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>ListBox</SelectionType>
 		<SingleSelect>true</SingleSelect>
-		<Location top="102" left="276" bottom="300" right="522" />
+		<Location top="120" left="219" bottom="270" right="399" />
 		<TabOrder>5</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>ElementName</TextShown>
@@ -84,7 +89,7 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="84" left="276" bottom="102" right="522" />
+		<Location top="102" left="228" bottom="120" right="474" />
 		<StaticText>Unit Groups
 </StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -93,7 +98,7 @@
 	<PageObject Type="Selection Object">
 		<SelectionType>ListBox</SelectionType>
 		<SingleSelect>true</SingleSelect>
-		<Location top="102" left="564" bottom="300" right="840" />
+		<Location top="120" left="414" bottom="270" right="594" />
 		<TabOrder>2</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>ElementName</TextShown>
@@ -106,14 +111,14 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="84" left="564" bottom="102" right="810" />
+		<Location top="102" left="408" bottom="120" right="594" />
 		<StaticText>Generators</StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>RadioButtons</SelectionType>
-		<Location top="30" left="360" bottom="60" right="750" />
+		<Location top="18" left="342" bottom="60" right="594" />
 		<TabOrder>6</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>ElementName</TextShown>
@@ -125,13 +130,13 @@
 		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="36" left="288" bottom="54" right="360" />
+		<Location top="30" left="270" bottom="48" right="342" />
 		<StaticText>Granularity:</StaticText>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Curve">
-		<Location top="318" left="18" bottom="504" right="1074" />
+		<Location top="276" left="18" bottom="408" right="600" />
 		<TabOrder>7</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -147,19 +152,39 @@
 		</ExplicitIdentifier>
 		<DrawLines>true</DrawLines>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="72" left="12" bottom="90" right="120" />
+		<StaticText>Perturbation Level (%)</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="66" left="126" bottom="96" right="258" />
+		<TabOrder>14</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>PI_PerturbationInterpolationLevel</Identifier>
+			<NumberFormat Width="3" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>UpdateGranularity</Symbol>
-			<Symbol>UpdateTimeCalendar</Symbol>
 			<Symbol>PE_SelectedGranularity</Symbol>
 			<Symbol>S_Granularity</Symbol>
 			<Symbol>PS_StartDate</Symbol>
 			<Symbol>PS_EndDate</Symbol>
-			<Symbol>PO_TotalLoad</Symbol>
 			<Symbol>SI_Buses</Symbol>
 			<Symbol>SI_Generators</Symbol>
 			<Symbol>SI_UnitGroups</Symbol>
+			<Symbol>UpdateTimeCalendar</Symbol>
+			<Symbol>UpdateGranularity</Symbol>
+			<Symbol>PO_TotalLoad</Symbol>
 			<Symbol>iTime</Symbol>
+			<Symbol>PI_PerturbationInterpolationLevel</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
