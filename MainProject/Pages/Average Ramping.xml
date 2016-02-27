@@ -21,6 +21,9 @@
 			<Identifier>
 				<Value ID="2007">PO_AverageRamping( iGeneratorType )</Value>
 			</Identifier>
+			<Scale>
+				<Data_maximum ID="2034">2</Data_maximum>
+			</Scale>
 			<Misc_settings>
 				<Remove_all_default_values ID="2061">0</Remove_all_default_values>
 			</Misc_settings>
@@ -28,8 +31,8 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>iGeneratorType</Symbol>
 			<Symbol>PO_AverageRamping</Symbol>
+			<Symbol>iGeneratorType</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -167,6 +167,7 @@ Model Main_Thesis_Research {
         }
         Section Bus {
             DeclarationSection LoadDeclaration {
+                Parameter PI_PerturbationInterpolationLevel;
                 Parameter PI_PeakLoadMW {
                     IndexDomain: iBus;
                     Comment: "Total Load at Peak Time.";
@@ -186,18 +187,26 @@ Model Main_Thesis_Research {
                         
                         	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wkdy') )
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wkdy' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wkdy') )
                         
                         	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wkdy'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wkdy' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wkdy'))
                         
                         	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wkdy'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wkdy' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wkdy'))
                         	else
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wkdy' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wkdy'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wkdy' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wkdy'))
                         
                         	endif
                         else
@@ -205,18 +214,26 @@ Model Main_Thesis_Research {
                         
                         	if ( (TimeslotCharacteristic(iTime,'weekyear') >=1 and  TimeslotCharacteristic(iTime,'weekyear') <= 8) or  (TimeslotCharacteristic(iTime,'weekyear') >=44 and  TimeslotCharacteristic(iTime,'weekyear') <=52)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wknd'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Winter' , 'Wknd' )
+                        		+ TimeslotCharacteristic(iTime,'minute')*
+                        		PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Winter','Wknd'))
                         
                         	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 18 and  TimeslotCharacteristic(iTime,'weekyear') <= 30)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wknd'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Summer' , 'Wknd' ) +
+                        		TimeslotCharacteristic(iTime,'minute')*
+                        		PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Summer','Wknd'))
                         
                         	elseif ( (TimeslotCharacteristic(iTime,'weekyear') >= 9 and  TimeslotCharacteristic(iTime,'weekyear') <= 17)) then
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wknd'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Spring' , 'Wknd' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Spring','Wknd'))
                         	else
                         
-                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wknd' ) + TimeslotCharacteristic(iTime,'minute')*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wknd'))
+                        		(PI_HourlyPeekLoad( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) , 'Fall' , 'Wknd' )
+                        		+ TimeslotCharacteristic(iTime,'minute')
+                        		*PD_SobHourlyPeekSlope( ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) ,'Fall','Wknd'))
                         
                         	endif
                         
@@ -224,11 +241,17 @@ Model Main_Thesis_Research {
                         
                         )
                         *
-                        
                         PI_PeakLoadMW(iBus)
-                        
-                        
                         /1000000
+                        
+                        *(
+                        if TimeslotCharacteristic(iTime,'minute') > 0 then
+                        
+                        uniform(0.8,1.2)
+                        else
+                        	1
+                        endif
+                        )
                     }
                 }
             }
@@ -884,7 +907,7 @@ Model Main_Thesis_Research {
             Parameter PO_AverageRamping {
                 IndexDomain: iGeneratorType;
                 Definition: {
-                    average((iTime,iGenerator) | PE_GeneratorType(iGenerator) = iGeneratorType and PO_Ramping(iTime, iGenerator) > 0 ,
+                    average((iTime,iGenerator) | PE_GeneratorType(iGenerator) = iGeneratorType and PO_PowerGenerated(iTime, iGenerator) > 0 ,
                     PO_Ramping(iTime, iGenerator))/PI_TimeGranularity
                 }
             }
