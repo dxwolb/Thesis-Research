@@ -9,33 +9,20 @@
 		<MainArea Line="FixedFromTop" Value="8" />
 	</ResizeData>
 	<Background Inherited="true" />
-	<PageObject Type="2D Chart">
-		<Location top="12" left="6" bottom="294" right="444" />
-		<TabOrder>1</TabOrder>
-		<Border Style="InShadow" Width="2" />
-		<X_Axis>
-			<Domain ID="1004">iTime</Domain>
-			<Annotation>
-				<Show_every_n_th_label ID="1025">90</Show_every_n_th_label>
-			</Annotation>
-		</X_Axis>
-		<Y_Axis>
-			<Identifier>
-				<Value ID="2007">PO_GenerationByGeneratorType( iTime, iGeneratorType )</Value>
-			</Identifier>
-		</Y_Axis>
-		<Legend>
-			<Show ID="53">"Show"</Show>
-			<Misc_display_settings>
-				<Anchor ID="41">"North"</Anchor>
-				<Orientation ID="56">"Horizontal"</Orientation>
-			</Misc_display_settings>
-		</Legend>
-		<Style>
-			<_Stacking_bar_chart>
-				<Cluster_width ID="4003">80</Cluster_width>
-			</_Stacking_bar_chart>
-		</Style>
+	<PageObject Type="Curve">
+		<Location top="12" left="6" bottom="294" right="450" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<RemoveDefaults>true</RemoveDefaults>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<ExplicitIdentifier>
+			<Identifier>PO_GenerationByGeneratorType( iTime, iGeneratorType )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
 	</PageObject>
 	<UsedReferences>
 		<Model>

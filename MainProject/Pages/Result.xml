@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-14 19:46:30">
+<Page Version="4000" TimeStamp="2016-02-28 21:07:39">
 	<PageEditSize Type="Specified">
 		<Size Width="846" Height="440" />
 	</PageEditSize>
@@ -35,7 +35,7 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
-		<Location top="6" left="168" bottom="36" right="744" />
+		<Location top="6" left="168" bottom="36" right="840" />
 		<TabOrder>3</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>IdentifierText</TextShown>
@@ -53,6 +53,10 @@
 			<Identifier>PI_EnableTranmissionConstraints</Identifier>
 			<Description>"Transmission Constraints"</Description>
 		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_AddSlackVariables</Identifier>
+			<Description>"Enable Slack Variables"</Description>
+		</ExplicitIdentifier>
 	</PageObject>
 	<UsedReferences>
 		<Model>
@@ -60,6 +64,7 @@
 			<Symbol>PI_EnableRampingConstraints</Symbol>
 			<Symbol>PI_EnableTranmissionConstraints</Symbol>
 			<Symbol>Model0ED_Optimize</Symbol>
+			<Symbol>PI_AddSlackVariables</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

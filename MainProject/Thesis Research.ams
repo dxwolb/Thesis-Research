@@ -705,7 +705,20 @@ Model Main_Thesis_Research {
         }
     }
     Section Economic_Dispatch_Model {
+        Section ED_Configurations {
+            Parameter PI_AddSlackVariables {
+                Range: binary;
+            }
+        }
         Section ED_Variables {
+            Variable VC_Model0ED_UnderGenerationSlack {
+                IndexDomain: (iTime);
+                Range: nonnegative;
+            }
+            Variable VC_Model0ED_OverGenerationSlack {
+                IndexDomain: iTime;
+                Range: nonnegative;
+            }
             Variable VC_Model0ED_VoltageAngle {
                 IndexDomain: (iTime,iBus);
                 Range: free;
@@ -716,7 +729,10 @@ Model Main_Thesis_Research {
             }
             Variable VC_Model0ED_TotalCost {
                 Range: free;
-                Definition: sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity;
+                Definition: {
+                    sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
+                    + sum(iTime,VC_Model0ED_UnderGenerationSlack(iTime))
+                }
                 Comment: "Add the time granularity in the objective sum";
             }
             Variable VC_Model0ED_PowerGenerated {
@@ -882,8 +898,12 @@ Model Main_Thesis_Research {
                 Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
                     IndexDomain: iTime;
                     Definition: {
-                        sum(iNonRenewableGenerator,VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator]) + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                        sum(iNonRenewableGenerator,VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])
+                        + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                        
+                        + VC_Model0ED_UnderGenerationSlack(iTime)*PI_AddSlackVariables
                          = sum(iBus,PD_LoadMW[iBus,iTime])
+                         + VC_Model0ED_OverGenerationSlack(iTime)*PI_AddSlackVariables
                     }
                 }
             }
