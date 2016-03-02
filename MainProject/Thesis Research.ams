@@ -609,6 +609,10 @@ Model Main_Thesis_Research {
             }
         }
         Section Transmission {
+            Parameter PD_TransmissionLimits {
+                IndexDomain: (iBus,iBus2) | iBus <> iBus2;
+                Definition: sum(iTransmissionLine | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus), PI_LineMaximumCapacity(iTransmissionLine));
+            }
             Parameter PI_LineDistance {
                 IndexDomain: (iTransmissionLine);
             }
@@ -628,7 +632,7 @@ Model Main_Thesis_Research {
             Parameter PI_LineMinimumCapacity {
                 IndexDomain: iTransmissionLine;
             }
-            Parameter PI_LineMaximumCapacityLine {
+            Parameter PI_LineMaximumCapacity {
                 IndexDomain: iTransmissionLine;
             }
         }
@@ -711,12 +715,16 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_Variables {
+            Variable VC_Model0ED_CurtailmentByBus {
+                IndexDomain: (iTime,iBus);
+                Range: free;
+            }
             Variable VC_Model0ED_UnderGenerationSlack {
-                IndexDomain: (iTime);
+                IndexDomain: (iTime,iBus);
                 Range: nonnegative;
             }
             Variable VC_Model0ED_OverGenerationSlack {
-                IndexDomain: iTime;
+                IndexDomain: (iTime,iBus);
                 Range: nonnegative;
             }
             Variable VC_Model0ED_VoltageAngle {
@@ -731,7 +739,8 @@ Model Main_Thesis_Research {
                 Range: free;
                 Definition: {
                     sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
-                    + sum(iTime,VC_Model0ED_UnderGenerationSlack(iTime))
+                    + sum((iTime,iBus),VC_Model0ED_UnderGenerationSlack(iTime,iBus))
+                    + sum((iTime,iBus), VC_Model0ED_OverGenerationSlack(iTime, iBus))
                 }
                 Comment: "Add the time granularity in the objective sum";
             }
@@ -802,6 +811,14 @@ Model Main_Thesis_Research {
                 }
             }
             DeclarationSection TransmissionConstraints {
+                Constraint CG_Model0ED_MinimumTransmission {
+                    IndexDomain: (iTime,iBus,iBus2);
+                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) >= -PD_TransmissionLimits(iBus, iBus2);
+                }
+                Constraint CG_Model0ED_MaximumTransmission {
+                    IndexDomain: (iTime,iBus,iBus2);
+                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) <= PD_TransmissionLimits(iBus, iBus2);
+                }
                 Constraint CE_Model0ED_TransmissionEquality {
                     IndexDomain: (iTime,iBus,iBus2) | iBus <> iBus2 and exists(iTransmissionLine | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2));
                     Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) + VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus) = 0;
@@ -832,6 +849,8 @@ Model Main_Thesis_Research {
                         
                         - PD_LoadMW(iBus, iTime)
                         
+                        - VC_Model0ED_OverGenerationSlack(iTime, iBus)*PI_AddSlackVariables
+                        + VC_Model0ED_UnderGenerationSlack(iTime, iBus)*PI_AddSlackVariables
                         =
                         
                         0
@@ -843,7 +862,7 @@ Model Main_Thesis_Research {
                     Definition: {
                         sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
                         
-                        PI_MVABase*100*PI_LineSusceptance(iTransmissionLine)*(
+                        PI_MVABase*1000*PI_LineSusceptance(iTransmissionLine)*(
                         VC_Model0ED_VoltageAngle(iTime,iBus)
                         -
                         VC_Model0ED_VoltageAngle(iTime,iBus2))
@@ -882,14 +901,14 @@ Model Main_Thesis_Research {
                 Constraint CL_Model0_RampUpRateRequirements {
                     IndexDomain: (iTime,iGenerator);
                     Definition: {
-                        VC_Model0ED_PowerGenerated[iTime+1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <=
+                        VC_Model0ED_PowerGenerated[iTime,iGenerator] - VC_Model0ED_PowerGenerated[iTime - 1,iGenerator] <=
                         PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
                     }
                 }
                 Constraint CL_Model0_RampDownRateRequirements {
                     IndexDomain: (iTime,iGenerator);
                     Definition: {
-                        VC_Model0ED_PowerGenerated[iTime-1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <=
+                        VC_Model0ED_PowerGenerated[iTime - 1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <=
                         PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
                     }
                 }
@@ -901,9 +920,10 @@ Model Main_Thesis_Research {
                         sum(iNonRenewableGenerator,VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])
                         + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
                         
-                        + VC_Model0ED_UnderGenerationSlack(iTime)*PI_AddSlackVariables
+                        !+ sum(iBus,VC_Model0ED_UnderGenerationSlack(iTime, iBus))*PI_AddSlackVariables
                          = sum(iBus,PD_LoadMW[iBus,iTime])
-                         + VC_Model0ED_OverGenerationSlack(iTime)*PI_AddSlackVariables
+                        
+                        ! + sum(iBus,VC_Model0ED_OverGenerationSlack(iTime, iBus)) *PI_AddSlackVariables
                     }
                 }
             }

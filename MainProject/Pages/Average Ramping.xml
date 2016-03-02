@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-24 21:31:43">
+<Page Version="4000" TimeStamp="2016-02-29 22:56:42">
 	<PageEditSize Type="Specified">
 		<Size Width="510" Height="300" />
 	</PageEditSize>
@@ -10,7 +10,7 @@
 	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="2D Chart">
-		<Location top="12" left="6" bottom="288" right="504" />
+		<Location top="18" left="12" bottom="288" right="504" />
 		<TabOrder>1</TabOrder>
 		<Border Style="InShadow" Width="2" />
 		<X_Axis>
