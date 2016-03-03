@@ -61,6 +61,7 @@ Model Main_Thesis_Research {
             }
         }
         DeclarationSection OptimizationSettingsPage {
+            Parameter PI_EnableTransmissionLosses;
             Parameter PI_EnableReserveConstraints;
             Parameter PI_EnableRampingConstraints;
             Parameter PI_EnableTranmissionConstraints;
@@ -613,6 +614,10 @@ Model Main_Thesis_Research {
                 IndexDomain: (iBus,iBus2) | iBus <> iBus2;
                 Definition: sum(iTransmissionLine | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus), PI_LineMaximumCapacity(iTransmissionLine));
             }
+            Parameter PI_TransmissionLossFactorPer100Miles {
+                Definition: 0.01;
+                Comment: "Set to 1% for each 100 Miles";
+            }
             Parameter PI_LineDistance {
                 IndexDomain: (iTransmissionLine);
             }
@@ -638,6 +643,13 @@ Model Main_Thesis_Research {
         }
     }
     Section Procedures {
+        Procedure RunOptimization {
+            Body: {
+                empty ALLVariables;
+                
+                solve M_Model0ED_MinimizeTotalCost;
+            }
+        }
         Procedure UpdateRenewableGenerationCapacity {
             Body: {
                 for(iRenewableGenerator) do
@@ -710,6 +722,82 @@ Model Main_Thesis_Research {
     }
     Section Economic_Dispatch_Model {
         Section ED_Configurations {
+            DeclarationSection ConstraintSetDeclarations {
+                Set S_EDVariables {
+                    SubsetOf: AllVariables;
+                    Definition: {
+                        Economic_Dispatch_Model*AllVariables
+                        
+                        -
+                        
+                        if (not PI_EnableTranmissionConstraints) then
+                        
+                        {
+                          'VC_Model0ED_PowerTransmitted',
+                          'VC_Model0ED_VoltageAngle'
+                        }
+                        endif
+                        
+                        -
+                        if (not PI_EnableReserveConstraints) then
+                        
+                        {
+                        	'VC_Model0ED_Reserve'
+                        }
+                        
+                        endif
+                        
+                        -
+                        if (not PI_AddSlackVariables) then
+                        
+                        {
+                        	'VC_Model0ED_UnderGenerationSlack',
+                        	'VC_Model0ED_OverGenerationSlack'
+                        }
+                        
+                        endif
+                    }
+                }
+                Set S_EDConstraints {
+                    SubsetOf: AllConstraints;
+                    Definition: {
+                        Economic_Dispatch_Model*AllConstraints
+                        
+                        -
+                        
+                        if (not PI_EnableTranmissionConstraints) then
+                        
+                        
+                          TransmissionConstraints*AllConstraints
+                        
+                        
+                        
+                        endif
+                        
+                        -
+                        if (not PI_EnableRampingConstraints) then
+                        
+                        
+                          RampConstraints*AllConstraints
+                        
+                        
+                        endif
+                        
+                        -
+                        if (not PI_EnableReserveConstraints) then
+                        
+                        
+                          ReserveContraints*AllConstraints
+                        
+                        endif
+                        
+                        - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
+                        - 'CG_Model0ED_MinimumVoltageAngle'
+                        - 'CL_Model0ED_MaximumVoltageAngle'
+                    }
+                    Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
+                }
+            }
             Parameter PI_AddSlackVariables {
                 Range: binary;
             }
@@ -754,11 +842,6 @@ Model Main_Thesis_Research {
             }
         }
         Section ED_ObjectiveFunction {
-            Procedure Model0ED_Optimize {
-                Body: {
-                    solve M_Model0ED_MinimizeTotalCost;
-                }
-            }
             MathematicalProgram M_Model0ED_MinimizeTotalCost {
                 Objective: VC_Model0ED_TotalCost;
                 Direction: minimize;
@@ -769,47 +852,6 @@ Model Main_Thesis_Research {
         }
         Section ED_Constraints {
             DeclarationSection RenewableGeneratorsDeclaration;
-            DeclarationSection ConstraintSetDeclarations {
-                Set S_EDConstraints {
-                    SubsetOf: AllConstraints;
-                    Definition: {
-                        Economic_Dispatch_Model*AllConstraints
-                        
-                        -
-                        
-                        if (not PI_EnableTranmissionConstraints) then
-                        
-                        
-                          TransmissionConstraints*AllConstraints
-                        
-                        
-                        
-                        endif
-                        
-                        -
-                        if (not PI_EnableRampingConstraints) then
-                        
-                        
-                          RampConstraints*AllConstraints
-                        
-                        
-                        endif
-                        
-                        -
-                        if (not PI_EnableReserveConstraints) then
-                        
-                        
-                          ReserveContraints*AllConstraints
-                        
-                        endif
-                        
-                        - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
-                        - 'CG_Model0ED_MinimumVoltageAngle'
-                        - 'CL_Model0ED_MaximumVoltageAngle'
-                    }
-                    Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
-                }
-            }
             DeclarationSection TransmissionConstraints {
                 Constraint CG_Model0ED_MinimumTransmission {
                     IndexDomain: (iTime,iBus,iBus2);

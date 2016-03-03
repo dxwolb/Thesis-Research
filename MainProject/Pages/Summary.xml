@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-01-05 18:42:25">
+<Page Version="4000" TimeStamp="2016-03-02 21:39:35">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<Background Inherited="true" />
 	<PageObject Type="Pivot Table">
-		<Location top="48" left="42" bottom="406" right="398" />
+		<Location top="48" left="42" bottom="216" right="210" />
 		<TabOrder>1</TabOrder>
 		<ObjectUUID>C858DE4A-6093-4D83-B5B3-189E6E007B22</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<Border Style="None" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<Contents>
 			<Explicit_Identifier>
 				<Identifier ID="4110">PO_GenerationCapability( iGeneratorType )</Identifier>
@@ -57,10 +57,27 @@
 			</Sub_Header_Row_or_Column>
 		</Grid_Area>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="66" left="360" bottom="90" right="504" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>STRING := "Total generation:" + sum(iGenerator,PI_MaximumGenerationMW(iGenerator)) + " MW"</StringParameter>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="102" left="360" bottom="126" right="504" />
+		<SourceType>StringParameter</SourceType>
+		<StringParameter>STRING := "Total peak load:" + PD_TotalPeakLoad + " MW"</StringParameter>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>iGeneratorType</Symbol>
+			<Symbol>PD_TotalPeakLoad</Symbol>
+			<Symbol>PI_MaximumGenerationMW</Symbol>
 			<Symbol>PO_GenerationCapability</Symbol>
+			<Symbol>iGenerator</Symbol>
+			<Symbol>iGeneratorType</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -11,7 +11,7 @@
 		<Page Name="Costs" PageGUID="0F4D5A8C-7995-49E4-974C-102EF67091E9" />
 		<Page Name="Summary" PageGUID="291CA5AA-2FE4-4474-AB78-34A214AF0B5F" />
 	</Page>
-	<Page Name="Result" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4">
+	<Page Name="Optimization" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4">
 		<Page Name="Demand, Load and Transmission" PageGUID="A9141943-53F5-4127-9481-ED9F7037F894" />
 		<Page Name="Transmission Map" PageGUID="879250B6-B476-4372-9DF0-8834D6D53D04" />
 		<Page Name="Average Load Distribution" PageGUID="418857CB-0FD2-44BB-A3CA-EABCFF9BD742" />

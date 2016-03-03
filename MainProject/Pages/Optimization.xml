@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-28 21:07:39">
+<Page Version="4000" TimeStamp="2016-02-29 22:56:42">
 	<PageEditSize Type="Specified">
 		<Size Width="846" Height="440" />
 	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
-		<MainArea Line="FixedFromTop" Value="42">
+		<MainArea Line="FixedFromTop" Value="65">
 			<TopArea Line="FixedFromLeft" Value="755" />
 		</MainArea>
 	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Tabbed Page Object">
-		<Location top="48" left="12" bottom="438" right="846" />
+		<Location top="72" left="12" bottom="438" right="846" />
 		<TabOrder>2</TabOrder>
 		<PrintingOccurrence>Never</PrintingOccurrence>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -35,7 +35,7 @@
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
-		<Location top="6" left="168" bottom="36" right="840" />
+		<Location top="6" left="138" bottom="60" right="828" />
 		<TabOrder>3</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>IdentifierText</TextShown>
@@ -57,14 +57,25 @@
 			<Identifier>PI_AddSlackVariables</Identifier>
 			<Description>"Enable Slack Variables"</Description>
 		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_EnableTransmissionLosses</Identifier>
+			<Description>"Enable Transmission Losses"</Description>
+		</ExplicitIdentifier>
+	</PageObject>
+	<PageObject Type="Text">
+		<Location top="42" left="18" bottom="60" right="138" />
+		<StaticText>Optimization Options:</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
 	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>PI_EnableReserveConstraints</Symbol>
 			<Symbol>PI_EnableRampingConstraints</Symbol>
 			<Symbol>PI_EnableTranmissionConstraints</Symbol>
-			<Symbol>Model0ED_Optimize</Symbol>
 			<Symbol>PI_AddSlackVariables</Symbol>
+			<Symbol>Model0ED_Optimize</Symbol>
+			<Symbol>PI_EnableTransmissionLosses</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
