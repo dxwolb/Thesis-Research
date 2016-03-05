@@ -134,3 +134,6 @@
 "Copy_CG_Model0ED_MinimumTransmission" "CG_Model0ED_MaximumTransmission" "2016-02-29 22:56:40"
 "PI_TransmissionLossFactor" "PI_TransmissionLossFactorPer100Miles" "2016-03-02 21:11:48"
 "Model0ED_Optimize" "RunOptimization" "2016-03-02 21:39:33"
+"VC_Model0ED_LossDeclaration" "VC_Model0ED_LineLossDeclaration" "2016-03-03 19:02:52"
+"VC_Model0ED_LineLossDeclaration" "VC_Model0ED_PowerLostByTransmission" "2016-03-03 19:03:14"
+"VC_Model0ED_PowerLostByTransmission" "VC_Model0ED_PowerLossByTransmission" "2016-03-05 18:33:34"
