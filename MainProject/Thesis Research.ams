@@ -1,6 +1,313 @@
 ## ams_version=1.0
 
 Model Main_Thesis_Research {
+    Section Models {
+        Section Common_Elements;
+        Section Unit_Commitment_Model {
+            Section Model0_Unit_Commitment {
+                Section UC_Variables {
+                    DeclarationSection OnOffVariables;
+                }
+            }
+        }
+        Section Economic_Dispatch_Model {
+            Section ED_Configurations {
+                DeclarationSection ConstraintSetDeclarations {
+                    Set S_EDVariables {
+                        SubsetOf: AllVariables;
+                        Definition: {
+                            Economic_Dispatch_Model*AllVariables
+                            
+                            -
+                            
+                            if (not PI_EnableTranmissionConstraints) then
+                            
+                            {
+                              'VC_Model0ED_PowerTransmitted',
+                              'VC_Model0ED_VoltageAngle'
+                            }
+                            endif
+                            
+                            -
+                            if (not PI_EnableReserveConstraints) then
+                            
+                            {
+                            	'VC_Model0ED_Reserve'
+                            }
+                            
+                            endif
+                            
+                            -
+                            if (not PI_AddSlackVariables) then
+                            
+                            {
+                            	'VC_Model0ED_UnderGenerationSlack',
+                            	'VC_Model0ED_OverGenerationSlack'
+                            }
+                            
+                            endif
+                        }
+                    }
+                    Set S_EDConstraints {
+                        SubsetOf: AllConstraints;
+                        Definition: {
+                            Economic_Dispatch_Model*AllConstraints
+                            
+                            -
+                            
+                            if (not PI_EnableTranmissionConstraints) then
+                            
+                            
+                              TransmissionConstraints*AllConstraints
+                            
+                            
+                            
+                            endif
+                            
+                            -
+                            if (not PI_EnableRampingConstraints) then
+                            
+                            
+                              RampConstraints*AllConstraints
+                            
+                            
+                            endif
+                            
+                            -
+                            if (not PI_EnableReserveConstraints) then
+                            
+                            
+                              ReserveContraints*AllConstraints
+                            
+                            endif
+                            
+                            
+                            - if (PI_EnableTranmissionConstraints) then
+                            
+                             'CE_Model0_GenerationSatisfiesTotalLoadOverTime'
+                            
+                            endif
+                            
+                            - 'CG_Model0ED_MaximumTransmission'
+                            - 'CG_Model0ED_MinimumTransmission'
+                            
+                            - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
+                            - 'CG_Model0ED_MinimumVoltageAngle'
+                            - 'CL_Model0ED_MaximumVoltageAngle'
+                        }
+                        Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
+                    }
+                }
+                Parameter PI_AddSlackVariables {
+                    Range: binary;
+                }
+            }
+            Section ED_Variables {
+                DeclarationSection LossDeclaration {
+                    Variable VC_PowerLossByTransmission {
+                        IndexDomain: (iTime,iBus,iBus2);
+                        Definition: PD_TransmissionLoss(iBus, iBus2)*VC_PowerTransmitted(iTime, iBus, iBus2)/(1 - PD_TransmissionLoss(iBus, iBus2));
+                    }
+                }
+                DeclarationSection TransmissionDeclaration {
+                    Variable VC_PowerTransmitted {
+                        IndexDomain: (iTime,iBus,iBus2);
+                        Range: nonnegative;
+                    }
+                    Variable VC_VoltageAngle {
+                        IndexDomain: (iTime,iBus);
+                        Range: free;
+                    }
+                }
+                DeclarationSection GenerationSlackDeclaration {
+                    Variable VC_CurtailmentByBus {
+                        IndexDomain: (iTime,iBus);
+                        Range: free;
+                    }
+                    Variable VC_UnderGenerationSlack {
+                        IndexDomain: (iTime,iBus);
+                        Range: nonnegative;
+                    }
+                    Variable VC_OverGenerationSlack {
+                        IndexDomain: (iTime,iBus);
+                        Range: nonnegative;
+                    }
+                }
+                DeclarationSection Cost_Variables {
+                    Variable VC_ED_TotalCost {
+                        Range: free;
+                        Definition: {
+                            sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_AddSlackVariables
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                        }
+                        Comment: "Add the time granularity in the objective sum";
+                    }
+                }
+                Variable VC_Reserve {
+                    IndexDomain: (iTime,iGenerator,iReserveProduct);
+                    Range: nonnegative;
+                }
+                Variable VC_PowerGenerated {
+                    IndexDomain: (iTime,iNonRenewableGenerator);
+                    Range: nonnegative;
+                }
+            }
+            Section ED_ObjectiveFunction {
+                MathematicalProgram M_Model0ED_MinimizeTotalCost {
+                    Objective: VC_ED_TotalCost;
+                    Direction: minimize;
+                    Constraints: S_EDConstraints;
+                    Variables: AllVariables;
+                    Type: Automatic;
+                }
+            }
+            Section ED_Constraints {
+                DeclarationSection PowerLossConstraints;
+                DeclarationSection RenewableGeneratorsDeclaration;
+                DeclarationSection TransmissionConstraints {
+                    Constraint CG_Model0ED_MinimumTransmission {
+                        IndexDomain: (iTime,iBus,iBus2);
+                        Definition: VC_PowerTransmitted(iTime, iBus, iBus2) >= -PD_TransmissionLimits(iBus, iBus2);
+                    }
+                    Constraint CG_Model0ED_MaximumTransmission {
+                        IndexDomain: (iTime,iBus,iBus2);
+                        Definition: VC_PowerTransmitted(iTime, iBus, iBus2) <= PD_TransmissionLimits(iBus, iBus2);
+                    }
+                    Constraint CL_Model0ED_MaximumVoltageAngle {
+                        IndexDomain: (iTime,iBus);
+                        Definition: VC_VoltageAngle(iTime, iBus) <= PI_MaximumVoltageAngle(iBus);
+                    }
+                    Constraint CG_Model0ED_MinimumVoltageAngle {
+                        IndexDomain: (iTime,iBus);
+                        Definition: VC_VoltageAngle(iTime, iBus) >= PI_MinimumVoltageAngle(iBus);
+                    }
+                    Constraint CE_Model0ED_EnergyBalance {
+                        IndexDomain: (iTime,iBus);
+                        Definition: {
+                            !Power I generated
+                            sum(iNonRenewableGenerator | PE_GeneratorBus(iNonRenewableGenerator) = iBus,
+                            VC_PowerGenerated(iTime, iNonRenewableGenerator))
+                            +
+                            sum(iRenewableGenerator | PE_GeneratorBus(iRenewableGenerator) = iBus,
+                            PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                            
+                            !Power I Received
+                            +
+                            sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
+                            VC_PowerTransmitted(iTime, iBus2, iBus)
+                            
+                            )
+                            
+                            !Power I Sent
+                            -
+                            sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
+                            VC_PowerTransmitted(iTime, iBus, iBus2)
+                            +PI_EnableTransmissionLosses*VC_PowerLossByTransmission(iTime, iBus, iBus2)
+                            
+                            )
+                            
+                            - PD_LoadMW(iBus, iTime)
+                            
+                            !Slack
+                            !- VC_Model0ED_OverGenerationSlack(iTime, iBus)*PI_AddSlackVariables
+                            !+ VC_Model0ED_UnderGenerationSlack(iTime, iBus)*PI_AddSlackVariables
+                            =
+                            
+                            0
+                        }
+                        Comment: "TODO: Add reserve in this constraint later";
+                    }
+                    Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
+                        IndexDomain: (iTime,iTransmissionLine);
+                        Definition: {
+                            sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
+                            
+                            PI_MVABase*1000*PI_LineSusceptance(iTransmissionLine)*(
+                            VC_VoltageAngle(iTime,iBus)
+                            -
+                            VC_VoltageAngle(iTime,iBus2))
+                            
+                            -
+                            
+                            VC_PowerTransmitted(iTime, iBus, iBus2)
+                            
+                            )
+                            
+                            = 0
+                        }
+                    }
+                }
+                DeclarationSection GenerationLimitsConstraints {
+                    Constraint CL_Model0_MaximumGenerationNonRenewableSources {
+                        IndexDomain: (iNonRenewableGenerator,iTime);
+                        Definition: {
+                            VC_PowerGenerated[iTime,iNonRenewableGenerator] +
+                            sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
+                            
+                            <= PI_MaximumGenerationMW[iNonRenewableGenerator]
+                        }
+                    }
+                    Constraint CG_Model0_MinimumGenerationNonRenewableSources {
+                        IndexDomain: (iGenerator,iTime);
+                        Definition: {
+                            VC_PowerGenerated[iTime,iGenerator] +
+                            sum(iReserveProduct,VC_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
+                            
+                            PI_MinimumGenerationMW[iGenerator]
+                        }
+                    }
+                }
+                DeclarationSection RampConstraints {
+                    Constraint CL_Model0_RampUpRateRequirements {
+                        IndexDomain: (iTime,iGenerator);
+                        Definition: {
+                            VC_PowerGenerated[iTime,iGenerator] - VC_PowerGenerated[iTime - 1,iGenerator] <=
+                            PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
+                        }
+                    }
+                    Constraint CL_Model0_RampDownRateRequirements {
+                        IndexDomain: (iTime,iGenerator);
+                        Definition: {
+                            VC_PowerGenerated[iTime - 1,iGenerator] - VC_PowerGenerated[iTime,iGenerator] <=
+                            PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
+                        }
+                    }
+                }
+                DeclarationSection TotalBalanceConstraints {
+                    Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
+                        IndexDomain: iTime;
+                        Definition: {
+                            sum(iNonRenewableGenerator,VC_PowerGenerated[iTime,iNonRenewableGenerator])
+                            + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                            
+                            
+                            
+                            !+ sum(iBus,VC_Model0ED_UnderGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                             = sum(iBus,PD_LoadMW[iBus,iTime])
+                            
+                            + sum((iBus,iBus2) | iBus <> iBus2,
+                            VC_PowerLossByTransmission(iTime, iBus, iBus2)*PI_EnableTransmissionLosses
+                            )
+                            
+                            ! + sum(iBus,VC_Model0ED_OverGenerationSlack(iTime, iBus)) *PI_AddSlackVariables
+                        }
+                    }
+                }
+                DeclarationSection ReserveContraints {
+                    Constraint CL_ReserveRequirementCapacity {
+                        IndexDomain: (iTime,iGenerator,iReserveRequirement);
+                        Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
+                    }
+                    Constraint CU_ReserveMinimumRequirement {
+                        IndexDomain: (iTime,iReserveRequirement);
+                        Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
+                        Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
+                    }
+                }
+            }
+        }
+    }
     Section Page_Parameters {
         DeclarationSection Location_Marginal_Prices_Page {
             ElementParameter PE_SelectedBusForLMP {
@@ -25,36 +332,36 @@ Model Main_Thesis_Research {
                 IndexDomain: (iTime,iBus);
                 Definition: {
                     sum(iBus2 | iBus <> iBus2 ,
-                    VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2))
+                    VC_PowerTransmitted(iTime, iBus, iBus2))
                 }
             }
             Parameter PO_TransmissionIn {
                 IndexDomain: (iTime,iBus);
                 Definition: {
                     sum(iBus2 | iBus <> iBus2
-                    and VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus) > 0, VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus))
+                    and VC_PowerTransmitted(iTime, iBus2, iBus) > 0, VC_PowerTransmitted(iTime, iBus2, iBus))
                 }
             }
             Set SD_GeneratorsUsed {
                 SubsetOf: SI_Generators;
                 Index: iGeneratorUsed;
                 Definition: {
-                    {iGenerator | (VC_Model0ED_PowerGenerated(PE_SelectedPeriod, iGenerator)) > 0}
+                    {iGenerator | (VC_PowerGenerated(PE_SelectedPeriod, iGenerator)) > 0}
                 }
             }
             Parameter PO_AbsolutePowerTransmited {
                 IndexDomain: (iTime,iBus,iBus2);
-                Definition: Abs(VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2));
+                Definition: Abs(VC_PowerTransmitted(iTime, iBus, iBus2));
             }
             Parameter PO_GeneratorUsed {
                 IndexDomain: (iTime,iGenerator);
-                Definition: (VC_Model0ED_PowerGenerated(iTime, iGenerator)) > 0;
+                Definition: (VC_PowerGenerated(iTime, iGenerator)) > 0;
             }
             Parameter PO_TransmissionBranchesDirection {
                 IndexDomain: (iBus,iBus2);
                 Range: binary;
                 Definition: {
-                    if VC_Model0ED_PowerTransmitted(PE_SelectedPeriod, iBus,iBus2) > 0 then
+                    if VC_PowerTransmitted(PE_SelectedPeriod, iBus,iBus2) > 0 then
                     	1
                     endif
                 }
@@ -64,6 +371,15 @@ Model Main_Thesis_Research {
             }
         }
         DeclarationSection OptimizationSettingsPage {
+            ElementParameter PE_SelectedModel {
+                Range: S_ModelType;
+                InitialData: {
+                    'Economic Dispatch' ;
+                }
+            }
+            Set S_ModelType {
+                Definition: data { 'Unit Commitment', 'Economic Dispatch' };
+            }
             Parameter PI_EnableTransmissionLosses;
             Parameter PI_EnableReserveConstraints;
             Parameter PI_EnableRampingConstraints;
@@ -402,7 +718,7 @@ Model Main_Thesis_Research {
                         
                         else
                         
-                        	VC_Model0ED_PowerGenerated(iTime, iGenerator)
+                        	VC_PowerGenerated(iTime, iGenerator)
                         
                         endif
                     }
@@ -663,7 +979,13 @@ Model Main_Thesis_Research {
             Body: {
                 empty ALLVariables;
                 
-                solve M_Model0ED_MinimizeTotalCost;
+                if(PE_SelectedModel = 'Economic Dispatch') then
+                	solve M_Model0ED_MinimizeTotalCost;
+                else
+                	DialogError(
+                	message : "Model not implemented yet. Be patient!" ,
+                	title   : "Error" )
+                endif
             }
         }
         Procedure UpdateRenewableGenerationCapacity {
@@ -731,308 +1053,6 @@ Model Main_Thesis_Research {
         }
     }
     Section Optimal_Power_Flow_Models;
-    Section Unit_Commitment_Model {
-        Section Model0_Unit_Commitment {
-            Section Model0DecisionVariables;
-        }
-    }
-    Section Economic_Dispatch_Model {
-        Section ED_Configurations {
-            DeclarationSection ConstraintSetDeclarations {
-                Set S_EDVariables {
-                    SubsetOf: AllVariables;
-                    Definition: {
-                        Economic_Dispatch_Model*AllVariables
-                        
-                        -
-                        
-                        if (not PI_EnableTranmissionConstraints) then
-                        
-                        {
-                          'VC_Model0ED_PowerTransmitted',
-                          'VC_Model0ED_VoltageAngle'
-                        }
-                        endif
-                        
-                        -
-                        if (not PI_EnableReserveConstraints) then
-                        
-                        {
-                        	'VC_Model0ED_Reserve'
-                        }
-                        
-                        endif
-                        
-                        -
-                        if (not PI_AddSlackVariables) then
-                        
-                        {
-                        	'VC_Model0ED_UnderGenerationSlack',
-                        	'VC_Model0ED_OverGenerationSlack'
-                        }
-                        
-                        endif
-                    }
-                }
-                Set S_EDConstraints {
-                    SubsetOf: AllConstraints;
-                    Definition: {
-                        Economic_Dispatch_Model*AllConstraints
-                        
-                        -
-                        
-                        if (not PI_EnableTranmissionConstraints) then
-                        
-                        
-                          TransmissionConstraints*AllConstraints
-                        
-                        
-                        
-                        endif
-                        
-                        -
-                        if (not PI_EnableRampingConstraints) then
-                        
-                        
-                          RampConstraints*AllConstraints
-                        
-                        
-                        endif
-                        
-                        -
-                        if (not PI_EnableReserveConstraints) then
-                        
-                        
-                          ReserveContraints*AllConstraints
-                        
-                        endif
-                        
-                        
-                        - if (PI_EnableTranmissionConstraints) then
-                        
-                         'CE_Model0_GenerationSatisfiesTotalLoadOverTime'
-                        
-                        endif
-                        
-                        - 'CG_Model0ED_MaximumTransmission'
-                        - 'CG_Model0ED_MinimumTransmission'
-                        
-                        - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
-                        - 'CG_Model0ED_MinimumVoltageAngle'
-                        - 'CL_Model0ED_MaximumVoltageAngle'
-                    }
-                    Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
-                }
-            }
-            Parameter PI_AddSlackVariables {
-                Range: binary;
-            }
-        }
-        Section ED_Variables {
-            DeclarationSection LossDeclaration {
-                Variable VC_Model0ED_PowerLossByTransmission {
-                    IndexDomain: (iTime,iBus,iBus2);
-                    Definition: PD_TransmissionLoss(iBus, iBus2)*VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2)/(1 - PD_TransmissionLoss(iBus, iBus2));
-                }
-            }
-            DeclarationSection TransmissionDeclaration {
-                Variable VC_Model0ED_PowerTransmitted {
-                    IndexDomain: (iTime,iBus,iBus2);
-                    Range: nonnegative;
-                }
-                Variable VC_Model0ED_VoltageAngle {
-                    IndexDomain: (iTime,iBus);
-                    Range: free;
-                }
-            }
-            DeclarationSection GenerationSlackDeclaration {
-                Variable VC_Model0ED_CurtailmentByBus {
-                    IndexDomain: (iTime,iBus);
-                    Range: free;
-                }
-                Variable VC_Model0ED_UnderGenerationSlack {
-                    IndexDomain: (iTime,iBus);
-                    Range: nonnegative;
-                }
-                Variable VC_Model0ED_OverGenerationSlack {
-                    IndexDomain: (iTime,iBus);
-                    Range: nonnegative;
-                }
-            }
-            DeclarationSection Cost_Variables {
-                Variable VC_Model0ED_TotalCost {
-                    Range: free;
-                    Definition: {
-                        sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
-                        + sum((iTime,iBus),VC_Model0ED_UnderGenerationSlack(iTime,iBus))*PI_AddSlackVariables
-                        + sum((iTime,iBus), VC_Model0ED_OverGenerationSlack(iTime, iBus))*PI_AddSlackVariables
-                    }
-                    Comment: "Add the time granularity in the objective sum";
-                }
-            }
-            Variable VC_Model0ED_Reserve {
-                IndexDomain: (iTime,iGenerator,iReserveProduct);
-                Range: nonnegative;
-            }
-            Variable VC_Model0ED_PowerGenerated {
-                IndexDomain: (iTime,iNonRenewableGenerator);
-                Range: nonnegative;
-            }
-        }
-        Section ED_ObjectiveFunction {
-            MathematicalProgram M_Model0ED_MinimizeTotalCost {
-                Objective: VC_Model0ED_TotalCost;
-                Direction: minimize;
-                Constraints: S_EDConstraints;
-                Variables: AllVariables;
-                Type: Automatic;
-            }
-        }
-        Section ED_Constraints {
-            DeclarationSection PowerLossConstraints;
-            DeclarationSection RenewableGeneratorsDeclaration;
-            DeclarationSection TransmissionConstraints {
-                Constraint CG_Model0ED_MinimumTransmission {
-                    IndexDomain: (iTime,iBus,iBus2);
-                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) >= -PD_TransmissionLimits(iBus, iBus2);
-                }
-                Constraint CG_Model0ED_MaximumTransmission {
-                    IndexDomain: (iTime,iBus,iBus2);
-                    Definition: VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2) <= PD_TransmissionLimits(iBus, iBus2);
-                }
-                Constraint CL_Model0ED_MaximumVoltageAngle {
-                    IndexDomain: (iTime,iBus);
-                    Definition: VC_Model0ED_VoltageAngle(iTime, iBus) <= PI_MaximumVoltageAngle(iBus);
-                }
-                Constraint CG_Model0ED_MinimumVoltageAngle {
-                    IndexDomain: (iTime,iBus);
-                    Definition: VC_Model0ED_VoltageAngle(iTime, iBus) >= PI_MinimumVoltageAngle(iBus);
-                }
-                Constraint CE_Model0ED_EnergyBalance {
-                    IndexDomain: (iTime,iBus);
-                    Definition: {
-                        !Power I generated
-                        sum(iNonRenewableGenerator | PE_GeneratorBus(iNonRenewableGenerator) = iBus,
-                        VC_Model0ED_PowerGenerated(iTime, iNonRenewableGenerator))
-                        +
-                        sum(iRenewableGenerator | PE_GeneratorBus(iRenewableGenerator) = iBus,
-                        PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
-                        
-                        !Power I Received
-                        +
-                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
-                        VC_Model0ED_PowerTransmitted(iTime, iBus2, iBus)
-                        
-                        )
-                        
-                        !Power I Sent
-                        -
-                        sum((iBus2,iTransmissionLine) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) = 1 OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus) = 1,
-                        VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2)
-                        +PI_EnableTransmissionLosses*VC_Model0ED_PowerLossByTransmission(iTime, iBus, iBus2)
-                        
-                        )
-                        
-                        - PD_LoadMW(iBus, iTime)
-                        
-                        !Slack
-                        !- VC_Model0ED_OverGenerationSlack(iTime, iBus)*PI_AddSlackVariables
-                        !+ VC_Model0ED_UnderGenerationSlack(iTime, iBus)*PI_AddSlackVariables
-                        =
-                        
-                        0
-                    }
-                    Comment: "TODO: Add reserve in this constraint later";
-                }
-                Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
-                    IndexDomain: (iTime,iTransmissionLine);
-                    Definition: {
-                        sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
-                        
-                        PI_MVABase*1000*PI_LineSusceptance(iTransmissionLine)*(
-                        VC_Model0ED_VoltageAngle(iTime,iBus)
-                        -
-                        VC_Model0ED_VoltageAngle(iTime,iBus2))
-                        
-                        -
-                        
-                        VC_Model0ED_PowerTransmitted(iTime, iBus, iBus2)
-                        
-                        )
-                        
-                        = 0
-                    }
-                }
-            }
-            DeclarationSection GenerationLimitsConstraints {
-                Constraint CL_Model0_MaximumGenerationNonRenewableSources {
-                    IndexDomain: (iNonRenewableGenerator,iTime);
-                    Definition: {
-                        VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator] +
-                        sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
-                        
-                        <= PI_MaximumGenerationMW[iNonRenewableGenerator]
-                    }
-                }
-                Constraint CG_Model0_MinimumGenerationNonRenewableSources {
-                    IndexDomain: (iGenerator,iTime);
-                    Definition: {
-                        VC_Model0ED_PowerGenerated[iTime,iGenerator] +
-                        sum(iReserveProduct,VC_Model0ED_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
-                        
-                        PI_MinimumGenerationMW[iGenerator]
-                    }
-                }
-            }
-            DeclarationSection RampConstraints {
-                Constraint CL_Model0_RampUpRateRequirements {
-                    IndexDomain: (iTime,iGenerator);
-                    Definition: {
-                        VC_Model0ED_PowerGenerated[iTime,iGenerator] - VC_Model0ED_PowerGenerated[iTime - 1,iGenerator] <=
-                        PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
-                    }
-                }
-                Constraint CL_Model0_RampDownRateRequirements {
-                    IndexDomain: (iTime,iGenerator);
-                    Definition: {
-                        VC_Model0ED_PowerGenerated[iTime - 1,iGenerator] - VC_Model0ED_PowerGenerated[iTime,iGenerator] <=
-                        PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
-                    }
-                }
-            }
-            DeclarationSection TotalBalanceConstraints {
-                Constraint CE_Model0_GenerationSatisfiesTotalLoadOverTime {
-                    IndexDomain: iTime;
-                    Definition: {
-                        sum(iNonRenewableGenerator,VC_Model0ED_PowerGenerated[iTime,iNonRenewableGenerator])
-                        + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
-                        
-                        
-                        
-                        !+ sum(iBus,VC_Model0ED_UnderGenerationSlack(iTime, iBus))*PI_AddSlackVariables
-                         = sum(iBus,PD_LoadMW[iBus,iTime])
-                        
-                        + sum((iBus,iBus2) | iBus <> iBus2,
-                        VC_Model0ED_PowerLossByTransmission(iTime, iBus, iBus2)*PI_EnableTransmissionLosses
-                        )
-                        
-                        ! + sum(iBus,VC_Model0ED_OverGenerationSlack(iTime, iBus)) *PI_AddSlackVariables
-                    }
-                }
-            }
-            DeclarationSection ReserveContraints {
-                Constraint CL_ReserveRequirementCapacity {
-                    IndexDomain: (iTime,iGenerator,iReserveRequirement);
-                    Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
-                }
-                Constraint CU_ReserveMinimumRequirement {
-                    IndexDomain: (iTime,iReserveRequirement);
-                    Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Model0ED_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
-                    Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
-                }
-            }
-        }
-    }
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
             Parameter PO_Ramping {

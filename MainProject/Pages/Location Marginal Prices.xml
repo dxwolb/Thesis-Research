@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-24 21:31:43">
+<Page Version="4000" TimeStamp="2016-03-07 01:10:07">
 	<PageEditSize Type="Specified">
 		<Size Width="620" Height="300" />
 	</PageEditSize>
@@ -9,20 +9,9 @@
 		<MainArea Line="FixedFromTop" Value="35" />
 	</ResizeData>
 	<Background Inherited="true" />
-	<PageObject Type="Selection Object">
-		<SelectionType>DropDownList</SelectionType>
-		<Location top="6" left="30" bottom="30" right="600" />
-		<TabOrder>1</TabOrder>
-		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<TextShown>ElementName</TextShown>
-		<Border Style="None" />
-		<BackgroundColor RGB="#ffffff" />
-		<ExplicitIdentifier>
-			<Identifier>PE_SelectedBusForLMP</Identifier>
-		</ExplicitIdentifier>
-	</PageObject>
 	<PageObject Type="Curve">
-		<Location top="48" left="24" bottom="270" right="600" />
+		<Location top="42" left="6" bottom="294" right="612" />
+		<TabOrder>1</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<BackgroundColor RGB="#ffffff" />
@@ -41,12 +30,24 @@
 			<MaxVisibleLabels>48</MaxVisibleLabels>
 		</XRange>
 	</PageObject>
+	<PageObject Type="Selection Object">
+		<SelectionType>DropDownList</SelectionType>
+		<Location top="6" left="6" bottom="30" right="612" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="None" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>PE_SelectedBusForLMP</Identifier>
+		</ExplicitIdentifier>
+	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PE_SelectedBusForLMP</Symbol>
 			<Symbol>SI_Buses</Symbol>
 			<Symbol>PO_LMP</Symbol>
 			<Symbol>iTime</Symbol>
-			<Symbol>PE_SelectedBusForLMP</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

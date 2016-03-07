@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-29 22:56:42">
+<Page Version="4000" TimeStamp="2016-03-05 18:33:36">
 	<PageEditSize Type="Specified">
 		<Size Width="846" Height="440" />
 	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
-		<MainArea Line="FixedFromTop" Value="65">
+		<MainArea Line="FixedFromTop" Value="95">
 			<TopArea Line="FixedFromLeft" Value="755" />
 		</MainArea>
 	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Tabbed Page Object">
-		<Location top="72" left="12" bottom="438" right="846" />
+		<Location top="102" left="12" bottom="438" right="846" />
 		<TabOrder>2</TabOrder>
 		<PrintingOccurrence>Never</PrintingOccurrence>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -28,14 +28,14 @@
 		<ActionSequence>
 			<Action Type="Run">
 				<RunWhat>SpecificProcecure</RunWhat>
-				<Procedure>Model0ED_Optimize</Procedure>
+				<Procedure>RunOptimization</Procedure>
 				<AbortOnError>true</AbortOnError>
 			</Action>
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>CheckBoxes</SelectionType>
-		<Location top="6" left="138" bottom="60" right="828" />
+		<Location top="42" left="12" bottom="90" right="744" />
 		<TabOrder>3</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>IdentifierText</TextShown>
@@ -62,20 +62,27 @@
 			<Description>"Enable Transmission Losses"</Description>
 		</ExplicitIdentifier>
 	</PageObject>
-	<PageObject Type="Text">
-		<Location top="42" left="18" bottom="60" right="138" />
-		<StaticText>Optimization Options:</StaticText>
+	<PageObject Type="Selection Object">
+		<SelectionType>RadioButtons</SelectionType>
+		<Location top="6" left="144" bottom="36" right="744" />
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<TextColor RGB="#000000" />
+		<TextShown>ElementName</TextShown>
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ExplicitIdentifier>
+			<Identifier>PE_SelectedModel</Identifier>
+		</ExplicitIdentifier>
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PI_EnableTransmissionLosses</Symbol>
 			<Symbol>PI_EnableReserveConstraints</Symbol>
 			<Symbol>PI_EnableRampingConstraints</Symbol>
 			<Symbol>PI_EnableTranmissionConstraints</Symbol>
+			<Symbol>RunOptimization</Symbol>
 			<Symbol>PI_AddSlackVariables</Symbol>
-			<Symbol>Model0ED_Optimize</Symbol>
-			<Symbol>PI_EnableTransmissionLosses</Symbol>
+			<Symbol>S_ModelType</Symbol>
+			<Symbol>PE_SelectedModel</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
