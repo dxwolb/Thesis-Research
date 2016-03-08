@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-03-07 01:10:07">
+<Page Version="4000" TimeStamp="2016-03-07 01:50:29">
 	<PageEditSize Type="Specified">
 		<Size Width="620" Height="300" />
 	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<ResizeData>
-		<MainArea Line="FixedFromTop" Value="35" />
+		<MainArea Line="FixedFromTop" Value="40" />
 	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Curve">
@@ -30,22 +30,20 @@
 			<MaxVisibleLabels>48</MaxVisibleLabels>
 		</XRange>
 	</PageObject>
-	<PageObject Type="Selection Object">
-		<SelectionType>DropDownList</SelectionType>
-		<Location top="6" left="6" bottom="30" right="612" />
+	<PageObject Type="Floating Index">
+		<Location top="6" left="6" bottom="36" right="612" />
 		<TabOrder>2</TabOrder>
+		<ObjectUUID>893A2E8A-3866-43A6-9891-58D379C075C5</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<TextShown>ElementName</TextShown>
-		<Border Style="None" />
+		<Border Style="InShadow" Width="2" />
+		<Circular>true</Circular>
+		<ClickShowsList>true</ClickShowsList>
 		<BackgroundColor RGB="#ffffff" />
-		<ExplicitIdentifier>
-			<Identifier>PE_SelectedBusForLMP</Identifier>
-		</ExplicitIdentifier>
+		<Identifier>PE_SelectedBusForLMP</Identifier>
 	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>PE_SelectedBusForLMP</Symbol>
-			<Symbol>SI_Buses</Symbol>
 			<Symbol>PO_LMP</Symbol>
 			<Symbol>iTime</Symbol>
 		</Model>

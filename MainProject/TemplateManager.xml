@@ -18,4 +18,5 @@
 	<Page Name="Demand, Load and Transmission" PageGUID="A9141943-53F5-4127-9481-ED9F7037F894" />
 	<Page Name="Average Ramping" PageGUID="26C2A04B-AB88-4B84-BD18-373DF1CAA201" />
 	<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
+	<Page Name="Generators Status" PageGUID="F89484E4-33DA-44DE-99E5-CDD27E204DFE" />
 </TemplateManager>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-03-08 05:08:48">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<Hidden>VALUE := PE_SelectedModel = 'Economic Dispatch'</Hidden>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<UsedReferences>
+		<Model>
+			<Symbol>PE_SelectedModel</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>
