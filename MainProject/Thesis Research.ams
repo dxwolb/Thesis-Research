@@ -52,7 +52,7 @@ Model Main_Thesis_Research {
         Section Unit_Commitment_Model {
             Section UC_ObjectiveFunction {
                 MathematicalProgram M_UC_MinimizeTotalCost {
-                    Objective: VC_ED_TotalCost;
+                    Objective: VC_UC_TotalCost;
                     Direction: minimize;
                     Constraints: S_UC_Constraints;
                     Variables: S_UC_Variables;
@@ -140,7 +140,7 @@ Model Main_Thesis_Research {
                             
                             - 'CG_UC_MaximumTransmission'
                             - 'CG_UC_MinimumTransmission'
-                            - 'CE_UC_LogicalConstraint'
+                            !- 'CE_UC_LogicalConstraint'
                             - 'CE_UC_VoltageAngleSusceptanceLaw'
                             - 'CG_UC_MinimumVoltageAngle'
                             - 'CL_UC_MaximumVoltageAngle'
@@ -151,9 +151,24 @@ Model Main_Thesis_Research {
             }
             Section UC_Constraints {
                 DeclarationSection UC_OnOffLogicalConstraints {
+                    Constraint CL_UC_CantStartAndShutInTheSamePeriod {
+                        IndexDomain: (iTime,iNonRenewableGenerator);
+                        Definition: VC_StartupStatus(iTime, iNonRenewableGenerator) + VC_ShutdownStatus(iTime, iNonRenewableGenerator) <= 1;
+                    }
                     Constraint CE_UC_LogicalConstraint {
                         IndexDomain: (iTime,iNonRenewableGenerator);
-                        Definition: VC_OnOffStatus(iTime, iNonRenewableGenerator) = VC_StartupStatus(iTime, iNonRenewableGenerator) - VC_ShutdownStatus(iTime, iNonRenewableGenerator) + VC_OnOffStatus(iTime - 1, iNonRenewableGenerator);
+                        Definition: {
+                            
+                            VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            
+                            =
+                            
+                            VC_StartupStatus(iTime, iNonRenewableGenerator)
+                            
+                            - VC_ShutdownStatus(iTime, iNonRenewableGenerator)
+                            
+                             + VC_OnOffStatus(iTime - 1, iNonRenewableGenerator)
+                        }
                     }
                 }
                 DeclarationSection UC_TransmissionConstraints {
@@ -236,32 +251,34 @@ Model Main_Thesis_Research {
                             VC_PowerGenerated[iTime,iNonRenewableGenerator] +
                             sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
                             
-                            <= PI_MaximumGenerationMW[iNonRenewableGenerator]
+                            <= PI_MaximumGenerationMW[iNonRenewableGenerator]*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                         }
                     }
                     Constraint CG_UC_MinimumGenerationNonRenewableSources {
-                        IndexDomain: (iGenerator,iTime);
+                        IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
-                            VC_PowerGenerated[iTime,iGenerator] +
-                            sum(iReserveProduct,VC_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
+                            VC_PowerGenerated[iTime,iNonRenewableGenerator] +
+                            sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
+                            0.30*PI_MaximumGenerationMW(iNonRenewableGenerator)*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                             
-                            PI_MinimumGenerationMW[iGenerator]
+                            
+                            !PI_MinimumGenerationMW[iGenerator]
                         }
                     }
                 }
                 DeclarationSection UC_RampConstraints {
                     Constraint CL_UC_RampUpRateRequirements {
-                        IndexDomain: (iTime,iGenerator);
+                        IndexDomain: (iTime,iNonRenewableGenerator);
                         Definition: {
-                            VC_PowerGenerated[iTime,iGenerator] - VC_PowerGenerated[iTime - 1,iGenerator] <=
-                            PI_RampUpRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
+                            VC_PowerGenerated[iTime,iNonRenewableGenerator] - VC_PowerGenerated[iTime - 1,iNonRenewableGenerator] <=
+                            PI_RampUpRate[PE_UnitGroup[iNonRenewableGenerator]]*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                         }
                     }
                     Constraint CL_UC_RampDownRateRequirements {
-                        IndexDomain: (iTime,iGenerator);
+                        IndexDomain: (iTime,iNonRenewableGenerator);
                         Definition: {
-                            VC_PowerGenerated[iTime - 1,iGenerator] - VC_PowerGenerated[iTime,iGenerator] <=
-                            PI_RampDownRate[PE_UnitGroup[iGenerator]]*PI_TimeGranularity
+                            VC_PowerGenerated[iTime - 1,iNonRenewableGenerator] - VC_PowerGenerated[iTime,iNonRenewableGenerator] <=
+                            PI_RampDownRate[PE_UnitGroup[iNonRenewableGenerator]]*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                         }
                     }
                 }
@@ -298,15 +315,26 @@ Model Main_Thesis_Research {
                 }
             }
             Section UC_Variables {
+                DeclarationSection UC_Cost_Declaration {
+                    Variable VC_UC_TotalCost {
+                        Range: free;
+                        Definition: {
+                            sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_AddSlackVariables
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                        }
+                        Comment: "Add the time granularity in the objective sum";
+                    }
+                }
                 DeclarationSection OnOffVariables {
                     Variable VC_ShutdownStatus {
                         IndexDomain: (iTime,iNonRenewableGenerator);
-                        Range: free;
+                        Range: binary;
                         Comment: "1: if it is scheduled to shutdown, 0: otherwise";
                     }
                     Variable VC_StartupStatus {
                         IndexDomain: (iTime,iNonRenewableGenerator);
-                        Range: free;
+                        Range: binary;
                         Comment: "1: if it is scheduled to start, 0: otherwise";
                     }
                     Variable VC_OnOffStatus {
