@@ -1334,7 +1334,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 UpdateGranularity;
                 
-                UpdateRenewableGenerationCapacity;
+                !UpdateRenewableGenerationCapacity;
             }
         }
         Procedure ExportData {

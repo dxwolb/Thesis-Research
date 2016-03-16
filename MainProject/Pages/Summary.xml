@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-03-02 21:39:35">
+<Page Version="4000" TimeStamp="2016-03-08 20:30:32">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<Background Inherited="true" />
 	<PageObject Type="Pivot Table">
-		<Location top="48" left="42" bottom="216" right="210" />
+		<Location top="48" left="42" bottom="468" right="924" />
 		<TabOrder>1</TabOrder>
 		<ObjectUUID>C858DE4A-6093-4D83-B5B3-189E6E007B22</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -14,6 +14,9 @@
 			<Explicit_Identifier>
 				<Identifier ID="4110">PO_GenerationCapability( iGeneratorType )</Identifier>
 				<Title ID="4120">"Generation Capacity"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">VALUE( iGeneratorType ) := count(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType)</Identifier>
 			</Explicit_Identifier>
 		</Contents>
 		<Indices>
@@ -58,14 +61,14 @@
 		</Grid_Area>
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="66" left="360" bottom="90" right="504" />
+		<Location top="18" left="312" bottom="42" right="456" />
 		<SourceType>StringParameter</SourceType>
 		<StringParameter>STRING := "Total generation:" + sum(iGenerator,PI_MaximumGenerationMW(iGenerator)) + " MW"</StringParameter>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
 	</PageObject>
 	<PageObject Type="Text">
-		<Location top="102" left="360" bottom="126" right="504" />
+		<Location top="84" left="486" bottom="108" right="630" />
 		<SourceType>StringParameter</SourceType>
 		<StringParameter>STRING := "Total peak load:" + PD_TotalPeakLoad + " MW"</StringParameter>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
@@ -74,6 +77,8 @@
 	<UsedReferences>
 		<Model>
 			<Symbol>PD_TotalPeakLoad</Symbol>
+			<Symbol>SI_GeneratorTypes</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>PI_MaximumGenerationMW</Symbol>
 			<Symbol>PO_GenerationCapability</Symbol>
 			<Symbol>iGenerator</Symbol>
