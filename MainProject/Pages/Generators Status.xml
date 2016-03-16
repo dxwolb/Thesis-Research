@@ -26,6 +26,9 @@
 			<Explicit_Identifier>
 				<Identifier ID="4110">VC_ShutdownStatus( iTime, iNonRenewableGenerator )</Identifier>
 			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">PE_GeneratorType( iNonRenewableGenerator )</Identifier>
+			</Explicit_Identifier>
 		</Contents>
 		<Indices>
 			<Identifier_Index>
@@ -70,6 +73,7 @@
 			<Symbol>VC_StartupStatus</Symbol>
 			<Symbol>VC_OnOffStatus</Symbol>
 			<Symbol>PE_SelectedModel</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>iTime</Symbol>
 			<Symbol>iNonRenewableGenerator</Symbol>
 		</Model>
