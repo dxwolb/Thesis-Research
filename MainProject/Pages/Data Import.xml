@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2015-10-21 20:05:33">
+<Page Version="4000" TimeStamp="2016-03-17 21:48:38">
 	<PageEditSize Type="Specified">
 		<Size Width="1054" Height="612" />
 	</PageEditSize>
@@ -10,7 +10,7 @@
 	</Background>
 	<PageObject Type="Button">
 		<Location top="90" left="138" bottom="120" right="246" />
-		<TabOrder>1</TabOrder>
+		<TabOrder>2</TabOrder>
 		<LeaveOnEnter>false</LeaveOnEnter>
 		<ButtonType>Text</ButtonType>
 		<Title>"Browse"</Title>
@@ -26,7 +26,7 @@
 	<PageObject Type="Text">
 		<Location top="54" left="30" bottom="72" right="480" />
 		<SourceType>StringParameter</SourceType>
-		<StringParameter>IEEETestCaseFileName</StringParameter>
+		<StringParameter>PS_IEEETestCaseFileName</StringParameter>
 		<Alignment>Center</Alignment>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextColor RGB="#000000" />
@@ -56,7 +56,7 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>IEEETestCaseFileName</Symbol>
+			<Symbol>PS_IEEETestCaseFileName</Symbol>
 			<Symbol>ImportIEEData</Symbol>
 			<Symbol>BrowseFile</Symbol>
 		</Model>

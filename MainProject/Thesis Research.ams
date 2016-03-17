@@ -71,7 +71,7 @@ Model Main_Thesis_Research {
                             
                             -
                             
-                            if (not PI_EnableTranmissionConstraints) then
+                            if (not PI_EnableTransmissionConstraints) then
                             
                             {
                               'VC_PowerTransmitted',
@@ -89,7 +89,7 @@ Model Main_Thesis_Research {
                             endif
                             
                             -
-                            if (not PI_AddSlackVariables) then
+                            if (not PI_EnableSlackVariables) then
                             
                             {
                             	'VC_UnderGenerationSlack',
@@ -106,7 +106,7 @@ Model Main_Thesis_Research {
                             
                             -
                             
-                            if (not PI_EnableTranmissionConstraints) then
+                            if (not PI_EnableTransmissionConstraints) then
                             
                             
                               UC_Constraints*AllConstraints
@@ -133,7 +133,7 @@ Model Main_Thesis_Research {
                             endif
                             
                             
-                            - if (PI_EnableTranmissionConstraints) then
+                            - if (PI_EnableTransmissionConstraints) then
                              'CE_UC_GenerationSatisfiesTotalLoadOverTime'
                             
                             endif
@@ -320,8 +320,8 @@ Model Main_Thesis_Research {
                         Range: free;
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_AddSlackVariables
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -358,7 +358,7 @@ Model Main_Thesis_Research {
                             
                             -
                             
-                            if (not PI_EnableTranmissionConstraints) then
+                            if (not PI_EnableTransmissionConstraints) then
                             
                             {
                               'VC_Model0ED_PowerTransmitted',
@@ -376,7 +376,7 @@ Model Main_Thesis_Research {
                             endif
                             
                             -
-                            if (not PI_AddSlackVariables) then
+                            if (not PI_EnableSlackVariables) then
                             
                             {
                             	'VC_Model0ED_UnderGenerationSlack',
@@ -393,7 +393,7 @@ Model Main_Thesis_Research {
                             
                             -
                             
-                            if (not PI_EnableTranmissionConstraints) then
+                            if (not PI_EnableTransmissionConstraints) then
                             
                             
                               ED_TransmissionConstraints*AllConstraints
@@ -420,7 +420,7 @@ Model Main_Thesis_Research {
                             endif
                             
                             
-                            - if (PI_EnableTranmissionConstraints) then
+                            - if (PI_EnableTransmissionConstraints) then
                             
                              'CE_Model0_GenerationSatisfiesTotalLoadOverTime'
                             
@@ -436,7 +436,7 @@ Model Main_Thesis_Research {
                         Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
                     }
                 }
-                Parameter PI_AddSlackVariables {
+                Parameter PI_EnableSlackVariables {
                     Range: binary;
                 }
             }
@@ -446,8 +446,8 @@ Model Main_Thesis_Research {
                         Range: free;
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_AddSlackVariables
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -508,8 +508,8 @@ Model Main_Thesis_Research {
                             - PD_LoadMW(iBus, iTime)
                             
                             !Slack
-                            !- VC_Model0ED_OverGenerationSlack(iTime, iBus)*PI_AddSlackVariables
-                            !+ VC_Model0ED_UnderGenerationSlack(iTime, iBus)*PI_AddSlackVariables
+                            - VC_OverGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
+                            + VC_UnderGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
                             =
                             
                             0
@@ -681,7 +681,7 @@ Model Main_Thesis_Research {
             Parameter PI_EnableTransmissionLosses;
             Parameter PI_EnableReserveConstraints;
             Parameter PI_EnableRampingConstraints;
-            Parameter PI_EnableTranmissionConstraints;
+            Parameter PI_EnableTransmissionConstraints;
         }
     }
     Section Input_and_Output_Data {
@@ -1374,6 +1374,110 @@ Model Main_Thesis_Research {
             Parameter PO_TotalLoad {
                 IndexDomain: iTime;
                 Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
+            }
+        }
+    }
+    Section Test_Case {
+        DeclarationSection TestCaseParameters {
+            StringParameter PS_TestResultsWorkbookName {
+                InitialData: {
+                    "TestResults.xls" ;
+                }
+                Comment: "Defines the name of the workbook";
+            }
+            StringParameter PS_RowRange;
+            StringParameter PS_ColRange;
+            StringParameter PS_DataRange;
+        }
+        Procedure RunScenario {
+            Arguments: (V_ScenarioFile,V_Granularity,V_EnableTransmission,V_WorkbookName,V_ScenarioName);
+            Body: {
+                PS_IEEETestCaseFileName := V_ScenarioFile;
+                PI_TimeGranularity := V_Granularity;
+                
+                UpdateGranularity;
+                
+                PI_EnableRampingConstraints := 1;
+                PI_EnableReserveConstraints := 1;
+                PI_EnableSlackVariables := 1;
+                PI_EnableTransmissionConstraints := V_EnableTransmission;
+                PI_EnableTransmissionLosses := V_EnableTransmission;
+                
+                
+                ImportIEEData;
+                RunOptimization;
+                
+                spreadsheet::AddNewSheet(
+                	workbook    :  V_WorkbookName,
+                	Name        :  V_ScenarioName,
+                	SetAsActive :  1,
+                	Hidden      :  0);
+                
+                PS_RowRange := FormatString( "A2:A%i", Card(SD_NonRenewableGenerators));
+                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(Card(P_TimeCalendar)) );
+                PS_DataRange := FormatString( "B2:%s%i",
+                spreadsheet::ColumnName(Card(P_TimeCalendar)),
+                Card(SD_NonRenewableGenerators)
+                 );
+                
+                spreadsheet::AssignTable(V_WorkbookName,VC_PowerGenerated,PS_DataRange,PS_RowRange,PS_ColRange);
+                
+                
+                
+                spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
+            }
+            StringParameter V_ScenarioFile {
+                Property: Input;
+            }
+            Parameter V_Granularity {
+                Property: Input;
+            }
+            Parameter V_EnableTransmission {
+                Property: Input;
+            }
+            StringParameter V_WorkbookName {
+                Property: Input;
+            }
+            StringParameter V_ScenarioName {
+                Property: Input;
+            }
+        }
+        Procedure RunTestCase {
+            Body: {
+                spreadsheet::CreateWorkbook(
+                	WorkbookName : PS_TestResultsWorkbookName ,
+                	SheetName    : "TestFileResults");
+                
+                PS_StartDate := "2015-07-01 00:00:00";
+                PS_EndDate := "2015-07-07 00:00:00";
+                
+                PI_PerturbationInterpolationLevel := 20;
+                
+                RunScenario(
+                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  "Scenario1_60");
+                
+                RunScenario(
+                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  "Scenario1_15");
+                
+                RunScenario(
+                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  "Scenario1_5");
+                
+                
+                DialogMessage(
+                	message : "Run finished!" ,
+                	title   : "Sucess");
             }
         }
     }
