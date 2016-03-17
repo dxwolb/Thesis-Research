@@ -1404,7 +1404,7 @@ Model Main_Thesis_Research {
                 PI_EnableTransmissionLosses := V_EnableTransmission;
                 
                 
-                ImportIEEData;
+                read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
                 spreadsheet::AddNewSheet(
