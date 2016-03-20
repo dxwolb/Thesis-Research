@@ -309,7 +309,13 @@ Model Main_Thesis_Research {
                     }
                     Constraint CU_UC_ReserveMinimumRequirement {
                         IndexDomain: (iTime,iReserveRequirement);
-                        Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
+                        Definition: {
+                            sum((iGenerator,iReserveProduct) |
+                            iReserveRequirement in
+                            S_ReserveProductsRequirements(iReserveProduct),VC_Reserve(iTime, iGenerator, iReserveProduct)) >=
+                            
+                            PI_SystemReserveRequirement(iTime, iReserveRequirement)
+                        }
                         Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
                     }
                 }
@@ -428,7 +434,7 @@ Model Main_Thesis_Research {
                             
                             - 'CG_Model0ED_MaximumTransmission'
                             - 'CG_Model0ED_MinimumTransmission'
-                            
+                            - 'CL_ReserveRequirementCapacity'
                             - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
                             - 'CG_Model0ED_MinimumVoltageAngle'
                             - 'CL_Model0ED_MaximumVoltageAngle'
@@ -437,6 +443,7 @@ Model Main_Thesis_Research {
                     }
                 }
                 Parameter PI_EnableSlackVariables {
+                    Text: "Binary";
                     Range: binary;
                 }
             }
@@ -514,7 +521,6 @@ Model Main_Thesis_Research {
                             
                             0
                         }
-                        Comment: "TODO: Add reserve in this constraint later";
                     }
                     Constraint CE_Model0ED_VoltageAngleSusceptanceLaw {
                         IndexDomain: (iTime,iTransmissionLine);
@@ -595,11 +601,20 @@ Model Main_Thesis_Research {
                 DeclarationSection ED_ReserveContraints {
                     Constraint CL_ReserveRequirementCapacity {
                         IndexDomain: (iTime,iGenerator,iReserveRequirement);
-                        Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
+                        Definition: {
+                            sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),
+                            VC_Reserve(iTime, iGenerator, iReserveProduct)) <=
+                            PI_ReserveCapacity(iGenerator, iReserveRequirement)
+                        }
                     }
                     Constraint CU_ReserveMinimumRequirement {
                         IndexDomain: (iTime,iReserveRequirement);
-                        Definition: sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),VC_Reserve(iTime, iGenerator, iReserveProduct)) >= PI_SystemReserveRequirement(iTime, iReserveRequirement);
+                        Definition: {
+                            sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),
+                            VC_Reserve(iTime, iGenerator, iReserveProduct)) >=
+                            
+                            PI_SystemReserveRequirement(iTime, iReserveRequirement)
+                        }
                         Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
                     }
                 }
@@ -614,6 +629,7 @@ Model Main_Thesis_Research {
         }
         DeclarationSection AverageLoadDistributionPage {
             Parameter PD_LoadDistributionPrecision {
+                Text: "%";
                 Definition: 120/PI_TimeGranularity;
             }
         }
@@ -624,10 +640,12 @@ Model Main_Thesis_Research {
             }
             Parameter PO_GenerationByBus {
                 IndexDomain: (iTime,iBus);
+                Text: "MW";
                 Definition: sum(iGenerator | PE_GeneratorBus(iGenerator) = iBus ,PO_PowerGenerated(iTime, iGenerator) );
             }
             Parameter PO_TransmissionOut {
                 IndexDomain: (iTime,iBus);
+                Text: "MW";
                 Definition: {
                     sum(iBus2 | iBus <> iBus2 ,
                     VC_PowerTransmitted(iTime, iBus, iBus2))
@@ -635,6 +653,7 @@ Model Main_Thesis_Research {
             }
             Parameter PO_TransmissionIn {
                 IndexDomain: (iTime,iBus);
+                Text: "MW";
                 Definition: {
                     sum(iBus2 | iBus <> iBus2
                     and VC_PowerTransmitted(iTime, iBus2, iBus) > 0, VC_PowerTransmitted(iTime, iBus2, iBus))
@@ -649,14 +668,17 @@ Model Main_Thesis_Research {
             }
             Parameter PO_AbsolutePowerTransmited {
                 IndexDomain: (iTime,iBus,iBus2);
+                Text: "MW";
                 Definition: Abs(VC_PowerTransmitted(iTime, iBus, iBus2));
             }
             Parameter PO_GeneratorUsed {
                 IndexDomain: (iTime,iGenerator);
+                Text: "MW";
                 Definition: (VC_PowerGenerated(iTime, iGenerator)) > 0;
             }
             Parameter PO_TransmissionBranchesDirection {
                 IndexDomain: (iBus,iBus2);
+                Text: "Binary";
                 Range: binary;
                 Definition: {
                     if VC_PowerTransmitted(PE_SelectedPeriod, iBus,iBus2) > 0 then
@@ -678,10 +700,18 @@ Model Main_Thesis_Research {
             Set S_ModelType {
                 Definition: data { 'Unit Commitment', 'Economic Dispatch' };
             }
-            Parameter PI_EnableTransmissionLosses;
-            Parameter PI_EnableReserveConstraints;
-            Parameter PI_EnableRampingConstraints;
-            Parameter PI_EnableTransmissionConstraints;
+            Parameter PI_EnableTransmissionLosses {
+                Text: "Binary";
+            }
+            Parameter PI_EnableReserveConstraints {
+                Text: "Binary";
+            }
+            Parameter PI_EnableRampingConstraints {
+                Text: "Binary";
+            }
+            Parameter PI_EnableTransmissionConstraints {
+                Text: "Binary";
+            }
         }
     }
     Section Input_and_Output_Data {
@@ -695,6 +725,7 @@ Model Main_Thesis_Research {
                     InitialData: data { 'Day', 'Hour', 'Quarter Hour', 'Minute' };
                 }
                 Parameter PI_TimeGranularity {
+                    Text: "minute";
                     Range: integer;
                     InitialData: 1;
                 }
@@ -772,9 +803,11 @@ Model Main_Thesis_Research {
             DeclarationSection Generation_Costs {
                 Parameter PI_UnitGroupVariableCost {
                     IndexDomain: iUnitGroup;
+                    Text: "$";
                 }
                 Parameter PD_VariableCost {
                     IndexDomain: iGenerator;
+                    Text: "$";
                     Definition: PI_UnitGroupVariableCost(PE_UnitGroup(iGenerator));
                     Comment: {
                         "Variable cost per MW generated in every generator G. Include fuel costs, carbon costs, maintenance cost, and etc.
@@ -786,17 +819,21 @@ Model Main_Thesis_Research {
         Section Bus {
             DeclarationSection LoadDeclaration {
                 Parameter PI_PerturbationInterpolationLevel {
+                    Text: "%";
                     Range: [0, 100];
                 }
                 Parameter PI_PeakLoadMW {
                     IndexDomain: iBus;
+                    Text: "MW";
                     Comment: "Total Load at Peak Time.";
                 }
                 Parameter PD_TotalPeakLoad {
+                    Text: "MW";
                     Definition: sum(iBus,PI_PeakLoadMW(iBus));
                 }
                 Parameter PD_LoadMW {
                     IndexDomain: (iBus,iTime);
+                    Text: "MW";
                     Definition: {
                         PI_WeeklyPeakLoad( ElementCast(S_Weeks,TimeslotCharacteristic(iTime,'weekyear')) ) *
                         PI_DailyPeekLoad(ElementCast(S_DaysOfWeek,TimeslotCharacteristic(iTime,'weekday')))
@@ -878,42 +915,52 @@ Model Main_Thesis_Research {
             DeclarationSection BusCoordinatesDeclaration {
                 Parameter PI_BusXCoordinate {
                     IndexDomain: iBus;
+                    Text: "Unit";
                 }
                 Parameter PI_BusYCoordinate {
                     IndexDomain: iBus;
+                    Text: "Unit";
                 }
             }
             DeclarationSection VoltageAngleDeclaration {
                 Parameter PI_MinimumVoltageAngle {
                     IndexDomain: iBus;
+                    Text: "rad";
                     Definition: -0.6;
                 }
                 Parameter PI_MaximumVoltageAngle {
                     IndexDomain: iBus;
+                    Text: "rad";
                     Definition: 0.6;
                 }
             }
             DeclarationSection RenewableSourcesAvailabilityDeclaration {
                 Parameter PI_WindPotential {
                     IndexDomain: (iYearCalendar,iBus);
+                    Text: "MW";
                 }
                 Parameter PI_SolarPotential {
                     IndexDomain: (iYearCalendar,iBus);
+                    Text: "MW";
                 }
             }
             DeclarationSection DemandDeclaration {
                 Parameter PI_WeeklyPeakLoad {
                     IndexDomain: iWeek;
+                    Text: "%";
                 }
                 Parameter PI_DailyPeekLoad {
                     IndexDomain: iDayOfWeek;
+                    Text: "MW";
                 }
                 Parameter PI_HourlyPeekLoad {
                     IndexDomain: (iHour,iSeason,iDayofWeekType);
+                    Text: "MW";
                     Comment: "Has to be separated by period time.";
                 }
                 Parameter PD_SobHourlyPeekSlope {
                     IndexDomain: (iHour,iSeason,iDayofWeekType);
+                    Text: "MW/minute";
                     Definition: {
                         if iHour = '23' then
                         
@@ -931,6 +978,7 @@ Model Main_Thesis_Research {
             DeclarationSection GenerationResultsDeclaration {
                 Parameter PO_AverageGeneratiorByHour {
                     IndexDomain: (iHourCalendar,iGeneratorType);
+                    Text: "MW";
                     Definition: {
                         average(iTime |
                         ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'hour'))
@@ -945,6 +993,7 @@ Model Main_Thesis_Research {
                 }
                 Parameter PO_GenerationByGeneratorType {
                     IndexDomain: (iTime,iGeneratorType);
+                    Text: "MW";
                     Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PO_PowerGenerated(iTime,iGenerator));
                 }
             }
@@ -958,33 +1007,43 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_MinimumMVAROrVoltageLimit {
                     IndexDomain: iBus;
+                    Text: "MVAR";
                 }
                 Parameter PI_MaximumMVAROrVoltageLimit {
                     IndexDomain: iBus;
+                    Text: "MVAR";
                 }
                 Parameter PI_DesiredVoltsPU {
                     IndexDomain: iBus;
+                    Text: "PU";
                 }
                 Parameter PI_BaseKV {
                     IndexDomain: iBus;
+                    Text: "KV";
                 }
                 Parameter PI_GenerationMVAR {
                     IndexDomain: iGenerator;
+                    Text: "MVAR";
                 }
                 Parameter PI_GenerationMW {
                     IndexDomain: iGenerator;
+                    Text: "MW";
                 }
                 Parameter PI_LoadMVAR {
                     IndexDomain: iBus;
+                    Text: "MVAR";
                 }
                 Parameter PI_FinalAngleDegrees {
                     IndexDomain: iBus;
+                    Text: "rad";
                 }
                 Parameter PI_FinalVoltagePU {
                     IndexDomain: iBus;
+                    Text: "KV";
                 }
                 Parameter PI_BusType {
                     IndexDomain: iBus;
+                    Text: "[0-3]";
                     Range: {
                         {1..3}
                     }
@@ -997,10 +1056,12 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_LossZoneNumber {
                     IndexDomain: iBus;
+                    Text: "Unit";
                     Range: integer;
                 }
                 Parameter PI_LoadFlowAreaNumber {
                     IndexDomain: iBus;
+                    Text: "Unit";
                     Range: integer;
                 }
             }
@@ -1009,6 +1070,7 @@ Model Main_Thesis_Research {
             DeclarationSection GeneratorsResultsDeclaration {
                 Parameter PO_PowerGenerated {
                     IndexDomain: (iTime,iGenerator);
+                    Text: "MM";
                     Definition: {
                         if(iGenerator in SD_RenewableGenerators) then
                         
@@ -1025,20 +1087,28 @@ Model Main_Thesis_Research {
             DeclarationSection GeneratorsCoordinatesDeclaration {
                 Parameter PI_GeneratorXCoordinate {
                     IndexDomain: iGenerator;
+                    Text: "Unit";
                     Definition: PI_BusXCoordinate(PE_GeneratorBus(iGenerator));
                 }
                 Parameter PI_GeneratorYCoordinate {
                     IndexDomain: iGenerator;
+                    Text: "Unit";
                     Definition: PI_BusYCoordinate(PE_GeneratorBus(iGenerator));
                 }
             }
             DeclarationSection ReserveRequirementsDeclaration {
+                Parameter PI_OperatingReserveFraction {
+                    Definition: 0.075;
+                }
                 Parameter PI_ReserveCapacity {
                     IndexDomain: (iGenerator,iReserveRequirement);
+                    Text: "MW";
                     Range: nonnegative;
                 }
                 Parameter PI_SystemReserveRequirement {
                     IndexDomain: (iTime,iReserveRequirement);
+                    Text: "%";
+                    Definition: PI_OperatingReserveFraction*sum(iBus,PD_LoadMW(iBus, iTime));
                 }
                 Set S_ReserveProductsRequirements {
                     IndexDomain: iReserveProduct;
@@ -1062,6 +1132,7 @@ Model Main_Thesis_Research {
             DeclarationSection GeneratorsDeclaration {
                 Parameter PI_GeneratorTypeOrder {
                     IndexDomain: iGeneratorType;
+                    Text: "Unit";
                 }
                 Set SD_RenewableGenerators {
                     SubsetOf: SI_Generators;
@@ -1101,48 +1172,61 @@ Model Main_Thesis_Research {
                 }
                 Parameter PI_MaximumGenerationMW {
                     IndexDomain: iGenerator;
+                    Text: "MW";
                 }
                 Parameter PI_MinimumGenerationMW {
                     IndexDomain: iGenerator;
+                    Text: "MW";
                 }
             }
             DeclarationSection UnitCyclingRestrictionandRampingRates {
                 Parameter PI_MinDownTime {
                     IndexDomain: iUnitGroup;
+                    Text: "hour";
                 }
                 Parameter PI_MinUpTime {
                     IndexDomain: iUnitGroup;
+                    Text: "hour";
                 }
                 Parameter PI_StartTimeHot {
                     IndexDomain: iUnitGroup;
+                    Text: "MTBU";
                 }
                 Parameter PI_StartTimeCold {
                     IndexDomain: iUnitGroup;
+                    Text: "MTBU";
                 }
                 Parameter PI_WarmStartTime {
                     IndexDomain: iUnitGroup;
+                    Text: "hour";
                 }
                 Parameter PI_RampDownRate {
                     IndexDomain: iUnitGroup;
+                    Text: "MW/minute";
                 }
                 Parameter PI_RampUpRate {
                     IndexDomain: iUnitGroup;
+                    Text: "MW/minute";
                 }
             }
             DeclarationSection UnitStartUpHeatInputDeclaration {
                 Parameter PI_HeatHotStart {
                     IndexDomain: iUnitGroup;
+                    Text: "MTBU";
                 }
                 Parameter PI_HeatColdStart {
                     IndexDomain: iUnitGroup;
+                    Text: "MTBU";
                 }
             }
             DeclarationSection HeartRateAndIncrementalHeatRateDeclaration {
                 Parameter PI_NetPlantHeatRate {
                     IndexDomain: (iUnitGroup,iOutputPercentage);
+                    Text: "MTBU";
                 }
                 Parameter PI_IncrementalHeatRate {
                     IndexDomain: (iUnitGroup,iOutputPercentage);
+                    Text: "MTBU";
                 }
                 Set S_OutputPercentages {
                     Index: iOutputPercentage;
@@ -1161,29 +1245,36 @@ Model Main_Thesis_Research {
             }
             DeclarationSection RenewableGeneratorDeclaration {
                 Parameter PD_TotalSolarGenerator {
+                    Text: "Unit";
                     Definition: count(iRenewableGenerator | PE_GeneratorType(iRenewableGenerator) = 'Solar');
                 }
                 Parameter PD_TotalWindGenerators {
+                    Text: "Unit";
                     Definition: count(iRenewableGenerator | PE_GeneratorType(iRenewableGenerator) = 'Wind');
                 }
                 Parameter PI_WindGenerationPercentage {
+                    Text: "%";
                     Range: [0, 100];
                     InitialData: 35;
                 }
                 Parameter PI_SolarGenerationPercentage {
+                    Text: "%";
                     Range: [0, 100];
                     Definition: 10;
                 }
                 Parameter PD_WindPotentialSubhourlyPeakSlope {
                     IndexDomain: (iYearCalendar,iBus);
+                    Text: "MW/minute";
                     Definition: (PI_WindPotential(iYearCalendar + 1, iBus) - PI_WindPotential(iYearCalendar, iBus))/60;
                 }
                 Parameter PD_SolarPotentialSubhourlyPeakSlope {
                     IndexDomain: (iYearCalendar,iBus);
+                    Text: "MW/minute";
                     Definition: (PI_SolarPotential(iYearCalendar + 1, iBus) - PI_SolarPotential(iYearCalendar, iBus))/60;
                 }
                 Parameter PD_RenewableGenerationCapacity {
                     IndexDomain: (iTime,iRenewableGenerator);
+                    Text: "MW";
                     Definition: {
                         if PE_GeneratorType(iRenewableGenerator) = 'Wind' then
                         
@@ -1222,6 +1313,7 @@ Model Main_Thesis_Research {
             DeclarationSection ParametersPageDeclaration {
                 Parameter PO_GenerationCapability {
                     IndexDomain: iGeneratorType;
+                    Text: "MW";
                     Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PI_MaximumGenerationMW(iGenerator));
                 }
             }
@@ -1229,6 +1321,7 @@ Model Main_Thesis_Research {
         Section Transmission {
             Parameter PD_TransmissionLoss {
                 IndexDomain: (iBus,iBus2);
+                Text: "MW";
                 Definition: {
                     sum(iTransmissionLine |
                      PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2)
@@ -1242,16 +1335,20 @@ Model Main_Thesis_Research {
             }
             Parameter PD_TransmissionLimits {
                 IndexDomain: (iBus,iBus2) | iBus <> iBus2;
+                Text: "MW";
                 Definition: sum(iTransmissionLine | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2) OR PI_TransmissionLineBranches(iTransmissionLine, iBus2, iBus), PI_LineMaximumCapacity(iTransmissionLine));
             }
             Parameter PI_TransmissionLossFactorPer100Miles {
+                Text: "%";
                 Definition: 0.01;
                 Comment: "Set to 1% for each 100 Miles";
             }
             Parameter PI_LineDistance {
                 IndexDomain: (iTransmissionLine);
+                Text: "Miles";
             }
             Parameter PI_MVABase {
+                Text: "MVA";
                 InitialData: 100;
             }
             Set S_TransmissionLines {
@@ -1259,16 +1356,20 @@ Model Main_Thesis_Research {
             }
             Parameter PI_TransmissionLineBranches {
                 IndexDomain: (iTransmissionLine,iBus,iBus2);
+                Text: "Binary";
                 Range: binary;
             }
             Parameter PI_LineSusceptance {
                 IndexDomain: iTransmissionLine;
+                Text: "PU";
             }
             Parameter PI_LineMinimumCapacity {
                 IndexDomain: iTransmissionLine;
+                Text: "MW";
             }
             Parameter PI_LineMaximumCapacity {
                 IndexDomain: iTransmissionLine;
+                Text: "MW";
             }
         }
     }
@@ -1334,7 +1435,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 UpdateGranularity;
                 
-                !UpdateRenewableGenerationCapacity;
+                UpdateRenewableGenerationCapacity;
             }
         }
         Procedure ExportData {
@@ -1353,10 +1454,14 @@ Model Main_Thesis_Research {
         DeclarationSection ResultsDeclaration {
             Parameter PO_Ramping {
                 IndexDomain: (iTime,iNonRenewableGenerator);
-                Definition: ABS(PO_PowerGenerated(iTime, iNonRenewableGenerator) - PO_PowerGenerated(iTime - 1, iNonRenewableGenerator));
+                Text: "MW/minute";
+                Definition: {
+                    ABS(PO_PowerGenerated(iTime, iNonRenewableGenerator) - PO_PowerGenerated(iTime - 1, iNonRenewableGenerator))/PI_MaximumGenerationMW(iNonRenewableGenerator);
+                }
             }
             Parameter PO_AverageRamping {
                 IndexDomain: iGeneratorType;
+                Text: "MW/minute";
                 Definition: {
                     average((iTime,iGenerator) | PE_GeneratorType(iGenerator) = iGeneratorType and PO_PowerGenerated(iTime, iGenerator) > 0 ,
                     PO_Ramping(iTime, iGenerator))/PI_TimeGranularity
@@ -1364,6 +1469,7 @@ Model Main_Thesis_Research {
             }
             Parameter PO_GenerationShadow {
                 IndexDomain: iTime;
+                Text: "MW (?)";
                 Definition: CE_Model0_GenerationSatisfiesTotalLoadOverTime.ShadowPrice(iTime);
             }
             Parameter PO_LMP {
@@ -1373,6 +1479,7 @@ Model Main_Thesis_Research {
             }
             Parameter PO_TotalLoad {
                 IndexDomain: iTime;
+                Text: "MW";
                 Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
             }
         }
@@ -1380,9 +1487,7 @@ Model Main_Thesis_Research {
     Section Test_Case {
         DeclarationSection TestCaseParameters {
             StringParameter PS_TestResultsWorkbookName {
-                InitialData: {
-                    "TestResults.xls" ;
-                }
+                InitialData: "TestResults2.xls";
                 Comment: "Defines the name of the workbook";
             }
             StringParameter PS_RowRange;
@@ -1395,7 +1500,8 @@ Model Main_Thesis_Research {
                 PS_IEEETestCaseFileName := V_ScenarioFile;
                 PI_TimeGranularity := V_Granularity;
                 
-                UpdateGranularity;
+                !UpdateGranularity;
+                UpdateTimeCalendar;
                 
                 PI_EnableRampingConstraints := 1;
                 PI_EnableReserveConstraints := 1;
@@ -1407,25 +1513,69 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
-                spreadsheet::AddNewSheet(
-                	workbook    :  V_WorkbookName,
-                	Name        :  V_ScenarioName,
-                	SetAsActive :  1,
-                	Hidden      :  0);
                 
-                PS_RowRange := FormatString( "A2:A%i", Card(SD_NonRenewableGenerators));
-                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(Card(P_TimeCalendar)) );
-                PS_DataRange := FormatString( "B2:%s%i",
-                spreadsheet::ColumnName(Card(P_TimeCalendar)),
-                Card(SD_NonRenewableGenerators)
-                 );
+                !Load By Generator Type
+                L_SheetName := V_ScenarioName + "_LB";
+                spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                PS_RowRange := FormatString( "A2:A%i", count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)));
+                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)) ));
+                PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType))),count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)));
+                spreadsheet::AssignTable(V_WorkbookName,PO_GenerationByGeneratorType,PS_DataRange,PS_RowRange,PS_ColRange);
                 
-                spreadsheet::AssignTable(V_WorkbookName,VC_PowerGenerated,PS_DataRange,PS_RowRange,PS_ColRange);
+                
+                
+                
+                !!Power Output
+                !L_SheetName := V_ScenarioName + "_PowerOutput";
+                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator)));
+                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator))) );
+                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator))),count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator)));
+                !spreadsheet::AssignTable(V_WorkbookName,PO_PowerGenerated,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
+                
+                !UnderSlack
+                
+                !if (count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)) > 0 ) then
+                !
+                !L_SheetName := V_ScenarioName + "_UnderGenerationSlack";
+                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)));
+                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName( count( (iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)) ) );
+                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName( count( (iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus))),count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)));
+                !spreadsheet::AssignTable(V_WorkbookName,VC_UnderGenerationSlack,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
+                !
+                !endif;
+                !
+                !if (count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)) > 0) then
+                !
+                !!OverSlack
+                !L_SheetName := V_ScenarioName + "_OverGenerationSlack";
+                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)));
+                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus))) );
+                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus))),count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)));
+                !spreadsheet::AssignTable(V_WorkbookName,VC_OverGenerationSlack,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
+                !endif;
+                !
+                !!Transmission
+                !L_SheetName := V_ScenarioName + "_TransmissionOutput";
+                !PS_RowRange := FormatString( "A2:B%i", count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ));
+                !PS_ColRange := FormatString( "C1:%s1", spreadsheet::ColumnName( count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ) ));
+                !PS_DataRange := FormatString( "C2:%s%i",spreadsheet::ColumnName(count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) )),count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ));
+                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                !spreadsheet::AssignTable(V_WorkbookName,VC_PowerTransmitted,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
+                
+                !PO_Ramping(iTime, iNonRenewableGenerator);
+                !VC_OverGenerationSlack(iTime, iBus);
+                !VC_UnderGenerationSlack(iTime, iBus);
+                !VC_PowerTransmitted(iTime, iBus, iBus2);
                 
                 
                 
                 spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }
+            Parameter L_Status;
+            StringParameter L_SheetName;
             StringParameter V_ScenarioFile {
                 Property: Input;
             }
@@ -1444,12 +1594,13 @@ Model Main_Thesis_Research {
         }
         Procedure RunTestCase {
             Body: {
-                spreadsheet::CreateWorkbook(
+                L_Status := spreadsheet::CreateWorkbook(
                 	WorkbookName : PS_TestResultsWorkbookName ,
                 	SheetName    : "TestFileResults");
                 
+                
                 PS_StartDate := "2015-07-01 00:00:00";
-                PS_EndDate := "2015-07-07 00:00:00";
+                PS_EndDate := "2015-07-03 00:00:00";
                 
                 PI_PerturbationInterpolationLevel := 20;
                 
@@ -1479,6 +1630,7 @@ Model Main_Thesis_Research {
                 	message : "Run finished!" ,
                 	title   : "Sucess");
             }
+            Parameter L_Status;
         }
     }
     Procedure MainInitialization;
