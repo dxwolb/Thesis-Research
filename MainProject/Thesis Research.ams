@@ -1067,6 +1067,20 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection GeneratorCapacityDeclaration {
+                Parameter PI_UnitGroupCapacity {
+                    IndexDomain: (iUnitGroup);
+                }
+                Parameter PI_MaximumGenerationMW {
+                    IndexDomain: iGenerator;
+                    Text: "MW";
+                    Definition: PI_UnitGroupCapacity(PE_UnitGroup(iGenerator));
+                }
+                Parameter PI_MinimumGenerationMW {
+                    IndexDomain: iGenerator;
+                    Text: "MW";
+                }
+            }
             DeclarationSection GeneratorsResultsDeclaration {
                 Parameter PO_PowerGenerated {
                     IndexDomain: (iTime,iGenerator);
@@ -1169,14 +1183,6 @@ Model Main_Thesis_Research {
                 ElementParameter PE_UnitGroup {
                     IndexDomain: iGenerator;
                     Range: SI_UnitGroups;
-                }
-                Parameter PI_MaximumGenerationMW {
-                    IndexDomain: iGenerator;
-                    Text: "MW";
-                }
-                Parameter PI_MinimumGenerationMW {
-                    IndexDomain: iGenerator;
-                    Text: "MW";
                 }
             }
             DeclarationSection UnitCyclingRestrictionandRampingRates {
@@ -1390,9 +1396,9 @@ Model Main_Thesis_Research {
                 for(iRenewableGenerator) do
                 
                 if PE_GeneratorType(iRenewableGenerator) = 'Wind' then
-                	PI_MaximumGenerationMW(iRenewableGenerator) := ((PI_WindGenerationPercentage/100)*PD_TotalPeakLoad) / PD_TotalWindGenerators;
+                	!PI_MaximumGenerationMW(iRenewableGenerator) := ((PI_WindGenerationPercentage/100)*PD_TotalPeakLoad) / PD_TotalWindGenerators;
                 else
-                	PI_MaximumGenerationMW(iRenewableGenerator) := ((PI_SolarGenerationPercentage/100)*PD_TotalPeakLoad) / PD_TotalSolarGenerator;
+                	!PI_MaximumGenerationMW(iRenewableGenerator) := ((PI_SolarGenerationPercentage/100)*PD_TotalPeakLoad) / PD_TotalSolarGenerator;
                 endif;
                 
                 endfor;
@@ -1435,7 +1441,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 UpdateGranularity;
                 
-                UpdateRenewableGenerationCapacity;
+                !UpdateRenewableGenerationCapacity;
             }
         }
         Procedure ExportData {
