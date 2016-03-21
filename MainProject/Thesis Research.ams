@@ -587,14 +587,14 @@ Model Main_Thesis_Research {
                             
                             
                             
-                            !+ sum(iBus,VC_Model0ED_UnderGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                            + sum(iBus,VC_UnderGenerationSlack(iTime, iBus))*PI_EnableSlackVariables
                              = sum(iBus,PD_LoadMW[iBus,iTime])
                             
                             + sum((iBus,iBus2) | iBus <> iBus2,
                             VC_PowerLossByTransmission(iTime, iBus, iBus2)*PI_EnableTransmissionLosses
                             )
                             
-                            ! + sum(iBus,VC_Model0ED_OverGenerationSlack(iTime, iBus)) *PI_AddSlackVariables
+                            + sum(iBus,VC_OverGenerationSlack(iTime, iBus)) *PI_EnableSlackVariables
                         }
                     }
                 }
@@ -622,6 +622,11 @@ Model Main_Thesis_Research {
         }
     }
     Section Page_Parameters {
+        DeclarationSection NetworkPage {
+            ElementParameter PE_SelectedGeneratorTypeForMap {
+                Range: SI_GeneratorTypes;
+            }
+        }
         DeclarationSection Location_Marginal_Prices_Page {
             ElementParameter PE_SelectedBusForLMP {
                 Range: SI_Buses;
@@ -1458,11 +1463,25 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PD_RampingPerUnitGroup {
+                IndexDomain: (iTime,iUnitGroup);
+                Definition: {
+                    average(iNonRenewableGenerator |
+                    PE_UnitGroup(iNonRenewableGenerator) = iUnitGroup, PO_Ramping(iTime, iNonRenewableGenerator))
+                }
+            }
             Parameter PO_Ramping {
                 IndexDomain: (iTime,iNonRenewableGenerator);
                 Text: "MW/minute";
                 Definition: {
-                    ABS(PO_PowerGenerated(iTime, iNonRenewableGenerator) - PO_PowerGenerated(iTime - 1, iNonRenewableGenerator))/PI_MaximumGenerationMW(iNonRenewableGenerator);
+                    if (PI_MaximumGenerationMW(iNonRenewableGenerator) > 0) then
+                    ABS(PO_PowerGenerated(iTime, iNonRenewableGenerator) - PO_PowerGenerated(iTime - 1, iNonRenewableGenerator))/
+                    (PI_MaximumGenerationMW(iNonRenewableGenerator)*PI_TimeGranularity)
+                    else
+                    
+                    0
+                    
+                    endif;
                 }
             }
             Parameter PO_AverageRamping {
@@ -1492,6 +1511,28 @@ Model Main_Thesis_Research {
     }
     Section Test_Case {
         DeclarationSection TestCaseParameters {
+            StringParameter PS_ScenarioFileNames {
+                IndexDomain: iScenario;
+                InitialData: {
+                    data
+                    { Scenario1 : "ieedata\\\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                      Scenario2 : "ieedata\\\\IEEReliabilityTestDataSetAimmsFormat_Scenario2_CarbonFederalRule.txt",
+                      Scenario3 : "ieedata\\\\IEEReliabilityTestDataSetAimmsFormat_Scenario3_AlmostGreenWorld.txt" }
+                }
+            }
+            StringParameter PS_ScenarioNames {
+                IndexDomain: iScenario;
+                InitialData: {
+                    data
+                    { Scenario1 : "Scenario1",
+                      Scenario2 : "Scenario2",
+                      Scenario3 : "Scenario3" }
+                }
+            }
+            Set S_ScenarioSets {
+                Index: iScenario;
+                Definition: data { Scenario1, Scenario2, Scenario3 };
+            }
             StringParameter PS_TestResultsWorkbookName {
                 InitialData: "TestResults2.xls";
                 Comment: "Defines the name of the workbook";
@@ -1528,7 +1569,14 @@ Model Main_Thesis_Research {
                 PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType))),count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)));
                 spreadsheet::AssignTable(V_WorkbookName,PO_GenerationByGeneratorType,PS_DataRange,PS_RowRange,PS_ColRange);
                 
-                
+                !Ramping!PO_Ramping
+                !PD_RampingPerUnitGroup(iTime, iUnitGroup)
+                L_SheetName := V_ScenarioName + "_Ramp";
+                spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
+                PS_RowRange := FormatString( "A2:A%i", count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)));
+                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)) ));
+                PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup))),count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)));
+                spreadsheet::AssignTable(V_WorkbookName,PD_RampingPerUnitGroup,PS_DataRange,PS_RowRange,PS_ColRange);
                 
                 
                 !!Power Output
@@ -1610,26 +1658,60 @@ Model Main_Thesis_Research {
                 
                 PI_PerturbationInterpolationLevel := 20;
                 
+                !Scenario runs
+                for(iScenario) do
+                
                 RunScenario(
-                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  "Scenario1_60");
-                
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY");
                 RunScenario(
-                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  "Scenario1_15");
-                
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY");
                 RunScenario(
-                	V_ScenarioFile       : "ieedata\\IEEReliabilityTestDataSetAimmsFormat_Scenario1_Reference.txt",
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  "Scenario1_5");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                
+                endfor;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 DialogMessage(

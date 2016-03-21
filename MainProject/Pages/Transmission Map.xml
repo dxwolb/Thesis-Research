@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-14 19:46:30">
+<Page Version="4000" TimeStamp="2016-03-17 21:48:38">
 	<PageEditSize Type="Specified">
 		<Size Width="560" Height="360" />
 	</PageEditSize>
@@ -93,11 +93,12 @@
 			<Symbol>PO_AbsolutePowerTransmited</Symbol>
 			<Symbol>PO_TransmissionBranchesDirection</Symbol>
 			<Symbol>PE_SelectedPeriod</Symbol>
+			<Symbol>PD_LoadMW</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
-			<Symbol>PD_LoadMW</Symbol>
 			<Symbol>PI_GeneratorXCoordinate</Symbol>
 			<Symbol>PI_GeneratorYCoordinate</Symbol>
+			<Symbol>SI_GeneratorTypes</Symbol>
 			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
 			<Symbol>iBus</Symbol>

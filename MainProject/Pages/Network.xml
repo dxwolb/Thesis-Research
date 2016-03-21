@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-11 05:42:00">
-	<PageEditSize Type="Inherited" />
+<Page Version="4000" TimeStamp="2016-03-17 21:48:38">
+	<PageEditSize Type="Specified">
+		<Size Width="400" Height="300" />
+	</PageEditSize>
 	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="FixedFromTop" Value="59" />
+	</ResizeData>
 	<Background Inherited="true" />
 	<PageObject Type="Network Object">
-		<Location top="60" left="48" bottom="498" right="798" />
+		<Location top="60" left="12" bottom="288" right="384" />
 		<TabOrder>1</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -16,7 +21,7 @@
 		<AutoAdjust>Right</AutoAdjust>
 		<VisibleArea>
 			<Left>-2.52605991484</Left>
-			<Right>21.3895156673</Right>
+			<Right>20.8822155792</Right>
 			<Top>14.0080797483</Top>
 			<Bottom>0.455920251739</Bottom>
 		</VisibleArea>
@@ -40,8 +45,8 @@
 			<MaximumSize>15</MaximumSize>
 			<TextPosition>Bottom</TextPosition>
 			<TextShowWhat>Nothing</TextShowWhat>
-			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
-			<Size>5</Size>
+			<Color>8C1FFC91-A781-4272-831D-2D86F23592E4 red</Color>
+			<Size>VALUE( iGenerator ) := (PE_GeneratorType(iGenerator) = PE_SelectedGeneratorTypeForMap)*5</Size>
 			<Shape>Rectangle</Shape>
 		</Node>
 		<Arc>
@@ -55,18 +60,38 @@
 			<ClickWhere>EntireArc</ClickWhere>
 		</Arc>
 	</PageObject>
+	<PageObject Type="Text">
+		<Location top="6" left="102" bottom="24" right="288" />
+		<StaticText>Show location of generator for:</StaticText>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<TextColor RGB="#000000" />
+	</PageObject>
+	<PageObject Type="Floating Index">
+		<Location top="30" left="12" bottom="60" right="384" />
+		<TabOrder>2</TabOrder>
+		<ObjectUUID>5A27E9B0-8511-4C12-90B0-97034DB929B5</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<Circular>true</Circular>
+		<ClickShowsList>true</ClickShowsList>
+		<BackgroundColor RGB="#ffffff" />
+		<Identifier>PE_SelectedGeneratorTypeForMap</Identifier>
+	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PI_PeakLoadMW</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
-			<Symbol>PI_PeakLoadMW</Symbol>
+			<Symbol>PI_GeneratorXCoordinate</Symbol>
+			<Symbol>PI_GeneratorYCoordinate</Symbol>
+			<Symbol>SI_GeneratorTypes</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
 			<Symbol>iBus</Symbol>
 			<Symbol>iBus2</Symbol>
 			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
-			<Symbol>PI_GeneratorXCoordinate</Symbol>
-			<Symbol>PI_GeneratorYCoordinate</Symbol>
+			<Symbol>PE_SelectedGeneratorTypeForMap</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
