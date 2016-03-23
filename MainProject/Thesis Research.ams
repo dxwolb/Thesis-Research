@@ -20,7 +20,7 @@ Model Main_Thesis_Research {
                 DeclarationSection TransmissionDeclaration {
                     Variable VC_PowerTransmitted {
                         IndexDomain: (iTime,iBus,iBus2);
-                        Range: nonnegative;
+                        Range: [0, PD_TransmissionLimits(iBus, iBus2)];
                     }
                     Variable VC_VoltageAngle {
                         IndexDomain: (iTime,iBus);
@@ -339,6 +339,7 @@ Model Main_Thesis_Research {
                         Range: free;
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
+                            + sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
                             + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
                             + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
                         }
@@ -1077,6 +1078,15 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection GeneratorStartupShutdownCostsDeclaration {
+                Parameter PD_GeneratorStartupCost {
+                    IndexDomain: iNonRenewableGenerator;
+                    Definition: PI_GeneratorTypeStartupCost(PE_GeneratorType(iNonRenewableGenerator));
+                }
+                Parameter PI_GeneratorTypeStartupCost {
+                    IndexDomain: iGeneratorType;
+                }
+            }
             DeclarationSection GeneratorStartupParametersDeclaration {
                 Parameter PI_MinimumGenerationMW {
                     IndexDomain: iNonRenewableGenerator;
@@ -1363,7 +1373,7 @@ Model Main_Thesis_Research {
             }
             Parameter PI_TransmissionLossFactorPer100Miles {
                 Text: "%";
-                Definition: 0.01;
+                Definition: 0.05;
                 Comment: "Set to 1% for each 100 Miles";
             }
             Parameter PI_LineDistance {

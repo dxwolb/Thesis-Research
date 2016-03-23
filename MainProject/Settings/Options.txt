@@ -4,7 +4,6 @@ always_store_marginals 1
 * CBC 2.9
 * CONOPT 3.14V
 * CPLEX 12.6.2
-"CPLEX 12.6.2".MPS 2
 * CPOptimizer 12.6
 * GUROBI 6.0
 * IPOPT 3.11
