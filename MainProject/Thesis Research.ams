@@ -109,8 +109,7 @@ Model Main_Thesis_Research {
                             if (not PI_EnableTransmissionConstraints) then
                             
                             
-                              UC_Constraints*AllConstraints
-                            
+                              UC_TransmissionConstraints*AllConstraints
                             
                             
                             endif
@@ -119,7 +118,7 @@ Model Main_Thesis_Research {
                             if (not PI_EnableRampingConstraints) then
                             
                             
-                              UC_Constraints*AllConstraints
+                              UC_RampConstraints*AllConstraints
                             
                             
                             endif
@@ -128,7 +127,7 @@ Model Main_Thesis_Research {
                             if (not PI_EnableReserveConstraints) then
                             
                             
-                              UC_Constraints*AllConstraints
+                              UC_ReserveContraints*AllConstraints
                             
                             endif
                             
@@ -144,12 +143,23 @@ Model Main_Thesis_Research {
                             - 'CE_UC_VoltageAngleSusceptanceLaw'
                             - 'CG_UC_MinimumVoltageAngle'
                             - 'CL_UC_MaximumVoltageAngle'
+                            - 'CL_UC_ReserveRequirementCapacity'
                         }
                         Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
                     }
                 }
             }
             Section UC_Constraints {
+                DeclarationSection UC_UptimeDowntimeConstraints {
+                    Constraint CU_UC_MinimumUptime {
+                        IndexDomain: (iNonRenewableGenerator,iTime);
+                        Definition: {
+                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) <= Ord(iTime,P_TimeCalendar) + PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) ,
+                            
+                            VC_OnOffStatus(iTime2, iNonRenewableGenerator)) >= VC_StartupStatus(iTime, iNonRenewableGenerator)*PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator))
+                        }
+                    }
+                }
                 DeclarationSection UC_OnOffLogicalConstraints {
                     Constraint CL_UC_CantStartAndShutInTheSamePeriod {
                         IndexDomain: (iTime,iNonRenewableGenerator);
@@ -216,8 +226,8 @@ Model Main_Thesis_Research {
                             - PD_LoadMW(iBus, iTime)
                             
                             !Slack
-                            !- VC_Model0ED_OverGenerationSlack(iTime, iBus)*PI_AddSlackVariables
-                            !+ VC_Model0ED_UnderGenerationSlack(iTime, iBus)*PI_AddSlackVariables
+                            - VC_OverGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
+                            + VC_UnderGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
                             =
                             
                             0
@@ -248,8 +258,8 @@ Model Main_Thesis_Research {
                     Constraint CL_UC_MaximumGenerationNonRenewableSources {
                         IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
-                            VC_PowerGenerated[iTime,iNonRenewableGenerator] +
-                            sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
+                            VC_PowerGenerated[iTime,iNonRenewableGenerator]
+                            + sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
                             
                             <= PI_MaximumGenerationMW[iNonRenewableGenerator]*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                         }
@@ -258,8 +268,9 @@ Model Main_Thesis_Research {
                         IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
                             VC_PowerGenerated[iTime,iNonRenewableGenerator] +
-                            sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
-                            0.30*PI_MaximumGenerationMW(iNonRenewableGenerator)*VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            sum(iReserveProduct,VC_Reserve(iTime,iNonRenewableGenerator,iReserveProduct))*PI_EnableReserveConstraints
+                            >=
+                            PI_MinimumGenerationMW(iNonRenewableGenerator)*VC_OnOffStatus(iTime, iNonRenewableGenerator)
                             
                             
                             !PI_MinimumGenerationMW[iGenerator]
@@ -291,29 +302,31 @@ Model Main_Thesis_Research {
                             
                             
                             
-                            !+ sum(iBus,VC_Model0ED_UnderGenerationSlack(iTime, iBus))*PI_AddSlackVariables
+                            + sum(iBus,VC_UnderGenerationSlack(iTime, iBus))*PI_EnableSlackVariables
                              = sum(iBus,PD_LoadMW[iBus,iTime])
                             
                             + sum((iBus,iBus2) | iBus <> iBus2,
                             VC_PowerLossByTransmission(iTime, iBus, iBus2)*PI_EnableTransmissionLosses
                             )
                             
-                            ! + sum(iBus,VC_Model0ED_OverGenerationSlack(iTime, iBus)) *PI_AddSlackVariables
+                             + sum(iBus,VC_OverGenerationSlack(iTime, iBus)) *PI_EnableSlackVariables
                         }
                     }
                 }
                 DeclarationSection UC_ReserveContraints {
                     Constraint CL_UC_ReserveRequirementCapacity {
                         IndexDomain: (iTime,iGenerator,iReserveRequirement);
-                        Definition: sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct), VC_Reserve(iTime, iGenerator, iReserveProduct)) <= PI_ReserveCapacity(iGenerator, iReserveRequirement);
+                        Definition: {
+                            sum(iReserveProduct | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),
+                            VC_Reserve(iTime, iGenerator, iReserveProduct)) <=
+                             PI_ReserveCapacity(iGenerator, iReserveRequirement)
+                        }
                     }
                     Constraint CU_UC_ReserveMinimumRequirement {
                         IndexDomain: (iTime,iReserveRequirement);
                         Definition: {
-                            sum((iGenerator,iReserveProduct) |
-                            iReserveRequirement in
-                            S_ReserveProductsRequirements(iReserveProduct),VC_Reserve(iTime, iGenerator, iReserveProduct)) >=
-                            
+                            sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),
+                            VC_Reserve(iTime, iGenerator, iReserveProduct)) >=
                             PI_SystemReserveRequirement(iTime, iReserveRequirement)
                         }
                         Comment: "Evaluate this for heat generators only. Make a subset of heat generators";
@@ -326,8 +339,8 @@ Model Main_Thesis_Research {
                         Range: free;
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -415,6 +428,7 @@ Model Main_Thesis_Research {
                               ED_RampConstraints*AllConstraints
                             
                             
+                            
                             endif
                             
                             -
@@ -434,10 +448,10 @@ Model Main_Thesis_Research {
                             
                             - 'CG_Model0ED_MaximumTransmission'
                             - 'CG_Model0ED_MinimumTransmission'
-                            - 'CL_ReserveRequirementCapacity'
                             - 'CE_Model0ED_VoltageAngleSusceptanceLaw'
                             - 'CG_Model0ED_MinimumVoltageAngle'
                             - 'CL_Model0ED_MaximumVoltageAngle'
+                            - 'CL_ReserveRequirementCapacity'
                         }
                         Comment: "With this set it is possible to evaluate the impact of different constraints in the result";
                     }
@@ -552,15 +566,6 @@ Model Main_Thesis_Research {
                             <= PI_MaximumGenerationMW[iNonRenewableGenerator]
                         }
                     }
-                    Constraint CG_Model0_MinimumGenerationNonRenewableSources {
-                        IndexDomain: (iGenerator,iTime);
-                        Definition: {
-                            VC_PowerGenerated[iTime,iGenerator] +
-                            sum(iReserveProduct,VC_Reserve(iTime,iGenerator,iReserveProduct))*PI_EnableReserveConstraints >=
-                            
-                            PI_MinimumGenerationMW[iGenerator]
-                        }
-                    }
                 }
                 DeclarationSection ED_RampConstraints {
                     Constraint CL_Model0_RampUpRateRequirements {
@@ -607,7 +612,7 @@ Model Main_Thesis_Research {
                             PI_ReserveCapacity(iGenerator, iReserveRequirement)
                         }
                     }
-                    Constraint CU_ReserveMinimumRequirement {
+                    Constraint CU_ED_ReserveMinimumRequirement {
                         IndexDomain: (iTime,iReserveRequirement);
                         Definition: {
                             sum((iGenerator,iReserveProduct) | iReserveRequirement in S_ReserveProductsRequirements(iReserveProduct),
@@ -775,7 +780,7 @@ Model Main_Thesis_Research {
                 StringParameter PS_StartDate;
                 StringParameter PS_EndDate;
                 Calendar P_TimeCalendar {
-                    Index: iTime;
+                    Index: iTime, iTime2;
                     Unit: PI_TimeGranularity * minute;
                     BeginDate: PS_StartDate;
                     EndDate: PS_EndDate;
@@ -1072,6 +1077,17 @@ Model Main_Thesis_Research {
             }
         }
         Section Generator {
+            DeclarationSection GeneratorStartupParametersDeclaration {
+                Parameter PI_MinimumGenerationMW {
+                    IndexDomain: iNonRenewableGenerator;
+                    Text: "MW";
+                    Definition: PI_MinimumOperatingOutput(PE_GeneratorType(iNonRenewableGenerator))*PI_MaximumGenerationMW(iNonRenewableGenerator)/100;
+                }
+                Parameter PI_MinimumOperatingOutput {
+                    IndexDomain: iGeneratorType;
+                    Range: [0, 100];
+                }
+            }
             DeclarationSection GeneratorCapacityDeclaration {
                 Parameter PI_UnitGroupCapacity {
                     IndexDomain: (iUnitGroup);
@@ -1080,10 +1096,6 @@ Model Main_Thesis_Research {
                     IndexDomain: iGenerator;
                     Text: "MW";
                     Definition: PI_UnitGroupCapacity(PE_UnitGroup(iGenerator));
-                }
-                Parameter PI_MinimumGenerationMW {
-                    IndexDomain: iGenerator;
-                    Text: "MW";
                 }
             }
             DeclarationSection GeneratorsResultsDeclaration {
@@ -1653,8 +1665,8 @@ Model Main_Thesis_Research {
                 	SheetName    : "TestFileResults");
                 
                 
-                !PS_StartDate := "2015-07-01 00:00:00";
-                !PS_EndDate := "2015-07-03 00:00:00";
+                PS_StartDate := "2015-07-01 00:00:00";
+                PS_EndDate := "2015-07-08 00:00:00";
                 
                 PI_PerturbationInterpolationLevel := 20;
                 
