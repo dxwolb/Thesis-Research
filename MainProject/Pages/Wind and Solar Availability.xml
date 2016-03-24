@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-03-24 15:52:45">
+	<PageEditSize Type="Specified">
+		<Size Width="600" Height="340" />
+	</PageEditSize>
+	<ProjectUUID>92895992-12EE-4F7A-87EF-8CA1A818D986</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<ResizeData>
+		<MainArea Line="AdjustableFromLeft" Value="177">
+			<LeftArea Line="FixedFromTop" Value="33" />
+		</MainArea>
+	</ResizeData>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="36" left="12" bottom="330" right="174" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>Scrollbars</ScrollControl>
+		<AutoAdjust>Right</AutoAdjust>
+		<VisibleArea>
+			<Left>-0.806756098112</Left>
+			<Right>5.96932365017</Right>
+			<Top>14.0080797483</Top>
+			<Bottom>0.455920251739</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>iBus</Identifier>
+			<XCoordinate>PI_BusXCoordinate( iBus -&gt; PE_SelectedBusforWindAvalMap )</XCoordinate>
+			<YCoordinate>PI_BusYCoordinate( iBus -&gt; PE_SelectedBusforWindAvalMap )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>10</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>ElementName</TextShowWhat>
+			<Color>8387D389-3F4A-4D87-9199-53B0EDCD0359 navy blue</Color>
+			<Size>VALUE( iBus ) := 10 * PD_HasRenewablePotential(iBus)</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>iGenerator</Identifier>
+			<XCoordinate>PI_GeneratorXCoordinate( iGenerator )</XCoordinate>
+			<YCoordinate>PI_GeneratorYCoordinate( iGenerator )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>15</MaximumSize>
+			<TextPosition>Bottom</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>8C1FFC91-A781-4272-831D-2D86F23592E4 red</Color>
+			<Size>VALUE( iGenerator ) := (PE_GeneratorType(iGenerator) = PE_SelectedGeneratorTypeForMap)*5</Size>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>PI_TransmissionLineBranches( iTransmissionLine, iBus, iBus2 )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>4</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Selectable>0</Selectable>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="6" left="180" bottom="156" right="582" />
+		<TabOrder>4</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>PI_WindPotential( iYearCalendar, PE_SelectedBusforWindAvalMap )</Identifier>
+			<Color>ABB4A8BD-7798-41D3-BA43-C629DFC98735 green</Color>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<XRange>
+			<MaxVisibleLabels>400</MaxVisibleLabels>
+		</XRange>
+	</PageObject>
+	<PageObject Type="Curve">
+		<Location top="156" left="180" bottom="330" right="582" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>PI_SolarPotential( iYearCalendar, PE_SelectedBusforWindAvalMap )</Identifier>
+			<Color>6557880F-CCE8-4670-958C-5DDF32842E87 yellow</Color>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<XRange>
+			<MaxVisibleLabels>400</MaxVisibleLabels>
+		</XRange>
+	</PageObject>
+	<PageObject Type="Floating Index">
+		<Location top="6" left="12" bottom="30" right="174" />
+		<TabOrder>3</TabOrder>
+		<ObjectUUID>1B31AB2F-782B-46C5-B3C4-E4D868528687</ObjectUUID>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" />
+		<Circular>true</Circular>
+		<ClickShowsList>true</ClickShowsList>
+		<BackgroundColor RGB="#ffffff" />
+		<Identifier>PE_SolarorWindSelectedForNode</Identifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PE_SelectedGeneratorTypeForMap</Symbol>
+			<Symbol>PI_BusXCoordinate</Symbol>
+			<Symbol>PI_BusYCoordinate</Symbol>
+			<Symbol>PI_WindPotential</Symbol>
+			<Symbol>PI_SolarPotential</Symbol>
+			<Symbol>PI_GeneratorXCoordinate</Symbol>
+			<Symbol>PI_GeneratorYCoordinate</Symbol>
+			<Symbol>SI_GeneratorTypes</Symbol>
+			<Symbol>PE_GeneratorType</Symbol>
+			<Symbol>PI_TransmissionLineBranches</Symbol>
+			<Symbol>iYearCalendar</Symbol>
+			<Symbol>iBus</Symbol>
+			<Symbol>iBus2</Symbol>
+			<Symbol>iGenerator</Symbol>
+			<Symbol>iTransmissionLine</Symbol>
+			<Symbol>PE_SelectedBusforWindAvalMap</Symbol>
+			<Symbol>PE_SolarorWindSelectedForNode</Symbol>
+			<Symbol>PD_HasRenewablePotential</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

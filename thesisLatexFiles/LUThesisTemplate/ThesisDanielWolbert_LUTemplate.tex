@@ -1,0 +1,45 @@
+%Sample of text file to include all the documents
+
+\documentclass[12pt,LUDisStyle,twosided]{book}
+\usepackage[hang,small,bf]{caption}
+\usepackage{LUDisStyle}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage[square, comma, sort&compress]{natbib}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\addtolength{\belowcaptionskip}{10pt}
+
+\begin{document}
+\pagestyle{plain}
+\pagenumbering{roman}
+\dissertationtrue
+\include{coverCopyright}
+\include{signatures}
+\include{dedication}
+\tableofcontents
+\nopagebreak
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\newpage
+\pagestyle{plain}
+\pagenumbering{arabic}
+\addcontentsline{toc}{chapter}{Abstract}
+\include{myabstract}
+\pagestyle{plain}
+\include{chapter1}
+\appendix
+\include{appendix}
+\bibliographystyle{naturemag}
+\bibliography{mybibliograph}
+\addcontentsline{toc}{chapter}{Vita}
+\include{vita}
+\end{document}
+

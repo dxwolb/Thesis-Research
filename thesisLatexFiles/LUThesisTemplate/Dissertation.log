@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  21 MAR 2016 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  24 MAR 2016 14:14
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -189,7 +189,10 @@ LaTeX Info: Redefining \cite on input line 694.
 LaTeX Warning: Unused global option(s):
     [LUDisStyle,twosided].
 
-No file Dissertation.aux.
+(Dissertation.aux (coverCopyright.aux) (signatures.aux) (dedication.aux)
+(myabstract.aux) (chapter1.aux) (chapter2.aux) (chapter3.aux) (chapter4.aux)
+(chapter5.aux) (chapter6.aux) (chapter7.aux) (chapter8.aux) (appendix.aux)
+(vita.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
@@ -205,7 +208,7 @@ LaTeX Font Info:    ... okay on input line 18.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen123
@@ -245,19 +248,17 @@ No file dedication.tex.
 
 
 
-]
-No file Dissertation.toc.
+] (Dissertation.toc)
 \tf@toc=\write3
-[5] [6
+ [5] [6
 
-]
-No file Dissertation.lot.
+] (Dissertation.lot)
 \tf@lot=\write4
-[7] [8
+ [7] [8
 
-]
-No file Dissertation.lof.
+] (Dissertation.lof)
 \tf@lof=\write5
+
 [9]
 No file myabstract.tex.
 (chapter1.tex
@@ -283,10 +284,10 @@ No file vita.tex.
 (chapter5.aux) (chapter6.aux) (chapter7.aux) (chapter8.aux) (appendix.aux)
 (vita.aux)) ) 
 Here is how much of TeX's memory you used:
- 3767 strings out of 493673
- 52763 string characters out of 3141526
- 109018 words of memory out of 3000000
- 7049 multiletter control sequences out of 15000+200000
+ 3817 strings out of 493673
+ 53405 string characters out of 3141526
+ 112718 words of memory out of 3000000
+ 7063 multiletter control sequences out of 15000+200000
  10708 words of font info for 40 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,6n,38p,246b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -294,7 +295,7 @@ Here is how much of TeX's memory you used:
 cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17
 .pfb>
-Output written on Dissertation.pdf (10 pages, 44780 bytes).
+Output written on Dissertation.pdf (10 pages, 45374 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

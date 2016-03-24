@@ -9,6 +9,7 @@
 		<Page Name="Buses Specification" PageGUID="BE80D9CD-E449-44EA-A64E-5174B4C22858" />
 		<Page Name="Generators Speficication" PageGUID="606B477A-44BA-4EFF-9393-6B9D1167748C" />
 		<Page Name="Costs" PageGUID="0F4D5A8C-7995-49E4-974C-102EF67091E9" />
+		<Page Name="Wind and Solar Availability" PageGUID="456D3C1F-A9B5-4508-B03B-32F9A729A264" />
 		<Page Name="Summary" PageGUID="291CA5AA-2FE4-4474-AB78-34A214AF0B5F" />
 	</Page>
 	<Page Name="Optimization" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4">

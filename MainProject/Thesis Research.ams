@@ -628,6 +628,41 @@ Model Main_Thesis_Research {
         }
     }
     Section Page_Parameters {
+        DeclarationSection WindAndSolarAvailabilityPage {
+            Parameter PD_AverageSolarPotential {
+                IndexDomain: iBus;
+                Definition: average(iYearCalendar,PI_SolarPotential(iYearCalendar, iBus));
+            }
+            Parameter PD_AverageWindPotential {
+                IndexDomain: iBus;
+                Definition: average(iYearCalendar,PI_WindPotential(iYearCalendar, iBus));
+            }
+            Parameter PD_HasRenewablePotential {
+                IndexDomain: iBus;
+                Range: binary;
+                Definition: {
+                    if PE_SolarorWindSelectedForNode = 'Wind' then
+                    
+                    	sum(iYearCalendar,PI_WindPotential(iYearCalendar, iBus)) > 0
+                    
+                    else
+                    
+                    	sum(iYearCalendar,PI_SolarPotential(iYearCalendar, iBus)) > 0
+                    
+                    endif
+                }
+            }
+            Set SD_RenewableGeneratorTypes {
+                SubsetOf: SI_GeneratorTypes;
+                Definition: data { Wind, Solar };
+            }
+            ElementParameter PE_SolarorWindSelectedForNode {
+                Range: SD_RenewableGeneratorTypes;
+            }
+            ElementParameter PE_SelectedBusforWindAvalMap {
+                Range: SI_Buses;
+            }
+        }
         DeclarationSection NetworkPage {
             ElementParameter PE_SelectedGeneratorTypeForMap {
                 Range: SI_GeneratorTypes;
@@ -1675,8 +1710,8 @@ Model Main_Thesis_Research {
                 	SheetName    : "TestFileResults");
                 
                 
-                PS_StartDate := "2015-07-01 00:00:00";
-                PS_EndDate := "2015-07-08 00:00:00";
+                !PS_StartDate := "2015-07-01 00:00:00";
+                !PS_EndDate := "2015-07-08 00:00:00";
                 
                 PI_PerturbationInterpolationLevel := 20;
                 
@@ -1695,12 +1730,12 @@ Model Main_Thesis_Research {
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  0,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
@@ -1713,12 +1748,12 @@ Model Main_Thesis_Research {
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  1,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
                 
                 endfor;
                 

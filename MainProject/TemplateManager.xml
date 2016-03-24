@@ -19,4 +19,5 @@
 	<Page Name="Average Ramping" PageGUID="26C2A04B-AB88-4B84-BD18-373DF1CAA201" />
 	<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
 	<Page Name="Generators Status" PageGUID="F89484E4-33DA-44DE-99E5-CDD27E204DFE" />
+	<Page Name="Wind and Solar Availability" PageGUID="456D3C1F-A9B5-4508-B03B-32F9A729A264" />
 </TemplateManager>
