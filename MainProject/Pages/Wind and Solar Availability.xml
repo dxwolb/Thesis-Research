@@ -39,18 +39,6 @@
 			<Size>VALUE( iBus ) := 10 * PD_HasRenewablePotential(iBus)</Size>
 			<Shape>Circle</Shape>
 		</Node>
-		<Node>
-			<Identifier>iGenerator</Identifier>
-			<XCoordinate>PI_GeneratorXCoordinate( iGenerator )</XCoordinate>
-			<YCoordinate>PI_GeneratorYCoordinate( iGenerator )</YCoordinate>
-			<NumberFormat Width="6" Decimals="2" />
-			<MaximumSize>15</MaximumSize>
-			<TextPosition>Bottom</TextPosition>
-			<TextShowWhat>Nothing</TextShowWhat>
-			<Color>8C1FFC91-A781-4272-831D-2D86F23592E4 red</Color>
-			<Size>VALUE( iGenerator ) := (PE_GeneratorType(iGenerator) = PE_SelectedGeneratorTypeForMap)*5</Size>
-			<Shape>Rectangle</Shape>
-		</Node>
 		<Arc>
 			<Identifier>PI_TransmissionLineBranches( iTransmissionLine, iBus, iBus2 )</Identifier>
 			<NumberFormat Width="6" Decimals="2" />
@@ -120,24 +108,18 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PE_SelectedGeneratorTypeForMap</Symbol>
+			<Symbol>PD_HasRenewablePotential</Symbol>
+			<Symbol>PE_SolarorWindSelectedForNode</Symbol>
+			<Symbol>PE_SelectedBusforWindAvalMap</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
 			<Symbol>PI_WindPotential</Symbol>
 			<Symbol>PI_SolarPotential</Symbol>
-			<Symbol>PI_GeneratorXCoordinate</Symbol>
-			<Symbol>PI_GeneratorYCoordinate</Symbol>
-			<Symbol>SI_GeneratorTypes</Symbol>
-			<Symbol>PE_GeneratorType</Symbol>
 			<Symbol>PI_TransmissionLineBranches</Symbol>
 			<Symbol>iYearCalendar</Symbol>
 			<Symbol>iBus</Symbol>
 			<Symbol>iBus2</Symbol>
-			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
-			<Symbol>PE_SelectedBusforWindAvalMap</Symbol>
-			<Symbol>PE_SolarorWindSelectedForNode</Symbol>
-			<Symbol>PD_HasRenewablePotential</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

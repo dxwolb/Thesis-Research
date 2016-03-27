@@ -1,0 +1,76 @@
+%% This is an example first chapter.  You should put chapter/appendix that you
+%% write into a separate file, and add a line \include{yourfilename} to
+%% main.tex, where `yourfilename.tex' is the name of the chapter/appendix
+%% file. You can process specific files by typing their names in at the
+%% \files= prompt when you run the file main.tex through LaTeX.  
+
+
+\chapter{Development}
+\section{Data}
+
+\section{Models}
+
+This thesis covers the Economic Dispatch and Unit Commitment models, developed exhaustively in the literature.
+
+\subsection{Indices and Sets}
+
+\begin{tabular}{ll}
+
+$g \in \mc{G} $& Set of generators\\
+$b \in \mc{B} $& Set of buses\\
+$g \in \mc{G}^{NR} $& Subset of non-renewable generators\\
+$g \in \mc{G}^{R} $& Subset of renewable generators \\
+$gt \in \mc{GT} $& Set of generator types \\
+$u \in \mc{U} $& Set of unit groups \\
+$l \in \mc{L} $& Set of transmission lines \\
+$rr \in \mc{RR} $& Set of reserve requirements \\
+$rp \in \mc{RP} $& Set of reserve products \\
+$t \in \mc{T} $& Set of time periods \\
+
+\end{tabular}
+
+\subsection{Parameters}
+
+\begin{tabular}{ll}
+
+$L_{bt} $& Load at bus $b$ in time $t$ \\
+$C_{g} $& Generation cost for generator g (\$ / MW) $t$ \\
+$S_{g} $& Start-up cost for generator g \\
+$R^{up}_{g} $& Ramp up limit for generator g \\
+$R^{down}_{g} $& Ramp down limit for generator g \\
+$G^{max}_{g} $& Maximum generation capacity for generator g \\
+$G^{min}_{g} $& Minimum generation capacity for generator g \\
+$T^{max}_{g} $& Maximum transmission of transmission line l \\
+$P^{ren}_{g,t} $& Power generation of renewable generator g in time t\\
+
+\end{tabular}
+
+
+Note 1: The generation of renewable resources are not in the decision variables. The developed models only decides the generation for non-renewable resources. Therefore the generation is considered a deterministic parameter, not a variable in the model.
+
+\subsection{Variables}
+
+\begin{tabular}{ll}
+
+$P^{ren}_{g,t} $& Power generation of non-renewable generator g in time t (MW)\\
+$T_{i,j,t} $& Power transmitted from bus i to bus j in time t (MW)\\
+$T^{loss}_{i,j,t} $& Power loss in transmission from bus i to bus j in time t (MW)\\
+$S_{g,t} $& On/off status of generator g at time n\\
+$S^{on}_{g,t} $& Start-up status of generator g at time n\\
+$S^{off}_{g,t} $& Shut-down status of generator g at time n\\
+
+\end{tabular}
+
+\subsection{Economic Dispatch Models}
+
+The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions has been already made.
+
+\subsubsection{Simple Economic Dispatch}
+
+\begin{subequations}\label{model:simple_ED}
+
+\end{subequations}
+
+
+\section{Implementation}
+

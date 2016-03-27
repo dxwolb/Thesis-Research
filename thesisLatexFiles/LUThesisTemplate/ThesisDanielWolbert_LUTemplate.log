@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  24 MAR 2016 15:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  27 MAR 2016 18:17
 entering extended mode
 **ThesisDanielWolbert_LUTemplate.tex
 (ThesisDanielWolbert_LUTemplate.tex
@@ -190,21 +190,19 @@ LaTeX Warning: Unused global option(s):
     [LUDisStyle,twosided].
 
 (ThesisDanielWolbert_LUTemplate.aux (coverCopyright.aux) (signatures.aux)
-(dedication.aux) (myabstract.aux) (chapter1.aux) (chapter2.aux) (chapter3.aux)
-(chapter4.aux) (chapter5.aux) (chapter6.aux) (chapter7.aux) (chapter8.aux)
-(appendix.aux) (vita.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+(dedication.aux) (myabstract.aux) (appendix.aux) (vita.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -263,9 +261,7 @@ No file dedication.tex.
 \tf@lof=\write5
  [9] (myabstract.tex) [1
 
-] (chapter1.tex
-[2
-
+] [2
 
 
 ]
@@ -278,35 +274,42 @@ Chapter 2.
 
 ]
 Chapter 3.
-[7] [8
-
-]
+[7] [8] [9] [10]
 Chapter 4.
-[9] [10
+[11
+
+] [12
 
 ]
 Chapter 5.
-) [11]
+[13]
 No file appendix.tex.
 No file ThesisDanielWolbert_LUTemplate.bbl.
 No file vita.tex.
 (ThesisDanielWolbert_LUTemplate.aux (coverCopyright.aux) (signatures.aux)
-(dedication.aux) (myabstract.aux) (chapter1.aux) (appendix.aux) (vita.aux)) ) 
+(dedication.aux) (myabstract.aux) (appendix.aux) (vita.aux)) ) 
 Here is how much of TeX's memory you used:
- 3805 strings out of 493673
- 53553 string characters out of 3141526
- 111718 words of memory out of 3000000
- 7063 multiletter control sequences out of 15000+200000
+ 3779 strings out of 493673
+ 53391 string characters out of 3141526
+ 116892 words of memory out of 3000000
+ 7065 multiletter control sequences out of 15000+200000
  10708 words of font info for 40 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 36i,6n,38p,751b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on ThesisDanielWolbert_LUTemplate.pdf (20 pages, 56714 bytes).
+ 36i,9n,38p,751b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on ThesisDanielWolbert_LUTemplate.pdf (22 pages, 135543 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
