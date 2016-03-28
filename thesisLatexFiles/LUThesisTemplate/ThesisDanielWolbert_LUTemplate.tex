@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{verbatim}
+
 \usepackage[square, comma, sort&compress]{natbib}
 \renewcommand{\topfraction}{0.95}
 \renewcommand{\textfraction}{0.05}
@@ -139,7 +140,7 @@ The objective function must be modifies to account for start up and shut down co
 
 \section{Implementation}
 
-Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc. 
+Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc. If i Cite this one, will it apeaar? \cite{RefWorks:9}
 
 \chapter{Analysis}
 
@@ -148,10 +149,12 @@ In the analysis make all the scenario runs, describe the data.
 \chapter{Conclusion}
 
 \appendix
-\include{appendix}
+%\include{appendix}
+
+\nocite{RefWorks:11}
+\bibliography{biblio}
 \bibliographystyle{naturemag}
-\bibliography{mybibliograph}
-\addcontentsline{toc}{chapter}{Vita}
-\include{vita}
+%\addcontentsline{toc}{chapter}{Vita}
+%\include{vita}
 \end{document}
 

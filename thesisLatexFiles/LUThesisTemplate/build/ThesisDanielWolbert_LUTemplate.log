@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  28 MAR 2016 15:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  28 MAR 2016 15:44
 entering extended mode
 **ThesisDanielWolbert_LUTemplate.tex
 (ThesisDanielWolbert_LUTemplate.tex
@@ -191,18 +191,18 @@ LaTeX Warning: Unused global option(s):
 
 (ThesisDanielWolbert_LUTemplate.aux (coverCopyright.aux) (signatures.aux)
 (dedication.aux) (myabstract.aux) (appendix.aux) (vita.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -274,7 +274,12 @@ Chapter 2.
 
 ]
 Chapter 3.
-[7] [8] [9] [10]
+[7] [8] [9]
+
+Package natbib Warning: Citation `RefWorks:9' on page 10 undefined on input lin
+e 143.
+
+[10]
 Chapter 4.
 [11
 
@@ -282,25 +287,26 @@ Chapter 4.
 
 ]
 Chapter 5.
-[13]
-No file appendix.tex.
-(ThesisDanielWolbert_LUTemplate.bbl [14
 
+Package natbib Warning: Citation `RefWorks:11' undefined on input line 154.
 
+(ThesisDanielWolbert_LUTemplate.bbl [13] [14
 
 ]
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-) [15]
-No file vita.tex.
-(ThesisDanielWolbert_LUTemplate.aux (coverCopyright.aux) (signatures.aux)
+)
+
+Package natbib Warning: There were undefined citations.
+
+[15] (ThesisDanielWolbert_LUTemplate.aux (coverCopyright.aux) (signatures.aux)
 (dedication.aux) (myabstract.aux) (appendix.aux) (vita.aux)) ) 
 Here is how much of TeX's memory you used:
- 3781 strings out of 493673
- 53459 string characters out of 3141526
+ 3784 strings out of 493673
+ 53726 string characters out of 3141526
  116892 words of memory out of 3000000
- 7065 multiletter control sequences out of 15000+200000
+ 7067 multiletter control sequences out of 15000+200000
  10708 words of font info for 40 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,9n,38p,751b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -315,7 +321,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x86)/MiKTeX 2
 fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on ThesisDanielWolbert_LUTemplate.pdf (24 pages, 136937 bytes).
+Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/LUT
+hesisTemplate/build/ThesisDanielWolbert_LUTemplate.pdf" (24 pages, 137367 bytes
+).
 PDF statistics:
  119 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  28 MAR 2016 15:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  28 MAR 2016 15:45
 entering extended mode
 **Thesis_DanielWolbert_OldTemplate.tex
 (Thesis_DanielWolbert_OldTemplate.tex
@@ -240,11 +240,12 @@ Missing character: There is no ™ in font cmr10!
  [1
 
 {C:/Users/Daniel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4
-] [5]
+]
+(Thesis_DanielWolbert_OldTemplate.bbl) [5]
 (Thesis_DanielWolbert_OldTemplate.aux) ) 
 Here is how much of TeX's memory you used:
- 2803 strings out of 493673
- 36138 string characters out of 3141526
+ 2807 strings out of 493673
+ 36441 string characters out of 3141526
  108749 words of memory out of 3000000
  6115 multiletter control sequences out of 15000+200000
  13400 words of font info for 53 fonts, out of 3000000 for 9000
@@ -267,8 +268,8 @@ pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Thesis_DanielWolbert_OldTemplate.pdf (5 pages, 211454 bytes).
-
+Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/Old
+Template/build/Thesis_DanielWolbert_OldTemplate.pdf" (5 pages, 211454 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
