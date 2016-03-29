@@ -1,6 +1,0 @@
-\contentsline {chapter}{List of Tables}{v}
-\contentsline {chapter}{List of Figures}{vii}
-\contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Section}{1}
-\contentsline {subsection}{\numberline {1.1.1}Subsection}{1}
-\contentsline {chapter}{Abstract}{1}
