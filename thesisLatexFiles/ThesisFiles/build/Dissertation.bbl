@@ -1,0 +1,110 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Refworks:9}
+\bibinfo{author}{Bertsimas, D.}, \bibinfo{author}{Litvinov, E.},
+  \bibinfo{author}{Sun, X.~A.}, \bibinfo{author}{Zhao, J.} \&
+  \bibinfo{author}{Zheng, T.}
+\newblock \bibinfo{title}{Adaptive robust optimization for the security
+  constrained unit commitment problem}.
+\newblock \emph{\bibinfo{journal}{Power Systems, IEEE Transactions on}}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{52--63}
+  (\bibinfo{year}{2013}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\bibitem{RefWorks:11}
+\bibinfo{author}{Cain, M.~B.}, \bibinfo{author}{O’neill, R.~P.} \&
+  \bibinfo{author}{Castillo, A.}
+\newblock \bibinfo{title}{History of optimal power flow and formulations}.
+\newblock \emph{\bibinfo{journal}{Federal Energy Regulatory Commission}}
+  (\bibinfo{year}{2012}).
+
+\bibitem{RefWorks:13}
+\bibinfo{author}{Fisher, E.~B.}, \bibinfo{author}{O'Neill, R.~P.} \&
+  \bibinfo{author}{Ferris, M.~C.}
+\newblock \bibinfo{title}{Optimal transmission switching}.
+\newblock \emph{\bibinfo{journal}{Power Systems, IEEE Transactions on}}
+  \textbf{\bibinfo{volume}{23}}, \bibinfo{pages}{1346--1355}
+  (\bibinfo{year}{2008}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\bibitem{RefWorks:6}
+\bibinfo{author}{Garver, L.~L.}
+\newblock \bibinfo{title}{Power generation scheduling by integer
+  programming-development of theory}.
+\newblock \emph{\bibinfo{journal}{Power Apparatus and Systems, Part
+  III.Transactions of the American Institute of Electrical Engineers}}
+  \textbf{\bibinfo{volume}{81}}, \bibinfo{pages}{730--734}
+  (\bibinfo{year}{1962}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\bibitem{RefWorks:14}
+\bibinfo{author}{Zhong, H.}, \bibinfo{author}{Xia, Q.}, \bibinfo{author}{Wang,
+  Y.} \& \bibinfo{author}{Kang, C.}
+\newblock \bibinfo{title}{Dynamic economic dispatch considering transmission
+  losses using quadratically constrained quadratic program method}.
+\newblock \emph{\bibinfo{journal}{IEEE Transactions on Power Systems}}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{2232--2241}
+  (\bibinfo{year}{2013}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\bibitem{RefWorks:2}
+\bibinfo{author}{Hargreaves, J.}, \bibinfo{author}{Hart, E.~K.},
+  \bibinfo{author}{Jones, R.} \& \bibinfo{author}{Olson, A.}
+\newblock \bibinfo{title}{Reflex: An adapted production simulation methodology
+  for flexible capacity planning}.
+\newblock \emph{\bibinfo{journal}{Power Systems, IEEE Transactions on}}
+  \textbf{\bibinfo{volume}{30}}, \bibinfo{pages}{1306--1315}
+  (\bibinfo{year}{2015}).
+
+\bibitem{RefWorks:3}
+\bibinfo{author}{Harris, C.}, \bibinfo{author}{Meyers, J.~P.} \&
+  \bibinfo{author}{Webber, M.~E.}
+\newblock \bibinfo{title}{A unit commitment study of the application of energy
+  storage toward the integration of renewable generation}.
+\newblock \emph{\bibinfo{journal}{Journal of Renewable and Sustainable Energy}}
+  \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{013120} (\bibinfo{year}{2012}).
+
+\bibitem{RefWorks:4}
+\bibinfo{author}{Kassakian, J.~G.} \emph{et~al.}
+\newblock \bibinfo{title}{The future of the electric grid}.
+\newblock \emph{\bibinfo{journal}{Massachusetts Institute of Technology,
+  Tech.Rep}}  (\bibinfo{year}{2011}).
+
+\bibitem{RefWorks:1}
+\bibinfo{author}{Ostrowski, J.}, \bibinfo{author}{Anjos, M.~F.} \&
+  \bibinfo{author}{Vannelli, A.}
+\newblock \bibinfo{title}{Tight mixed integer linear programming formulations
+  for the unit commitment problem}.
+\newblock \emph{\bibinfo{journal}{IEEE Transactions on Power Systems}}
+  \textbf{\bibinfo{volume}{27}}, \bibinfo{pages}{39} (\bibinfo{year}{2012}).
+
+\bibitem{RefWorks:8}
+\bibinfo{author}{Palmintier, B.} \& \bibinfo{author}{Webster, M.}
+\newblock \bibinfo{title}{Impact of unit commitment constraints on generation
+  expansion planning with renewables}.
+\newblock In \emph{\bibinfo{booktitle}{Power and Energy Society General
+  Meeting, 2011 IEEE}}, \bibinfo{pages}{1--7} (\bibinfo{year}{2011}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\bibitem{RefWorks:10}
+\bibinfo{author}{Saadat, H.}
+\newblock \emph{\bibinfo{title}{Power system analysis}}
+  (\bibinfo{publisher}{WCB/McGraw-Hill}, \bibinfo{year}{1999}).
+
+\bibitem{RefWorks:12}
+\bibinfo{author}{Zhiqiang, Y.}, \bibinfo{author}{Zhijian, H.} \&
+  \bibinfo{author}{Chuanwen, J.}
+\newblock \bibinfo{title}{Economic dispatch and optimal power flow based on
+  chaotic optimization}.
+\newblock In \emph{\bibinfo{booktitle}{Power System Technology, 2002.
+  Proceedings. PowerCon 2002. International Conference on}},
+  vol.~\bibinfo{volume}{4}, \bibinfo{pages}{2313--2317 vol.4}
+  (\bibinfo{year}{2002}).
+\newblock \bibinfo{note}{ID: 1}.
+
+\end{thebibliography}

@@ -1,0 +1,20 @@
+\contentsline {chapter}{List of Tables}{vi}
+\contentsline {chapter}{List of Figures}{vii}
+\contentsline {chapter}{Abstract}{1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Literature Review}{3}
+\contentsline {chapter}{\numberline {3}Development}{5}
+\contentsline {section}{\numberline {3.1}Data}{5}
+\contentsline {section}{\numberline {3.2}Models}{5}
+\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{5}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{6}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{6}
+\contentsline {subsection}{\numberline {3.2.4}Economic Dispatch Models}{6}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{7}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{7}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{8}
+\contentsline {section}{\numberline {3.3}Implementation}{8}
+\contentsline {chapter}{\numberline {4}Analysis}{9}
+\contentsline {chapter}{\numberline {5}Conclusion}{11}
+\contentsline {chapter}{\numberline {A}Power Systems Operation Background}{13}
+\contentsline {chapter}{\numberline {B}Data and Analysis}{15}
