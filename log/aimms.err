@@ -1,97 +1,102 @@
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,219)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,220)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,218)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,219)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,217)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,218)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 21636 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,122)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,321)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,320)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,321)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,319)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,320)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 85993 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-5,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-9,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-9,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-8,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 4356 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-4,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-2,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-4,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-2,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 17316 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,102)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,102)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 33485 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,209)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,215)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-The maximum of 20 warnings reached, further warnings suppressed.  See also option maximal_number_of_warnings_reported
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,215)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,324)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 133133 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind6,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind6,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Solar10,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind3,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 16335 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Solar10,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind20,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind20,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind24,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind24,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind36,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 64935 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,322)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 46911 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,102)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,307)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,102)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 186463 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind6,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind43,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Solar10,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind6,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Solar10,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind15,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 29766 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind44,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind51,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind22,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind51,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_Reserve(2015-07-01 00:00:00,Wind22,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind43,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 118326 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
+Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
+Warning at line 1385.
+The element parameter "PE_GeneratorType" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_PerturbationInterpolationLevel" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning at line 1387.
+The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning at line 1387.
+The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning at line 1387.
+The variable "VC_PowerGenerated" is not initialized (default values are used).
+Warning at line 1387.
+The variable "VC_PowerTransmitted" is not initialized (default values are used).
+Warning at line 6 in user-defined function section "RunOptimization".
+The parameter "PI_GeneratorTypeStartupCost" is not initialized (default values are used).
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,124-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,105-S100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,210-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,124-W100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,210-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,320-W100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 6863 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,124-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,105-S100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,210-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,124-W100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_Reserve(2015-07-01 00:00:00,210-W100-1,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,320-W100-1,TMOR)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 6863 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,114-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,214-Sync-Cond)" and "VC_OnOffStatus(2015-07-03 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,314-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 6868 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,114-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,214-Sync-Cond)" and "VC_OnOffStatus(2015-07-03 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,314-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 6868 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,114-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,214-Sync-Cond)" and "VC_OnOffStatus(2015-07-03 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-03 00:00:00,314-SyncCond-1)" and "VC_OnOffStatus(2015-07-03 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 6868 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-4)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,102-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 4342 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-4)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,102-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 4329 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,101-U76-4)" and "VC_OnOffStatus(2015-07-06 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The columns "VC_ShutdownStatus(2015-07-06 00:00:00,102-U76-3)" and "VC_OnOffStatus(2015-07-06 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 6 in user-defined function section "RunOptimization".
+The rows "CL_UC_MaximumGenerationNonRenewableSources(101-U76-3,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 6 in user-defined function section "RunOptimization".
+The rows "CL_UC_MaximumGenerationNonRenewableSources(101-U76-4,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 6 in user-defined function section "RunOptimization".
+The rows "CL_UC_MaximumGenerationNonRenewableSources(102-U76-3,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 134 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 6 in user-defined function section "RunOptimization".
+Only 3 out of 80 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning: The shadowprice of constraint "CE_Model0ED_EnergyBalance" is not initialized (default values are used).

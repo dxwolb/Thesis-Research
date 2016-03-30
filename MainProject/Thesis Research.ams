@@ -154,17 +154,23 @@ Model Main_Thesis_Research {
                     Constraint CU_UC_MinimumUptime {
                         IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
-                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) <= Ord(iTime,P_TimeCalendar) + PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) ,
+                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) ,
                             
-                            VC_OnOffStatus(iTime2, iNonRenewableGenerator)) >= VC_StartupStatus(iTime, iNonRenewableGenerator)*PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator))
+                            VC_OnOffStatus(iTime2, iNonRenewableGenerator)) >=
+                            VC_StartupStatus(iTime, iNonRenewableGenerator)*PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) *(60/PI_TimeGranularity)
+                        }
+                    }
+                    Constraint CU_UC_MinimumDownTime {
+                        IndexDomain: (iNonRenewableGenerator,iTime);
+                        Definition: {
+                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinDownTime(PE_UnitGroup(iNonRenewableGenerator)) ,
+                            
+                            (1 - VC_OnOffStatus(iTime2, iNonRenewableGenerator)) )>=
+                            VC_ShutdownStatus(iTime, iNonRenewableGenerator)*PI_MinDownTime(PE_UnitGroup(iNonRenewableGenerator)) *(60/PI_TimeGranularity)
                         }
                     }
                 }
                 DeclarationSection UC_OnOffLogicalConstraints {
-                    Constraint CL_UC_CantStartAndShutInTheSamePeriod {
-                        IndexDomain: (iTime,iNonRenewableGenerator);
-                        Definition: VC_StartupStatus(iTime, iNonRenewableGenerator) + VC_ShutdownStatus(iTime, iNonRenewableGenerator) <= 1;
-                    }
                     Constraint CE_UC_LogicalConstraint {
                         IndexDomain: (iTime,iNonRenewableGenerator);
                         Definition: {
@@ -867,6 +873,7 @@ Model Main_Thesis_Research {
                 Parameter PI_PerturbationInterpolationLevel {
                     Text: "%";
                     Range: [0, 100];
+                    InitialData: 20;
                 }
                 Parameter PI_PeakLoadMW {
                     IndexDomain: iBus;
@@ -1681,8 +1688,6 @@ Model Main_Thesis_Research {
                 !VC_UnderGenerationSlack(iTime, iBus);
                 !VC_PowerTransmitted(iTime, iBus, iBus2);
                 
-                
-                
                 spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }
             Parameter L_Status;
@@ -1705,17 +1710,15 @@ Model Main_Thesis_Research {
         }
         Procedure RunTestCase {
             Body: {
-                L_Status := spreadsheet::CreateWorkbook(
-                	WorkbookName : PS_TestResultsWorkbookName ,
-                	SheetName    : "TestFileResults");
-                
-                
-                !PS_StartDate := "2015-07-01 00:00:00";
-                !PS_EndDate := "2015-07-08 00:00:00";
-                
                 PI_PerturbationInterpolationLevel := 20;
                 
-                !Scenario runs
+                PE_SelectedModel := 'Economic Dispatch';
+                
+                L_Status := spreadsheet::CreateWorkbook(
+                	WorkbookName : PS_TestResultsWorkbookName ,
+                	SheetName    : "TestFileResults_ED");
+                
+                !Run for Economic Dispatch
                 for(iScenario) do
                 
                 RunScenario(
@@ -1723,13 +1726,15 @@ Model Main_Thesis_Research {
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	);
                 !RunScenario(
                 !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 !	V_Granularity        :  5,
@@ -1741,13 +1746,15 @@ Model Main_Thesis_Research {
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	);
                 !RunScenario(
                 !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 !	V_Granularity        :  5,
@@ -1758,6 +1765,57 @@ Model Main_Thesis_Research {
                 endfor;
                 
                 
+                PE_SelectedModel := 'Unit Commitment';
+                
+                L_Status := spreadsheet::CreateWorkbook(
+                	WorkbookName : PS_TestResultsWorkbookName ,
+                	SheetName    : "TestFileResults_UC");
+                
+                !Run for Economic Dispatch
+                for(iScenario) do
+                
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  0,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  1,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                
+                endfor;
                 
                 
                 

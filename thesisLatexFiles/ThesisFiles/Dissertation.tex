@@ -47,7 +47,11 @@ Variable Energy Resources (usually refereed as VERs) plays an important role in 
 The first optimal power flow formulation was proposed by <put the guy here in 1962>
 
 \citeauthor{connolly} reviews 68 tools to power grid planning with renewable resources, discussing at the end goals, limitations and features of 37 tools \cite{connolly}. The authors emphasize that, although all the tools are essential to an accurate power planning with renewable resources, there is no perfect tool, and it should be chosen accordingly to project goals, data limitations, horizon and other features. 
+
 \citeauthor{yamin} discusses different techniques to solve the unit commitment and economic dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them \cite{yamin}. 
+
+\citeauthor{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major key in the field. The authors states the advantages of the method comparing to traditional reserves planning. \cite{bertsimas}
+
 \citeauthor{padhy} formulates the unit commitment as a general optimization problem and presents a bibliographical survey of the main techniques in the last 30 years, from exhaustive methods such as priority listing, dynamic programming, mixed integer-programming  until complex heuristics like fuzzy programming, genetic algorithms and evolutionary programming, emphasizing that these one were not exhaustively tested yet. Models can be classified according to different features, that include:
 
 \begin{enumerate}
@@ -60,14 +64,17 @@ The first optimal power flow formulation was proposed by <put the guy here in 19
 
 \citeauthor{cain} categorizes the general power flow according to 3 major categories: Power Flow (PF), Economic Dispatch (ED) and Optimal Power Flow (OPF) and describe them based on the assumptions and operational constraints, as shown in table \ref{table:PowerSystemsCat} \cite{cain}.
 
-\citeauthor{kassakian} discusses the main changes and challenges in the power system for the next years. One of important changes is the increase of VERs, that might have substantially impacts in operating costs, primarily due to the necessity of more reserve generations with different time responses \cite{kassakian}. To mitigate it, 3 suggestions were proposed: improve wind and solar forecast techniques; expand the cooperation and interconnections among regions; reduce decision horizon and resolution levels, to capture a more realistic ramping and reserve effects;
+\citeauthor{kassakian} discusses the main changes and challenges in the power system for the next years. One of important changes is the increase of VERs, that might have substantially impacts in operating costs, primarily due to the necessity of more reserve generations with different time responses \cite{kassakian}. To mitigate it, 3 suggestions were proposed: improve wind and solar forecast techniques; expand the cooperation and interconnections among regions; reduce decision horizon and resolution levels, to capture a more realistic ramping and reserve effects.
+
+\citeauthor{palmintier} studies the impact of UC models with expansion planning, enhancing that ignoring operating constraints on an expansion planning with VERs could provide higher operating costs and fuel emissions. \cite{palmintier}. \citeauthor{hargreaves} proposes a method that combines simulation and stochastic UC to capture precisely the challenges of expanding the capacity with VERs. \cite{hargreaves}.
 
 
-Under a scenario where VERs have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} evaluates the UC and ED results at different solving temporal resolutions under one year. The author discusses that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution \cite{deane}. This behaviour is also studied in this thesis.
+Under a scenario where VERs have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} evaluates the UC and ED results at different solving temporal resolutions under one year. The authors discuss that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution \cite{deane}. 
 
-\citeauthor{safaei} studies different storage technologies and their impact in the emission grid at a 15 minutes time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage are not economically justifiable. \cite{safaei}. In the other hand, \citeauthor{harris} justifies the viability of seasonal storage by analysing unit commitment under 3 different storage scenarios in a city level.
+One of the alternatives studied in the literature is the use of storage devices to stock energy when the demand is lower than the capacity and use it on an abrupt peak demand, avoiding the use of conventional generators.\citeauthor{safaei} studies different storage technologies and their impact in the emission grid at a 15 minutes time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage are not economically justifiable. \cite{safaei}. In the other hand, \citeauthor{harris} studies the viability of seasonal storage by analysing UC results of different storage scenarios and technologies on a city level, concluding that seasonal storage can bring operational benefits and reduce operating costs and fuel emissions in peak levels.
+ 
+\citeauthor{dwyer} investigates the effect of storage for ED and stochastic UC plannings under a sub-hourly resolution, concluding that storage can improve system stability and reduce cyclical ramping rates for NVERs, saving operation costs. 
 
-This project covers the LP Economic Dispatch problem and the MIP Unit Commitment.Finish it!
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -89,8 +96,6 @@ PF & PF &  & x &  &  & x & x \\ \hline
 ED & ED &  &  &  &  & x & x \\ \hline
 \end{tabular}
 \end{table}
-
-More details of AC and DC power flows are presented in appendix
 
 
 \chapter{Development}
@@ -192,7 +197,7 @@ The objective function must be modifies to account for start up and shut down co
 
 \section{Implementation}
 
-Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc. If I cite this one, will it apear? \cite{Refworks:9}.  
+Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc.
 
 \chapter{Analysis}
 

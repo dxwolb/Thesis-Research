@@ -6,7 +6,7 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
 \bibitem[Bertsimas et~al.(2013)Bertsimas, Litvinov, Sun, Zhao, and
-  Zheng]{Refworks:9}
+  Zheng]{bertsimas}
 D.~Bertsimas, E.~Litvinov, X.~A. Sun, Jinye Zhao, and Tongxin Zheng.
 \newblock Adaptive robust optimization for the security constrained unit
   commitment problem.
@@ -47,7 +47,7 @@ L.~L. Garver.
   730--734, 1962.
 \newblock ID: 1.
 
-\bibitem[Hargreaves et~al.(2015)Hargreaves, Hart, Jones, and Olson]{RefWorks:2}
+\bibitem[Hargreaves et~al.(2015)Hargreaves, Hart, Jones, and Olson]{hargreaves}
 Jeremy Hargreaves, Elaine~K. Hart, Ryan Jones, and Arne Olson.
 \newblock Reflex: An adapted production simulation methodology for flexible
   capacity planning.
@@ -75,7 +75,7 @@ A.~Khodaei and M.~Shahidehpour.
   1937--1945, 2010.
 \newblock ID: 1.
 
-\bibitem[O'Dwyer and Flynn(2015)]{RefWorks:19}
+\bibitem[O'Dwyer and Flynn(2015)]{dwyer}
 C.~O'Dwyer and D.~Flynn.
 \newblock Using energy storage to manage high net load variability at
   sub-hourly time-scales.
@@ -83,7 +83,7 @@ C.~O'Dwyer and D.~Flynn.
   2139--2148, 2015.
 \newblock ID: 1.
 
-\bibitem[Ostrowski et~al.(2012)Ostrowski, Anjos, and Vannelli]{RefWorks:1}
+\bibitem[Ostrowski et~al.(2012)Ostrowski, Anjos, and Vannelli]{james}
 James Ostrowski, Miguel~F. Anjos, and Anthony Vannelli.
 \newblock Tight mixed integer linear programming formulations for the unit
   commitment problem.
@@ -96,7 +96,7 @@ Narayana~Prasad Padhy.
 \newblock \emph{Power Systems, IEEE Transactions on}, 19\penalty0 (2):\penalty0
   1196--1205, 2004.
 
-\bibitem[Palmintier and Webster(2011)]{RefWorks:8}
+\bibitem[Palmintier and Webster(2011)]{palmintier}
 B.~Palmintier and M.~Webster.
 \newblock Impact of unit commitment constraints on generation expansion
   planning with renewables.
@@ -105,7 +105,7 @@ B.~Palmintier and M.~Webster.
 \newblock ISBN 1944-9925.
 \newblock ID: 1.
 
-\bibitem[Saadat(1999)]{RefWorks:10}
+\bibitem[Saadat(1999)]{saadat}
 Hadi Saadat.
 \newblock \emph{Power system analysis}.
 \newblock WCB/McGraw-Hill, 1999.
@@ -117,7 +117,7 @@ Hossein Safaei and David~W. Keith.
   3409--3417, 2015.
 
 \bibitem[Short et~al.(2011)Short, Sullivan, Mai, Mowers, Uriarte, Blair,
-  Heimiller, and Martinez]{RefWorks:20}
+  Heimiller, and Martinez]{short}
 Walter Short, Patrick Sullivan, Trieu Mai, Matthew Mowers, Caroline Uriarte,
   Nate Blair, Donna Heimiller, and Andrew Martinez.
 \newblock Regional energy deployment system (reeds).
@@ -129,7 +129,7 @@ Hatim~Y Yamin.
 \newblock \emph{Electric Power Systems Research}, 69\penalty0 (2):\penalty0
   227--248, 2004.
 
-\bibitem[Zhiqiang et~al.(2002)Zhiqiang, Zhijian, and Chuanwen]{RefWorks:12}
+\bibitem[Zhiqiang et~al.(2002)Zhiqiang, Zhijian, and Chuanwen]{yuan}
 Yuan Zhiqiang, Hou Zhijian, and Jiang Chuanwen.
 \newblock Economic dispatch and optimal power flow based on chaotic
   optimization.
