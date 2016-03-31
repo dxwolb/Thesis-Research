@@ -5,16 +5,18 @@
 \contentsline {chapter}{\numberline {2}Literature Review}{3}
 \contentsline {chapter}{\numberline {3}Development}{7}
 \contentsline {section}{\numberline {3.1}Data}{7}
-\contentsline {section}{\numberline {3.2}Models}{7}
-\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{7}
-\contentsline {subsection}{\numberline {3.2.2}Parameters}{8}
-\contentsline {subsection}{\numberline {3.2.3}Variables}{8}
-\contentsline {subsection}{\numberline {3.2.4}Models}{8}
-\contentsline {subsubsection}{Simple Economic Dispatch Model}{9}
-\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{9}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{10}
-\contentsline {section}{\numberline {3.3}Implementation}{10}
-\contentsline {chapter}{\numberline {4}Analysis}{11}
-\contentsline {chapter}{\numberline {5}Conclusion}{13}
-\contentsline {chapter}{\numberline {A}Power Systems Operation Background}{15}
-\contentsline {chapter}{\numberline {B}Data and Analysis}{17}
+\contentsline {subsection}{\numberline {3.1.1}Load Data}{7}
+\contentsline {subsection}{\numberline {3.1.2}Wind Data}{9}
+\contentsline {section}{\numberline {3.2}Models}{9}
+\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{9}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{10}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{10}
+\contentsline {subsection}{\numberline {3.2.4}Models}{11}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{11}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{11}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{12}
+\contentsline {section}{\numberline {3.3}Implementation}{13}
+\contentsline {chapter}{\numberline {4}Analysis}{15}
+\contentsline {chapter}{\numberline {5}Conclusion}{17}
+\contentsline {chapter}{\numberline {A}Power Systems Operation Background}{19}
+\contentsline {chapter}{\numberline {B}Data and Analysis}{21}

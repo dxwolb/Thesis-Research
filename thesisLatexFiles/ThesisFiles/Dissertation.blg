@@ -8,44 +8,44 @@ A level-1 auxiliary file: myabstract.aux
 The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
-You've used 20 entries,
+You've used 21 entries,
             2773 wiz_defined-function locations,
-            722 strings with 8327 characters,
-and the built_in function-call counts, 10319 in all, are:
-= -- 898
-> -- 637
+            727 strings with 8664 characters,
+and the built_in function-call counts, 11233 in all, are:
+= -- 969
+> -- 738
 < -- 11
-+ -- 215
-- -- 195
-* -- 896
-:= -- 1593
-add.period$ -- 69
-call.type$ -- 20
-change.case$ -- 124
-chr.to.int$ -- 20
-cite$ -- 40
-duplicate$ -- 432
-empty$ -- 821
-format.name$ -- 223
-if$ -- 2162
++ -- 249
+- -- 228
+* -- 992
+:= -- 1744
+add.period$ -- 72
+call.type$ -- 21
+change.case$ -- 137
+chr.to.int$ -- 21
+cite$ -- 42
+duplicate$ -- 453
+empty$ -- 864
+format.name$ -- 257
+if$ -- 2340
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 21
-newline$ -- 117
-num.names$ -- 80
-pop$ -- 223
+missing$ -- 22
+newline$ -- 122
+num.names$ -- 84
+pop$ -- 247
 preamble$ -- 1
-purify$ -- 105
+purify$ -- 117
 quote$ -- 0
-skip$ -- 336
+skip$ -- 359
 stack$ -- 0
-substring$ -- 456
-swap$ -- 40
+substring$ -- 489
+swap$ -- 41
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 215
+type$ -- 226
 warning$ -- 0
-while$ -- 81
+while$ -- 86
 width$ -- 0
-write$ -- 283
+write$ -- 296

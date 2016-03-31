@@ -1527,6 +1527,10 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PD_TotalGenerators {
+                IndexDomain: iGeneratorType;
+                Definition: count(iNonRenewableGenerator | PE_GeneratorType(iNonRenewableGenerator) = iGeneratorType);
+            }
             Parameter PD_RampingPerUnitGroup {
                 IndexDomain: (iTime,iUnitGroup);
                 Definition: {

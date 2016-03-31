@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -122,6 +122,16 @@ Walter Short, Patrick Sullivan, Trieu Mai, Matthew Mowers, Caroline Uriarte,
   Nate Blair, Donna Heimiller, and Andrew Martinez.
 \newblock Regional energy deployment system (reeds).
 \newblock \emph{Contract}, 303:\penalty0 275--3000, 2011.
+
+\bibitem[Wong et~al.(1999)Wong, Albrecht, Allan, Billinton, Chen, Fong, Haddad,
+  Li, Mukerji, Patton, et~al.]{wongieee}
+Paul Wong, P~Albrecht, R~Allan, Roy Billinton, Qian Chen, C~Fong, Sandro
+  Haddad, Wenyuan Li, R~Mukerji, Diane Patton, et~al.
+\newblock The ieee reliability test system-1996. a report prepared by the
+  reliability test system task force of the application of probability methods
+  subcommittee.
+\newblock \emph{Power Systems, IEEE Transactions on}, 14\penalty0 (3):\penalty0
+  1010--1020, 1999.
 
 \bibitem[Yamin(2004)]{yamin}
 Hatim~Y Yamin.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  31 MAR 2016 00:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  31 MAR 2016 17:04
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -281,39 +281,70 @@ Overfull \hbox (58.46191pt too wide) in paragraph at lines 85--98
 
 ]
 Chapter 3.
-[9]
+
+LaTeX Warning: Reference `fig:ieeetopology' on page 9 undefined on input line 1
+10.
+
+<ieeetopology.png, id=60, 1795.70876pt x 2799.45876pt>
+File: ieeetopology.png Graphic file (type png)
+ <use ieeetopology.png>
+Package pdftex.def Info: ieeetopology.png used on input line 113.
+(pdftex.def)             Requested size: 370.83531pt x 578.12167pt.
+
+
+LaTeX Warning: Float too large for page by 33.56168pt on input line 116.
+
+[9] [10 <./ieeetopology.png>]
+
+LaTeX Warning: Reference `fig:totalSystemLoadJuly' on page 11 undefined on inpu
+t line 125.
+
+<totalSystemLoadJuly.png, id=70, 562.35094pt x 156.585pt>
+File: totalSystemLoadJuly.png Graphic file (type png)
+
+<use totalSystemLoadJuly.png>
+Package pdftex.def Info: totalSystemLoadJuly.png used on input line 128.
+(pdftex.def)             Requested size: 426.39255pt x 118.72867pt.
+
+
+LaTeX Warning: Reference `fig:perturbationDifference' on page 11 undefined on i
+nput line 132.
+
+<perturbationDifference.png, id=71, 608.2725pt x 159.59625pt>
+File: perturbationDifference.png Graphic file (type png)
+
+<use perturbationDifference.png>
+Package pdftex.def Info: perturbationDifference.png used on input line 135.
+(pdftex.def)             Requested size: 426.39255pt x 111.87732pt.
+ [11 <./totalSystemLoadJuly.png> <./perturbationDifference.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 142.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 142.
+ [12] [13] [14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10]
-Underfull \vbox (badness 2277) has occurred while \output is active []
-
- [11]
-
-LaTeX Warning: Reference `eq:logconst' on page 12 undefined on input line 205.
-
-
-LaTeX Warning: Reference `eq:mindownt' on page 12 undefined on input line 205.
-
-
-LaTeX Warning: Reference `eq:minupt' on page 12 undefined on input line 205.
-
-[12] [13] [14
-
-]
+ [15]
+[16]
 Chapter 4.
-[15] [16
+[17
+
+] [18
 
 ]
 Chapter 5.
-[17] [18
-
-]
-Appendix A.
 [19] [20
 
 ]
+Appendix A.
+[21] [22
+
+]
 Appendix B.
-(Dissertation.bbl [21] [22
+(Dissertation.bbl [23] [24
 
 ]
 Missing character: There is no â in font cmr12!
@@ -329,7 +360,7 @@ Underfull \hbox (badness 1888) in paragraph at lines 42--49
 rogramming-
  []
 
-[23] [24]) [25]
+[25] [26]) [27]
 No file vita.tex.
 (Dissertation.aux (coverCopyright.aux) (signatures.aux) (dedication.aux)
 (myabstract.aux) (vita.aux))
@@ -338,10 +369,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3864 strings out of 493673
- 54702 string characters out of 3141526
- 117847 words of memory out of 3000000
- 7145 multiletter control sequences out of 15000+200000
+ 3907 strings out of 493673
+ 55570 string characters out of 3141526
+ 117035 words of memory out of 3000000
+ 7181 multiletter control sequences out of 15000+200000
  11663 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,9n,42p,908b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -359,9 +390,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (34 pages, 197973 bytes).
+sisFiles/build/Dissertation.pdf" (36 pages, 367681 bytes).
 PDF statistics:
- 163 PDF objects out of 1000 (max. 8388607)
+ 174 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -101,6 +101,68 @@ ED & ED &  &  &  &  & x & x \\ \hline
 \chapter{Development}
 \section{Data}
 
+\subsection{Reliability Test System Data}
+
+To evaluate the proposed models and compare them with the existing literature, it was necessary to use a representative dataset that could be a baseline for the power systems analysis tests. The Institute of Electrical and Electronics Engineers (IEEE) developed a dataset that could allow researchers to compare reliability evaluation techniques, known as IEEE RTS \cite{wongieee}. 
+
+The first version was developed in 1976 with load data, known as RTS-76, and two other versions were released with data improvements, RTS-86 and RTS-96. Only the RTS-96 has production costs for generating units, a required parameter for the proposed models in this thesis.
+
+The system is divided into 3 areas with 24 buses each, connected by high capacity transmission lines. The topology and the buses relative geographic positions are shown in figure \ref{fig:ieeetopology}.
+
+\begin{figure} \label{fig:ieeetopology}
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ieeetopology.png}
+  \caption{RTS-96 topology \cite{wongieee}}
+  \label{fig:boat1}
+\end{figure}
+
+The dataset describes a peak load for each bus. The absolute load in every hour is a percentage the peak load based on 3 components: the week year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
+
+\begin{multline}\label{loadExample}
+L_{b = 108} =  (L_{yearweek = 27} = 75.5\%) \times (L_{dayofweek = friday} = 94\%) 
+\\ \times (L_{hour= 12 PM} = 93\%) \times 108 = 71.28MW
+\end{multline}
+
+Figure \ref{fig:totalSystemLoadJuly} displays the total system load throughout the month of July.
+
+\begin{figure}[h!] \label{fig:totalSystemLoadJuly}
+  \includegraphics[width=\textwidth,keepaspectratio]{totalSystemLoadJuly.png}
+  \caption{System Total Load over the month of July (MW)}
+\end{figure}
+
+When the models are run under a sub-hourly level,the inter-hour time periods follow the interpolation between the hours with an additional perturbation, following an uniform distribution of $[-Pr,+Pr]\%$, where $Pr$ is a parameter in the range of [0,100]. The objective is to capture the ramping behaviour of NVERs on a sub hourly level. Figure \ref{fig:perturbationDifference} shows a difference between load curve on a 60 minute and 15 minute planning level. 
+
+\begin{figure}[h!] \label{fig:perturbationDifference}
+  \includegraphics[width=\textwidth,keepaspectratio]{perturbationDifference.png}
+  \caption{System Load for 5 days in July under 60 and 15 minutes level}
+\end{figure}
+
+The original RTS-96 system has 87 generators distributed across the test field, with the following generator type distribution:
+
+\begin{itemize}
+\item 27 coal/steam generators
+\item 18 hydro generators
+\item 24 oil/steam generators
+\item 15 nuclear generators
+\item 3 sync generators (not considered for this study)
+\end{itemize}
+
+The total peak load is 8550MW while the total generation capacity is 9975MW. This project assumes the following regarding the data:
+
+\begin{itemize}
+\item All the buses follow the same behaviour. Therefore they have positive correlation.
+\item The load profile is the same for every year.
+\item The peak load is constant and deterministic. No stochastic factor is considered in this study.
+\end{itemize}
+
+
+\subsection{Wind Data}
+
+Although RTS-96 has most of necessary data for this project, it does not contain any information of renewable generatorsn. Therefore we found necessary to integrate wind and solar data in the field to build realistic results when evaluating the impact of VER's in the proposed models. The data taken was from the Electric Reliability Council of Texas - ERCOT.
+
+
+
+\subsection{Scenarios}
+
 \section{Models}
 
 This thesis covers the Economic Dispatch and Unit Commitment models, developed exhaustively in the literature.

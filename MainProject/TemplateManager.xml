@@ -20,4 +20,6 @@
 	<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
 	<Page Name="Generators Status" PageGUID="F89484E4-33DA-44DE-99E5-CDD27E204DFE" />
 	<Page Name="Wind and Solar Availability" PageGUID="456D3C1F-A9B5-4508-B03B-32F9A729A264" />
+	<Page Name="All Data Pages" PageGUID="7244B733-66BD-4AB2-8F0B-684985240006" />
+	<Page Name="[Data Page] PD_TotalGenerators" PageGUID="5E433002-30F0-4628-8EB3-134B9170FA0E" />
 </TemplateManager>
