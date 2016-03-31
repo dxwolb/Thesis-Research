@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{7}
 \contentsline {subsection}{\numberline {3.2.2}Parameters}{8}
 \contentsline {subsection}{\numberline {3.2.3}Variables}{8}
-\contentsline {subsection}{\numberline {3.2.4}Economic Dispatch Models}{8}
+\contentsline {subsection}{\numberline {3.2.4}Models}{8}
 \contentsline {subsubsection}{Simple Economic Dispatch Model}{9}
 \contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{9}
 \contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{10}

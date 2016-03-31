@@ -3,12 +3,6 @@ A level-1 auxiliary file: coverCopyright.aux
 A level-1 auxiliary file: signatures.aux
 A level-1 auxiliary file: dedication.aux
 A level-1 auxiliary file: myabstract.aux
-A level-1 auxiliary file: appendix.aux
-The style file: naturemag.bst
+The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
-Repeated entry---line 128 of file biblio.bib
- : @article{Refworks:14
- :                     ,
-I'm skipping whatever remains of this entry
-(There was 1 error message)

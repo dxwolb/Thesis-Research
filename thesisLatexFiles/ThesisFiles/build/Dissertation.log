@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  29 MAR 2016 00:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  31 MAR 2016 00:29
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -178,6 +178,9 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@line=\toks27
 \verbatim@in@stream=\read1
 )
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen123
+)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip55
@@ -189,46 +192,34 @@ LaTeX Info: Redefining \cite on input line 694.
 LaTeX Warning: Unused global option(s):
     [LUDisStyle,twosided].
 
-
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.aux"
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\co
-verCopyright.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\si
-gnatures.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\de
-dication.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\my
-abstract.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\ap
-pendix.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\vi
-ta.aux"))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+(Dissertation.aux (coverCopyright.aux) (signatures.aux) (dedication.aux)
+(myabstract.aux) (vita.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
-\scratchdimen=\dimen123
+\scratchdimen=\dimen124
 \scratchbox=\box28
 \nofMPsegments=\count108
 \nofMParguments=\count109
 \everyMPshowfont=\toks28
 \MPscratchCnt=\count110
-\MPscratchDim=\dimen124
+\MPscratchDim=\dimen125
 \MPnumerator=\count111
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks29
@@ -259,23 +250,18 @@ No file dedication.tex.
 
 
 
-]
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.toc")
+] (Dissertation.toc [5])
 \tf@toc=\write3
- [5] [6
-
-]
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.lot")
+ [6] (Dissertation.lot)
 \tf@lot=\write4
- [7] [8
+ [7
 
-]
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.lof")
+] [8
+
+] (Dissertation.lof)
 \tf@lof=\write5
- [9] (myabstract.tex) [1
+
+[9] (myabstract.tex) [1
 
 ] [2
 
@@ -286,76 +272,96 @@ Chapter 1.
 
 ]
 Chapter 2.
-[5] [6
+[5] [6]
+Overfull \hbox (58.46191pt too wide) in paragraph at lines 85--98
+ [][] 
+ []
+
+[7] [8
 
 ]
 Chapter 3.
-[7] [8] [9] [10]
-Chapter 4.
-[11
+[9]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [12
+ [10]
+Underfull \vbox (badness 2277) has occurred while \output is active []
+
+ [11]
+
+LaTeX Warning: Reference `eq:logconst' on page 12 undefined on input line 205.
+
+
+LaTeX Warning: Reference `eq:mindownt' on page 12 undefined on input line 205.
+
+
+LaTeX Warning: Reference `eq:minupt' on page 12 undefined on input line 205.
+
+[12] [13] [14
+
+]
+Chapter 4.
+[15] [16
 
 ]
 Chapter 5.
-[13]
-No file appendix.tex.
+[17] [18
 
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.bbl" [14
+]
+Appendix A.
+[19] [20
 
-
+]
+Appendix B.
+(Dissertation.bbl [21] [22
 
 ]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no Ã in font cmr12!
+Missing character: There is no ³ in font cmr12!
 
-Underfull \hbox (badness 1748) in paragraph at lines 36--44
-[]\OT1/cmr/m/n/12 Garver, L. L.  Power gen-er-a-tion schedul-ing by in-te-ger p
+Underfull \hbox (badness 1888) in paragraph at lines 42--49
+[]\OT1/cmr/m/n/12 L. L. Garver.  Power gen-er-a-tion schedul-ing by in-te-ger p
 rogramming-
  []
 
-[15]) [16]
+[23] [24]) [25]
 No file vita.tex.
+(Dissertation.aux (coverCopyright.aux) (signatures.aux) (dedication.aux)
+(myabstract.aux) (vita.aux))
 
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.aux"
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\co
-verCopyright.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\si
-gnatures.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\de
-dication.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\my
-abstract.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\ap
-pendix.aux")
-("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\vi
-ta.aux")) ) 
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3832 strings out of 493673
- 56899 string characters out of 3141526
- 117035 words of memory out of 3000000
- 7114 multiletter control sequences out of 15000+200000
- 11055 words of font info for 41 fonts, out of 3000000 for 9000
+ 3864 strings out of 493673
+ 54702 string characters out of 3141526
+ 117847 words of memory out of 3000000
+ 7145 multiletter control sequences out of 15000+200000
+ 11663 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 36i,9n,38p,733b,256s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex
-10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12
-.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pf
-b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+ 36i,9n,42p,908b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (25 pages, 158362 bytes).
+sisFiles/build/Dissertation.pdf" (34 pages, 197973 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
+ 163 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

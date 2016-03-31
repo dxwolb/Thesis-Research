@@ -137,7 +137,8 @@ $G^{min}_{g} $& Minimum generation capacity for generator g \\
 $T^{min}_{l} $& Minimum transmission of transmission line l \\
 $T^{max}_{l} $& Maximum transmission of transmission line l \\
 $P^{R}_{g,t} $& Power generation of renewable generator g in time t\\
-
+$U^{up}_{g} $& Minimum uptime of generator g (hours)\\
+$U^{down}_{g} $& Minimum downtime of generator g (hours)\\
 
 \end{tabular}
 
@@ -159,7 +160,7 @@ $V^{+}_{b,t} $& Over generation slack variable at each bus b in time t\\
 
 \end{tabular}
 
-\subsection{Economic Dispatch Models}
+\subsection{Models}
 
 The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions has been already made.
 
@@ -191,9 +192,18 @@ In this case, the model has to consider transmission limits and losses, without 
 Constraint \ref{eq:transmissionBalanceConstraint} guarantees that the energy balance is always satisfied for every bus: everything that is generated and received from other buses should be equal to what is loaded and sent throughout the line with the respective losses. If this balance is not satisfied then it is represented in the slack variables. (TODO: put lossed in the equation). The constraint \ref{eq:transmissionLimits} defines the transmission bounds for each line.
 
 \subsubsection{Economic dispatch model with unit commitment constraints}
-This optimization model is a mixed-integer linear program (MILP).
-This model includes decision variables to capture ``on'' and ``off'' decisions for thermal generators in each time period. 
-The objective function must be modifies to account for start up and shut down costs with thermal generators.
+Unit commitment is the decision of consider the sets of generators that are turned on and off for the planned time horizon. The model includes decision variables to capture ``on'' and ``off'' states for thermal generators in each time period,along with the start-up and shut-down decisions. \citep{palmintier}. The set of constraints are added to the previous model, and the binary nature of the variables makes the problem an MIP, naturally harder to solve computationally \cite{james}. 
+
+\begin{subequations}\label{model:ucConstraints}
+\begin{alignat}{4}
+& S_{g,t} = S^{on}_{g,t} - S^{off}_{g,t} + S_{g,t}  &~& \forall g \in \mc{G}^{NR} , t \in \mc{T} \label{eq:logconst} \\
+& \sum_{i = t}^{t + U^{up}_{g} - 1} S_{g,t} \geq S^{on}_{g,i} U^{up}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:mindownt} \\
+& \sum_{i = t}^{t + U^{down}_{g} - 1} (1 -S_{g,t}) \geq S^{off}_{g,i} U^{down}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:minupt}
+\end{alignat} 
+\end{subequations}
+
+Constraint \ref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \ref{eq:mindownt} and \ref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
+
 
 \section{Implementation}
 
