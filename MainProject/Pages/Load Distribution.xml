@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-29 22:56:42">
+<Page Version="4000" TimeStamp="2016-03-30 20:13:51">
 	<PageEditSize Type="Specified">
 		<Size Width="450" Height="300" />
 	</PageEditSize>
@@ -9,24 +9,56 @@
 		<MainArea Line="FixedFromTop" Value="8" />
 	</ResizeData>
 	<Background Inherited="true" />
-	<PageObject Type="Curve">
+	<PageObject Type="2D Chart">
 		<Location top="12" left="6" bottom="294" right="444" />
-		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
-		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
-		<BackgroundColor RGB="#ffffff" />
-		<ColorScheme Number="0" />
-		<Legend>true</Legend>
-		<Y-Labels>true</Y-Labels>
-		<X-Labels>true</X-Labels>
-		<StatusLine>true</StatusLine>
-		<ExplicitIdentifier>
-			<Identifier>PO_GenerationByGeneratorType( iTime, iGeneratorType )</Identifier>
-		</ExplicitIdentifier>
-		<DrawLines>true</DrawLines>
+		<TabOrder>1</TabOrder>
+		<Border Style="InShadow" Width="2" />
+		<X_Axis>
+			<Domain ID="1004">iTime</Domain>
+			<Annotation>
+				<Show_every_n_th_label ID="1025">24</Show_every_n_th_label>
+			</Annotation>
+		</X_Axis>
+		<Y_Axis>
+			<Chart_type ID="2001">"Area"</Chart_type>
+			<Identifier>
+				<Value ID="2007">PO_GenerationByGeneratorType( iTime, iGeneratorType )</Value>
+			</Identifier>
+			<Misc_settings>
+				<Stacked ID="2054">1</Stacked>
+				<Remove_all_default_values ID="2061">1</Remove_all_default_values>
+			</Misc_settings>
+		</Y_Axis>
+		<Y2_Axis>
+			<Show ID="3001">"Show"</Show>
+			<Hide_axis_use_Y_scale ID="3062">1</Hide_axis_use_Y_scale>
+			<Draw_on_top_of_Y_axis_data ID="3007">1</Draw_on_top_of_Y_axis_data>
+			<Identifier>
+				<Value ID="3009">PO_TotalLoad( iTime )</Value>
+				<Appearance>
+					<Line>
+						<Color ID="3025">RGB 0000ff</Color>
+						<Pattern ID="3026">"Solid"</Pattern>
+						<Width ID="3027">3</Width>
+					</Line>
+				</Appearance>
+			</Identifier>
+			<Misc_settings>
+				<Remove_all_default_values ID="3057">1</Remove_all_default_values>
+			</Misc_settings>
+		</Y2_Axis>
+		<Legend>
+			<Show ID="53">"Show"</Show>
+			<Misc_display_settings>
+				<Anchor ID="41">"South"</Anchor>
+				<Orientation ID="56">"Horizontal"</Orientation>
+			</Misc_display_settings>
+		</Legend>
 	</PageObject>
 	<UsedReferences>
 		<Model>
 			<Symbol>PO_GenerationByGeneratorType</Symbol>
+			<Symbol>PO_TotalLoad</Symbol>
 			<Symbol>iTime</Symbol>
 			<Symbol>iGeneratorType</Symbol>
 		</Model>

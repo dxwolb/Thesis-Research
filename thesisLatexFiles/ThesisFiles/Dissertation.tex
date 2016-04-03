@@ -155,13 +155,77 @@ The total peak load is 8550MW while the total generation capacity is 9975MW. Thi
 \end{itemize}
 
 
-\subsection{Wind Data}
+\subsection{Renewable Generators Data}
 
-Although RTS-96 has most of necessary data for this project, it does not contain any information of renewable generatorsn. Therefore we found necessary to integrate wind and solar data in the field to build realistic results when evaluating the impact of VER's in the proposed models. The data taken was from the Electric Reliability Council of Texas - ERCOT.
+Although RTS-96 has most of necessary data for this project, it does not contain any information of renewable generation. Therefore we found necessary to integrate wind and solar data in the field to build realistic results when evaluating the impact of VER's in the proposed models. The wind and solar profiles states the generation capacity for these renewable resources thorough one year, and it is based on historical availability from the last 5 years in Texas.  The data taken was from the Electric Reliability Council of Texas - ERCOT. The geographic renewable potential in Texas were considered for each bus in the system, both for solar and wind generators.
+
+\subsubsection{Wind Profile}
 
 
+Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is know as the "panhandle" because the state of Oklahoma, in north of Texas, is shaped like a pan. The handle of this pan is where there's most of wind potential in state. In result, most of the new generators are being installed in northwest.
 
-\subsection{Scenarios}
+\begin{figure}[h!] \label{fig:texasWindProfile}
+  \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
+  \caption{Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasWindProfile} }
+\end{figure}
+
+
+To build the wind potential, each bus were associated to a Texas city or region along with the average historical wind generation for the past 5 years. The studied data is freely shared by ERCOT \cite{ercotGenerationWind}. Therefore each location has a wind potential on an hourly level throughout an entire year. In sub-hourly levels the availability follows the interpolation between the hours followed by an uniform perturbation, using the same logic as load. That said, the real generation for any wind generator is a factor of the percentage of the nameplate capacity followed by the profile where it is located. Figure \ref{fig:windProfileBus122January} shows the wind profile for the bus 122 within the month of January.
+
+\begin{figure}[h!] \label{fig:windProfileBus122January}
+  \includegraphics[width=\textwidth,keepaspectratio]{windPotentialBus122.png}
+  \caption{Wind Profile for Bus 122 in January}
+\end{figure}
+
+\subsubsection{Solar Profile}
+
+Figure \ref{fig:texasSolarProfile} displays the NREL's solar incidence report in the state of Texas and the relative geographic positions of RTS-96 buses. 
+
+\begin{figure}[h!] \label{fig:texasSolarProfile}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth,keepaspectratio]{texasSolarProfileWithBuses.png}
+	  	\caption{Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasSolarProfile} }
+	\end{center}
+\end{figure}
+
+
+It is important to notice that the highest incidence profile in state is located in west of Texas, followed by northeast and center. The solar profile construction followed the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
+
+\begin{figure}[h!] \label{fig:solarProfileBus112January}
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{solarPotentialBus112.png}
+	  	\caption{Solar Profile for Bus 112 in January }
+	\end{center}
+\end{figure}
+
+
+\subsection{Scenario Description}
+
+This project studies 3 different generators scenarios under the same demand profile from RTS-96 data. The distribution is adapted from \citeauthor{shavel}, that describes the technical and economical potentials of exploring natural gas and VERs in the state of Texas \cite{shavel}. 
+
+\subsubsection{Scenario 1: Reference}
+
+This scenario captures the existing ERTOC capacity mix. 88\% of generation comes from non-renewable energy sources. The remaining capacity is filled by wind generators, located in the buses that has the Texas Northwest's wind potential (Buses 111-124).
+
+\subsubsection{Scenario 2: Stronger Federal Carbon Rule}
+
+Scenario 2 is build based on column "2032 Total" of table IV-10 in \cite{shavel}. This scenario is described as follows:
+
+\begin{quotation}
+"Our scenario with a strong federal carbon rule requires existing coal plants to capture and sequester 90\% of their CO2 output.(...)
+As one would expect, this case shows that most of the ERCOT coal plant fleet retires in 2025, the year we assume the carbon rule goes into effect. At this point, 16 GW of coal capacity providing more than 30\% of all ERCOT energy rapidly shifts to gas and renewable supply sources: 6 GW of new CC capacity and 3 GW of new wind capacity. In the next several years, another 3 GW of CC capacity is added, along with another 19 GW of wind. Solar becomes rapidly cost-effective in this scenario and quickly rises to over 8 GW installed by 2029. For the remainder of the scenario horizon, all additional load growth is met by solar and wind additions.”
+\end{quotation}
+
+In essence, 44\% of the generation is provided by natural gases, followed by 42\% of NVERs and 14\% of other sources. Most of the wind generators are located at buses 111-124, with some in 211-224. Solar generators are at buses 101-110.
+
+
+\subsubsection{Scenario 3: "Almost Green World"}
+
+This scenario is an extreme case of Scenario 2. All coal, nuclear and oil/steam generators are not part of the system anymore. The grid runs entirely on wind and solar, with natural gases for ramping, flexibiliy and backup, i.e, to complete the demand whether there is not enough wind and solar to fulfill the load. Wind and solar generators are located throughout the map, following the concentration based on wind and solar profiles from figures \ref{fig:texasSolarProfile} and \ref{fig:texasWindProfile}.
+
+\subsubsection{Scenario 4: "Almost Green World"}
+
+In this scenario all the natural gases are replaced by battery storages. The generation is 100\% provided by wind and solar generators, with nameplate capacity bigger than Scenario 3.
 
 \section{Models}
 
@@ -278,9 +342,9 @@ In the analysis make all the scenario runs, describe the data.
 \chapter{Conclusion}
 
 \appendix
-\chapter{Power Systems Operation Background}
+%\chapter{Power Systems Operation Background}
 
-\chapter{Data and Analysis}
+%\chapter{Data and Analysis}
 
 \bibliographystyle{plainnat}
 \nocite{*}

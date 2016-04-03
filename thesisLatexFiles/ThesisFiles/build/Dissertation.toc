@@ -1,22 +1,29 @@
 \contentsline {chapter}{List of Tables}{vi}
 \contentsline {chapter}{List of Figures}{vii}
 \contentsline {chapter}{Abstract}{1}
-\contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{\numberline {2}Literature Review}{3}
-\contentsline {chapter}{\numberline {3}Development}{7}
-\contentsline {section}{\numberline {3.1}Data}{7}
-\contentsline {subsection}{\numberline {3.1.1}Load Data}{7}
-\contentsline {subsection}{\numberline {3.1.2}Wind Data}{9}
-\contentsline {section}{\numberline {3.2}Models}{9}
-\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{9}
-\contentsline {subsection}{\numberline {3.2.2}Parameters}{10}
-\contentsline {subsection}{\numberline {3.2.3}Variables}{10}
-\contentsline {subsection}{\numberline {3.2.4}Models}{11}
-\contentsline {subsubsection}{Simple Economic Dispatch Model}{11}
-\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{11}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{12}
-\contentsline {section}{\numberline {3.3}Implementation}{13}
-\contentsline {chapter}{\numberline {4}Analysis}{15}
-\contentsline {chapter}{\numberline {5}Conclusion}{17}
-\contentsline {chapter}{\numberline {A}Power Systems Operation Background}{19}
-\contentsline {chapter}{\numberline {B}Data and Analysis}{21}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}Literature Review}{5}
+\contentsline {chapter}{\numberline {3}Development}{9}
+\contentsline {section}{\numberline {3.1}Data}{9}
+\contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{9}
+\contentsline {subsection}{\numberline {3.1.2}Renewable Generators Data}{12}
+\contentsline {subsubsection}{Wind Profile}{13}
+\contentsline {subsubsection}{Solar Profile}{14}
+\contentsline {subsection}{\numberline {3.1.3}Scenario Description}{14}
+\contentsline {subsubsection}{Scenario 1: Reference}{15}
+\contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{15}
+\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{17}
+\contentsline {subsubsection}{Scenario 4: "Almost Green World"}{17}
+\contentsline {section}{\numberline {3.2}Models}{17}
+\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{17}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{18}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{18}
+\contentsline {subsection}{\numberline {3.2.4}Models}{19}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{19}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{19}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{20}
+\contentsline {section}{\numberline {3.3}Implementation}{21}
+\contentsline {chapter}{\numberline {4}Analysis}{23}
+\contentsline {chapter}{\numberline {5}Conclusion}{25}
+\contentsline {chapter}{\numberline {A}Power Systems Operation Background}{27}
+\contentsline {chapter}{\numberline {B}Data and Analysis}{29}

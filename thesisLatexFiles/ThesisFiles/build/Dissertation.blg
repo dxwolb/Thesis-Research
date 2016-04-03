@@ -6,3 +6,8 @@ A level-1 auxiliary file: myabstract.aux
 The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
+Warning--empty year in texasWindProfile
+Warning--empty year in ercotGenerationWind
+Warning--empty year in texasSolarProfile
+Warning--empty journal in shavel
+(There were 4 warnings)

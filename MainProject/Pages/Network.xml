@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-03-17 21:48:38">
+<Page Version="4000" TimeStamp="2016-03-30 20:13:51">
 	<PageEditSize Type="Specified">
 		<Size Width="400" Height="300" />
 	</PageEditSize>
@@ -33,8 +33,8 @@
 			<MaximumSize>10</MaximumSize>
 			<TextPosition>Right</TextPosition>
 			<TextShowWhat>ElementName</TextShowWhat>
-			<Color>257CED91-8909-41AC-BED6-911268D7BBCE blue</Color>
-			<Size>PI_PeakLoadMW( iBus )</Size>
+			<Color>6557880F-CCE8-4670-958C-5DDF32842E87 yellow</Color>
+			<Size>8</Size>
 			<Shape>Circle</Shape>
 		</Node>
 		<Node>
@@ -79,7 +79,7 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PI_PeakLoadMW</Symbol>
+			<Symbol>PE_SelectedGeneratorTypeForMap</Symbol>
 			<Symbol>PI_BusXCoordinate</Symbol>
 			<Symbol>PI_BusYCoordinate</Symbol>
 			<Symbol>PI_GeneratorXCoordinate</Symbol>
@@ -91,7 +91,6 @@
 			<Symbol>iBus2</Symbol>
 			<Symbol>iGenerator</Symbol>
 			<Symbol>iTransmissionLine</Symbol>
-			<Symbol>PE_SelectedGeneratorTypeForMap</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
