@@ -1,92 +1,84 @@
-﻿There is 71.230 Mb in use.
-Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
-Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
-Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
-Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+﻿There is 72.734 Mb in use.
 Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
 Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
 Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
 Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
 Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
+Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
 Warning: The variable "VC_PowerTransmitted" is not initialized (default values are used).
+Warning: The parameter "PI_EnableTransmissionConstraints" is not initialized (default values are used).
 Warning: The parameter "PI_EnableRampingConstraints" is not initialized (default values are used).
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Solar8,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Solar9,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Solar9,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind22,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Wind22,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind39,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 24613 duplicate column warnings were reported. 
+Warning: The parameter "PI_EnableReserveConstraints" is not initialized (default values are used).
+Warning: The parameter "PI_EnableSlackVariables" is not initialized (default values are used).
+Warning: The parameter "PI_UnitGroupVariableCost" is not initialized (default values are used).
+Warning: The parameter "PI_TransmissionLineBranches" is not initialized (default values are used).
+Warning: The parameter "PI_LineDistance" is not initialized (default values are used).
+Warning: The parameter "PI_LineMaximumCapacity" is not initialized (default values are used).
+Warning: The parameter "PI_EnableTransmissionLosses" is not initialized (default values are used).
+Warning: The data for the defined parameter "PI_MaximumGenerationMW" is ignored.
+Warning: After zero iterations CPLEX 12.6.2 concluded that M_ED_MinimizeTotalCost is infeasible.
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(114-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(214-Sync-Cond,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(314-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(114-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(214-Sync-Cond,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(314-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(114-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,114-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(214-Sync-Cond,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,214-Sync-Cond)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(314-SyncCond-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,314-SyncCond-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(101-U76-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(101-U76-4,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(102-U76-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: Only 3 out of 135 duplicate row warnings were reported. 
 See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,116)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,221)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
+Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
 This may lead to non-unique solutions. 
 For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,114)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,116)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
+Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
 This may lead to non-unique solutions. 
 For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,113)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,114)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
+Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
 This may lead to non-unique solutions. 
 For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 57263 duplicate column warnings were reported. 
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(101-U76-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(101-U76-4,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,101-U76-4)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: The rows "CL_Model0_MaximumGenerationNonRenewableSources(102-U76-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,102-U76-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". 
+This may lead to non-unique shadow prices. 
+For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning: Only 3 out of 17424 duplicate column warnings were reported. 
 See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,116)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,221)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,114)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,116)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,113)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,114)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 57263 duplicate column warnings were reported. 
+Warning: Only 3 out of 135 duplicate row warnings were reported. 
 See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,322)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 32881 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,322)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 32888 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,322)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 32888 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,322)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 32888 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
+Warning: You have interrupted execution.

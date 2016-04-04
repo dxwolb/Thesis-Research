@@ -1460,6 +1460,12 @@ Model Main_Thesis_Research {
         }
     }
     Section Procedures {
+        Procedure ExportProcedure {
+            Body: {
+                write  PO_PowerGenerated,VC_PowerTransmitted to file "TestFile.txt";
+                !write VC_PowerTransmitted to file "TestFile.txt";
+            }
+        }
         Procedure RunOptimization {
             Body: {
                 empty ALLVariables;
@@ -1639,6 +1645,176 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
+                write PO_GenerationByGeneratorType,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus to file V_ScenarioName ;
+                
+                !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
+            }
+            Parameter L_Status;
+            StringParameter L_SheetName;
+            StringParameter V_ScenarioFile {
+                Property: Input;
+            }
+            Parameter V_Granularity {
+                Property: Input;
+            }
+            Parameter V_EnableTransmission {
+                Property: Input;
+            }
+            StringParameter V_WorkbookName {
+                Property: Input;
+            }
+            StringParameter V_ScenarioName {
+                Property: Input;
+            }
+        }
+        Procedure RunTestCase {
+            Body: {
+                PI_PerturbationInterpolationLevel := 20;
+                
+                PE_SelectedModel := 'Economic Dispatch';
+                
+                PS_TestResultsWorkbookName := "TestResults_ED.xls";
+                
+                !L_Status := spreadsheet::CreateWorkbook(
+                !	WorkbookName : PS_TestResultsWorkbookName ,
+                !	SheetName    : "TestFileResults_ED");
+                
+                !Run for Economic Dispatch
+                for(iScenario) do
+                
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                
+                endfor;
+                
+                PS_TestResultsWorkbookName := "TestResults_UC.xls";
+                PE_SelectedModel := 'Unit Commitment';
+                
+                L_Status := spreadsheet::CreateWorkbook(
+                	WorkbookName : PS_TestResultsWorkbookName ,
+                	SheetName    : "TestFileResults_UC");
+                
+                !Run for Unit Commitment
+                for(iScenario) do
+                
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  0,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  1,
+                	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                
+                endfor;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                DialogMessage(
+                	message : "Run finished!" ,
+                	title   : "Sucess");
+            }
+            Parameter L_Status;
+        }
+        Procedure Copy_RunScenario {
+            Arguments: (V_ScenarioFile,V_Granularity,V_EnableTransmission,V_WorkbookName,V_ScenarioName);
+            Body: {
+                PS_IEEETestCaseFileName := V_ScenarioFile;
+                PI_TimeGranularity := V_Granularity;
+                
+                !UpdateGranularity;
+                UpdateTimeCalendar;
+                
+                PI_EnableRampingConstraints := 1;
+                PI_EnableReserveConstraints := 0;
+                PI_EnableSlackVariables := 1;
+                PI_EnableTransmissionConstraints := V_EnableTransmission;
+                PI_EnableTransmissionLosses := V_EnableTransmission;
+                
+                
+                read from file PS_IEEETestCaseFileName;
+                RunOptimization;
+                
                 
                 !Load By Generator Type
                 L_SheetName := V_ScenarioName + "_LB";
@@ -1722,135 +1898,6 @@ Model Main_Thesis_Research {
             StringParameter V_ScenarioName {
                 Property: Input;
             }
-        }
-        Procedure RunTestCase {
-            Body: {
-                PI_PerturbationInterpolationLevel := 20;
-                
-                PE_SelectedModel := 'Economic Dispatch';
-                
-                PS_TestResultsWorkbookName := "TestResults_ED.xls";
-                
-                L_Status := spreadsheet::CreateWorkbook(
-                	WorkbookName : PS_TestResultsWorkbookName ,
-                	SheetName    : "TestFileResults_ED");
-                
-                !Run for Economic Dispatch
-                for(iScenario) do
-                
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
-                
-                endfor;
-                
-                PS_TestResultsWorkbookName := "TestResults_UC.xls";
-                PE_SelectedModel := 'Unit Commitment';
-                
-                L_Status := spreadsheet::CreateWorkbook(
-                	WorkbookName : PS_TestResultsWorkbookName ,
-                	SheetName    : "TestFileResults_UC");
-                
-                !Run for Economic Dispatch
-                for(iScenario) do
-                
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
-                	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  5,
-                !	V_EnableTransmission :  0,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
-                	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  5,
-                !	V_EnableTransmission :  1,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
-                
-                endfor;
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                DialogMessage(
-                	message : "Run finished!" ,
-                	title   : "Sucess");
-            }
-            Parameter L_Status;
         }
     }
     Procedure MainInitialization;
