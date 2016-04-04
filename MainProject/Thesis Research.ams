@@ -1687,41 +1687,41 @@ Model Main_Thesis_Research {
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
                 
                 endfor;
                 
@@ -1740,41 +1740,41 @@ Model Main_Thesis_Research {
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  0,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_UC.txt");
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY"
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  1,
                 	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY");
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_UC.txt");
                 
                 endfor;
                 

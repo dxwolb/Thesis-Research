@@ -267,6 +267,7 @@ This thesis covers the Economic Dispatch and Unit Commitment models, developed e
 
 $g \in \mc{G} $& Set of generators\\
 $b \in \mc{B} $& Set of buses\\
+$sd \in \mc{SD} $& Set of storage devices\\
 $g \in \mc{G}^{NR} $& Subset of non-renewable generators\\
 $g \in \mc{G}^{R} $& Subset of renewable generators \\
 $gt \in \mc{GT} $& Set of generator types \\
@@ -276,6 +277,7 @@ $rr \in \mc{RR} $& Set of reserve requirements \\
 $rp \in \mc{RP} $& Set of reserve products \\
 $t \in \mc{T} $& Set of time periods \\
 $g \in \mc{G^{b}} $& Set of generators in each bus b \\
+
 
 \end{tabular}
 
@@ -295,6 +297,8 @@ $T^{max}_{l} $& Maximum transmission of transmission line l \\
 $P^{R}_{g,t} $& Power generation of renewable generator g in time t\\
 $U^{up}_{g} $& Minimum uptime of generator g (hours)\\
 $U^{down}_{g} $& Minimum downtime of generator g (hours)\\
+$ST^{max}_{sd} $& Maximum storage capacity of storage device sd (MW)\\
+$ST^{ramp}_{sd} $& Maximum storage capacity of storage device sd (MW)\\
 
 \end{tabular}
 
@@ -313,6 +317,9 @@ $S^{on}_{g,t} $& Start-up status of generator g at time n\\
 $S^{off}_{g,t} $& Shut-down status of generator g at time n\\
 $V^{-}_{b,t} $& Under generation slack variable at each bus b in time t\\
 $V^{+}_{b,t} $& Over generation slack variable at each bus b in time t\\
+$ST^{max}_{sd,t} $& Ammount of energy stored in storage device sd in time t\\
+$ST^{charge}_{sd,t} $& Ammount of energy charged in device sd in time t\\
+$ST^{discharge}_{sd,t} $& Ammount of energy discharged in device sd in time t\\
 
 \end{tabular}
 
@@ -380,7 +387,7 @@ When there is the decision of turning the generator on or off, ramping and trans
 \end{alignat} 
 \end{subequations}
  
-It is important to highlight that if a generator is down in previous period, then it may ramp up by <bla> or <bla>, so it can reaches the minimum generation level in the period it is on; otherwise it can not exceed the ramping rate <make it better here>
+It is important to highlight that if a generator is down in previous period so it can reaches the minimum generation level in the period it is on; otherwise it can not exceed the ramping rate <make it better here>
 
 In unit commitment model, each generator must satisfy a minimum period to remain on or off whether there is a state change on a certain period. Down time constraints are  useful to keep maintenance of a generating unit once has been shut down. Uptime constraints are useful to guarantee stability and reduces stress of equipments. 
 
@@ -391,13 +398,25 @@ In unit commitment model, each generator must satisfy a minimum period to remain
 \end{alignat} 
 \end{subequations}
 
+\subsubsection{Economic Dispatch/Unit Commitment with Storage Constraints}
+
+Under a scenario where renewable resources are the major source of energy, storage devices are crucial to address fluctuations and uncertainties in generation, so they are an important key to keep the system stable \cite{dwyer}. When storage devices are available in the system, their operations are ruled by the following constraints:
+
+\begin{subequations}\label{model:storageConstraints}
+\begin{alignat}{4}
+& ST^{max}_{sd,t} = ST^{max}_{sd,t - 1} + ST^{charge}_{sd,t} - ST^{discharge}_{sd,t}  &~& \forall sd \in SD, t \in t \label{eq:storageLimits} \\
+&  -ST^{ramp} \leq (ST^{charge}_{sd,t} - ST^{charge}_{sd,t-1}) + (ST^{discharge}_{sd,t} - ST^{discharge}_{sd,t-1}) \leq ST^{ramp}  &~& \forall sd \in SD, t \in t \label{eq:storageRamping}
+\end{alignat} 
+\end{subequations}
+
+
 \section{Implementation}
 
 Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc.
 
 \chapter{Analysis}
 
-In the analysis make all the scenario runs, describe the data.
+In the analysis make all the scenario runs, describe all the scenarios test, put a table with all the possibilities, and categorize them by model and describe then. Then, make an analysis by ramping, over and under generation, as well as results. Put graphs, tables, everything that supports your points of view.
 
 \chapter{Conclusion}
 

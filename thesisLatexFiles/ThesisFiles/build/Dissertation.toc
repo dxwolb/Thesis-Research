@@ -17,12 +17,13 @@
 \contentsline {subsubsection}{Generation per Scenario}{17}
 \contentsline {section}{\numberline {3.2}Models}{18}
 \contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{18}
-\contentsline {subsection}{\numberline {3.2.2}Parameters}{18}
-\contentsline {subsection}{\numberline {3.2.3}Variables}{19}
-\contentsline {subsection}{\numberline {3.2.4}Models}{19}
-\contentsline {subsubsection}{Simple Economic Dispatch Model}{20}
-\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{21}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{21}
-\contentsline {section}{\numberline {3.3}Implementation}{22}
-\contentsline {chapter}{\numberline {4}Analysis}{23}
-\contentsline {chapter}{\numberline {5}Conclusion}{25}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{19}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{20}
+\contentsline {subsection}{\numberline {3.2.4}Models}{20}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{21}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{22}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{22}
+\contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{23}
+\contentsline {section}{\numberline {3.3}Implementation}{24}
+\contentsline {chapter}{\numberline {4}Analysis}{25}
+\contentsline {chapter}{\numberline {5}Conclusion}{27}
