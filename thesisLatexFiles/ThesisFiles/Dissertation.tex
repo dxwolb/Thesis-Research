@@ -164,7 +164,7 @@ Although RTS-96 has most of necessary data for this project, it does not contain
 \subsubsection{Wind Profile}
 
 
-Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is know as the "panhandle" because the state of Oklahoma, in north of Texas, is shaped like a pan. The handle of this pan is where there's most of wind potential in state. In result, most of the new generators are being installed in northwest.
+Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is know as the "panhandle" because the state of Oklahoma, in north of Texas, is shaped like a pan. The handle of this pan is where there's most of wind potential in state. In result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
@@ -318,7 +318,20 @@ $V^{+}_{b,t} $& Over generation slack variable at each bus b in time t\\
 
 \subsection{Models}
 
-The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions has been already made.
+The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions has been already made. The main objective function of the studied models is to minimize operational costs over the planning horizon, including fuel, start-up, storage and other variable costs.
+
+The types of constraints that manages the optimal dispatching are:
+
+\begin{itemize}
+\item \textbf{Load Constraints:} For each time period, the ammount of power produced and discharge from storage should be equal to the total load and amount charged into a storage. Alternatively, in a node, this equations also considers the inbound and outbound power transmitted.
+\item \textbf{Ramping Constraints:}  Each generator has technical limitations that bounds the amount of increase and decrease from one period to next one. This is specially important when there is a considerable load and VERs fluctuations in consecutive periods.
+\item \textbf{Generator Limit Constraints:} When turned on, each generator produces a minimum and maximum amount of power, under normal operating conditions.
+\item \textbf{Transmission Constraints:} Transfer of power between buses is bounded by the nominal power capacity of the transmission line
+\item \textbf{Minimum Reserve Constraints:} These constraints are required to handle the variability and uncertainty of renewable generators. They state that the amount of extra generation must be at least some fraction of generation in that period.
+\item \textbf{Storage Constraints:} As well as generators, the charging and discharging rates in storage devices has also technological 
+
+
+\end{itemize}
 
 \subsubsection{Simple Economic Dispatch Model}
 
@@ -352,14 +365,31 @@ Unit commitment is the decision of consider the sets of generators that are turn
 
 \begin{subequations}\label{model:ucConstraints}
 \begin{alignat}{4}
-& S_{g,t} = S^{on}_{g,t} - S^{off}_{g,t} + S_{g,t}  &~& \forall g \in \mc{G}^{NR} , t \in \mc{T} \label{eq:logconst} \\
-& \sum_{i = t}^{t + U^{up}_{g} - 1} S_{g,t} \geq S^{on}_{g,i} U^{up}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:mindownt} \\
-& \sum_{i = t}^{t + U^{down}_{g} - 1} (1 -S_{g,t}) \geq S^{off}_{g,i} U^{down}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:minupt}
-\end{alignat} 
+& S_{g,t} = S^{on}_{g,t} - S^{off}_{g,t} + S_{g,t}  &~& \forall g \in \mc{G}^{NR} , t \in \mc{T} \label{eq:logconst}\end{alignat} 
 \end{subequations}
 
 Constraint \ref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \ref{eq:mindownt} and \ref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
 
+When there is the decision of turning the generator on or off, ramping and transmitting only makes sense if the generator is on in a certain time period. Therefore these constraints has the corresponding binary variable, as shown in \ref{model:UC_NewConstraints}.
+
+\begin{subequations}\label{model:UC_NewConstraints}
+\begin{alignat}{4}
+& P^{NR}_{g,t} - P^{NR}_{g,t - 1} \leq R^{up}_{g} S_{g,t} &~& \forall t \in T, g \in \mc{G}^{R}\label{eq:UCrampUpRateConstraint} \\
+& P^{NR}_{g,t -1 } - P^{NR}_{g,t} \leq R^{down}_{g} S_{g,t} &~& \forall t \in T, g \in \mc{G}^{R}\label{eq:UCrampDownRateConstraint} \\
+& G^{min}_{g} S_{g,t}\leq P^{NR}_{g,t} \leq G^{max}_{g} S_{g,t} &~& \forall t \in T, g \in \mc{G}^{R}\label{eq:UCgenerationBounds}
+\end{alignat} 
+\end{subequations}
+ 
+It is important to highlight that if a generator is down in previous period, then it may ramp up by <bla> or <bla>, so it can reaches the minimum generation level in the period it is on; otherwise it can not exceed the ramping rate <make it better here>
+
+In unit commitment model, each generator must satisfy a minimum period to remain on or off whether there is a state change on a certain period. Down time constraints are  useful to keep maintenance of a generating unit once has been shut down. Uptime constraints are useful to guarantee stability and reduces stress of equipments. 
+
+\begin{subequations}\label{model:ucMinDownUpConstraints}
+\begin{alignat}{4}
+& \sum_{i = t}^{t + U^{up}_{g} - 1} S_{g,t} \geq S^{on}_{g,i} U^{up}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:mindownt} \\
+& \sum_{i = t}^{t + U^{down}_{g} - 1} (1 -S_{g,t}) \geq S^{off}_{g,i} U^{down}_{g} &~& \forall g \in \mc{G}^{NR}, t \in \mc{T} \label{eq:minupt}
+\end{alignat} 
+\end{subequations}
 
 \section{Implementation}
 

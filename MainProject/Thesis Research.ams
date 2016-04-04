@@ -1645,7 +1645,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
-                write PO_GenerationByGeneratorType,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus to file V_ScenarioName ;
+                write PO_GenerationByGeneratorType,VC_PowerTransmitted,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus to file V_ScenarioName ;
                 
                 !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }
