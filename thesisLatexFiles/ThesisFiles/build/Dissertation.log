@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  4 APR 2016 17:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  5 APR 2016 12:04
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -382,17 +382,17 @@ Overfull \hbox (32.26259pt too wide) in paragraph at lines 409--409
 [] 
  []
 
-[23] [24]
-Chapter 4.
-[25
+[23] [24] [25] [26
 
-] [26
+]
+Chapter 4.
+[27] [28
 
 ]
 Chapter 5.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.bbl" [27] [28
+ssertation.bbl" [29] [30
 
 ]
 Missing character: There is no â in font cmr12!
@@ -414,7 +414,7 @@ Underfull \hbox (badness 1888) in paragraph at lines 53--60
 rogramming-
  []
 
-[29]
+[31]
 Underfull \hbox (badness 10000) in paragraph at lines 90--95
 []\OT1/cmr/m/n/12 NREL.  \OT1/cmr/m/it/12 NREL: Dy-namic Maps, GIS Data, and An
 al-y-sis
@@ -426,7 +426,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--95
 n/12 .  Avail-able at
  []
 
-[30]) [31]
+[32] [33]) [34]
 No file vita.tex.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
@@ -442,10 +442,10 @@ abstract.aux")
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\vi
 ta.aux")) ) 
 Here is how much of TeX's memory you used:
- 3950 strings out of 493673
- 58706 string characters out of 3141526
- 117368 words of memory out of 3000000
- 7220 multiletter control sequences out of 15000+200000
+ 3954 strings out of 493673
+ 58765 string characters out of 3141526
+ 117445 words of memory out of 3000000
+ 7224 multiletter control sequences out of 15000+200000
  11663 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,9n,43p,908b,387s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -463,9 +463,9 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (40 pages, 1184541 bytes).
+sisFiles/build/Dissertation.pdf" (43 pages, 1187936 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 204 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -179,5 +179,14 @@ H.~Zhong, Q.~Xia, Y.~Wang, and C.~Kang.
 \newblock \emph{IEEE Transactions on Power Systems}, 28\penalty0 (3):\penalty0
   2232--2241, 2013.
 \newblock ID: 1.
+
+\bibitem[Zimmerman et~al.(2011)Zimmerman, Murillo-S{\'a}nchez, and
+  Thomas]{zimmerman}
+Ray~Daniel Zimmerman, Carlos~Edmundo Murillo-S{\'a}nchez, and Robert~John
+  Thomas.
+\newblock Matpower: Steady-state operations, planning, and analysis tools for
+  power systems research and education.
+\newblock \emph{Power Systems, IEEE Transactions on}, 26\penalty0 (1):\penalty0
+  12--19, 2011.
 
 \end{thebibliography}

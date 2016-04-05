@@ -412,7 +412,30 @@ Under a scenario where renewable resources are the major source of energy, stora
 
 \section{Implementation}
 
-Here write about how it was implemented, in AIMMS, put some running times in a table, some images, put a brief description about what is AIMMS and why it is used, and etc.
+
+\subsection{Software Selection}
+
+During the briefing process, it was necessary to choose the software platform that matches our project goals, such that it allows the development, run an analysis in a feasible time. This project studied 3 options:
+
+\subsubsection{MATPOWER}
+
+MATPOWER is a powerfull tool designed to solve AC and DC Power Flow (PF) and Optimal Power Flow (PF) problems. It is an add-on to MATLAB, and is mainly used for education and research, with a small use on industry. \cite{zimmerman} Although \citeauthor{zimmerman} states that is is possible to dispatch the generators on a minimal quadratic or linear cost, it has limitations on committing them, i.e., starting up or shutting down on a multi-period environment. MATPOWER is very powerful on a single time period, but it can provide computational challenges for multi-periods on a larger horizon. Therefore we concluded this tool was not appropriate for this project.
+
+\subsubsection{PLEXOS \textregistered }
+
+PLEXOS \textregistered is a commercial tool to power systems planning, widely used in power industry to energy resources planning and analysis. It provides academic license, although the process is long. One of reasons to not use it was the necessity to use commercial nature of the tool, which could lead to challenges in make everything developed in this thesis available to academic community. Besides, it was necessary to pre-process all the data and import in the software 
+
+
+\subsubsection{AIMMS}
+
+
+
+
+the team evaluated some software options to 
+
+As stated in the section Objectives, one of the goals of this project was 
+The data processing, mathematical modeling and optimization of this project were run on AIMMS, an optimization platform designed to easily model complex LP, MIP, QP and other optimization types. One of this project deliverables was 
+
 
 \chapter{Analysis}
 

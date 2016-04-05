@@ -25,5 +25,9 @@
 \contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{22}
 \contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{23}
 \contentsline {section}{\numberline {3.3}Implementation}{24}
-\contentsline {chapter}{\numberline {4}Analysis}{25}
-\contentsline {chapter}{\numberline {5}Conclusion}{27}
+\contentsline {subsection}{\numberline {3.3.1}Software Selection}{24}
+\contentsline {subsubsection}{MATPOWER}{24}
+\contentsline {subsubsection}{PLEXOS}{24}
+\contentsline {subsubsection}{AIMMS}{24}
+\contentsline {chapter}{\numberline {4}Analysis}{27}
+\contentsline {chapter}{\numberline {5}Conclusion}{29}

@@ -1472,8 +1472,10 @@ Model Main_Thesis_Research {
                 
                 if(PE_SelectedModel = 'Economic Dispatch') then
                 	solve M_ED_MinimizeTotalCost;
+                	PD_SolutionTime := M_ED_MinimizeTotalCost.SolutionTime;
                 else
                 	solve M_UC_MinimizeTotalCost;
+                	PD_SolutionTime := M_UC_MinimizeTotalCost.SolutionTime;
                 endif
             }
         }
@@ -1544,6 +1546,7 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PD_SolutionTime;
             Parameter PD_TotalGenerators {
                 IndexDomain: iGeneratorType;
                 Definition: count(iNonRenewableGenerator | PE_GeneratorType(iNonRenewableGenerator) = iGeneratorType);
