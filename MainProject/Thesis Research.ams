@@ -154,7 +154,7 @@ Model Main_Thesis_Research {
                     Constraint CU_UC_MinimumUptime {
                         IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
-                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) ,
+                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) *(60/PI_TimeGranularity) ,
                             
                             VC_OnOffStatus(iTime2, iNonRenewableGenerator)) >=
                             VC_StartupStatus(iTime, iNonRenewableGenerator)*PI_MinUpTime(PE_UnitGroup(iNonRenewableGenerator)) *(60/PI_TimeGranularity)
@@ -163,7 +163,7 @@ Model Main_Thesis_Research {
                     Constraint CU_UC_MinimumDownTime {
                         IndexDomain: (iNonRenewableGenerator,iTime);
                         Definition: {
-                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinDownTime(PE_UnitGroup(iNonRenewableGenerator)) ,
+                            sum(iTime2 | Ord(iTime2,P_TimeCalendar)>= Ord(iTime,P_TimeCalendar) and Ord(iTime2,P_TimeCalendar) < Ord(iTime,P_TimeCalendar) + PI_MinDownTime(PE_UnitGroup(iNonRenewableGenerator))*(60/PI_TimeGranularity) ,
                             
                             (1 - VC_OnOffStatus(iTime2, iNonRenewableGenerator)) )>=
                             VC_ShutdownStatus(iTime, iNonRenewableGenerator)*PI_MinDownTime(PE_UnitGroup(iNonRenewableGenerator)) *(60/PI_TimeGranularity)
