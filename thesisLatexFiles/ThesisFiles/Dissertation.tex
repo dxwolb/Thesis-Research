@@ -37,10 +37,12 @@
 \include{myabstract}
 \pagestyle{plain}
 
+\addcontentsline{toc}{chapter}{Introduction}
 \chapter{Introduction}
 
 Variable Energy Resources (usually refereed as VERs) plays an important role in the energy grid nowadays. It is expected that in 2020, x\% of all average consumed power in United States comes from them. One of important characteristics of them is the uncertain behaviour of generation pattern. With the deregulation of the energy market and the decarbonization rules, the grid operators have the challenge to plan efficiently their non-renewable resources (such as oil, coal and gas) in order to keep satisfy grid security and reliability parameters while running the grid at a minimal cost. This work analyses the classical LP version of Economic Dispatch (known as ED) and a MIP instance of Unit Commitment(UC) under different operational constraints and VERs penetration  scenarios.
 
+\addcontentsline{toc}{chapter}{Literature Review}
 \chapter{Literature Review}
 
 
@@ -98,6 +100,7 @@ ED & ED &  &  &  &  & x & x \\ \hline
 \end{table}
 
 
+\addcontentsline{toc}{chapter}{Development}
 \chapter{Development}
 \section{Data}
 
@@ -415,7 +418,7 @@ Under a scenario where renewable resources are the major source of energy, stora
 
 \subsection{Software Selection}
 
-During the briefing process, it was necessary to choose the software platform that matches our project goals, such that it allows the development, run an analysis in a feasible time. This project studied 3 options:
+During the briefing process, it was necessary to choose the software platform that matches our project goals, such that it allows the development, run an analysis the project feasible time. 3 options were considered:
 
 \subsubsection{MATPOWER}
 
@@ -423,24 +426,93 @@ MATPOWER is a powerfull tool designed to solve AC and DC Power Flow (PF) and Opt
 
 \subsubsection{PLEXOS \textregistered }
 
-PLEXOS \textregistered is a commercial tool to power systems planning, widely used in power industry to energy resources planning and analysis. It provides academic license, although the process is long. One of reasons to not use it was the necessity to use commercial nature of the tool, which could lead to challenges in make everything developed in this thesis available to academic community. Besides, it was necessary to pre-process all the data and import in the software 
-
+PLEXOS \textregistered is a commercial tool to power systems planning, widely used in power industry to energy resources planning and analysis. It provides academic license, although the process is long. One of reasons to not use it was the necessity to use commercial nature of the tool, which could lead to challenges in make everything developed in this thesis available to academic community.  
 
 \subsubsection{AIMMS}
 
 
+AIMMS is a mathematical programming tool designed to solve optimization problems. It is as powerful as other optimization tools like AMPL, GAMS. Some features include \cite{bisschop}:
+
+\begin{itemize}
+\item Easy-to-use design of complex parameters
+\item Intuitive representation of calendar and time horizons
+\item Set of optimization tools to solve LP, QP, NLP and MINLP problems
+\item GUI to build end-user interfaces
+\item Open Data Base Connectivity (OBDC) and OLE interfaces, allowing data exchange between most common databases, as Oracle, SQL Server, etc.
+\end{itemize}
+
+Due to easiness of use, the fact that an academic license provides 100\% of the tool functionality, and the previous experience of the members of this project, AIMMS was chosen as the supporting tool for this work. The software features are described in next section.
+
+\section{Software Features}
+
+This section briefly covers all the screens and features developed in AIMMS for this project.
+
+\subsubsection{Data Import}
+
+The data import section allows the user to import all the data using the AIMMS specific structure for data text exchange. More details on how prepare the data can be found at \cite{bisschop2006aimms}.
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[keepaspectratio]{aimmsScreenImportPage.png}
+	  	\caption{Data Import page in AIMMS}
+     	\label{fig:aimmsScreenImportPage}
+	\end{center}
+\end{figure}
+
+\subsubsection{Data Settings}
+
+After the data has been imported, the user has the chance to add/edit and view some data on an intuitive way. In \textit{Network Page}, it is possible to see the location of buses (in yellow), as well as locations of generators per type. The user can change the list to see whatever type he wants. In \textit{Data Buses Page}, it is possible to edit the peak load of each bus in the system. The \textit{Costs Page} has the start-up and variable cost for each generator type and unit group. In \textit{General Data Page} the user can add, edit and remove the main components of the system, i.e., buses, generators and unit groups, as well as changing general configurations, such as horizon dates, granularity and perturbation level for load and wind profiles under a sub-hourly level. 
+
+It is possible also to see the total load over time. In \textit{Generators Specification Page} it is possible to configure the main parameters that defines a generator, such as its type, unit group and bus where it is located. In \textit{Wind and Solar Availability Page} it is possible to view the Wind and Solar profile for the selected bus in the node, as well as locations that have either solar or wind profile mapped (marked with the blue ball). Lastly, the \textit{Summary Page} summarizes the total generation capacity and load, as well as total number of generators and its capacity per generator type.
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{aimmsDataPages.png}
+	  	\caption{Data Section Pages}
+     	\label{fig:dataSectionPages}
+	\end{center}
+\end{figure}
 
 
-the team evaluated some software options to 
+\subsubsection{Optimization and Results}
 
-As stated in the section Objectives, one of the goals of this project was 
-The data processing, mathematical modeling and optimization of this project were run on AIMMS, an optimization platform designed to easily model complex LP, MIP, QP and other optimization types. One of this project deliverables was 
+The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results on an intuitive way. 
+
+The user has the option either to solve the Economic Dispatch or Unit Commitment problems, with or without the following features:
+
+\begin{itemize}
+\item Ramping Constraints
+\item Transmission Constraints
+\item Reserve Constraints
+\item Slack Variables
+\item Transmission Losses (if "Transmission Constraints" is chosen)
+\end{itemize}
+
+In \textit{Demand, Load and Transmission}, it is possible to see, for every bus in every time period, the load, generation and transmission flows in and out. It also is possible to see this same flow on a graphic way in \textit{Transmission Map} section, for each time time period, as well as the location of VERs(in green) and active(red) and inactive(gray) NVERs. The \textit{Average Load Distribution} contains the graph displaying the average load for each generator type within a day, while in \textit{Load Distribution Page} it is possible to see the generation distribution per time period, as well as the total load, being useful to identify over and under generation. The \textbf{Power Output Result} details the generation by each generator, in a table. Finally, the \textit{Location Marginal Prices} page contains the Shadow Prices per time for each location, and it is useful to identify potential investments or bottlenecks.
+
+The \textit{Average Ramping} page is useful to compare the ramping behaviour of the generator sources, expressed as:
+
+\begin{equation}
+    AverageRamping_{gt \in \mc{GT}} = \overline{\dfrac{P^{NR}_{g,t} - P^{NR}_{g,t-1}}{G^{max}_{g}}}
+\end{equation}
+
+In other words, it expresses the average ramping grouped by each generator type , normalized by its maximum capacity. It avoids the misunderstanding of high-capacity generators being ramped more than the lower ones.
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{aimmsOptimizationSectionPages.png}
+	  	\caption{Optimization Section Pages}
+     	\label{fig:optimizationSectionPages}
+	\end{center}
+\end{figure}
 
 
+\addcontentsline{toc}{chapter}{Analysis}
 \chapter{Analysis}
 
 In the analysis make all the scenario runs, describe all the scenarios test, put a table with all the possibilities, and categorize them by model and describe then. Then, make an analysis by ramping, over and under generation, as well as results. Put graphs, tables, everything that supports your points of view.
 
+\addcontentsline{toc}{chapter}{Conclusion}
 \chapter{Conclusion}
 
 \appendix

@@ -1473,9 +1473,11 @@ Model Main_Thesis_Research {
                 if(PE_SelectedModel = 'Economic Dispatch') then
                 	solve M_ED_MinimizeTotalCost;
                 	PD_SolutionTime := M_ED_MinimizeTotalCost.SolutionTime;
+                	PD_SolverStatus := M_ED_MinimizeTotalCost.SolverStatus;
                 else
                 	solve M_UC_MinimizeTotalCost;
                 	PD_SolutionTime := M_UC_MinimizeTotalCost.SolutionTime;
+                	PD_SolverStatus := M_UC_MinimizeTotalCost.SolverStatus;
                 endif
             }
         }
@@ -1547,6 +1549,7 @@ Model Main_Thesis_Research {
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
             Parameter PD_SolutionTime;
+            StringParameter PD_SolverStatus;
             Parameter PD_TotalGenerators {
                 IndexDomain: iGeneratorType;
                 Definition: count(iNonRenewableGenerator | PE_GeneratorType(iNonRenewableGenerator) = iGeneratorType);
@@ -1564,7 +1567,7 @@ Model Main_Thesis_Research {
                 Definition: {
                     if (PI_MaximumGenerationMW(iNonRenewableGenerator) > 0) then
                     ABS(PO_PowerGenerated(iTime, iNonRenewableGenerator) - PO_PowerGenerated(iTime - 1, iNonRenewableGenerator))/
-                    (PI_MaximumGenerationMW(iNonRenewableGenerator)*PI_TimeGranularity)
+                    (PI_MaximumGenerationMW(iNonRenewableGenerator))
                     else
                     
                     0
@@ -1576,7 +1579,7 @@ Model Main_Thesis_Research {
                 IndexDomain: iGeneratorType;
                 Text: "MW/minute";
                 Definition: {
-                    average((iTime,iGenerator) | PE_GeneratorType(iGenerator) = iGeneratorType and PO_PowerGenerated(iTime, iGenerator) > 0 ,
+                    average((iTime,iGenerator) | PE_GeneratorType(iGenerator) = iGeneratorType,
                     PO_Ramping(iTime, iGenerator))/PI_TimeGranularity
                 }
             }
@@ -1648,7 +1651,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
-                write PO_GenerationByGeneratorType,VC_PowerTransmitted,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus to file V_ScenarioName ;
+                write PO_GenerationByGeneratorType,VC_PowerTransmitted,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName ;
                 
                 !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }
@@ -1683,57 +1686,53 @@ Model Main_Thesis_Research {
                 !	SheetName    : "TestFileResults_ED");
                 
                 !Run for Economic Dispatch
-                for(iScenario) do
-                
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
-                
-                endfor;
+                !for(iScenario) do
+                !
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  0,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  0,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  0,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  1,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  1,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  1,
+                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
+                !
+                !endfor;
                 
                 PS_TestResultsWorkbookName := "TestResults_UC.xls";
                 PE_SelectedModel := 'Unit Commitment';
-                
-                L_Status := spreadsheet::CreateWorkbook(
-                	WorkbookName : PS_TestResultsWorkbookName ,
-                	SheetName    : "TestFileResults_UC");
                 
                 !Run for Unit Commitment
                 for(iScenario) do
@@ -1780,18 +1779,6 @@ Model Main_Thesis_Research {
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_UC.txt");
                 
                 endfor;
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 
                 DialogMessage(
                 	message : "Run finished!" ,

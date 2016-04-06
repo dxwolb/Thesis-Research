@@ -1,8 +1,11 @@
 \contentsline {chapter}{List of Tables}{vi}
 \contentsline {chapter}{List of Figures}{vii}
 \contentsline {chapter}{Abstract}{1}
+\contentsline {chapter}{Introduction}{2}
 \contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{Literature Review}{3}
 \contentsline {chapter}{\numberline {2}Literature Review}{5}
+\contentsline {chapter}{Development}{7}
 \contentsline {chapter}{\numberline {3}Development}{9}
 \contentsline {section}{\numberline {3.1}Data}{9}
 \contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{9}
@@ -27,7 +30,13 @@
 \contentsline {section}{\numberline {3.3}Implementation}{24}
 \contentsline {subsection}{\numberline {3.3.1}Software Selection}{24}
 \contentsline {subsubsection}{MATPOWER}{24}
-\contentsline {subsubsection}{PLEXOS}{24}
-\contentsline {subsubsection}{AIMMS}{24}
-\contentsline {chapter}{\numberline {4}Analysis}{27}
-\contentsline {chapter}{\numberline {5}Conclusion}{29}
+\contentsline {subsubsection}{PLEXOS \textregistered }{24}
+\contentsline {subsubsection}{AIMMS}{25}
+\contentsline {section}{\numberline {3.4}Software Features}{25}
+\contentsline {subsubsection}{Data Import}{25}
+\contentsline {subsubsection}{Data Settings}{26}
+\contentsline {subsubsection}{Optimization and Results}{27}
+\contentsline {chapter}{Analysis}{28}
+\contentsline {chapter}{\numberline {4}Analysis}{31}
+\contentsline {chapter}{Conclusion}{31}
+\contentsline {chapter}{\numberline {5}Conclusion}{33}

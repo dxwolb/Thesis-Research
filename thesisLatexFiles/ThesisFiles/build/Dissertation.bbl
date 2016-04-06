@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -13,6 +13,16 @@ D.~Bertsimas, E.~Litvinov, X.~A. Sun, Jinye Zhao, and Tongxin Zheng.
 \newblock \emph{Power Systems, IEEE Transactions on}, 28\penalty0 (1):\penalty0
   52--63, 2013.
 \newblock ID: 1.
+
+\bibitem[Bisschop and Entriken(1993)]{bisschop}
+Johannes Bisschop and Robert Entriken.
+\newblock \emph{AIMMS: The modeling system}.
+\newblock Paragon Decision Technology, 1993.
+
+\bibitem[Bisschop and Roelofs(2006)]{bisschop2006aimms}
+Johannes Bisschop and Marcel Roelofs.
+\newblock \emph{AIMMS language reference}.
+\newblock Lulu. com, 2006.
 
 \bibitem[Cain et~al.(2012)Cain, O’neill, and Castillo]{cain}
 Mary~B. Cain, Richard~P. O’neill, and Anya Castillo.
