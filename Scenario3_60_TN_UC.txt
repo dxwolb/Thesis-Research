@@ -126,7 +126,7 @@
     ;
 
 
-    VC_PowerTransmitted(iTime,iBus,iBus2) := data { } ;
+    PO_LineUtilization(iTime,iTransmissionLine) := data { } ;
 
 
     VC_OverGenerationSlack(iTime,iBus) := data table 
@@ -359,7 +359,7 @@
     ;
 
 
-    PD_SolutionTime := 4.812 ;
+    PD_SolutionTime := 5.235 ;
 
     PD_SolverStatus := "NormalCompletion" ;
 

@@ -346,8 +346,8 @@ Model Main_Thesis_Research {
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
                             + sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*1000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*1000
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -1240,6 +1240,7 @@ Model Main_Thesis_Research {
                 Set SI_GeneratorTypes {
                     Index: iGeneratorType;
                     OrderBy: PI_GeneratorTypeOrder(iGeneratorType);
+                    InitialData: data { Wind, Solar, Nuclear, Coal, Oil, NGCC-Old, NGCC-New, NGCT-Old };
                 }
                 ElementParameter PE_GeneratorBus {
                     IndexDomain: iGenerator;
@@ -1548,6 +1549,27 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PO_HighLineUtilization {
+                IndexDomain: iTransmissionLine;
+                Definition: {
+                    max(iTime,
+                    PO_LineUtilization(iTime, iTransmissionLine))
+                }
+            }
+            Parameter PO_LowLineUtilization {
+                IndexDomain: iTransmissionLine;
+                Definition: {
+                    min(iTime,
+                    PO_LineUtilization(iTime, iTransmissionLine))
+                }
+            }
+            Parameter PO_LineUtilization {
+                IndexDomain: (iTime,iTransmissionLine);
+                Definition: {
+                    sum((iBus,iBus2) | PI_TransmissionLineBranches(iTransmissionLine, iBus, iBus2),
+                    VC_PowerTransmitted(iTime, iBus, iBus2))/PI_LineMaximumCapacity(iTransmissionLine)
+                }
+            }
             Parameter PD_SolutionTime;
             StringParameter PD_SolverStatus;
             Parameter PD_TotalGenerators {
@@ -1618,22 +1640,21 @@ Model Main_Thesis_Research {
                     { Scenario1 : "Scenario1",
                       Scenario2 : "Scenario2",
                       Scenario3 : "Scenario3" }
+                    
+                    !data
+                    !{ Scenario3 : "Scenario3" }
                 }
             }
             Set S_ScenarioSets {
                 Index: iScenario;
-                Definition: data { Scenario1, Scenario2, Scenario3 };
+                Definition: {
+                    data { Scenario1, Scenario2, Scenario3 }
+                    !data {Scenario3 }
+                }
             }
-            StringParameter PS_TestResultsWorkbookName {
-                InitialData: "TestResults2.xls";
-                Comment: "Defines the name of the workbook";
-            }
-            StringParameter PS_RowRange;
-            StringParameter PS_ColRange;
-            StringParameter PS_DataRange;
         }
         Procedure RunScenario {
-            Arguments: (V_ScenarioFile,V_Granularity,V_EnableTransmission,V_WorkbookName,V_ScenarioName);
+            Arguments: (V_ScenarioFile,V_Granularity,V_EnableTransmission,V_ScenarioName);
             Body: {
                 PS_IEEETestCaseFileName := V_ScenarioFile;
                 PI_TimeGranularity := V_Granularity;
@@ -1651,7 +1672,7 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
-                write PO_GenerationByGeneratorType,VC_PowerTransmitted,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName ;
+                write PO_GenerationByGeneratorType,PO_LineUtilization,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName in dense mode ;
                 
                 !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }
@@ -1679,59 +1700,48 @@ Model Main_Thesis_Research {
                 
                 PE_SelectedModel := 'Economic Dispatch';
                 
-                PS_TestResultsWorkbookName := "TestResults_ED.xls";
                 
-                !L_Status := spreadsheet::CreateWorkbook(
-                !	WorkbookName : PS_TestResultsWorkbookName ,
-                !	SheetName    : "TestFileResults_ED");
                 
                 !Run for Economic Dispatch
-                !for(iScenario) do
-                !
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  60,
-                !	V_EnableTransmission :  0,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
-                !	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  15,
-                !	V_EnableTransmission :  0,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
-                !	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  5,
-                !	V_EnableTransmission :  0,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  60,
-                !	V_EnableTransmission :  1,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
-                !	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  15,
-                !	V_EnableTransmission :  1,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
-                !	);
-                !RunScenario(
-                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                !	V_Granularity        :  5,
-                !	V_EnableTransmission :  1,
-                !	V_WorkbookName       :  PS_TestResultsWorkbookName,
-                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
-                !
-                !endfor;
+                for(iScenario) do
                 
-                PS_TestResultsWorkbookName := "TestResults_UC.xls";
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  0,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  0,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  0,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  60,
+                	V_EnableTransmission :  1,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  15,
+                	V_EnableTransmission :  1,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
+                	);
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  1,
+                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
+                
+                endfor;
+                
                 PE_SelectedModel := 'Unit Commitment';
                 
                 !Run for Unit Commitment
@@ -1741,41 +1751,35 @@ Model Main_Thesis_Research {
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  0,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_UC.txt");
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  60,
                 	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  15,
                 	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_UC.txt"
                 	);
                 RunScenario(
                 	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
                 	V_Granularity        :  5,
                 	V_EnableTransmission :  1,
-                	V_WorkbookName       :  PS_TestResultsWorkbookName,
                 	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_UC.txt");
                 
                 endfor;
@@ -1785,109 +1789,6 @@ Model Main_Thesis_Research {
                 	title   : "Sucess");
             }
             Parameter L_Status;
-        }
-        Procedure Copy_RunScenario {
-            Arguments: (V_ScenarioFile,V_Granularity,V_EnableTransmission,V_WorkbookName,V_ScenarioName);
-            Body: {
-                PS_IEEETestCaseFileName := V_ScenarioFile;
-                PI_TimeGranularity := V_Granularity;
-                
-                !UpdateGranularity;
-                UpdateTimeCalendar;
-                
-                PI_EnableRampingConstraints := 1;
-                PI_EnableReserveConstraints := 0;
-                PI_EnableSlackVariables := 1;
-                PI_EnableTransmissionConstraints := V_EnableTransmission;
-                PI_EnableTransmissionLosses := V_EnableTransmission;
-                
-                
-                read from file PS_IEEETestCaseFileName;
-                RunOptimization;
-                
-                
-                !Load By Generator Type
-                L_SheetName := V_ScenarioName + "_LB";
-                spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                PS_RowRange := FormatString( "A2:A%i", count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)));
-                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)) ));
-                PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType))),count((iTime,iGeneratorType) | PO_GenerationByGeneratorType(iTime, iGeneratorType)));
-                spreadsheet::AssignTable(V_WorkbookName,PO_GenerationByGeneratorType,PS_DataRange,PS_RowRange,PS_ColRange);
-                
-                !Ramping!PO_Ramping
-                !PD_RampingPerUnitGroup(iTime, iUnitGroup)
-                L_SheetName := V_ScenarioName + "_Ramp";
-                spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                PS_RowRange := FormatString( "A2:A%i", count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)));
-                PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)) ));
-                PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup))),count((iTime,iUnitGroup) | PD_RampingPerUnitGroup(iTime, iUnitGroup)));
-                spreadsheet::AssignTable(V_WorkbookName,PD_RampingPerUnitGroup,PS_DataRange,PS_RowRange,PS_ColRange);
-                
-                
-                !!Power Output
-                !L_SheetName := V_ScenarioName + "_PowerOutput";
-                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator)));
-                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator))) );
-                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator))),count((iTime,iGenerator) | PO_PowerGenerated(iTime, iGenerator)));
-                !spreadsheet::AssignTable(V_WorkbookName,PO_PowerGenerated,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
-                
-                !UnderSlack
-                
-                !if (count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)) > 0 ) then
-                !
-                !L_SheetName := V_ScenarioName + "_UnderGenerationSlack";
-                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)));
-                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName( count( (iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)) ) );
-                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName( count( (iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus))),count((iTime,iBus) | VC_UnderGenerationSlack(iTime, iBus)));
-                !spreadsheet::AssignTable(V_WorkbookName,VC_UnderGenerationSlack,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
-                !
-                !endif;
-                !
-                !if (count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)) > 0) then
-                !
-                !!OverSlack
-                !L_SheetName := V_ScenarioName + "_OverGenerationSlack";
-                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                !PS_RowRange := FormatString( "A2:A%i", count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)));
-                !PS_ColRange := FormatString( "B1:%s1", spreadsheet::ColumnName(count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus))) );
-                !PS_DataRange := FormatString( "B2:%s%i",spreadsheet::ColumnName(count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus))),count((iTime,iBus) | VC_OverGenerationSlack(iTime, iBus)));
-                !spreadsheet::AssignTable(V_WorkbookName,VC_OverGenerationSlack,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
-                !endif;
-                !
-                !!Transmission
-                !L_SheetName := V_ScenarioName + "_TransmissionOutput";
-                !PS_RowRange := FormatString( "A2:B%i", count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ));
-                !PS_ColRange := FormatString( "C1:%s1", spreadsheet::ColumnName( count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ) ));
-                !PS_DataRange := FormatString( "C2:%s%i",spreadsheet::ColumnName(count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) )),count((iTime, iBus, iBus2) | VC_PowerTransmitted(iTime, iBus, iBus2) ));
-                !L_Status := spreadsheet::AddNewSheet(V_WorkbookName,L_SheetName,1,0);
-                !spreadsheet::AssignTable(V_WorkbookName,VC_PowerTransmitted,PS_DataRange,PS_RowRange,PS_ColRange,L_SheetName);
-                
-                !PO_Ramping(iTime, iNonRenewableGenerator);
-                !VC_OverGenerationSlack(iTime, iBus);
-                !VC_UnderGenerationSlack(iTime, iBus);
-                !VC_PowerTransmitted(iTime, iBus, iBus2);
-                
-                spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
-            }
-            Parameter L_Status;
-            StringParameter L_SheetName;
-            StringParameter V_ScenarioFile {
-                Property: Input;
-            }
-            Parameter V_Granularity {
-                Property: Input;
-            }
-            Parameter V_EnableTransmission {
-                Property: Input;
-            }
-            StringParameter V_WorkbookName {
-                Property: Input;
-            }
-            StringParameter V_ScenarioName {
-                Property: Input;
-            }
         }
     }
     Procedure MainInitialization;

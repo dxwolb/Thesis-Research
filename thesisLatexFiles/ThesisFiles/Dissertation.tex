@@ -207,6 +207,9 @@ It is important to notice that the highest incidence profile in state is located
 \end{figure}
 
 
+\subsection{Costs and Assumptions}
+
+
 \subsection{Scenario Description}
 
 This project studies 3 different generators scenarios under the same demand profile from RTS-96 data. The distribution is adapted from \citeauthor{shavel}, that describes the technical and economical potentials of exploring natural gas and VERs in the state of Texas \cite{shavel}. 
@@ -520,7 +523,7 @@ The analysis has the goal to evaluate the impact of the following components in 
 \item Level of VERs: Scenarios 1, 2 and 3
 \end{itemize}
 
-With all possible combinations of these factors, there are 36 data sets to analyse. These are defined as "test cases", as described in table CREATETABLE. The following parameters are object of analysis:
+With all possible combinations of these factors, there are 36 data sets to analyse. These are defined as "test cases", as described in table Create the Table. The following parameters are object of analysis:
 
 \begin{itemize}
 \item Power Output per generation type over time
@@ -528,6 +531,56 @@ With all possible combinations of these factors, there are 36 data sets to analy
 \item Running time per test case
 \item Ramping distribution for NVERs per generator type
 \end{itemize}
+
+\subsection{Power Output per Generation Type}
+
+Figures \ref{fig:powerOutputScenario1}, \ref{fig:powerOutputScenario2} and \ref{fig:powerOutputScenario3} has the power production for each generator type in a combination of model type (UC or ED), granularity (60, 15 and 5 minutes) and transmission constraints on and off. Each figure represents the result for each scenario described in the Data Section. All instances represent the same time period of one week of July, with the same load profile. The generator type colors are described at the bottom of the page, and to make the curve more analysis friendly all the x-axis were removed. There are some interesting analysis, which will be described by Scenario.
+
+\subsubsection{Scenario 1}
+
+- When there is no transmission constraints, there was no significant difference of generation distribution between time granularities on the Economic Dispatch version, except for the ramping behaviour of non-renewable resources. It is expected to ramping more due to the variability under a sub-hourly level. 
+- The generation profile is the same for nuclear, coal and oil sources for the economic dispatch model. When the model is solved with transmission constraints, only NGCC-New generators can not handle the demand under the peak, so they need to be complemented by NGCC-Old ones. The reason for that is the transmission limit on power transmission, wich does not allow NGCC-New generators to fill all the left demand at peak, letting NGCC-New generators supply it.
+- As for Unit Commitment with Transmission Constraints on a 60-minute level, the NGC-Old generators were turned on during the running process, and remained until the end of the horizon, which reduced the generation of base generators during low demand,specially Nuclear types.
+- When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load. 
+
+The generatio
+
+For a 5 minute level the MIP was not able to do the resource planning,  allowing the demand to be unmet, for both transmission cases. We decided to investigate this result better, with different levels of normal perturbation. 
+
+
+
+
+
+\subsubsection{Scenario 2}
+
+\subsubsection{Scenario 3}
+
+\begin{figure} 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario1.png}
+  
+  \caption{Power Output for Scenario 1.}
+  \label{fig:powerOutputScenario1}
+\end{figure}
+
+\begin{figure} 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario2.png}
+  
+  \caption{Power Output for Scenario 2.}
+  \label{fig:powerOutputScenario2}
+\end{figure}
+
+\begin{figure} 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario3.png}
+  
+  \caption{Power Output for Scenario 3.}
+  \label{fig:powerOutputScenario3}
+\end{figure}
 
 
 

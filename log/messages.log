@@ -1,18 +1,14 @@
-﻿There is 72.520 Mb in use.
+﻿There is 71.414 Mb in use.
 Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
 Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
 Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
+Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
 Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
 Warning: The variable "VC_PowerTransmitted" is not initialized (default values are used).
-Warning: The shadowprice of constraint "CE_Model0ED_EnergyBalance" is not initialized (default values are used).
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Wind-5,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-9,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Wind-3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-9,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_Reserve(2015-07-01 00:00:00,Wind-3,TMOR)" and "VC_Reserve(2015-07-01 00:00:00,Wind-8,TMOR)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: Only 3 out of 4356 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
