@@ -1476,10 +1476,17 @@ Model Main_Thesis_Research {
                 	PD_SolutionTime := M_ED_MinimizeTotalCost.SolutionTime;
                 	PD_SolverStatus := M_ED_MinimizeTotalCost.SolverStatus;
                 else
-                	solve M_UC_MinimizeTotalCost;
+                !	solve M_UC_MinimizeTotalCost;
+                	solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.01, time_limit := 3*3600 ;
+                
+                
                 	PD_SolutionTime := M_UC_MinimizeTotalCost.SolutionTime;
                 	PD_SolverStatus := M_UC_MinimizeTotalCost.SolverStatus;
-                endif
+                endif;
+                
+                DialogMessage(
+                	message : "Optimization sucessful" ,
+                	title   : "Sucess");
             }
         }
         Procedure UpdateRenewableGenerationCapacity {
@@ -1623,6 +1630,23 @@ Model Main_Thesis_Research {
         }
     }
     Section Test_Case {
+        Procedure Procedure_1 {
+            Body: {
+                
+                
+                PI_TimeGranularity := 5;
+                
+                !UpdateGranularity;
+                UpdateTimeCalendar;
+                
+                RunOptimization
+            }
+        }
+        Procedure ExportDataManual {
+            Body: {
+                write PO_GenerationByGeneratorType,PO_LineUtilization,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file "VC_NoTransmissionMode.txt" in dense mode ;
+            }
+        }
         DeclarationSection TestCaseParameters {
             StringParameter PS_ScenarioFileNames {
                 IndexDomain: iScenario;

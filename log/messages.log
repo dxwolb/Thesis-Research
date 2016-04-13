@@ -1,14 +1,1 @@
-﻿There is 71.414 Mb in use.
-Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
-Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
-Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
-Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
-Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
-Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
-Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
-Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
-Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
-Warning: The variable "VC_PowerTransmitted" is not initialized (default values are used).
+﻿There is 69.453 Mb in use.

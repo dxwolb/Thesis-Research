@@ -42,6 +42,8 @@
 
 Variable Energy Resources (usually refereed as VERs) plays an important role in the energy grid nowadays. It is expected that in 2020, x\% of all average consumed power in United States comes from them. One of important characteristics of them is the uncertain behaviour of generation pattern. With the deregulation of the energy market and the decarbonization rules, the grid operators have the challenge to plan efficiently their non-renewable resources (such as oil, coal and gas) in order to keep satisfy grid security and reliability parameters while running the grid at a minimal cost. This work analyses the classical LP version of Economic Dispatch (known as ED) and a MIP instance of Unit Commitment(UC) under different operational constraints and VERs penetration  scenarios.
 
+Need Completion.
+
 \addcontentsline{toc}{chapter}{Literature Review}
 \chapter{Literature Review}
 
@@ -209,6 +211,7 @@ It is important to notice that the highest incidence profile in state is located
 
 \subsection{Costs and Assumptions}
 
+To be developed.
 
 \subsection{Scenario Description}
 
@@ -538,14 +541,26 @@ Figures \ref{fig:powerOutputScenario1}, \ref{fig:powerOutputScenario2} and \ref{
 
 \subsubsection{Scenario 1}
 
-- When there is no transmission constraints, there was no significant difference of generation distribution between time granularities on the Economic Dispatch version, except for the ramping behaviour of non-renewable resources. It is expected to ramping more due to the variability under a sub-hourly level. 
-- The generation profile is the same for nuclear, coal and oil sources for the economic dispatch model. When the model is solved with transmission constraints, only NGCC-New generators can not handle the demand under the peak, so they need to be complemented by NGCC-Old ones. The reason for that is the transmission limit on power transmission, wich does not allow NGCC-New generators to fill all the left demand at peak, letting NGCC-New generators supply it.
-- As for Unit Commitment with Transmission Constraints on a 60-minute level, the NGC-Old generators were turned on during the running process, and remained until the end of the horizon, which reduced the generation of base generators during low demand,specially Nuclear types.
-- When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load. 
+When there is no transmission constraints, there was no significant difference of generation distribution between time granularities on the Economic Dispatch version, except for the ramping behaviour of non-renewable resources. It is expected to ramping more due to the variability under a sub-hourly level. 
 
-The generatio
+The generation profile is the same for nuclear, coal and oil sources for the economic dispatch model. When the model is solved with transmission constraints, only NGCC-New generators can not handle the demand under the peak, so they need to be complemented by NGCC-Old ones. The reason for that is the transmission limit on power transmission, wich does not allow NGCC-New generators to fill all the left demand at peak, letting NGCC-New generators supply it.
 
-For a 5 minute level the MIP was not able to do the resource planning,  allowing the demand to be unmet, for both transmission cases. We decided to investigate this result better, with different levels of normal perturbation. 
+As for Unit Commitment with Transmission Constraints on a 60-minute level, the NGC-Old generators were turned on during the running process, and remained until the end of the horizon, which reduced the generation of base generators during low demand,specially Nuclear types.
+
+When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load, even for a penalty of \$10000 of MW not generated. We decided then to analyse which constraint was leading to this behaviour, so we disabled the ramping constraints and run the UC model on a 15-minute and 5-minute level. Disabling the constraints augmented the solution space, which could lead to unpractical solution time. Therefore the results has less than 1\% of optimality gap.
+
+Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation. The comparison between Transmission on and Off are shown in Figure bla
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[keepaspectratio]{PowerOutput_15_UC_TY_NoRamping.png}
+	  	\caption{Scenario 1 Generation Profile for an Unit Commitment without ramping constraints under a 15 minute level}
+     	\label{fig:noRampingConstraint}
+	\end{center}
+\end{figure}
+
+
+For a 5 minute level the MIP was not able to do the resource planning,  allowing the demand to be unmet, for both transmission cases. We decided to investigate the reason behind that. Figure BLA shows the result with or without ramping constraints
 
 
 
