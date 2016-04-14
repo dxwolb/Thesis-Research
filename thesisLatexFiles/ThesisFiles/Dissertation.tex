@@ -120,7 +120,7 @@ The system is divided into 3 areas with 24 buses each, connected by high capacit
   \label{fig:ieeetopology}
 \end{figure}
 
-The dataset describes a peak load for each bus. The absolute load in every hour is a percentage the peak load based on 3 components: the week year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
+The dataset describes a peak load for each bus. The absolute load in every hour is a percentage of the peak load based on 3 components: the week year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
 
 \begin{multline}
 L_{b = 108} =  (L_{yearweek = 27} = 75.5\%) \times (L_{dayofweek = friday} = 94\%) 
@@ -135,7 +135,7 @@ Figure \ref{fig:totalSystemLoadJuly} displays the total system load throughout t
   \label{fig:totalSystemLoadJuly}
 \end{figure}
 
-When the models are run under a sub-hourly level,the inter-hour time periods follow the interpolation between the hours with an additional perturbation, following an uniform distribution of $[-Pr,+Pr]\%$, where $Pr$ is a parameter in the range of [0,100]. The objective is to capture the ramping behaviour of NVERs on a sub hourly level. Figure \ref{fig:perturbationDifference} shows a difference between load curve on a 60 minute and 15 minute planning level. 
+When the models run under a sub-hourly level,the inter-hour time periods follow the interpolation between the hours with an additional perturbation, following an uniform distribution of $[-Pr,+Pr]\%$, where $Pr$ is a parameter in the range of [0,100]. The objective is to capture the ramping behaviour of NVERs on a sub hourly level. Figure \ref{fig:perturbationDifference} shows a difference between load curve on a 60 minute and 15 minute planning level. 
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{perturbationDifference.png}
@@ -549,26 +549,37 @@ As for Unit Commitment with Transmission Constraints on a 60-minute level, the N
 
 When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load, even for a penalty of \$10000 of MW not generated. We decided then to analyse which constraint was leading to this behaviour, so we disabled the ramping constraints and run the UC model on a 15-minute and 5-minute level. Disabling the constraints augmented the solution space, which could lead to unpractical solution time. Therefore the results has less than 1\% of optimality gap.
 
-Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation. The comparison between Transmission on and Off are shown in Figure bla
+Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation for the 15-minute level and 300 minutes for a 5-minute. The comparison between Transmission on and Off are shown in \ref{fig:noRampingConstraint}. For both levels, when transmission constraints are not considered, NGCC-Old generators are turned on during peaks, and turned of afterwards. This solution is clearly less practical than turning on most of generators and letting them running at minimal level, and can lead to more maintenance costs.
 
 \begin{figure}[h] 
 	\begin{center}
-		\includegraphics[keepaspectratio]{PowerOutput_15_UC_TY_NoRamping.png}
-	  	\caption{Scenario 1 Generation Profile for an Unit Commitment without ramping constraints under a 15 minute level}
+		\includegraphics[width=\textwidth,keepaspectratio]{PowerOutputScenario1_NR.png}
+	  	\caption{Power Output for Scenario 1 with and without ramping constraints}
      	\label{fig:noRampingConstraint}
 	\end{center}
 \end{figure}
 
 
-For a 5 minute level the MIP was not able to do the resource planning,  allowing the demand to be unmet, for both transmission cases. We decided to investigate the reason behind that. Figure BLA shows the result with or without ramping constraints
-
-
-
-
-
 \subsubsection{Scenario 2}
 
+- The Economic Dispatch problems led to some generation distributions for all possible configurations. The similarities of the results between transmission on and off indicates that the transmission limits did not make influence in the final result. This can be seen better Figure **, that displays the utilization per transmission line in the 3 cases of Economic Dispatch versions, and it is easy to see there is no line with high utilization that could be a potential bottleneck.
+
+- In the economic dispatch solutions, Coal, Oil and Nuclear generator were set to run the whole horizon, where NGCC-New generators were chosen to handle load and wind and solar variabilities across the time.
+
+- For Unit Commitment the solutions for NVERs are different for three time scales. On a 60 minute level, the distribution is almost the same for the Economic Dispatch solutions, but in this case coal and nuclear generators reduce their production when the demand is low and let NGCC-New ones fill the gap. This can lead to increase of maintenance costs because of the ramping behaviour, where in the other hand it strengthen the use of green energy. The fact that the generators has to run under a minimum level and the cheapness of start-up costs for gas generators comparing to oil explains this behaviour difference between Economic Dispatch and Unit Commitment decisions.
+
+*Generate Image Here.*
+
+Another important aspect to analyse is the UC generation profiles difference between the time scales. Whereas in the 60 minute level Oil, Nuclear and Coal generators are the base of energy, on a 15-minute is  Nuclear only, whereas NGCC-New fill this base while few NGCT-New runs under a minimal level during normal hours, and increases its production during peak hours. 
+
+Under a 15 minute-level more NGCT-Old generators were turned on when transmission limits is ON, caused by the limits of transmitting the energy of NGCC-New generators. Also it was observed the use of few oil generators during peak hours.
+
 \subsubsection{Scenario 3}
+
+Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability. 
+
+In scenario 3 transmission makes huge difference in
+
 
 \begin{figure} 
   \centering

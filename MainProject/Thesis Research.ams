@@ -1028,28 +1028,7 @@ Model Main_Thesis_Research {
                     Comment: "Check what happens at 23";
                 }
             }
-            DeclarationSection GenerationResultsDeclaration {
-                Parameter PO_AverageGeneratiorByHour {
-                    IndexDomain: (iHourCalendar,iGeneratorType);
-                    Text: "MW";
-                    Definition: {
-                        average(iTime |
-                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'hour'))
-                        and
-                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'minute')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'minute'))
-                        and
-                        ElementCast(S_Hours,TimeslotCharacteristic(iTime,'second')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'second'))
-                        ,
-                        
-                        PO_GenerationByGeneratorType(iTime,iGeneratorType))
-                    }
-                }
-                Parameter PO_GenerationByGeneratorType {
-                    IndexDomain: (iTime,iGeneratorType);
-                    Text: "MW";
-                    Definition: sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PO_PowerGenerated(iTime,iGenerator));
-                }
-            }
+            DeclarationSection GenerationResultsDeclaration;
             DeclarationSection BusesDeclaration {
                 Set SI_Buses {
                     Index: iBus, iBus2;
@@ -1240,7 +1219,7 @@ Model Main_Thesis_Research {
                 Set SI_GeneratorTypes {
                     Index: iGeneratorType;
                     OrderBy: PI_GeneratorTypeOrder(iGeneratorType);
-                    InitialData: data { Wind, Solar, Nuclear, Coal, Oil, NGCC-Old, NGCC-New, NGCT-Old };
+                    InitialData: data { Wind, Solar, Nuclear, Coal, Oil, NGCC-Old, NGCC-New, NGCT-Old, 'Gap' };
                 }
                 ElementParameter PE_GeneratorBus {
                     IndexDomain: iGenerator;
@@ -1556,6 +1535,66 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PO_OverGeneration {
+                IndexDomain: iTime;
+                Definition: sum(iBus,VC_OverGenerationSlack(iTime, iBus));
+            }
+            Set S_UnmetDemandSet {
+                Definition: {
+                    {'Unmet Demand'}
+                }
+            }
+            Set SD_PowerOutputSet {
+                SubsetOf: SI_GeneratorTypes;
+                Definition: SI_GeneratorTypes;
+            }
+            Parameter PO_AverageGeneratiorByHour {
+                IndexDomain: (iHourCalendar,iGeneratorType);
+                Text: "MW";
+                Definition: {
+                    average(iTime |
+                    ElementCast(S_Hours,TimeslotCharacteristic(iTime,'hour')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'hour'))
+                    and
+                    ElementCast(S_Hours,TimeslotCharacteristic(iTime,'minute')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'minute'))
+                    and
+                    ElementCast(S_Hours,TimeslotCharacteristic(iTime,'second')) = ElementCast(S_Hours,TimeslotCharacteristic(iHourCalendar,'second'))
+                    ,
+                    
+                    PO_GenerationByGeneratorType(iTime,iGeneratorType))
+                }
+            }
+            Parameter PO_GenerationByGeneratorType {
+                IndexDomain: (iTime,iGeneratorType);
+                Text: "MW";
+                Definition: {
+                    if iGeneratorType = 'Gap' then
+                    	PO_UnmetDemand(iTime)
+                    
+                    else
+                    	sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PO_PowerGenerated(iTime,iGenerator))
+                    endif
+                }
+            }
+            Parameter PO_UnmetDemand {
+                IndexDomain: iTime;
+                Definition: {
+                    if PO_TotalLoad(iTime) > (sum(iNonRenewableGenerator, VC_PowerGenerated(iTime, iNonRenewableGenerator)) +
+                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator)) ) > 0 then
+                    
+                    PO_TotalLoad(iTime) -
+                    (sum(iNonRenewableGenerator, VC_PowerGenerated(iTime, iNonRenewableGenerator)) +
+                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator)) )
+                    
+                    else
+                    
+                    0
+                    
+                    endif
+                    
+                    
+                    !sum(iBus, VC_UnderGenerationSlack(iTime, iBus))
+                }
+            }
             Parameter PO_HighLineUtilization {
                 IndexDomain: iTransmissionLine;
                 Definition: {
@@ -1644,7 +1683,7 @@ Model Main_Thesis_Research {
         }
         Procedure ExportDataManual {
             Body: {
-                write PO_GenerationByGeneratorType,PO_LineUtilization,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file "VC_NoTransmissionMode.txt" in dense mode ;
+                write PO_GenerationByGeneratorType,PO_LineUtilization,PO_OverGeneration,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file "VC_NoTransmissionMode.txt" in dense mode ;
             }
         }
         DeclarationSection TestCaseParameters {
@@ -1696,9 +1735,15 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
+                CaseCreate(V_ScenarioName,V_CaseName);
+                CaseSetCurrent( V_CaseName );
+                CaseSave(0);
                 write PO_GenerationByGeneratorType,PO_LineUtilization,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName in dense mode ;
                 
                 !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
+            }
+            ElementParameter V_CaseName {
+                Range: AllCases;
             }
             Parameter L_Status;
             StringParameter L_SheetName;

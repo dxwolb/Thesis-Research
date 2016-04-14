@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  12 APR 2016 15:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  13 APR 2016 20:47
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -429,43 +429,48 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ]
 Chapter 4.
-[31] [32]
-<PowerOutput_15_UC_TY_NoRamping.png, id=160, 386.94562pt x 230.36063pt>
-File: PowerOutput_15_UC_TY_NoRamping.png Graphic file (type png)
+[31] [32] <PowerOutputScenario1_NR.png, id=160, 834.11626pt x 598.48593pt>
+File: PowerOutputScenario1_NR.png Graphic file (type png)
 
-<use PowerOutput_15_UC_TY_NoRamping.png>
-Package pdftex.def Info: PowerOutput_15_UC_TY_NoRamping.png used on input line 
-556.
-(pdftex.def)             Requested size: 386.94467pt x 230.36005pt.
- [33 <./PowerOutput_15_UC_TY_NoRamping.png>] <PowerOutputScenario1.png, id=164,
- 1186.4325pt x 1061.46562pt>
+<use PowerOutputScenario1_NR.png>
+Package pdftex.def Info: PowerOutputScenario1_NR.png used on input line 556.
+(pdftex.def)             Requested size: 426.39255pt x 305.94522pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33]
+Underfull \vbox (badness 2057) has occurred while \output is active []
+
+ [34 <./PowerOutputScenario1_NR.png>]
+<PowerOutputScenario1.png, id=168, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario1.png Graphic file (type png)
 
 <use PowerOutputScenario1.png>
-Package pdftex.def Info: PowerOutputScenario1.png used on input line 576.
+Package pdftex.def Info: PowerOutputScenario1.png used on input line 587.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
 
-<PowerOutputScenario2.png, id=165, 1186.4325pt x 1061.46562pt>
+<PowerOutputScenario2.png, id=169, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario2.png Graphic file (type png)
 
 <use PowerOutputScenario2.png>
-Package pdftex.def Info: PowerOutputScenario2.png used on input line 585.
+Package pdftex.def Info: PowerOutputScenario2.png used on input line 596.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
 
-<PowerOutputScenario3.png, id=166, 1186.4325pt x 1061.46562pt>
+<PowerOutputScenario3.png, id=170, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario3.png Graphic file (type png)
 
 <use PowerOutputScenario3.png>
-Package pdftex.def Info: PowerOutputScenario3.png used on input line 594.
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 605.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
- [34 <./PowerOutputScenario1.png>] [35 <./PowerOutputScenario2.png>] [36 <./Pow
-erOutputScenario3.png>]
+ [35] [36 <./PowerOutputScenario1.png>] [37 <./PowerOutputScenario2.png>] [38 <
+./PowerOutputScenario3.png>]
 Chapter 5.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.bbl" [37
+ssertation.bbl" [39
 
-] [38
+] [40
 
 ]
 Missing character: There is no â in font cmr12!
@@ -481,7 +486,7 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no “ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ³ in font cmr12!
-[39]
+[41]
 Underfull \hbox (badness 1888) in paragraph at lines 63--70
 []\OT1/cmr/m/n/12 L. L. Garver.  Power gen-er-a-tion schedul-ing by in-te-ger p
 rogramming-
@@ -499,7 +504,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--105
 n/12 .  Avail-able at
  []
 
-[40] [41]) [42]
+[42] [43]) [44]
 No file vita.tex.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
@@ -516,7 +521,7 @@ abstract.aux")
 ta.aux")) ) 
 Here is how much of TeX's memory you used:
  4009 strings out of 493673
- 60202 string characters out of 3141526
+ 60167 string characters out of 3141526
  117604 words of memory out of 3000000
  7270 multiletter control sequences out of 15000+200000
  12227 words of font info for 45 fonts, out of 3000000 for 9000
@@ -538,9 +543,9 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (51 pages, 3111763 bytes).
+sisFiles/build/Dissertation.pdf" (53 pages, 3199926 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
+ 252 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

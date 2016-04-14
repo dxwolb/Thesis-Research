@@ -1,31 +1,41 @@
+Warning: The variable "VC_UnderGenerationSlack" is not initialized (default values are used).
+Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
+Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
 Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
 Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
 Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
-Warning at line 1357.
-The element parameter "PE_GeneratorType" is not initialized (default values are used).
-Warning at line 1359.
+Warning at line 1374.
 The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning at line 1359.
+Warning at line 1374.
 The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning at line 1359.
+Warning at line 1374.
 The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning at line 1359.
+Warning at line 1374.
 The parameter "PI_PeakLoadMW" is not initialized (default values are used).
-Warning at line 1359.
-The parameter "PI_WindPotential" is not initialized (default values are used).
-Warning at line 1359.
-The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
-Warning at line 1359.
-The element parameter "PE_UnitGroup" is not initialized (default values are used).
-Warning at line 1359.
-The parameter "PI_SolarPotential" is not initialized (default values are used).
-Warning at line 1359.
-The variable "VC_PowerGenerated" is not initialized (default values are used).
-Warning at line 1359.
+Warning at line 1374.
 The variable "VC_PowerTransmitted" is not initialized (default values are used).
-Warning at line 9 in user-defined function section "RunOptimization".
+Warning at line 4 in user-defined function section "RunOptimization".
 The parameter "PI_EnableRampingConstraints" is not initialized (default values are used).
-Warning at line 9 in user-defined function section "RunOptimization".
+Warning at line 4 in user-defined function section "RunOptimization".
 The parameter "PI_EnableReserveConstraints" is not initialized (default values are used).
-Warning: The shadowprice of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not initialized (default values are used).
-Warning: The shadowprice of constraint "CE_Model0ED_EnergyBalance" is not initialized (default values are used).
+Domain violation at line 19598, column 37.
+The scope of index "iBus" has not been specified.
+Warning at line 20842.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Semantic error at line 17 in user-defined function section "RunScenario", column 35.
+The second argument of intrinsic procedure "CaseCreate" is an output argument, and set "AllCases" cannot be modified here.
+Syntax error at line 18 in user-defined function section "RunScenario", column 1.
+The symbol "write" is not expected.
+Syntax error at line 18 in user-defined function section "RunScenario", column 1.
+The symbol "write" is not expected.
+Syntax error at line 18 in user-defined function section "RunScenario", column 1.
+The symbol "write" is not expected.
+Syntax error at line 18 in user-defined function section "RunScenario", column 1.
+The symbol "write" is not expected.
+Syntax error at line 18 in user-defined function section "RunScenario", column 1.
+The symbol "write" is not expected.
