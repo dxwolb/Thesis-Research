@@ -265,7 +265,6 @@ Solar & 1320 & 0 & 900 & 9 & 2824 & 16 \\ \hline
 \end{table}
 
 
-
 \section{Models}
 
 This thesis covers the Economic Dispatch and Unit Commitment models, developed exhaustively in the literature.
@@ -418,6 +417,25 @@ Under a scenario where renewable resources are the major source of energy, stora
 \end{alignat} 
 \end{subequations}
 
+
+\section{Assumptions}
+
+The following assumptions were made in the model and data during the research and development process:
+
+\begin{enumerate}
+\item The load profile is deterministic. There is no forecast error and no variability in the hourly levels peak. For sub-hourly levels all the analysis were made assuming a $\pm20\%$ of perturbation
+\item In the Economic Dispatch model, the generation is upper bounded only. All generators can produce from 0 up to their maximum capacity
+\item All generators are assumed to be on and ready to generate according to their ramping policies.
+\item There is no voltage angle constraint in the model.
+\item The model covers the DC version of the ED and UC problems, i.e., only active power is the set of study. There is no reactive power in the developed models.
+\item The transmission losses are modelled as linear, with the factor of 0.1\% per each 100 miles. This percentage was estimated based on the work of \citeauthor{short} \cite{short}.
+\item The loads profiles for buses are positively correlated, and are ruled by the hour, day of week, season and day of week type (weekend or not).
+\item There following costs are not presented in the models: transmission, maintenance
+\item There is no maintenance factors in generators, like MTTR and MTBF, as well as scheduling. All generators are able to produce power 24 hours per day in ED model and if they are turned on in UC. The assumptions are made to transmission lines.
+\item The generation cost is linear per MW.
+\item Although the reserve requirements of NVERs is described in this thesis, they are not considered in this work. Therefore there is no reserve requirement and capacity for NVERs.
+\item For the storage scenarios, it is assumed unlimited storage capacity. Thus everything overgenerated is stored for future uses.
+\end{enumerate}
 
 \section{Implementation}
 
