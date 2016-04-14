@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  13 APR 2016 20:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  14 APR 2016 00:19
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -439,32 +439,33 @@ Package pdftex.def Info: PowerOutputScenario1_NR.png used on input line 556.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33]
-Underfull \vbox (badness 2057) has occurred while \output is active []
-
- [34 <./PowerOutputScenario1_NR.png>]
-<PowerOutputScenario1.png, id=168, 1186.4325pt x 1061.46562pt>
+<PowerOutputScenario1.png, id=161, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario1.png Graphic file (type png)
 
 <use PowerOutputScenario1.png>
-Package pdftex.def Info: PowerOutputScenario1.png used on input line 587.
+Package pdftex.def Info: PowerOutputScenario1.png used on input line 565.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
+ [33]
+Underfull \vbox (badness 2057) has occurred while \output is active []
 
+ [34 <./PowerOutputScenario1_NR.png>]
 <PowerOutputScenario2.png, id=169, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario2.png Graphic file (type png)
 
 <use PowerOutputScenario2.png>
-Package pdftex.def Info: PowerOutputScenario2.png used on input line 596.
+Package pdftex.def Info: PowerOutputScenario2.png used on input line 588.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
+ [35 <./PowerOutputScenario1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<PowerOutputScenario3.png, id=170, 1186.4325pt x 1061.46562pt>
+ [36 <./PowerOutputScenario2.png>]
+<PowerOutputScenario3.png, id=177, 1186.4325pt x 1061.46562pt>
 File: PowerOutputScenario3.png Graphic file (type png)
 
 <use PowerOutputScenario3.png>
-Package pdftex.def Info: PowerOutputScenario3.png used on input line 605.
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 610.
 (pdftex.def)             Requested size: 426.39124pt x 381.47946pt.
- [35] [36 <./PowerOutputScenario1.png>] [37 <./PowerOutputScenario2.png>] [38 <
-./PowerOutputScenario3.png>]
+ [37] [38 <./PowerOutputScenario3.png>]
 Chapter 5.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
@@ -543,7 +544,7 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (53 pages, 3199926 bytes).
+sisFiles/build/Dissertation.pdf" (53 pages, 3201084 bytes).
 PDF statistics:
  252 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

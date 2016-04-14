@@ -1463,9 +1463,10 @@ Model Main_Thesis_Research {
                 	PD_SolverStatus := M_UC_MinimizeTotalCost.SolverStatus;
                 endif;
                 
-                DialogMessage(
-                	message : "Optimization sucessful" ,
-                	title   : "Sucess");
+                !DialogMessage(
+                !	message : "Optimization sucessful" ,
+                !	title   : "Sucess");
+                !
             }
         }
         Procedure UpdateRenewableGenerationCapacity {
@@ -1735,10 +1736,11 @@ Model Main_Thesis_Research {
                 read from file PS_IEEETestCaseFileName;
                 RunOptimization;
                 
-                CaseCreate(V_ScenarioName,V_CaseName);
-                CaseSetCurrent( V_CaseName );
-                CaseSave(0);
-                write PO_GenerationByGeneratorType,PO_LineUtilization,VC_OverGenerationSlack,VC_UnderGenerationSlack,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName in dense mode ;
+                CaseFileSave(V_ScenarioName+".data",AllIdentifiers);
+                !CaseCreate(V_ScenarioName,V_CaseName);
+                !CaseSetCurrent( V_CaseName );
+                !CaseSave(0);
+                write PO_GenerationByGeneratorType,PO_LineUtilization,PO_OverGeneration,PO_UnmetDemand,VC_OnOffStatus,PD_SolutionTime,PD_SolverStatus to file V_ScenarioName in dense mode ;
                 
                 !spreadsheet::CloseWorkbook(PS_TestResultsWorkbookName,1);
             }

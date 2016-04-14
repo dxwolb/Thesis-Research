@@ -39,3 +39,178 @@ Syntax error at line 18 in user-defined function section "RunScenario", column 1
 The symbol "write" is not expected.
 Syntax error at line 18 in user-defined function section "RunScenario", column 1.
 The symbol "write" is not expected.
+Warning at line 22566.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+If the option "Data management style" is set to "Disk files and folders", the procedure CaseCreate is not valid.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+You have interrupted execution.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,104)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 69264 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,101)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,103)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,104)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+The maximum of 20 warnings reached, further warnings suppressed.  See also option maximal_number_of_warnings_reported
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 207504 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-1,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-1)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-2,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-2)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(NGCC-New-3,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,NGCC-New-3)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar12,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar12)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 80 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:45:00,104)" and "VC_OverGenerationSlack(2015-07-05 23:45:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar12,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar12)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 69264 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 82 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,101)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,103)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,103)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-05 23:55:00,104)" and "VC_OverGenerationSlack(2015-07-05 23:55:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar12,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar12)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 207504 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 77 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar12,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar12)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 79 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar12,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar12)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+The rows "CL_Model0_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_Model0_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 81 duplicate row warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.

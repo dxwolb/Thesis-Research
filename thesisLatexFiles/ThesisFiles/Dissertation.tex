@@ -559,6 +559,14 @@ Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\%
 	\end{center}
 \end{figure}
 
+\begin{figure} 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario1.png}
+  
+  \caption{Power Output for Scenario 1.}
+  \label{fig:powerOutputScenario1}
+\end{figure}
 
 \subsubsection{Scenario 2}
 
@@ -574,22 +582,6 @@ Another important aspect to analyse is the UC generation profiles difference bet
 
 Under a 15 minute-level more NGCT-Old generators were turned on when transmission limits is ON, caused by the limits of transmitting the energy of NGCC-New generators. Also it was observed the use of few oil generators during peak hours.
 
-\subsubsection{Scenario 3}
-
-Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability. 
-
-In scenario 3 transmission makes huge difference in
-
-
-\begin{figure} 
-  \centering
-  
-	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario1.png}
-  
-  \caption{Power Output for Scenario 1.}
-  \label{fig:powerOutputScenario1}
-\end{figure}
-
 \begin{figure} 
   \centering
   
@@ -598,6 +590,19 @@ In scenario 3 transmission makes huge difference in
   \caption{Power Output for Scenario 2.}
   \label{fig:powerOutputScenario2}
 \end{figure}
+
+\subsubsection{Scenario 3}
+
+Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability. 
+
+In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off cases, for both optimization models. The figure *** displays the distribution of gas generators across the field and the respective line limits, and their utilization is also exhibited in figure 4. In this case, the transmission is a bottleneck on two cases: to fulfill the demand on peak moments and to transmit energy coming from renewable resources. Figure *** shows the difference of overgeneration when transmission is on or off for 60, 15 and 5 minute planning level.
+
+*Figure of gas generators map and total line capacity*
+*Figure of line capacity utilization*
+
+*Figure of over generation for all the levels*
+
+When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVER, having NCTG-Old a support to peak and low wind and solar generation moments. The UC decision decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by the line limits, so the solution turns on the generators from other locations. It is easy to see that the ramps are smoother for UC cases, mostly because of the minimum generation levels.
 
 \begin{figure} 
   \centering
