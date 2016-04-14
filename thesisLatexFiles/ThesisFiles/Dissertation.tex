@@ -40,45 +40,35 @@
 \addcontentsline{toc}{chapter}{Introduction}
 \chapter{Introduction}
 
-Variable Energy Resources (usually refereed as VERs) plays an important role in the energy grid nowadays. It is expected that in 2020, x\% of all average consumed power in United States comes from them. One of important characteristics of them is the uncertain behaviour of generation pattern. With the deregulation of the energy market and the decarbonization rules, the grid operators have the challenge to plan efficiently their non-renewable resources (such as oil, coal and gas) in order to keep satisfy grid security and reliability parameters while running the grid at a minimal cost. This work analyses the classical LP version of Economic Dispatch (known as ED) and a MIP instance of Unit Commitment(UC) under different operational constraints and VERs penetration  scenarios.
+By many accounts, renewables resources will likely play a key role in the electric grid system for many countries in the coming decades.  VERs - Variable renewable resources (e.g., wind and solar) have intermittent output, and thus do not behave like the dispatchable resources used for the vast majority of today’s electricity generation. The variability of these sources has led to concerns regarding the reliability of an electric grid that derives a large fraction of its energy from these sources as well as the cost of reliably integrating large amounts of variable generation into the electric grid. The electricity grid may incorporate additional technologies that provide one or more of the following attributes: fast ramping capabilities, load shifting, demand response, energy storage, and more.   Which technologies and grid configurations prevail are likely to be impacted by several factors including economics (i.e. the costs and benefits of each technology are weighed relative to the other available options), reliability, local and regional policies and other region-specific resource constraints.
 
-Need Completion.
+Underpinning many of the economic and reliability studies used to assess various technologies are optimization and simulation models.  These models make numerous approximations when determining optimal economic dispatch and power flow, the consequences of which are not fully understood, especially with substantially more variable renewable resources and different grid configurations.  This thesis investigates and attempts to characterize the subtleties that arise when making certain approximations to model day-ahead and real-time dispatch decisions. The investigated scenarios represents instances of real-world grid configurations on a shorter scale with different levels of variable resources penetration.
+
+A secondary goal of this thesis is the development of an open-source software tool for power systems optimization.  In its current form, the software developed in this thesis considers two of the most prominent optimization models: Economic Dispatch (ED) and Unit Commitment (UC). 
+
+\begin{itemize}
+\item Economic dispatch models are often deterministic linear optimization models that attempt to determine the minimum cost output of available generators to meet system load (demand), subject to transmission and operational constraints, in every time period over a fixed time horizon.  These models are typically formulated with a resolution of one hour or less with a short time horizon. Without transmission or operational constraints, ED models are simple to solve. Generators are first sorted in ascending order according to their marginal costs (forming a so-called ``merit-order curve'') and then dispatched in that same order until system load is met. The marginal cost of the final generator needed to meet load determines the system marginal cost, the cost of delivering one additional MWh of energy onto the system.  With transmission, operational, and/or environmental constraints, however, these models require more sophisticated optimization algorithms to determine the optimal generation allocation.  For most representations of transmission constraints, linear optimization models suffice.  For detailed AC transmission formulations, non-convex nonlinear NP-hard models arise. Historically, these models are hard to solve on a practical time, and that is one of the reasons why why Economic Dispatch is so popular for grid planners nowadays.
+
+\item Unit commitment models most often refer to mathematical programs that attempt to schedule generators to meet system load in the future based on some forecast of net load (load minus generation from renewable sources).  Whereas ED models typically assume generator availability has already been determined (and, thus, is an input to an ED model), a UC model must determine on/off decisions for each generator in the fleet in each future time period.  Consequently, UC models are often formulated as mixed-integer linear programs and are more difficult to solve than ED models.  Stochastic and robust UC models include an additional layer of complexity by assuming that forecasted parameters are uncertain. The presence of additional binary variables in the model increases considerably the solution time. So, usually UC are solved for less than 24 hours horizon, on an hourly level. However, one of the goals for this project is evaluate what happens in terms of solution quality and time when the horizon is bigger and the time granularity is shorter.
+
+\end{itemize}
+
+Why develop another power systems software tool? 
+There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool ''for solving power flow and optimal power flow problems'' and thus is not ideal for problems with a time dimension.  In addition, one of the major drawbacks with Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Specially for starters, having an user-friendly intuitive tool with a simpler method can be much powerful than a powerful technical one with a hard interface to interact.
+
+The tool developed in this project more closely resembles the work done for Minpower \cite{greenhall:2012},
+an open-source toolkit coded in Python that relies on Pyomo \cite{pyomo:2012}. AIMMS provides a free academic license and thus can facilitate power systems optimization and analysis.
+It has plug-ins to all major optimization solvers and other features, as well as the possibility to improve the mathematical programming as much as possible.
+
+%“Energy policies, both present and future, are creating a substantial transformation of the electrical power grid and pose significant challenges to the transmission and distribution IT systems needed to control and manage this grid.”
+%“Today’s electricity landscape is changing faster than ever before.  Generation patterns are shifting due to the replacement of old fossil-fueled plants with natural gas and renewable energy sources (RESs), resulting in more variability over time, more dependence on weather conditions, and widely dispersed energy sources throughout the power network.  This scenario has resulted in the need for better prediction and control to maintain the security of supply.  Increased cross-border flows as the result of merging energy markets are increasing system complexity.  Consequently, demand needs to become more flexible, and the call for competitive electricity prices and a reliable system becomes more essential.  This, in turn, impacts all areas of system planning and operation and will require major changes in the market’s organization and products.”
+
 
 \addcontentsline{toc}{chapter}{Literature Review}
 \chapter{Literature Review}
 
 
-The first optimal power flow formulation was proposed by <put the guy here in 1962>
-
-\citeauthor{connolly} reviews 68 tools to power grid planning with renewable resources, discussing at the end goals, limitations and features of 37 tools \cite{connolly}. The authors emphasize that, although all the tools are essential to an accurate power planning with renewable resources, there is no perfect tool, and it should be chosen accordingly to project goals, data limitations, horizon and other features. 
-
-\citeauthor{yamin} discusses different techniques to solve the unit commitment and economic dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them \cite{yamin}. 
-
-\citeauthor{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major key in the field. The authors states the advantages of the method comparing to traditional reserves planning. \cite{bertsimas}
-
-\citeauthor{padhy} formulates the unit commitment as a general optimization problem and presents a bibliographical survey of the main techniques in the last 30 years, from exhaustive methods such as priority listing, dynamic programming, mixed integer-programming  until complex heuristics like fuzzy programming, genetic algorithms and evolutionary programming, emphasizing that these one were not exhaustively tested yet. Models can be classified according to different features, that include:
-
-\begin{enumerate}
-\item Time frame: decade, year, hour, sub hour 
-\item Scale: global, national, regional, local
-\item Deterministic vs stochastic
-\item Optimization vs Simulation
-\item Algorithmic vs Heuristic
-\end{enumerate}
-
-\citeauthor{cain} categorizes the general power flow according to 3 major categories: Power Flow (PF), Economic Dispatch (ED) and Optimal Power Flow (OPF) and describe them based on the assumptions and operational constraints, as shown in table \ref{table:PowerSystemsCat} \cite{cain}.
-
-\citeauthor{kassakian} discusses the main changes and challenges in the power system for the next years. One of important changes is the increase of VERs, that might have substantially impacts in operating costs, primarily due to the necessity of more reserve generations with different time responses \cite{kassakian}. To mitigate it, 3 suggestions were proposed: improve wind and solar forecast techniques; expand the cooperation and interconnections among regions; reduce decision horizon and resolution levels, to capture a more realistic ramping and reserve effects.
-
-\citeauthor{palmintier} studies the impact of UC models with expansion planning, enhancing that ignoring operating constraints on an expansion planning with VERs could provide higher operating costs and fuel emissions. \cite{palmintier}. \citeauthor{hargreaves} proposes a method that combines simulation and stochastic UC to capture precisely the challenges of expanding the capacity with VERs. \cite{hargreaves}.
-
-
-Under a scenario where VERs have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} evaluates the UC and ED results at different solving temporal resolutions under one year. The authors discuss that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution \cite{deane}. 
-
-One of the alternatives studied in the literature is the use of storage devices to stock energy when the demand is lower than the capacity and use it on an abrupt peak demand, avoiding the use of conventional generators.\citeauthor{safaei} studies different storage technologies and their impact in the emission grid at a 15 minutes time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage are not economically justifiable. \cite{safaei}. In the other hand, \citeauthor{harris} studies the viability of seasonal storage by analysing UC results of different storage scenarios and technologies on a city level, concluding that seasonal storage can bring operational benefits and reduce operating costs and fuel emissions in peak levels.
- 
-\citeauthor{dwyer} investigates the effect of storage for ED and stochastic UC plannings under a sub-hourly resolution, concluding that storage can improve system stability and reduce cyclical ramping rates for NVERs, saving operation costs. 
-
+As mentioned before, power planning is a popular topic in Operations Research, and it is becoming even more challengeable with the increase of wind and solar in the grid. \citeauthor{cain} divides power flow formulations into 3 major categories: Power Flow (PF), Economic Dispatch (ED) and Optimal Power Flow (OPF) and describe them based on the assumptions and operational constraints, as shown in table \ref{table:PowerSystemsCat} \cite{cain}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -102,7 +92,33 @@ ED & ED &  &  &  &  & x & x \\ \hline
 \end{table}
 
 
-\addcontentsline{toc}{chapter}{Development}
+\citeauthor{yamin} discusses different techniques to solve the unit commitment and economic dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them \cite{yamin}. 
+
+\citeauthor{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major key in the field. The authors points out the advantages of the method comparing to traditional planning methods. \cite{bertsimas}
+
+\citeauthor{padhy} formulates the unit commitment as a general optimization problem and presents a bibliographical survey of the main techniques in the last 30 years, from exhaustive methods such as priority listing, dynamic programming, mixed integer-programming until complex heuristics like fuzzy programming, genetic algorithms and evolutionary programming, emphasizing that these one were not exhaustively tested yet. In general, models can be classified according to different features, that include:
+
+\begin{enumerate}
+\item Time frame: decade, year, hour, sub hour 
+\item Scale: global, national, regional, local
+\item Deterministic vs stochastic
+\item Optimization vs Simulation
+\item Algorithmic vs Heuristic
+\end{enumerate}
+
+\citeauthor{connolly} reviews 68 tools to power grid planning with renewable resources, discussing at the end goals, limitations and features of 37 tools \cite{connolly}. The authors emphasize that, although all the tools are essential to an accurate power planning with renewable resources, there is no perfect tool, and it should be chosen accordingly to project goals, data limitations, horizon and other features. 
+
+
+\citeauthor{kassakian} discusses the main changes and challenges in the power system for the next years. One of important changes is the increase of VERs, that might have substantially impacts in operating costs, primarily due to the necessity of more reserve generations with different time responses \cite{kassakian}. To mitigate it, 3 suggestions were proposed: improve wind and solar forecast techniques; expand the cooperation and interconnections among regions; reduce decision horizon and resolution levels, to capture a more realistic ramping and reserve effects.
+
+\citeauthor{palmintier} studies the impact of UC models with expansion planning, enhancing that ignoring operating constraints on an expansion planning with VERs could provide higher operating costs and fuel emissions. \cite{palmintier}. \citeauthor{hargreaves} proposes a method that combines simulation and stochastic UC to capture precisely the challenges of expanding the capacity with VERs. \cite{hargreaves}.
+
+Under a scenario where VERs have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} evaluates the UC and ED results at different solving temporal resolutions under one year. The authors discuss that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution \cite{deane}. 
+
+One of the alternatives studied in the literature is the use of storage devices to stock energy when the demand is lower than the capacity and use it on an abrupt peak demand, avoiding the use of conventional generators.\citeauthor{safaei} studies different storage technologies and their impact in the emission grid at a 15 minutes time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage are not economically justifiable. \cite{safaei}. In the other hand, \citeauthor{harris} studies the viability of seasonal storage by analysing UC results of different storage scenarios and technologies on a city level, concluding that seasonal storage can bring operational benefits and reduce operating costs and fuel emissions in peak levels.
+ 
+\citeauthor{dwyer} investigates the effect of storage for ED and stochastic UC plannings under a sub-hourly resolution, concluding that storage can improve system stability and reduce cyclical ramping rates for NVERs, saving operation costs. 
+
 \chapter{Development}
 \section{Data}
 
@@ -434,7 +450,7 @@ The following assumptions were made in the model and data during the research an
 \item There is no maintenance factors in generators, like MTTR and MTBF, as well as scheduling. All generators are able to produce power 24 hours per day in ED model and if they are turned on in UC. The assumptions are made to transmission lines.
 \item The generation cost is linear per MW.
 \item Although the reserve requirements of NVERs is described in this thesis, they are not considered in this work. Therefore there is no reserve requirement and capacity for NVERs.
-\item For the storage scenarios, it is assumed unlimited storage capacity. Thus everything overgenerated is stored for future uses.
+\item For the storage scenarios, it is assumed unlimited storage capacity. Thus all the overgenerated power is stored for future uses.
 \end{enumerate}
 
 \section{Implementation}
@@ -473,7 +489,7 @@ This section briefly covers all the screens and features developed in AIMMS for 
 
 \subsubsection{Data Import}
 
-The data import section allows the user to import all the data using the AIMMS specific structure for data text exchange. More details on how prepare the data can be found at \cite{bisschop2006aimms}.
+The data import section allows the user to import all the data using the AIMMS specific structure for data text exchange. More details on how prepare the data can be found at \cite{bisschop}.
 
 \begin{figure}[h] 
 	\begin{center}
@@ -531,7 +547,7 @@ In other words, it expresses the average ramping grouped by each generator type 
 \end{figure}
 
 
-\addcontentsline{toc}{chapter}{Analysis}
+
 \chapter{Analysis}
 
 In the analysis make all the scenario runs, describe all the scenarios test, put a table with all the possibilities, and categorize them by model and describe then. Then, make an analysis by ramping, over and under generation, as well as results. Put graphs, tables, everything that supports your points of view.
@@ -633,7 +649,7 @@ When comparing the generation between UC and ED instances NGCC-New generators ar
 
 
 
-\addcontentsline{toc}{chapter}{Conclusion}
+
 \chapter{Conclusion}
 
 \appendix

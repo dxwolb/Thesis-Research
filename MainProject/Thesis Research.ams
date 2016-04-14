@@ -346,8 +346,8 @@ Model Main_Thesis_Research {
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
                             + sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*1000
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*1000
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -1773,45 +1773,45 @@ Model Main_Thesis_Research {
                 
                 
                 
-                !Run for Economic Dispatch
-                for(iScenario) do
-                
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
-                
-                endfor;
+                !!Run for Economic Dispatch
+                !for(iScenario) do
+                !
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
+                !
+                !endfor;
                 
                 PE_SelectedModel := 'Unit Commitment';
                 

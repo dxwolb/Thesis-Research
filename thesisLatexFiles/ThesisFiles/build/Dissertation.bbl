@@ -1,9 +1,32 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{41}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ahlhaus and Stursberg(2013)]{6695322}
+P.~Ahlhaus and P.~Stursberg.
+\newblock Transmission capacity expansion: An improved transport model.
+\newblock In \emph{Innovative Smart Grid Technologies Europe (ISGT EUROPE),
+  2013 4th IEEE/PES}, pages 1--5, Oct 2013.
+\newblock \doi{10.1109/ISGTEurope.2013.6695322}.
+
+\bibitem[Alguacil et~al.(2003)Alguacil, Motto, and Conejo]{1216148}
+N.~Alguacil, A.L. Motto, and A.J. Conejo.
+\newblock Transmission expansion planning: a mixed-integer lp approach.
+\newblock \emph{Power Systems, IEEE Transactions on}, 18\penalty0 (3):\penalty0
+  1070--1077, Aug 2003.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2003.814891}.
+
+\bibitem[Becker et~al.(2014)Becker, Frew, Andresen, Zeyer, Schramm, Greiner,
+  and Jacobson]{becker2014features}
+Sarah Becker, Bethany~A Frew, Gorm~B Andresen, Timo Zeyer, Stefan Schramm,
+  Martin Greiner, and Mark~Z Jacobson.
+\newblock Features of a fully renewable us electricity system: Optimized mixes
+  of wind and solar pv and transmission grid extensions.
+\newblock \emph{Energy}, 72:\penalty0 443--458, 2014.
 
 \bibitem[Bertsimas et~al.(2013)Bertsimas, Litvinov, Sun, Zhao, and
   Zheng]{bertsimas}
@@ -14,26 +37,48 @@ D.~Bertsimas, E.~Litvinov, X.~A. Sun, Jinye Zhao, and Tongxin Zheng.
   52--63, 2013.
 \newblock ID: 1.
 
+\bibitem[Billinton and Mo(2005)]{1388543}
+R.~Billinton and R.~Mo.
+\newblock Composite system maintenance coordination in a deregulated
+  environment.
+\newblock \emph{Power Systems, IEEE Transactions on}, 20\penalty0 (1):\penalty0
+  485--492, Feb 2005.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2004.840449}.
+
 \bibitem[Bisschop and Entriken(1993)]{bisschop}
 Johannes Bisschop and Robert Entriken.
 \newblock \emph{AIMMS: The modeling system}.
 \newblock Paragon Decision Technology, 1993.
-
-\bibitem[Bisschop and Roelofs(2006)]{bisschop2006aimms}
-Johannes Bisschop and Marcel Roelofs.
-\newblock \emph{AIMMS language reference}.
-\newblock Lulu. com, 2006.
 
 \bibitem[Cain et~al.(2012)Cain, O’neill, and Castillo]{cain}
 Mary~B. Cain, Richard~P. O’neill, and Anya Castillo.
 \newblock History of optimal power flow and formulations.
 \newblock \emph{Federal Energy Regulatory Commission}, 2012.
 
+\bibitem[Choi and Thomas(2012)]{Choi2012429}
+Dong~Gu Choi and Valerie~M. Thomas.
+\newblock An electricity generation planning model incorporating demand
+  response.
+\newblock \emph{Energy Policy}, 42\penalty0 (0):\penalty0 429 -- 441, 2012.
+\newblock ISSN 0301-4215.
+\newblock \doi{http://dx.doi.org/10.1016/j.enpol.2011.12.008}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0301421511010007}.
+
 \bibitem[Coalition()]{texasWindProfile}
 The~Wind Coalition.
 \newblock \emph{Texas Wind Energy Facts}.
 \newblock Available at http://windcoalition.org/texas-wind-energy-facts/.
   04/03/2016.
+
+\bibitem[Conejo et~al.(2005)Conejo, Garcia-Bertrand, and Diaz-Salazar]{1425596}
+A.J. Conejo, R.~Garcia-Bertrand, and M.~Diaz-Salazar.
+\newblock Generation maintenance scheduling in restructured power systems.
+\newblock \emph{Power Systems, IEEE Transactions on}, 20\penalty0 (2):\penalty0
+  984--992, May 2005.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2005.846078}.
 
 \bibitem[Connolly et~al.(2010)Connolly, Lund, Mathiesen, and Leahy]{connolly}
 David Connolly, Henrik Lund, Brian~Vad Mathiesen, and Martin Leahy.
@@ -68,6 +113,13 @@ L.~L. Garver.
   730--734, 1962.
 \newblock ID: 1.
 
+\bibitem[Greenhall et~al.(2012)Greenhall, Christie, and Watson]{greenhall:2012}
+A.~Greenhall, R.~Christie, and Jean-Paul Watson.
+\newblock Minpower: A power systems optimization toolkit.
+\newblock In \emph{2012 IEEE Power and Energy Society General Meeting}, pages
+  1--6, July 2012.
+\newblock \doi{10.1109/PESGM.2012.6344667}.
+
 \bibitem[Hargreaves et~al.(2015)Hargreaves, Hart, Jones, and Olson]{hargreaves}
 Jeremy Hargreaves, Elaine~K. Hart, Ryan Jones, and Arne Olson.
 \newblock Reflex: An adapted production simulation methodology for flexible
@@ -82,6 +134,20 @@ Chioke Harris, Jeremy~P. Meyers, and Michael~E. Webber.
 \newblock \emph{Journal of Renewable and Sustainable Energy}, 4\penalty0
   (1):\penalty0 013120, 2012.
 
+\bibitem[Hart et~al.(2012)Hart, Laird, Watson, and Woodruff]{pyomo:2012}
+William~E Hart, Carl Laird, Jean-Paul Watson, and David~L Woodruff.
+\newblock \emph{Pyomo--optimization modeling in python}, volume~67.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem[Jin et~al.(2014)Jin, Botterud, and Ryan]{6728678}
+Shan Jin, A.~Botterud, and S.M. Ryan.
+\newblock Temporal versus stochastic granularity in thermal generation capacity
+  planning with wind power.
+\newblock \emph{Power Systems, IEEE Transactions on}, 29\penalty0 (5):\penalty0
+  2033--2041, Sept 2014.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2014.2299760}.
+
 \bibitem[Kassakian et~al.(2011)Kassakian, Schmalensee, Desgroseilliers, Heidel,
   Afridi, Farid, Grochow, Hogan, Jacoby, and Kirtley]{kassakian}
 John~G. Kassakian, Richard Schmalensee, G.~Desgroseilliers, Timothy~D. Heidel,
@@ -95,6 +161,14 @@ A.~Khodaei and M.~Shahidehpour.
 \newblock \emph{IEEE Transactions on Power Systems}, 25\penalty0 (4):\penalty0
   1937--1945, 2010.
 \newblock ID: 1.
+
+\bibitem[Khodaei et~al.(2010)Khodaei, Shahidehpour, and Kamalinia]{5409537}
+A.~Khodaei, M.~Shahidehpour, and S.~Kamalinia.
+\newblock Transmission switching in expansion planning.
+\newblock \emph{Power Systems, IEEE Transactions on}, 25\penalty0 (3):\penalty0
+  1722--1733, Aug 2010.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2009.2039946}.
 
 \bibitem[NREL()]{texasSolarProfile}
 NREL.
@@ -133,6 +207,15 @@ B.~Palmintier and M.~Webster.
 \newblock ISBN 1944-9925.
 \newblock ID: 1.
 
+\bibitem[Roh et~al.(2007)Roh, Shahidehpour, and Fu]{4349120}
+Jae~Hyung Roh, M.~Shahidehpour, and Yong Fu.
+\newblock Market-based coordination of transmission and generation capacity
+  planning.
+\newblock \emph{Power Systems, IEEE Transactions on}, 22\penalty0 (4):\penalty0
+  1406--1419, Nov 2007.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2007.907894}.
+
 \bibitem[Saadat(1999)]{saadat}
 Hadi Saadat.
 \newblock \emph{Power system analysis}.
@@ -143,6 +226,12 @@ Hossein Safaei and David~W. Keith.
 \newblock How much bulk energy storage is needed to decarbonize electricity?
 \newblock \emph{Energy and Environmental Science}, 8\penalty0 (12):\penalty0
   3409--3417, 2015.
+
+\bibitem[Sagastiz{\'a}bal(2012)]{sagastizabal2012divide}
+C~Sagastiz{\'a}bal.
+\newblock Divide to conquer: decomposition methods for energy optimization.
+\newblock \emph{Mathematical programming}, 134\penalty0 (1):\penalty0 187--222,
+  2012.
 
 \bibitem[Shavel et~al.(2014)Shavel, Fox-Penner, Weiss, Hledik, Ruiz, Yang,
   Carroll, and Zahniser-Word]{shavel}
@@ -157,6 +246,15 @@ Walter Short, Patrick Sullivan, Trieu Mai, Matthew Mowers, Caroline Uriarte,
   Nate Blair, Donna Heimiller, and Andrew Martinez.
 \newblock Regional energy deployment system (reeds).
 \newblock \emph{Contract}, 303:\penalty0 275--3000, 2011.
+
+\bibitem[Villumsen et~al.(2013)Villumsen, Bronmo, and Philpott]{6373775}
+J.C. Villumsen, G.~Bronmo, and A.B. Philpott.
+\newblock Line capacity expansion and transmission switching in power systems
+  with large-scale wind power.
+\newblock \emph{Power Systems, IEEE Transactions on}, 28\penalty0 (2):\penalty0
+  731--739, May 2013.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2012.2224143}.
 
 \bibitem[Wong et~al.(1999)Wong, Albrecht, Allan, Billinton, Chen, Fong, Haddad,
   Li, Mukerji, Patton, et~al.]{wongieee}
@@ -190,13 +288,23 @@ H.~Zhong, Q.~Xia, Y.~Wang, and C.~Kang.
   2232--2241, 2013.
 \newblock ID: 1.
 
-\bibitem[Zimmerman et~al.(2011)Zimmerman, Murillo-S{\'a}nchez, and
-  Thomas]{zimmerman}
+\bibitem[Zimmerman et~al.(2011{\natexlab{a}})Zimmerman, Murillo-Sanchez, and
+  Thomas]{matpower:2011}
+R.~D. Zimmerman, C.~E. Murillo-Sanchez, and R.~J. Thomas.
+\newblock Matpower: Steady-state operations, planning, and analysis tools for
+  power systems research and education.
+\newblock \emph{IEEE Transactions on Power Systems}, 26\penalty0 (1):\penalty0
+  12--19, Feb 2011{\natexlab{a}}.
+\newblock ISSN 0885-8950.
+\newblock \doi{10.1109/TPWRS.2010.2051168}.
+
+\bibitem[Zimmerman et~al.(2011{\natexlab{b}})Zimmerman, Murillo-S{\'a}nchez,
+  and Thomas]{zimmerman}
 Ray~Daniel Zimmerman, Carlos~Edmundo Murillo-S{\'a}nchez, and Robert~John
   Thomas.
 \newblock Matpower: Steady-state operations, planning, and analysis tools for
   power systems research and education.
 \newblock \emph{Power Systems, IEEE Transactions on}, 26\penalty0 (1):\penalty0
-  12--19, 2011.
+  12--19, 2011{\natexlab{b}}.
 
 \end{thebibliography}
