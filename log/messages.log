@@ -1,45 +1,4 @@
-﻿There is 69.801 Mb in use.
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar11)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar11)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar12)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar12)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar13)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar13)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar14,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar14)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: Only 3 out of 82 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: Only 3 out of 50 duplicate row warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar11)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar11)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar12)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar12)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The columns "VC_ShutdownStatus(2015-07-06 00:00:00,Solar13)" and "VC_OnOffStatus(2015-07-06 00:00:00,Solar13)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost".
-This may lead to non-unique solutions. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar11,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar11)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar13,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar13)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: The rows "CL_UC_MaximumGenerationNonRenewableSources(Solar14,2015-07-01 00:00:00)" and "CL_UC_RampUpRateRequirements(2015-07-01 00:00:00,Solar14)" are equal in the generated mathematical program "M_UC_MinimizeTotalCost". 
-This may lead to non-unique shadow prices. 
-For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
-Warning: Only 3 out of 82 duplicate column warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
-Warning: Only 3 out of 50 duplicate row warnings were reported. 
-See also option limit_reported_duplicate_column_row_warnings.
+﻿There is 72 Mb in use.
+Warning: The parameter "PI_TransmissionLineBranches" is not initialized (default values are used).
+Warning: The variable "VC_PowerTransmitted" is not initialized (default values are used).
+Warning: The parameter "PI_LineMaximumCapacity" is not initialized (default values are used).

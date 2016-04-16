@@ -5,23 +5,14 @@
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
 	<Background Inherited="true" />
 	<PageObject Type="Pivot Table">
-		<Location top="6" left="18" bottom="330" right="864" />
+		<Location top="12" left="36" bottom="336" right="882" />
 		<TabOrder>1</TabOrder>
-		<ObjectUUID>69E022C1-8BD2-4B42-B09C-755853DC8C3D</ObjectUUID>
+		<ObjectUUID>6C3415FE-3C28-496E-B578-AB5947015F1B</ObjectUUID>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
 		<Contents>
 			<Explicit_Identifier>
-				<Identifier ID="4110">VC_ED_TotalCost</Identifier>
-			</Explicit_Identifier>
-			<Explicit_Identifier>
-				<Identifier ID="4110">VC_UC_TotalCost</Identifier>
-			</Explicit_Identifier>
-			<Explicit_Identifier>
-				<Identifier ID="4110">M_ED_MinimizeTotalCost.SolutionTime</Identifier>
-			</Explicit_Identifier>
-			<Explicit_Identifier>
-				<Identifier ID="4110">M_UC_MinimizeTotalCost.SolutionTime</Identifier>
+				<Identifier ID="4110">PO_LineUtilization( iTime, iTransmissionLine )</Identifier>
 			</Explicit_Identifier>
 		</Contents>
 		<Indices>
@@ -63,10 +54,9 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>M_UC_MinimizeTotalCost</Symbol>
-			<Symbol>VC_UC_TotalCost</Symbol>
-			<Symbol>VC_ED_TotalCost</Symbol>
-			<Symbol>M_ED_MinimizeTotalCost</Symbol>
+			<Symbol>PO_LineUtilization</Symbol>
+			<Symbol>iTime</Symbol>
+			<Symbol>iTransmissionLine</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

@@ -1,5 +1,4 @@
 %Sample of text file to include all the documents
-
 \documentclass[12pt,LUDisStyle,twosided]{book}
 \usepackage[hang,small,bf]{caption}
 \usepackage{LUDisStyle}
@@ -180,12 +179,12 @@ The total peak load is 8550MW while the total generation capacity is 9975MW. Thi
 
 \subsection{Renewable Generators Data}
 
-Although RTS-96 has most of necessary data for this project, it does not contain any information of renewable generation. Therefore we found necessary to integrate wind and solar data in the field to build realistic results when evaluating the impact of VER's in the proposed models. The wind and solar profiles states the generation capacity for these renewable resources thorough one year, and it is based on historical availability from the last 5 years in Texas.  The data taken was from the Electric Reliability Council of Texas - ERCOT. The geographic renewable potential in Texas were considered for each bus in the system, both for solar and wind generators.
+Although RTS-96 has most of necessary data for this project, it does not contain any information of renewable generation. Therefore we found necessary to integrate wind and solar data in the field to build realistic results when evaluating the impact of VER's in the proposed models. The wind and solar profiles defines the generation capacity for these renewable resources in a full year, and it is based on historical availability from the last 5 years in Texas.  The historical data is provided by the Electric Reliability Council of Texas - ERCOT. The geographic renewable potential in Texas were considered for each bus in the system, both for solar and wind generators.
 
 \subsubsection{Wind Profile}
 
 
-Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is know as the "panhandle" because the state of Oklahoma, in north of Texas, is shaped like a pan. The handle of this pan is where there's most of wind potential in state. In result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
+Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is know as the "panhandle" because the state of Oklahoma, in north of Texas, is shaped like a pan. The handle of this pan is where there is most of wind potential in state. In result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
@@ -194,7 +193,7 @@ Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and 
 \end{figure}
 
 
-To build the wind potential, each bus were associated to a Texas city or region along with the average historical wind generation for the past 5 years. The studied data is freely shared by ERCOT \cite{ercotGenerationWind}. Therefore each location has a wind potential on an hourly level throughout an entire year. In sub-hourly levels the availability follows the interpolation between the hours followed by an uniform perturbation, using the same logic as load. That said, the real generation for any wind generator is a factor of the percentage of the nameplate capacity followed by the profile where it is located. Figure \ref{fig:windProfileBus122January} shows the wind profile for the bus 122 within the month of January.
+To build the wind potential, each bus were associated to a Texas city or region along with the average historical wind generation for the past 5 years. The studied data is freely shared by ERCOT \cite{ercotGenerationWind}. Therefore each location has a wind potential on an hourly level throughout an entire year. In sub-hourly levels the availability follows the interpolation between the hours followed by an uniform perturbation, using the same logic as load. That said, the real generation for any wind generator is a factor of the percentage of the nameplate capacity followed by the profile where it is located. Figure \ref{fig:windProfileBus122January} shows the wind profile for the bus 122 in the month of January.
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{windPotentialBus122.png}
@@ -214,7 +213,7 @@ Figure \ref{fig:texasSolarProfile} displays the NREL's solar incidence report in
 \end{figure}
 
 
-It is important to notice that the highest incidence profile in state is located in west of Texas, followed by northeast and center. The solar profile construction followed the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
+It is important to notice that the highest incidence profile in state is located in west of Texas, followed by northeast and center. The solar profile analysis follows the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
 
 \begin{figure}[h!] 
 	\begin{center}
@@ -225,17 +224,24 @@ It is important to notice that the highest incidence profile in state is located
 \end{figure}
 
 
-\subsection{Costs and Assumptions}
+\subsection{Costs}
 
-To be developed.
+For our models, the costs were developed based on the RTS-96 data and some benchmarket values widely used in the industry for power generation studies. They can found at.
+
+There are two type of costs associated with generation:
+
+\begin{itemize}
+\item Generation Cost ($\$\\MW$): Cost to generate 1MW of a specific unit group.
+\item Start-up Cost ($\$\\MW$): Cost to change the state of a specific generator type from off to on.
+\end{itemize}
 
 \subsection{Scenario Description}
 
-This project studies 3 different generators scenarios under the same demand profile from RTS-96 data. The distribution is adapted from \citeauthor{shavel}, that describes the technical and economical potentials of exploring natural gas and VERs in the state of Texas \cite{shavel}. 
+This project covered 3 different generators scenarios in the same load profile. The distribution is adapted from \citeauthor{shavel}, that describes the technical and economical potentials of exploring natural gas and VERs in the state of Texas \cite{shavel}. 
 
 \subsubsection{Scenario 1: Reference}
 
-This scenario captures the existing ERTOC capacity mix. 88\% of generation comes from non-renewable energy sources. The remaining capacity is filled by wind generators, located in the buses that has the Texas Northwest's wind potential (Buses 111-124).
+This scenario captures the existing ERCOT capacity mix. 88\% of generation comes from non-renewable energy sources. The remaining capacity is filled by wind generators, located in the buses that has the Texas Northwest's wind potential (Buses 111-124).
 
 \subsubsection{Scenario 2: Stronger Federal Carbon Rule}
 
@@ -283,7 +289,7 @@ Solar & 1320 & 0 & 900 & 9 & 2824 & 16 \\ \hline
 
 \section{Models}
 
-This thesis covers the Economic Dispatch and Unit Commitment models, developed exhaustively in the literature.
+This section describes the Unit Commitment and Economic Dispatch models used in this project
 
 \subsection{Indices and Sets}
 
@@ -327,7 +333,6 @@ $ST^{ramp}_{sd} $& Maximum storage capacity of storage device sd (MW)\\
 \end{tabular}
 
 
-Note 1: The generation of renewable resources are not in the decision variables. The developed models only decides the generation for non-renewable resources. Therefore the generation is considered a deterministic parameter, not a variable in the model.
 
 \subsection{Variables}
 
@@ -451,6 +456,8 @@ The following assumptions were made in the model and data during the research an
 \item The generation cost is linear per MW.
 \item Although the reserve requirements of NVERs is described in this thesis, they are not considered in this work. Therefore there is no reserve requirement and capacity for NVERs.
 \item For the storage scenarios, it is assumed unlimited storage capacity. Thus all the overgenerated power is stored for future uses.
+\item The generation of renewable resources are not in the decision variables. The developed models only decides the generation for non-renewable resources. Therefore the generation is considered a deterministic parameter, not a variable in the model.
+
 \end{enumerate}
 
 \section{Implementation}
@@ -573,7 +580,6 @@ With all possible combinations of these factors, there are 36 data sets to analy
 
 Figures \ref{fig:powerOutputScenario1}, \ref{fig:powerOutputScenario2} and \ref{fig:powerOutputScenario3} has the power production for each generator type in a combination of model type (UC or ED), granularity (60, 15 and 5 minutes) and transmission constraints on and off. Each figure represents the result for each scenario described in the Data Section. All instances represent the same time period of one week of July, with the same load profile. The generator type colors are described at the bottom of the page, and to make the curve more analysis friendly all the x-axis were removed. There are some interesting analysis, which will be described by Scenario.
 
-\subsubsection{Scenario 1}
 
 When there is no transmission constraints, there was no significant difference of generation distribution between time granularities on the Economic Dispatch version, except for the ramping behaviour of non-renewable resources. It is expected to ramping more due to the variability under a sub-hourly level. 
 
@@ -583,7 +589,7 @@ As for Unit Commitment with Transmission Constraints on a 60-minute level, the N
 
 When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load, even for a penalty of \$10000 of MW not generated. We decided then to analyse which constraint was leading to this behaviour, so we disabled the ramping constraints and run the UC model on a 15-minute and 5-minute level. Disabling the constraints augmented the solution space, which could lead to unpractical solution time. Therefore the results has less than 1\% of optimality gap.
 
-Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation for the 15-minute level and 300 minutes for a 5-minute. The comparison between Transmission on and Off are shown in \ref{fig:noRampingConstraint}. For both levels, when transmission constraints are not considered, NGCC-Old generators are turned on during peaks, and turned of afterwards. This solution is clearly less practical than turning on most of generators and letting them running at minimal level, and can lead to more maintenance costs.
+The MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation for the 15-minute level and 300 minutes for a 5-minute. The comparison between Transmission on and Off are shown in \ref{fig:noRampingConstraint}. For both levels, when transmission constraints are not considered, NGCC-Old generators are turned on during peaks, and turned of afterwards. This solution is clearly less practical than turning on most of generators and letting them running at minimal level, and can lead to more maintenance costs.
 
 \begin{figure}[h] 
 	\begin{center}
@@ -602,13 +608,9 @@ Doing that the the MIP solution took 81 minutes to find a solution with a 0.06\%
   \label{fig:powerOutputScenario1}
 \end{figure}
 
-\subsubsection{Scenario 2}
 
-- The Economic Dispatch problems led to some generation distributions for all possible configurations. The similarities of the results between transmission on and off indicates that the transmission limits did not make influence in the final result. This can be seen better Figure **, that displays the utilization per transmission line in the 3 cases of Economic Dispatch versions, and it is easy to see there is no line with high utilization that could be a potential bottleneck.
 
-- In the economic dispatch solutions, Coal, Oil and Nuclear generator were set to run the whole horizon, where NGCC-New generators were chosen to handle load and wind and solar variabilities across the time.
-
-- For Unit Commitment the solutions for NVERs are different for three time scales. On a 60 minute level, the distribution is almost the same for the Economic Dispatch solutions, but in this case coal and nuclear generators reduce their production when the demand is low and let NGCC-New ones fill the gap. This can lead to increase of maintenance costs because of the ramping behaviour, where in the other hand it strengthen the use of green energy. The fact that the generators has to run under a minimum level and the cheapness of start-up costs for gas generators comparing to oil explains this behaviour difference between Economic Dispatch and Unit Commitment decisions.
+- The Economic Dispatch problems led to some generation distributions for all possible configurations. The similarities of the results between transmission on and off indicates that the transmission limits did not make influence in the final result. This can be seen better Figure **, that displays the utilization per transmission line in the 3 cases of Economic Dispatch versions, and it is easy to see there is no line with high utilization that could be a potential bottleneck. In the schedules generates by Economic Dispatch, Coal, Oil and Nuclear generator were set to run the whole horizon, where NGCC-New generators were chosen to handle load and wind and solar variabilities across the time. For Unit Commitment the planning of NVERs are different for three time scales. On a 60 minute level, the distribution is almost the same for the Economic Dispatch solutions, but in this case coal and nuclear generators reduce their production when the demand is low and let NGCC-New ones fill the gap. This can lead to increase of maintenance costs because of the ramping behaviour, where in the other hand it strengthen the use of green energy. The fact that the generators has to run under a minimum level and the cheapness of start-up costs for gas generators comparing to oil explains this behaviour difference between Economic Dispatch and Unit Commitment decisions.
 
 *Generate Image Here.*
 
@@ -625,15 +627,14 @@ Under a 15 minute-level more NGCT-Old generators were turned on when transmissio
   \label{fig:powerOutputScenario2}
 \end{figure}
 
-\subsubsection{Scenario 3}
 
-Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability. 
 
-In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off cases, for both optimization models. The figure *** displays the distribution of gas generators across the field and the respective line limits, and their utilization is also exhibited in figure 4. In this case, the transmission is a bottleneck on two cases: to fulfill the demand on peak moments and to transmit energy coming from renewable resources. Figure *** shows the difference of overgeneration when transmission is on or off for 60, 15 and 5 minute planning level.
+Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability moments. 
+
+In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand on peak levels and to transmit energy coming from renewable resources. Figure *** shows the difference of overgeneration when transmission is on or off for 60, 15 and 5 minute planning level.
 
 *Figure of gas generators map and total line capacity*
 *Figure of line capacity utilization*
-
 *Figure of over generation for all the levels*
 
 When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVER, having NCTG-Old a support to peak and low wind and solar generation moments. The UC decision decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by the line limits, so the solution turns on the generators from other locations. It is easy to see that the ramps are smoother for UC cases, mostly because of the minimum generation levels.
@@ -645,6 +646,67 @@ When comparing the generation between UC and ED instances NGCC-New generators ar
   
   \caption{Power Output for Scenario 3.}
   \label{fig:powerOutputScenario3}
+\end{figure}
+
+
+Two important aspects to evaluate the quality of the optimization result are the final objective function value and the solution time. Figures \ref{fig:solutionparameterss1}, \ref{fig:solutionparameterss2} and \ref{fig:solutionparameterss3} compares these parameters for all the problem instances, per each scenario. The dashed bars represents results out of the y-axis, and their absolute results are in the tables below the graphs. 
+
+In scenario 1, as expected the cheapest and fastest solution were found when no transmission is considered, for 60 minutes level, because of the lower number of variables and constraints. However lower levels with transmission led to faster and cheaper results. In general the solution times for unit commitment are much bigger than economic dispatch instances, due to the MIP NP-Hard nature of the problem. The only exception found was when transmission is off on a 60-minute level, with only 9 of the baseline. The outliers of this curve are represented by dashed bars, and represents UC instances on a sub-hourly level. One can explain the huge values based on the under generation penalties, which was set to 10,000,000 / MW not satisfied. This huge value also could explain why UC instances took so long to solve. Even though, for pratical purposes it is recommended to solve the Unit Commitment on a hourly level.
+
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS1.png}
+  
+  \caption{Solution parameters for all instances in Scenario 1. Baseline: $\$658,218,352.9$}
+  \label{fig:solutionparameterss1}
+\end{figure}
+
+In scenario 2 all the economic dispatch instances generated results close to the baseline. With no transmission all the 3 models generated the same result quality, and the same applies for the ones with transmission activated. However solving the instance on a 5-minute level with transmission was slower than without. The same was observed for unit commitment, and the reason behind that is the expansion of binary solution space when there is no transmission constraints. For sub-hourly levels, the solution time and objective functions was way bigger than the others, due to the lack of generation, even for shorter periods.
+
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS2.png}
+  
+  \caption{Solution parameters for all instances in Scenario 2. Baseline: $\$594,939,053.9$}
+  \label{fig:solutionparameterss2}
+\end{figure}
+
+Scenario 3 presented a behaviour that is harder to map, because of the undergeneration presented in most of instances, as observed in figure \ref{fig:powerOutputScenario3}. The presence of more variable energy sources bring challenges to solving even a LP model, taking 34 seconds to solve 5 minutes without transmission, and leading to a solution quality closer to the both cases of unit commitment with the same granularity. The more was the under generation in the solution more was its time to solve it. For 5 minute levels the solution was up to 1000 \% of the baseline found.
+
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS3.png}
+  
+  \caption{Solution parameters for all instances in Scenario 3. Baseline: $\$5,015,405,153$}
+  \label{fig:solutionparameterss3}
+\end{figure}
+
+
+This results can lead to some interesting conclusions:
+
+\begin{itemize}
+\item Economic Dispatch models in general are easier and faster to solve, but in some cases that might not apply.
+\item Under sub-hourly levels, unit commitment is not efficient and, therefore, it must be used wisely.
+\item Under-generation slack variables with a high penalty can lead to numerical instabilities and non-feasible solution times.
+\item Transmission parameters plays an important rule in both solution times and quality, specially under high VERs levels.
+\end{itemize}
+
+The influence of transmission constraints in the results described in this depends on the distribution of generators in the field and the transmission lines physical limits. The figure \label{fig:maximumutilizaton} shows the maximum utilization of each one of the 36 transmission lines in the field, per unit commitment and economic dispatch. For Scenario 1, 13 lines has their utilization above 80 \%,  19 between 80 \% and 50 \% and 93 below this value, for both economic dispatch and unit commitment models. 
+
+However, for scenario 2 the same range was 21, 13 and 86 for ED and 87, 19 and 14 for UC. One of the hypothesis is the minimum generation level constraint for NVERs, as well as the lack of transmission costs. Still, such results suggests the unit commitment solution for transmission may lead the grid to no be able to respond quickly to abrupt variations in the load or transmission, as well as reliability problems. As for Economic Dispatch, the transmissions seems to be more balanced.
+
+As for Scenario 3, both unit commitment and economic dispatch solutions suggests that the line is not balanced, i.e., the generators are not able to generate enough power in their locations, even though there is still lines with a low or none utilization : 76, 2 and 40, with 26 lines unused for ED. As for UC, this proportion is 95, 12 and 13. One can state that most of the low used lines are in the area C of the field, where there is no wind and solar generator. Therefore, for generation capacity expansion planning, this area can be very attractive.
+
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{MaximumTransmissionLineUtilization.png}
+  
+  \caption{Maximum utilization per transmission line, scenario and model type(\%)}
+  \label{fig:maximumutilizaton}
 \end{figure}
 
 
