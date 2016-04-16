@@ -1,4 +1,7 @@
-﻿There is 72 Mb in use.
-Warning: The parameter "PI_TransmissionLineBranches" is not initialized (default values are used).
-Warning: The variable "VC_PowerTransmitted" is not initialized (default values are used).
-Warning: The parameter "PI_LineMaximumCapacity" is not initialized (default values are used).
+﻿There is 71.738 Mb in use.
+Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
+Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).

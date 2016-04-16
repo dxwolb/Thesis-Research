@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  15 APR 2016 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  16 APR 2016 01:36
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -204,7 +204,7 @@ dication.aux")
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\my
 abstract.aux")
 
-LaTeX Warning: Label `fig:solutionparameterss1' multiply defined.
+LaTeX Warning: Label `fig:maximumutilizaton' multiply defined.
 
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\vi
@@ -471,35 +471,38 @@ Underfull \vbox (badness 2057) has occurred while \output is active []
 File: PowerOutputScenario3.png Graphic file (type png)
 
 <use PowerOutputScenario3.png>
-Package pdftex.def Info: PowerOutputScenario3.png used on input line 645.
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 639.
 (pdftex.def)             Requested size: 426.38205pt x 341.3082pt.
- [38 <./PowerOutputScenario2.png>] [39 <./PowerOutputScenario3.png>]
-<SolutionParametersS1.png, id=189, 603.75563pt x 301.125pt>
+ [38 <./PowerOutputScenario2.png>]
+<SolutionParametersS1.png, id=185, 603.75563pt x 301.125pt>
 File: SolutionParametersS1.png Graphic file (type png)
 
 <use SolutionParametersS1.png>
-Package pdftex.def Info: SolutionParametersS1.png used on input line 659.
+Package pdftex.def Info: SolutionParametersS1.png used on input line 653.
 (pdftex.def)             Requested size: 426.394pt x 212.66531pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[39 <./PowerOutputScenario3.png>]
 <SolutionParametersS2.png, id=190, 604.50844pt x 316.93407pt>
 File: SolutionParametersS2.png Graphic file (type png)
 
 <use SolutionParametersS2.png>
-Package pdftex.def Info: SolutionParametersS2.png used on input line 670.
+Package pdftex.def Info: SolutionParametersS2.png used on input line 664.
 (pdftex.def)             Requested size: 426.39066pt x 223.54977pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[40 <./SolutionParametersS1.png>]
-<SolutionParametersS3.png, id=196, 604.50844pt x 316.93407pt>
+<SolutionParametersS3.png, id=191, 604.50844pt x 316.93407pt>
 File: SolutionParametersS3.png Graphic file (type png)
 
 <use SolutionParametersS3.png>
-Package pdftex.def Info: SolutionParametersS3.png used on input line 681.
+Package pdftex.def Info: SolutionParametersS3.png used on input line 675.
 (pdftex.def)             Requested size: 426.39066pt x 223.54977pt.
 
-Underfull \hbox (badness 5637) in paragraph at lines 683--683
+Underfull \hbox (badness 5637) in paragraph at lines 677--677
 [][]|\OT1/cmr/m/n/10.95 So-lu-tion pa-ram-e-ters for all in-stances in Sce-nari
 o 3. Base-line:
  []
@@ -507,25 +510,42 @@ o 3. Base-line:
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<MaximumTransmissionLineUtilization.png, id=197, 758.835pt x 667.74469pt>
+
+Underfull \vbox (badness 7851) has occurred while \output is active []
+
+ [40 <./SolutionParametersS1.png>] [41 <./SolutionParametersS2.png>]
+<MaximumTransmissionLineUtilization.png, id=200, 758.835pt x 667.74469pt>
 File: MaximumTransmissionLineUtilization.png Graphic file (type png)
 
 <use MaximumTransmissionLineUtilization.png>
 Package pdftex.def Info: MaximumTransmissionLineUtilization.png used on input l
-ine 702.
+ine 700.
 (pdftex.def)             Requested size: 426.40364pt x 375.21828pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41 <./SolutionParametersS2.png>] [42 <./SolutionParametersS3.png>] [43 <./Maxi
-mumTransmissionLineUtilization.png>] [44
 
-]
+Underfull \vbox (badness 2376) has occurred while \output is active []
+
+ [42 <./SolutionParametersS3.png>]
+<averageRamping.png, id=204, 1849.66031pt x 1263.21938pt>
+File: averageRamping.png Graphic file (type png)
+
+<use averageRamping.png>
+Package pdftex.def Info: averageRamping.png used on input line 711.
+(pdftex.def)             Requested size: 426.37253pt x 291.1897pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43 <./MaximumTransmissionLineUtilization.png>] [44 <./averageRamping.png>]
 Chapter 5.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.bbl" [45] [46
+ssertation.bbl" [45
+
+] [46
 
 ]
 Missing character: There is no â in font cmr12!
@@ -585,10 +605,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4078 strings out of 493673
- 61669 string characters out of 3141526
- 119468 words of memory out of 3000000
- 7334 multiletter control sequences out of 15000+200000
+ 4085 strings out of 493673
+ 61821 string characters out of 3141526
+ 119490 words of memory out of 3000000
+ 7340 multiletter control sequences out of 15000+200000
  13644 words of font info for 51 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,9n,43p,1451b,387s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -610,9 +630,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX
 onts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmtt12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (60 pages, 3297027 bytes).
+sisFiles/build/Dissertation.pdf" (60 pages, 3490433 bytes).
 PDF statistics:
- 288 PDF objects out of 1000 (max. 8388607)
+ 289 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

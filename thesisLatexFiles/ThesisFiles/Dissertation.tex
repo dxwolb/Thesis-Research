@@ -631,13 +631,7 @@ Under a 15 minute-level more NGCT-Old generators were turned on when transmissio
 
 Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind availability moments. 
 
-In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand on peak levels and to transmit energy coming from renewable resources. Figure *** shows the difference of overgeneration when transmission is on or off for 60, 15 and 5 minute planning level.
-
-*Figure of gas generators map and total line capacity*
-*Figure of line capacity utilization*
-*Figure of over generation for all the levels*
-
-When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVER, having NCTG-Old a support to peak and low wind and solar generation moments. The UC decision decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by the line limits, so the solution turns on the generators from other locations. It is easy to see that the ramps are smoother for UC cases, mostly because of the minimum generation levels.
+In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand on peak levels and to transmit energy coming from renewable resources. When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVER, having NCTG-Old a support to peak and low wind and solar generation moments. The UC decision decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by the line limits, so the solution turns on the generators from other locations. It is easy to see that the ramps are smoother for UC cases, mostly because of the minimum generation levels.
 
 \begin{figure} 
   \centering
@@ -700,7 +694,7 @@ However, for scenario 2 the same range was 21, 13 and 86 for ED and 87, 19 and 1
 
 As for Scenario 3, both unit commitment and economic dispatch solutions suggests that the line is not balanced, i.e., the generators are not able to generate enough power in their locations, even though there is still lines with a low or none utilization : 76, 2 and 40, with 26 lines unused for ED. As for UC, this proportion is 95, 12 and 13. One can state that most of the low used lines are in the area C of the field, where there is no wind and solar generator. Therefore, for generation capacity expansion planning, this area can be very attractive.
 
-\begin{figure}[h] 
+\begin{figure}[!h] 
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{MaximumTransmissionLineUtilization.png}
@@ -709,8 +703,18 @@ As for Scenario 3, both unit commitment and economic dispatch solutions suggests
   \label{fig:maximumutilizaton}
 \end{figure}
 
+Another goals of this project is evaluating the impact of non-renewable generators ramping when the power planning is made on different granularities. The average ramping normalized by the generator type maximum capacity is shown in figure  \ref{fig:averageramping}. The normalization was necessary to avoid the idea of low-capacity generators ramping less than high-capacity ones.
 
+\begin{figure}[!h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{averageRamping.png}
+  
+  \caption{Average ramping of non-renewable generators, normalized by their maximum capacity.}
+  \label{fig:averageramping}
+\end{figure}
 
+Economic Dispatch ramps more the deeper it gets in the planning. As for unit commitment decisions, that was not entirely true, and deserves a better explanation. To be continued.
 
 \chapter{Conclusion}
 
