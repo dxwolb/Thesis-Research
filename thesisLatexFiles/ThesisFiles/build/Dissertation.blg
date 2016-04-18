@@ -6,12 +6,14 @@ A level-1 auxiliary file: myabstract.aux
 The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
-Repeated entry---line 275 of file biblio.bib
+Repeated entry---line 286 of file biblio.bib
  : @article{short
  :               ,
 I'm skipping whatever remains of this entry
 Warning--empty year in texasWindProfile
 Warning--empty year in ercotGenerationWind
+Warning--empty year in fraunpower
 Warning--empty year in texasSolarProfile
+Warning--empty year in mitindia
 Warning--empty journal in shavel
 (There was 1 error message)

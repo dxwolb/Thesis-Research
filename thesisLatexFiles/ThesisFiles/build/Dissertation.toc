@@ -1,42 +1,42 @@
 \contentsline {chapter}{List of Tables}{vi}
 \contentsline {chapter}{List of Figures}{vii}
 \contentsline {chapter}{Abstract}{1}
-\contentsline {chapter}{Introduction}{2}
-\contentsline {chapter}{\numberline {1}Introduction}{3}
-\contentsline {chapter}{Literature Review}{5}
-\contentsline {chapter}{\numberline {2}Literature Review}{7}
-\contentsline {chapter}{\numberline {3}Development}{11}
-\contentsline {section}{\numberline {3.1}Data}{11}
-\contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{11}
-\contentsline {subsection}{\numberline {3.1.2}Renewable Generators Data}{14}
-\contentsline {subsubsection}{Wind Profile}{15}
-\contentsline {subsubsection}{Solar Profile}{16}
-\contentsline {subsection}{\numberline {3.1.3}Costs}{16}
-\contentsline {subsection}{\numberline {3.1.4}Scenario Description}{18}
-\contentsline {subsubsection}{Scenario 1: Reference}{18}
-\contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{18}
-\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{19}
-\contentsline {subsubsection}{Scenario 4: "Almost Green World"}{19}
-\contentsline {subsubsection}{Generation per Scenario}{19}
-\contentsline {section}{\numberline {3.2}Models}{20}
-\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{20}
-\contentsline {subsection}{\numberline {3.2.2}Parameters}{21}
-\contentsline {subsection}{\numberline {3.2.3}Variables}{21}
-\contentsline {subsection}{\numberline {3.2.4}Models}{22}
-\contentsline {subsubsection}{Simple Economic Dispatch Model}{23}
-\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{23}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{24}
-\contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{25}
-\contentsline {section}{\numberline {3.3}Assumptions}{25}
-\contentsline {section}{\numberline {3.4}Implementation}{27}
-\contentsline {subsection}{\numberline {3.4.1}Software Selection}{27}
-\contentsline {subsubsection}{MATPOWER}{27}
-\contentsline {subsubsection}{PLEXOS \textregistered }{27}
-\contentsline {subsubsection}{AIMMS}{28}
-\contentsline {section}{\numberline {3.5}Software Features}{28}
-\contentsline {subsubsection}{Data Import}{28}
-\contentsline {subsubsection}{Data Settings}{29}
-\contentsline {subsubsection}{Optimization and Results}{30}
+\contentsline {chapter}{Introduction}{1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{Literature Review}{4}
+\contentsline {chapter}{\numberline {2}Literature Review}{5}
+\contentsline {chapter}{\numberline {3}Development}{9}
+\contentsline {section}{\numberline {3.1}Data}{9}
+\contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{9}
+\contentsline {subsection}{\numberline {3.1.2}Renewable Generators Data}{11}
+\contentsline {subsubsection}{Wind Profile}{13}
+\contentsline {subsubsection}{Solar Profile}{14}
+\contentsline {subsection}{\numberline {3.1.3}Costs}{15}
+\contentsline {subsection}{\numberline {3.1.4}Scenarios Description}{16}
+\contentsline {subsubsection}{Scenario 1: Reference}{16}
+\contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{17}
+\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{17}
+\contentsline {subsubsection}{Scenario 4: "Green World"}{18}
+\contentsline {subsubsection}{Generation per Scenario}{18}
+\contentsline {section}{\numberline {3.2}Models}{18}
+\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{19}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{19}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{20}
+\contentsline {subsection}{\numberline {3.2.4}Models}{20}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{21}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{22}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{22}
+\contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{23}
+\contentsline {section}{\numberline {3.3}Assumptions}{24}
+\contentsline {section}{\numberline {3.4}Implementation}{26}
+\contentsline {subsection}{\numberline {3.4.1}Software Selection}{26}
+\contentsline {subsubsection}{MATPOWER}{26}
+\contentsline {subsubsection}{PLEXOS \textregistered }{26}
+\contentsline {subsubsection}{AIMMS}{26}
+\contentsline {section}{\numberline {3.5}Software Features}{27}
+\contentsline {subsubsection}{Data Import}{27}
+\contentsline {subsubsection}{Data Settings}{27}
+\contentsline {subsubsection}{Optimization and Results}{28}
 \contentsline {chapter}{\numberline {4}Analysis}{33}
 \contentsline {subsection}{\numberline {4.0.1}Power Output per Generation Type}{34}
 \contentsline {chapter}{\numberline {5}Conclusion}{45}

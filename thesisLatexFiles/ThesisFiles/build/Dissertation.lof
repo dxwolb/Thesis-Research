@@ -1,16 +1,17 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces RTS-96 topology \cite {wongieee}\relax }}{12}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces System Total Load over the month of July (MW)\relax }}{13}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces System Load for 5 days in July under 60 and 15 minutes level\relax }}{13}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasWindProfile} \relax }}{15}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Wind Profile for Bus 122 in January\relax }}{16}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasSolarProfile} \relax }}{17}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Solar Profile for Bus 112 in January \relax }}{17}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Data Import page in AIMMS\relax }}{29}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Section Pages\relax }}{30}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Optimization Section Pages\relax }}{32}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces RTS-96 topology \cite {wongieee}\relax }}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Total system load (MW) in July 2015\relax }}{11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces System load (MW) for 5 days in July with 15- and 60-minute resolution.\relax }}{12}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Total number of generators per type.\relax }}{12}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasWindProfile} \relax }}{14}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Wind Profile for Bus 122 in January\relax }}{15}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasSolarProfile} \relax }}{15}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Solar Profile for Bus 112 in January \relax }}{16}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Import page in AIMMS\relax }}{28}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Data Section Pages\relax }}{29}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Optimization Section Pages\relax }}{31}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Power Output for Scenario 1 with and without ramping constraints\relax }}{36}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Power Output for Scenario 1.\relax }}{37}

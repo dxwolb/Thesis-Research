@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -139,6 +139,11 @@ William~E Hart, Carl Laird, Jean-Paul Watson, and David~L Woodruff.
 \newblock \emph{Pyomo--optimization modeling in python}, volume~67.
 \newblock Springer Science \& Business Media, 2012.
 
+\bibitem[ISE()]{fraunpower}
+Fraunhofer ISE.
+\newblock \emph{Installed power in Germany}.
+\newblock Available at http://www.energy-charts.de/power\_inst.htm.
+
 \bibitem[Jin et~al.(2014)Jin, Botterud, and Ryan]{6728678}
 Shan Jin, A.~Botterud, and S.M. Ryan.
 \newblock Temporal versus stochastic granularity in thermal generation capacity
@@ -207,6 +212,12 @@ B.~Palmintier and M.~Webster.
 \newblock ISBN 1944-9925.
 \newblock ID: 1.
 
+\bibitem[Review()]{mitindia}
+MIT~Technology Review.
+\newblock \emph{India's Ambitious Bid to Become a Solar Power}.
+\newblock Available at
+  http://www.technologyreview.com/s/535551/indias-ambitious-bid-to-become-a-solar-power/.
+
 \bibitem[Roh et~al.(2007)Roh, Shahidehpour, and Fu]{4349120}
 Jae~Hyung Roh, M.~Shahidehpour, and Yong Fu.
 \newblock Market-based coordination of transmission and generation capacity
@@ -260,7 +271,7 @@ J.C. Villumsen, G.~Bronmo, and A.B. Philpott.
   Li, Mukerji, Patton, et~al.]{wongieee}
 Paul Wong, P~Albrecht, R~Allan, Roy Billinton, Qian Chen, C~Fong, Sandro
   Haddad, Wenyuan Li, R~Mukerji, Diane Patton, et~al.
-\newblock The ieee reliability test system-1996. a report prepared by the
+\newblock The {IEEE} reliability test system-1996. a report prepared by the
   reliability test system task force of the application of probability methods
   subcommittee.
 \newblock \emph{Power Systems, IEEE Transactions on}, 14\penalty0 (3):\penalty0
