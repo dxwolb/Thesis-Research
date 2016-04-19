@@ -15,7 +15,8 @@ Model Main_Thesis_Research {
                     }
                     Variable VC_StoredEnergy {
                         IndexDomain: (iTime,iStorageDevice);
-                        Range: [0, PI_StorageCapacity(iStorageDevice)];
+                        Range: nonnegative;
+                        Comment: "TODO: Change the capacity later";
                     }
                 }
                 DeclarationSection ReserveDeclaration {
@@ -553,7 +554,7 @@ Model Main_Thesis_Research {
                         }
                     }
                     Constraint CE_StorageVariablesLogic {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime,P_TimeCalendar) > 1;
                         Definition: {
                             VC_StoredEnergy(iTime, iStorageDevice) =
                             VC_StoredEnergy(iTime - 1,iStorageDevice)
@@ -562,8 +563,13 @@ Model Main_Thesis_Research {
                         }
                     }
                     Constraint CE_InitialStorage {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 0;
-                        Definition: VC_StoredEnergy(iTime, iStorageDevice) = PI_StorageDeviceInitial(iStorageDevice);
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime,P_TimeCalendar) = 1;
+                        Definition: {
+                            VC_StoredEnergy(iTime, iStorageDevice) =
+                            PI_StorageDeviceInitial(iStorageDevice)
+                            + VC_StorageDeviceCharge(iTime, iStorageDevice)*PI_StorageEfficiency(iStorageDevice)
+                            - VC_StorageDeviceDischarge(iTime, iStorageDevice)
+                        }
                     }
                 }
                 DeclarationSection ED_TransmissionConstraints {
