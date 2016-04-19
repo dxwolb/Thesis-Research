@@ -1,6 +1,83 @@
-Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
-Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
-Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
-Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
-Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
-Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
+Warning at line 2659.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning: The parameter "PI_BusXCoordinate" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorBus" is not initialized (default values are used).
+Warning: The parameter "PI_BusYCoordinate" is not initialized (default values are used).
+Warning at line 2782.
+The element parameter "PE_GeneratorType" is not initialized (default values are used).
+Warning at line 2782.
+The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning at line 2782.
+The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning at line 2782.
+The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning at line 2782.
+The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+Warning at line 2782.
+The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning at line 2782.
+The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning at line 2784.
+The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning at line 2784.
+The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning at line 2784.
+The variable "VC_PowerGenerated" is not initialized (default values are used).
+Warning at line 2784.
+The variable "VC_PowerTransmitted" is not initialized (default values are used).
+Warning at line 4076.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 5463.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 6862.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Domain violation at line 7065, column 49.
+The number of arguments in the parameter "PI_StorageEfficiency" is not correct.
+Domain violation at line 7069, column 49.
+The number of arguments in the parameter "PI_StorageEfficiency" is not correct.
+Warning at line 8374.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Domain violation at line 8514, column 42.
+The number of arguments in the parameter "PI_StorageStartRate" is not correct.
+Warning at line 9832.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The mandatory attribute "subset of" is missing from indexed set "CL_StorageLowerRampRate".
+Semantic error at line 28183, column 41.
+The definition of indexed set "CL_StorageLowerRampRate" should be of data type set.
+Semantic error at line 28183, column 1.
+The mandatory attribute "subset of" is missing from indexed set "CL_StorageLowerRampRate".
+Syntax error at line 28257, column 1.
+Unexpected end of the definition of set "S_EDVariables".
+Warning at line 29794.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.

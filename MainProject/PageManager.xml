@@ -10,6 +10,7 @@
 		<Page Name="Generators Speficication" PageGUID="606B477A-44BA-4EFF-9393-6B9D1167748C" />
 		<Page Name="Costs" PageGUID="0F4D5A8C-7995-49E4-974C-102EF67091E9" />
 		<Page Name="Wind and Solar Availability" PageGUID="456D3C1F-A9B5-4508-B03B-32F9A729A264" />
+		<Page Name="Storage" PageGUID="1564B283-A7A4-403E-A3DA-1EDC869C62CA" />
 		<Page Name="Summary" PageGUID="291CA5AA-2FE4-4474-AB78-34A214AF0B5F" />
 	</Page>
 	<Page Name="Optimization" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4">
@@ -21,6 +22,7 @@
 		<Page Name="Power Output Result" PageGUID="469D2C0E-6DEC-40BF-9A8D-1AD5991583F1" />
 		<Page Name="Location Marginal Prices" PageGUID="EEDAE5B5-6BD9-4C0E-80A7-82667AE23788" />
 		<Page Name="Generators Status" PageGUID="F89484E4-33DA-44DE-99E5-CDD27E204DFE" />
+		<Page Name="Slack and Storage" PageGUID="3E6CC4E8-187E-4C5C-AB44-C5E1D3AE675F" />
 	</Page>
 	<Page Name="Anaylsis Pages" PageGUID="4D0B7EC6-65C8-45AE-993A-73194FF77F5B">
 		<Page Name="Line Utilization" PageGUID="7C1973AD-8476-4105-9715-D5E102DB07F1" />

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-03-05 18:33:36">
+<Page Version="4000" TimeStamp="2016-03-30 20:13:51">
 	<PageEditSize Type="Specified">
 		<Size Width="846" Height="440" />
 	</PageEditSize>
@@ -50,21 +50,25 @@
 			<Description>"Reserve Constraints"</Description>
 		</ExplicitIdentifier>
 		<ExplicitIdentifier>
-			<Identifier>PI_EnableTranmissionConstraints</Identifier>
+			<Identifier>PI_EnableTransmissionConstraints</Identifier>
 			<Description>"Transmission Constraints"</Description>
 		</ExplicitIdentifier>
 		<ExplicitIdentifier>
-			<Identifier>PI_AddSlackVariables</Identifier>
+			<Identifier>PI_EnableSlackVariables</Identifier>
 			<Description>"Enable Slack Variables"</Description>
 		</ExplicitIdentifier>
 		<ExplicitIdentifier>
 			<Identifier>PI_EnableTransmissionLosses</Identifier>
 			<Description>"Enable Transmission Losses"</Description>
 		</ExplicitIdentifier>
+		<ExplicitIdentifier>
+			<Identifier>PI_EnableStorage</Identifier>
+		</ExplicitIdentifier>
 	</PageObject>
 	<PageObject Type="Selection Object">
 		<SelectionType>RadioButtons</SelectionType>
 		<Location top="6" left="144" bottom="36" right="744" />
+		<TabOrder>4</TabOrder>
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
 		<TextShown>ElementName</TextShown>
 		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
@@ -75,14 +79,15 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
+			<Symbol>PI_EnableSlackVariables</Symbol>
+			<Symbol>PE_SelectedModel</Symbol>
+			<Symbol>S_ModelType</Symbol>
 			<Symbol>PI_EnableTransmissionLosses</Symbol>
 			<Symbol>PI_EnableReserveConstraints</Symbol>
 			<Symbol>PI_EnableRampingConstraints</Symbol>
-			<Symbol>PI_EnableTranmissionConstraints</Symbol>
+			<Symbol>PI_EnableTransmissionConstraints</Symbol>
 			<Symbol>RunOptimization</Symbol>
-			<Symbol>PI_AddSlackVariables</Symbol>
-			<Symbol>S_ModelType</Symbol>
-			<Symbol>PE_SelectedModel</Symbol>
+			<Symbol>PI_EnableStorage</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

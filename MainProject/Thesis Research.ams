@@ -4,6 +4,20 @@ Model Main_Thesis_Research {
     Section Models {
         Section Common_Elements {
             Section Common_Variables {
+                DeclarationSection StorageDeclaration {
+                    Variable VC_StorageDeviceDischarge {
+                        IndexDomain: (iTime,iStorageDevice);
+                        Range: nonnegative;
+                    }
+                    Variable VC_StorageDeviceCharge {
+                        IndexDomain: (iTime,iStorageDevice);
+                        Range: nonnegative;
+                    }
+                    Variable VC_StoredEnergy {
+                        IndexDomain: (iTime,iStorageDevice);
+                        Range: [0, PI_StorageCapacity(iStorageDevice)];
+                    }
+                }
                 DeclarationSection ReserveDeclaration {
                     Variable VC_Reserve {
                         IndexDomain: (iTime,iGenerator,iReserveProduct);
@@ -410,6 +424,18 @@ Model Main_Thesis_Research {
                             }
                             
                             endif
+                            
+                            -
+                            if (not PI_EnableStorageConstraints) then
+                            
+                            {
+                            'VC_StorageDeviceCharge',
+                            'VC_StorageDeviceDischarge',
+                            'VC_StoredEnergy'
+                            }
+                            
+                            
+                            endif
                         }
                     }
                     Set S_EDConstraints {
@@ -443,6 +469,14 @@ Model Main_Thesis_Research {
                             
                             
                               ED_ReserveContraints*AllConstraints
+                            
+                            endif
+                            
+                            -
+                            if (not PI_EnableStorageConstraints) then
+                            
+                            
+                              ED_StorageConstraints*AllConstraints
                             
                             endif
                             
@@ -491,6 +525,47 @@ Model Main_Thesis_Research {
                 }
             }
             Section ED_Constraints {
+                DeclarationSection ED_StorageConstraints {
+                    Constraint CU_LowerStorageRampRate {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        Definition: {
+                            VC_StorageDeviceCharge(iTime, iStorageDevice) +  VC_StorageDeviceCharge(iTime - 1, iStorageDevice)
+                            +
+                            VC_StorageDeviceDischarge(iTime, iStorageDevice) + VC_StorageDeviceDischarge(iTime - 1, iStorageDevice)
+                            
+                            >=
+                            
+                            -PI_StorageDeviceRampRate(iStorageDevice)
+                        }
+                    }
+                    Constraint CL_LowerStorageRampRate {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        Definition: {
+                            VC_StorageDeviceCharge(iTime, iStorageDevice) -  VC_StorageDeviceCharge(iTime - 1, iStorageDevice)
+                            
+                            +
+                            
+                            VC_StorageDeviceDischarge(iTime, iStorageDevice) - VC_StorageDeviceDischarge(iTime - 1, iStorageDevice)
+                            
+                            <=
+                            
+                            PI_StorageDeviceRampRate(iStorageDevice)
+                        }
+                    }
+                    Constraint CE_StorageVariablesLogic {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        Definition: {
+                            VC_StoredEnergy(iTime, iStorageDevice) =
+                            VC_StoredEnergy(iTime - 1,iStorageDevice)
+                            + VC_StorageDeviceCharge(iTime, iStorageDevice)*PI_StorageEfficiency(iStorageDevice)
+                            - VC_StorageDeviceDischarge(iTime, iStorageDevice)
+                        }
+                    }
+                    Constraint CE_InitialStorage {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 0;
+                        Definition: VC_StoredEnergy(iTime, iStorageDevice) = PI_StorageDeviceInitial(iStorageDevice);
+                    }
+                }
                 DeclarationSection ED_TransmissionConstraints {
                     Constraint CG_Model0ED_MinimumTransmission {
                         IndexDomain: (iTime,iBus,iBus2);
@@ -538,6 +613,11 @@ Model Main_Thesis_Research {
                             !Slack
                             - VC_OverGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
                             + VC_UnderGenerationSlack(iTime, iBus)*PI_EnableSlackVariables
+                            
+                            !Charging or Discharging in a Bus
+                            - sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceCharge(iTime, iStorageDevice)) *PI_EnableStorageConstraints
+                            + sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceDischarge(iTime, iStorageDevice)) *PI_EnableStorageConstraints
+                            
                             =
                             
                             0
@@ -597,9 +677,10 @@ Model Main_Thesis_Research {
                             sum(iNonRenewableGenerator,VC_PowerGenerated[iTime,iNonRenewableGenerator])
                             + sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
                             
-                            
-                            
                             + sum(iBus,VC_UnderGenerationSlack(iTime, iBus))*PI_EnableSlackVariables
+                            
+                            + sum(iStorageDevice,VC_StorageDeviceDischarge(iTime, iStorageDevice)) * PI_EnableStorageConstraints
+                            
                              = sum(iBus,PD_LoadMW[iBus,iTime])
                             
                             + sum((iBus,iBus2) | iBus <> iBus2,
@@ -607,6 +688,8 @@ Model Main_Thesis_Research {
                             )
                             
                             + sum(iBus,VC_OverGenerationSlack(iTime, iBus)) *PI_EnableSlackVariables
+                            
+                            + sum(iStorageDevice,VC_StorageDeviceCharge(iTime, iStorageDevice)) * PI_EnableStorageConstraints
                         }
                     }
                 }
@@ -1219,7 +1302,7 @@ Model Main_Thesis_Research {
                 Set SI_GeneratorTypes {
                     Index: iGeneratorType;
                     OrderBy: PI_GeneratorTypeOrder(iGeneratorType);
-                    InitialData: data { Wind, Solar, Nuclear, Coal, Oil, NGCC-Old, NGCC-New, NGCT-Old, 'Gap' };
+                    InitialData: data { Wind, Solar, Nuclear, Coal, Oil, NGCC-Old, NGCC-New, NGCT-Old, 'Gap', 'St-Discharge' };
                 }
                 ElementParameter PE_GeneratorBus {
                     IndexDomain: iGenerator;
@@ -1438,6 +1521,42 @@ Model Main_Thesis_Research {
                 Text: "MW";
             }
         }
+        Section Storage {
+            DeclarationSection StorareDeclaration {
+                Parameter PI_StorageDeviceInitial {
+                    IndexDomain: iStorageDevice;
+                    Text: "Stored Energy at Start";
+                }
+                Parameter PI_StorageEfficiency {
+                    IndexDomain: iStorageDevice;
+                    Text: "Efficiency(%)";
+                }
+                Parameter PI_StorageLoss {
+                    IndexDomain: iStorageDevice;
+                    Text: "Loss(%)";
+                }
+                Set SI_StorageDevices {
+                    Index: iStorageDevice;
+                }
+                Parameter PI_EnableStorageConstraints {
+                    Text: "Enable Storage";
+                    Range: binary;
+                }
+                Parameter PI_StorageDeviceRampRate {
+                    IndexDomain: iStorageDevice;
+                    Text: "Ramp Rate(MW/min)";
+                }
+                Parameter PI_StorageCapacity {
+                    IndexDomain: iStorageDevice;
+                    Text: "Capacity (MWh)";
+                }
+                ElementParameter PE_StorageDeviceLocation {
+                    IndexDomain: iStorageDevice;
+                    Text: "Device Location";
+                    Range: SI_Buses;
+                }
+            }
+        }
     }
     Section Procedures {
         Procedure ExportProcedure {
@@ -1570,6 +1689,8 @@ Model Main_Thesis_Research {
                 Definition: {
                     if iGeneratorType = 'Gap' then
                     	PO_UnmetDemand(iTime)
+                    elseif iGeneratorType = 'St-Discharge' then
+                    	sum(iStorageDevice, VC_StorageDeviceDischarge(iTime, iStorageDevice))
                     
                     else
                     	sum(iGenerator | PE_GeneratorType(iGenerator) = iGeneratorType, PO_PowerGenerated(iTime,iGenerator))
@@ -1580,11 +1701,15 @@ Model Main_Thesis_Research {
                 IndexDomain: iTime;
                 Definition: {
                     if PO_TotalLoad(iTime) > (sum(iNonRenewableGenerator, VC_PowerGenerated(iTime, iNonRenewableGenerator)) +
-                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator)) ) > 0 then
+                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                    + sum(iStorageDevice,VC_StorageDeviceDischarge(iTime, iStorageDevice))*PI_EnableStorageConstraints ) > 0 then
                     
                     PO_TotalLoad(iTime) -
                     (sum(iNonRenewableGenerator, VC_PowerGenerated(iTime, iNonRenewableGenerator)) +
-                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator)) )
+                    sum(iRenewableGenerator, PD_RenewableGenerationCapacity(iTime, iRenewableGenerator))
+                    +sum(iStorageDevice,VC_StorageDeviceDischarge(iTime, iStorageDevice))*PI_EnableStorageConstraints
+                    
+                    )
                     
                     else
                     
