@@ -511,6 +511,7 @@ Model Main_Thesis_Research {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
                             + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
                             + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iStorageDevice), VC_StorageDeviceDischarge(iTime, iStorageDevice))*PI_EnableStorageConstraints
                         }
                         Comment: "Add the time granularity in the objective sum";
                     }
@@ -569,14 +570,6 @@ Model Main_Thesis_Research {
                             VC_StoredEnergy(iTime - 1,iStorageDevice)
                             + VC_StorageDeviceCharge(iTime, iStorageDevice)*PI_StorageEfficiency(iStorageDevice)
                             - VC_StorageDeviceDischarge(iTime, iStorageDevice)
-                        }
-                    }
-                    Constraint CE_ChargeDischargeLogic {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 1;
-                        Definition: {
-                            
-                             VC_StorageDeviceCharge(iTime, iStorageDevice) +
-                             VC_StorageDeviceDischarge(iTime, iStorageDevice) = 0
                         }
                     }
                 }
@@ -1815,21 +1808,24 @@ Model Main_Thesis_Research {
                 Definition: data { 'Generation', 'Charge', 'Discharge', 'Gap' };
             }
             Parameter PO_StorageStatus {
-                IndexDomain: (iTime,iStorageStatus);
+                IndexDomain: (iTime, iStorageStatus);
                 Definition: {
-                    !switch iStorageStatus do
-                    !'Generation':
-                    !2;
-                    !'Charge':
-                    !3;
-                    !'Discharge':
-                    !4;
-                    !
-                    !'Gap';
-                    !5;
-                    !default:
-                    !0;
-                    !endswitch;
+                    if iStorageStatus = 'Generation' then
+                    	sum(iGenerator,PO_PowerGenerated(iTime, iGenerator)) - sum(iStorageDevice,VC_StorageDeviceCharge(iTime, iStorageDevice))
+                    	- sum(iBus,VC_OverGenerationSlack(iTime, iBus))
+                    
+                    elseif iStorageStatus = 'Charge' then
+                    	 sum(iStorageDevice,VC_StorageDeviceCharge(iTime, iStorageDevice))
+                    
+                    elseif iStorageStatus = 'Discharge' then
+                    	sum(iStorageDevice,VC_StorageDeviceDischarge(iTime, iStorageDevice))
+                    
+                    elseif iStorageStatus = 'Gap' then
+                    	sum(iBus,VC_OverGenerationSlack(iTime, iBus))
+                    
+                    else
+                    0
+                    endif;
                 }
             }
         }

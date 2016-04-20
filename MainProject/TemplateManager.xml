@@ -7,6 +7,7 @@
 	<Page Name="Generators Speficication" PageGUID="606B477A-44BA-4EFF-9393-6B9D1167748C" />
 	<Page Name="Optimization" PageGUID="12F67D6B-7838-4418-9195-B05574B826B4" />
 	<Page Name="Load Distribution" PageGUID="4337962B-24EB-4ED9-ABE4-0B403ED6DC92" />
+	<Page Name="Storage Distribution" PageGUID="78C5467C-A068-4429-8E2C-C668B1027C2C" />
 	<Page Name="Costs" PageGUID="0F4D5A8C-7995-49E4-974C-102EF67091E9" />
 	<Page Name="Power Output Result" PageGUID="469D2C0E-6DEC-40BF-9A8D-1AD5991583F1" />
 	<Page Name="Summary" PageGUID="291CA5AA-2FE4-4474-AB78-34A214AF0B5F" />
