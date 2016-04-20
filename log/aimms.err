@@ -8,24 +8,34 @@ Warning at line 1517.
 The parameter "PI_BusYCoordinate" is not initialized (default values are used).
 Warning at line 1519.
 The element parameter "PE_GeneratorType" is not initialized (default values are used).
-Warning at line 1519.
-The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning at line 1519.
-The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning at line 1519.
-The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning at line 1519.
-The parameter "PI_PeakLoadMW" is not initialized (default values are used).
-Warning at line 19772.
+Warning at line 1523.
 The variable "VC_StorageDeviceCharge" is not initialized (default values are used).
-Warning at line 19774.
+Warning at line 1525.
 The variable "VC_StorageDeviceDischarge" is not initialized (default values are used).
-Warning at line 19774.
+Warning at line 1525.
+The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning at line 1525.
+The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning at line 1525.
+The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning at line 1525.
 The variable "VC_PowerGenerated" is not initialized (default values are used).
-Warning at line 19774.
+Warning at line 1525.
 The variable "VC_PowerTransmitted" is not initialized (default values are used).
 Warning at line 4 in user-defined function section "RunOptimization".
 The parameter "PI_EnableReserveConstraints" is not initialized (default values are used).
+Warning at line 284 in the file ieedata\IEEReliabilityTestDataSetAimmsFormat_Scenario4_GreenWorld.txt.
+The tuple (Wind72) is assigned to element parameter "PE_GeneratorBus" with the values 324 and 325.
 Warning at line 4 in user-defined function section "RunOptimization".
 The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
 Warning at line 4 in user-defined function section "RunOptimization".
@@ -34,3 +44,135 @@ Warning at line 4 in user-defined function section "RunOptimization".
 The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
 Warning at line 4 in user-defined function section "RunOptimization".
 Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 76085.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 77616.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 79165.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The mandatory attribute "subset of" is missing from indexed set "CL_ChargeLimitations".
+Semantic error at line 79354, column 85.
+The definition of indexed set "CL_ChargeLimitations" should be of data type set.
+Semantic error at line 79354, column 1.
+The mandatory attribute "subset of" is missing from indexed set "CL_ChargeLimitations".
+Warning at line 80746.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-01 16:00:00) is [0, inf], and the right hand side of that constraint is -436.1331; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-01 17:00:00) is [0, inf], and the right hand side of that constraint is -823.45828; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-01 18:00:00) is [0, inf], and the right hand side of that constraint is -1118.60864; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 07:00:00) is [0, inf], and the right hand side of that constraint is -1692.2728; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 08:00:00) is [0, inf], and the right hand side of that constraint is -2951.5696; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 09:00:00) is [0, inf], and the right hand side of that constraint is -2535.28832; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 10:00:00) is [0, inf], and the right hand side of that constraint is -2843.468; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 11:00:00) is [0, inf], and the right hand side of that constraint is -1913.28832; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 12:00:00) is [0, inf], and the right hand side of that constraint is -1449.71024; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 13:00:00) is [0, inf], and the right hand side of that constraint is -1390.53056; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 14:00:00) is [0, inf], and the right hand side of that constraint is -1429.1712; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 15:00:00) is [0, inf], and the right hand side of that constraint is -1610.81184; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 16:00:00) is [0, inf], and the right hand side of that constraint is -2051.6712; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 17:00:00) is [0, inf], and the right hand side of that constraint is -2126.03056; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 18:00:00) is [0, inf], and the right hand side of that constraint is -2111.24928; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-02 19:00:00) is [0, inf], and the right hand side of that constraint is -1321.10864; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 06:00:00) is [0, inf], and the right hand side of that constraint is -1.16744; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 07:00:00) is [0, inf], and the right hand side of that constraint is -2514.97545; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 08:00:00) is [0, inf], and the right hand side of that constraint is -3661.44315; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 09:00:00) is [0, inf], and the right hand side of that constraint is -2102.23023; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 10:00:00) is [0, inf], and the right hand side of that constraint is -386.677; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 16:00:00) is [0, inf], and the right hand side of that constraint is -430.2093; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 17:00:00) is [0, inf], and the right hand side of that constraint is -895.60284; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 18:00:00) is [0, inf], and the right hand side of that constraint is -640.88992; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-03 19:00:00) is [0, inf], and the right hand side of that constraint is -185.28346; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 08:00:00) is [0, inf], and the right hand side of that constraint is -73.263905; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 11:00:00) is [0, inf], and the right hand side of that constraint is -132.90129; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 12:00:00) is [0, inf], and the right hand side of that constraint is -547.000185; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 13:00:00) is [0, inf], and the right hand side of that constraint is -245.53315; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 14:00:00) is [0, inf], and the right hand side of that constraint is -504.03315; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 15:00:00) is [0, inf], and the right hand side of that constraint is -517.16501; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 16:00:00) is [0, inf], and the right hand side of that constraint is -864.197975; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 17:00:00) is [0, inf], and the right hand side of that constraint is -1644.59908; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 18:00:00) is [0, inf], and the right hand side of that constraint is -1635.46722; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 19:00:00) is [0, inf], and the right hand side of that constraint is -3003.2035; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 20:00:00) is [0, inf], and the right hand side of that constraint is -2703.302395; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 21:00:00) is [0, inf], and the right hand side of that constraint is -1883.368325; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 22:00:00) is [0, inf], and the right hand side of that constraint is -1706.03315; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-04 23:00:00) is [0, inf], and the right hand side of that constraint is -1036.697975; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 00:00:00) is [0, inf], and the right hand side of that constraint is -259.559375; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 07:00:00) is [0, inf], and the right hand side of that constraint is -795.32525; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 08:00:00) is [0, inf], and the right hand side of that constraint is -1227.932375; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 09:00:00) is [0, inf], and the right hand side of that constraint is -453.337125; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 10:00:00) is [0, inf], and the right hand side of that constraint is -963.0395; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 11:00:00) is [0, inf], and the right hand side of that constraint is -55.50775; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 17:00:00) is [0, inf], and the right hand side of that constraint is -718.603; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 18:00:00) is [0, inf], and the right hand side of that constraint is -1579.5395; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Generation error at line 4 in user-defined function section "RunOptimization".
+The range of the left hand side of the "<=" constraint CL_ChargingCapacity(2015-07-05 19:00:00) is [0, inf], and the right hand side of that constraint is -789.4125; this constraint is infeasible.  See also option row_range_violation_left_hand_side.
+Warning at line 82382.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 83900.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 4 in user-defined function section "RunOptimization".
+Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning at line 85528.
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+The property "input" is not applicable for local string parameter "V_WorkbookName".
+Syntax error at line 85650, column 1.
+The symbol "switch" is not expected.

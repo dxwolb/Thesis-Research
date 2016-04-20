@@ -26,5 +26,6 @@
 	<Page Name="All Data Pages" PageGUID="6FD3FFEF-069D-4875-855C-2F367F544182" />
 	<Page Name="[Data Page] PO_HighLineUtilization" PageGUID="6D6EC8AD-524D-41FA-BFCE-91B9467423A9" />
 	<Page Name="Storage" PageGUID="1564B283-A7A4-403E-A3DA-1EDC869C62CA" />
-	<Page Name="Slack and Storage" PageGUID="3E6CC4E8-187E-4C5C-AB44-C5E1D3AE675F" />
+	<Page Name="Storage Results" PageGUID="3E6CC4E8-187E-4C5C-AB44-C5E1D3AE675F" />
+	<Page Name="Slack Variables" PageGUID="E472FFE3-8379-4C6B-B7AF-7A56D1A84DEE" />
 </TemplateManager>

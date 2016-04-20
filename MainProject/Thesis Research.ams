@@ -528,7 +528,7 @@ Model Main_Thesis_Research {
             Section ED_Constraints {
                 DeclarationSection ED_StorageConstraints {
                     Constraint CU_LowerStorageRampRate {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 1;
                         Definition: {
                             VC_StorageDeviceCharge(iTime, iStorageDevice) +  VC_StorageDeviceCharge(iTime - 1, iStorageDevice)
                             +
@@ -540,7 +540,7 @@ Model Main_Thesis_Research {
                         }
                     }
                     Constraint CL_LowerStorageRampRate {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 0;
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) > 1;
                         Definition: {
                             VC_StorageDeviceCharge(iTime, iStorageDevice) -  VC_StorageDeviceCharge(iTime - 1, iStorageDevice)
                             
@@ -554,7 +554,7 @@ Model Main_Thesis_Research {
                         }
                     }
                     Constraint CE_InitialStorage {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime,P_TimeCalendar) = 1;
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 1;
                         Definition: {
                             VC_StoredEnergy(iTime, iStorageDevice) =
                             PI_StorageDeviceInitial(iStorageDevice)
@@ -572,7 +572,7 @@ Model Main_Thesis_Research {
                         }
                     }
                     Constraint CE_ChargeDischargeLogic {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 0;
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 1;
                         Definition: {
                             
                              VC_StorageDeviceCharge(iTime, iStorageDevice) +
@@ -1536,7 +1536,7 @@ Model Main_Thesis_Research {
             }
         }
         Section Storage {
-            DeclarationSection StorareDeclaration {
+            DeclarationSection StorageDataDeclaration {
                 Parameter PI_StorageDeviceInitial {
                     IndexDomain: iStorageDevice;
                     Text: "Stored Energy at Start";
@@ -1809,6 +1809,28 @@ Model Main_Thesis_Research {
             Parameter PO_StorageChargeByBus {
                 IndexDomain: (iTime,iBus);
                 Definition: sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceCharge(iTime, iStorageDevice));
+            }
+            Set S_StorageStatusSet {
+                Index: iStorageStatus;
+                Definition: data { 'Generation', 'Charge', 'Discharge', 'Gap' };
+            }
+            Parameter PO_StorageStatus {
+                IndexDomain: (iTime,iStorageStatus);
+                Definition: {
+                    !switch iStorageStatus do
+                    !'Generation':
+                    !2;
+                    !'Charge':
+                    !3;
+                    !'Discharge':
+                    !4;
+                    !
+                    !'Gap';
+                    !5;
+                    !default:
+                    !0;
+                    !endswitch;
+                }
             }
         }
     }
