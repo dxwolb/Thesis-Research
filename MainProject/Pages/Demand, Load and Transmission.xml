@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-13 20:28:57">
+<Page Version="4000" TimeStamp="2016-04-18 23:03:26">
 	<PageEditSize Type="Specified">
 		<Size Width="530" Height="300" />
 	</PageEditSize>
@@ -43,6 +43,14 @@
 				<Identifier ID="4110">PO_TransmissionIn( PE_SelectedPeriod, iBus )</Identifier>
 				<Title ID="4120">"Transmission In"</Title>
 			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">VALUE( iBus ) := sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceCharge(PE_SelectedPeriod,iStorageDevice))</Identifier>
+				<Title ID="4120">"Storage Charge"</Title>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">VALUE( iBus ) := sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceDischarge(PE_SelectedPeriod,iStorageDevice))</Identifier>
+				<Title ID="4120">"Storage Discharge"</Title>
+			</Explicit_Identifier>
 		</Contents>
 		<Indices>
 			<Identifier_Index>
@@ -83,12 +91,18 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>PE_SelectedPeriod</Symbol>
-			<Symbol>PD_LoadMW</Symbol>
-			<Symbol>iBus</Symbol>
+			<Symbol>VC_StorageDeviceDischarge</Symbol>
+			<Symbol>VC_StorageDeviceCharge</Symbol>
 			<Symbol>PO_GenerationByBus</Symbol>
 			<Symbol>PO_TransmissionOut</Symbol>
 			<Symbol>PO_TransmissionIn</Symbol>
+			<Symbol>PE_SelectedPeriod</Symbol>
+			<Symbol>P_TimeCalendar</Symbol>
+			<Symbol>PD_LoadMW</Symbol>
+			<Symbol>SI_Buses</Symbol>
+			<Symbol>PE_StorageDeviceLocation</Symbol>
+			<Symbol>iBus</Symbol>
+			<Symbol>iStorageDevice</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

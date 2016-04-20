@@ -193,3 +193,5 @@
 "B" "CU_LowerStorageRampRate" "2016-04-18 22:50:47"
 "Copy_CU_LowerStorageRampRate" "CL_LowerStorageRampRate" "2016-04-18 22:50:59"
 "PI_EnableStorage" "PI_EnableStorageConstraints" "2016-04-18 23:03:24"
+"Copy_CE_InitialStorage" "CE_InitialStorageStatus" "2016-04-20 01:11:17"
+"CE_InitialStorageStatus" "CE_ChargeDischargeLogic" "2016-04-20 02:25:42"

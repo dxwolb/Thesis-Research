@@ -25,6 +25,14 @@
 			<Explicit_Identifier>
 				<Identifier ID="4110">VC_StorageDeviceDischarge( iTime, iStorageDevice )</Identifier>
 			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">VC_UnderGenerationSlack( iTime, iBus )</Identifier>
+				<Is_Hidden ID="4124">1</Is_Hidden>
+			</Explicit_Identifier>
+			<Explicit_Identifier>
+				<Identifier ID="4110">VC_OverGenerationSlack( iTime, iBus )</Identifier>
+				<Is_Hidden ID="4124">1</Is_Hidden>
+			</Explicit_Identifier>
 		</Contents>
 		<Indices>
 			<Suffix_Index>
@@ -77,11 +85,14 @@
 	</PageObject>
 	<UsedReferences>
 		<Model>
-			<Symbol>iTime</Symbol>
-			<Symbol>iStorageDevice</Symbol>
-			<Symbol>VC_StoredEnergy</Symbol>
-			<Symbol>VC_StorageDeviceCharge</Symbol>
 			<Symbol>VC_StorageDeviceDischarge</Symbol>
+			<Symbol>VC_StorageDeviceCharge</Symbol>
+			<Symbol>VC_StoredEnergy</Symbol>
+			<Symbol>VC_UnderGenerationSlack</Symbol>
+			<Symbol>VC_OverGenerationSlack</Symbol>
+			<Symbol>iTime</Symbol>
+			<Symbol>iBus</Symbol>
+			<Symbol>iStorageDevice</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

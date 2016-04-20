@@ -536,7 +536,7 @@ Model Main_Thesis_Research {
                             
                             >=
                             
-                            -PI_StorageDeviceRampRate(iStorageDevice)
+                            -PI_StorageDeviceRampRate(iStorageDevice)*PI_TimeGranularity
                         }
                     }
                     Constraint CL_LowerStorageRampRate {
@@ -550,7 +550,16 @@ Model Main_Thesis_Research {
                             
                             <=
                             
-                            PI_StorageDeviceRampRate(iStorageDevice)
+                            PI_StorageDeviceRampRate(iStorageDevice)*PI_TimeGranularity
+                        }
+                    }
+                    Constraint CE_InitialStorage {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime,P_TimeCalendar) = 1;
+                        Definition: {
+                            VC_StoredEnergy(iTime, iStorageDevice) =
+                            PI_StorageDeviceInitial(iStorageDevice)
+                            + VC_StorageDeviceCharge(iTime, iStorageDevice)*PI_StorageEfficiency(iStorageDevice)
+                            - VC_StorageDeviceDischarge(iTime, iStorageDevice)
                         }
                     }
                     Constraint CE_StorageVariablesLogic {
@@ -562,13 +571,12 @@ Model Main_Thesis_Research {
                             - VC_StorageDeviceDischarge(iTime, iStorageDevice)
                         }
                     }
-                    Constraint CE_InitialStorage {
-                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime,P_TimeCalendar) = 1;
+                    Constraint CE_ChargeDischargeLogic {
+                        IndexDomain: (iTime,iStorageDevice) | Ord(iTime) = 0;
                         Definition: {
-                            VC_StoredEnergy(iTime, iStorageDevice) =
-                            PI_StorageDeviceInitial(iStorageDevice)
-                            + VC_StorageDeviceCharge(iTime, iStorageDevice)*PI_StorageEfficiency(iStorageDevice)
-                            - VC_StorageDeviceDischarge(iTime, iStorageDevice)
+                            
+                             VC_StorageDeviceCharge(iTime, iStorageDevice) +
+                             VC_StorageDeviceDischarge(iTime, iStorageDevice) = 0
                         }
                     }
                 }
@@ -1797,6 +1805,10 @@ Model Main_Thesis_Research {
                 IndexDomain: iTime;
                 Text: "MW";
                 Definition: Sum(iBus,PD_LoadMW(iBus, iTime));
+            }
+            Parameter PO_StorageChargeByBus {
+                IndexDomain: (iTime,iBus);
+                Definition: sum(iStorageDevice | PE_StorageDeviceLocation(iStorageDevice) = iBus, VC_StorageDeviceCharge(iTime, iStorageDevice));
             }
         }
     }
