@@ -32,5 +32,7 @@
 	</Page>
 	<Page Name="All Data Pages" PageGUID="6FD3FFEF-069D-4875-855C-2F367F544182">
 		<Page Name="[Data Page] PO_HighLineUtilization" PageGUID="6D6EC8AD-524D-41FA-BFCE-91B9467423A9" />
+		<Page Name="[Data Page] PD_VariableCost" PageGUID="D41F1C65-B1F6-493D-B5E6-57BCC29B4321" />
+		<Page Name="[Data Page] PO_GenerationByGeneratorType" PageGUID="22342B7F-5D71-4E27-BB6B-FDC570B9F5D0" />
 	</Page>
 </PageManager>

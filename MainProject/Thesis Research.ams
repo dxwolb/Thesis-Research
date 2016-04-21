@@ -201,6 +201,12 @@ Model Main_Thesis_Research {
                              + VC_OnOffStatus(iTime - 1, iNonRenewableGenerator)
                         }
                     }
+                    Constraint DebugConstraint1 {
+                        IndexDomain: (iTime,iBus) | Ord(iTime) = 0;
+                        Definition: {
+                            VC_UnderGenerationSlack(iTime, iBus) = 0;
+                        }
+                    }
                 }
                 DeclarationSection UC_TransmissionConstraints {
                     Constraint CG_UC_MinimumTransmission {
@@ -300,17 +306,42 @@ Model Main_Thesis_Research {
                 }
                 DeclarationSection UC_RampConstraints {
                     Constraint CL_UC_RampUpRateRequirements {
-                        IndexDomain: (iTime,iNonRenewableGenerator);
+                        IndexDomain: (iTime,iNonRenewableGenerator) | Ord(iTime) > 1;
                         Definition: {
-                            VC_PowerGenerated[iTime,iNonRenewableGenerator] - VC_PowerGenerated[iTime - 1,iNonRenewableGenerator] <=
-                            PI_RampUpRate[PE_UnitGroup[iNonRenewableGenerator]]*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            !  VC_PowerGenerated[iTime,iNonRenewableGenerator]
+                            !- VC_PowerGenerated[iTime - 1,iNonRenewableGenerator]
+                            !<=
+                            !PI_RampUpRate[PE_UnitGroup[iNonRenewableGenerator]]
+                            !*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            
+                              VC_PowerGenerated[iTime,iNonRenewableGenerator]
+                            - VC_PowerGenerated[iTime - 1,iNonRenewableGenerator]
+                            <=
+                            (PI_RampUpRate[PE_UnitGroup[iNonRenewableGenerator]]
+                            *PI_TimeGranularity) * (1 - VC_StartupStatus(iTime, iNonRenewableGenerator))
+                            
+                            + (max(PI_RampUpRate[PE_UnitGroup[iNonRenewableGenerator]]
+                            *PI_TimeGranularity,PI_MinimumGenerationMW(iNonRenewableGenerator)))
+                            
+                            *VC_StartupStatus(iTime, iNonRenewableGenerator)
                         }
                     }
                     Constraint CL_UC_RampDownRateRequirements {
-                        IndexDomain: (iTime,iNonRenewableGenerator);
+                        IndexDomain: (iTime,iNonRenewableGenerator) | Ord(iTime) > 1;
                         Definition: {
-                            VC_PowerGenerated[iTime - 1,iNonRenewableGenerator] - VC_PowerGenerated[iTime,iNonRenewableGenerator] <=
-                            PI_RampDownRate[PE_UnitGroup[iNonRenewableGenerator]]*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            !VC_PowerGenerated[iTime - 1,iNonRenewableGenerator] - VC_PowerGenerated[iTime,iNonRenewableGenerator] <=
+                            !PI_RampDownRate[PE_UnitGroup[iNonRenewableGenerator]]*PI_TimeGranularity*VC_OnOffStatus(iTime, iNonRenewableGenerator)
+                            
+                              VC_PowerGenerated[iTime-1,iNonRenewableGenerator]
+                            - VC_PowerGenerated[iTime,iNonRenewableGenerator]
+                            <=
+                            (PI_RampDownRate[PE_UnitGroup[iNonRenewableGenerator]]
+                            *PI_TimeGranularity) * (1 - VC_ShutdownStatus(iTime, iNonRenewableGenerator))
+                            
+                            + (max(PI_RampDownRate[PE_UnitGroup[iNonRenewableGenerator]]
+                            *PI_TimeGranularity,PI_MinimumGenerationMW(iNonRenewableGenerator)))
+                            
+                            *VC_ShutdownStatus(iTime, iNonRenewableGenerator)
                         }
                     }
                 }
@@ -361,10 +392,10 @@ Model Main_Thesis_Research {
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
                             + sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*1000000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*1
                         }
-                        Comment: "Add the time granularity in the objective sum";
+                        Comment: "TEmporary change it to test.";
                     }
                 }
                 DeclarationSection OnOffVariables {
@@ -1581,8 +1612,9 @@ Model Main_Thesis_Research {
                 	PD_SolutionTime := M_ED_MinimizeTotalCost.SolutionTime;
                 	PD_SolverStatus := M_ED_MinimizeTotalCost.SolverStatus;
                 else
-                !	solve M_UC_MinimizeTotalCost;
-                	solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.01, time_limit := 3*3600 ;
+                !
+                	solve M_UC_MinimizeTotalCost where time_limit := 4*3600;
+                !	solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.01, time_limit := 3*3600 ;
                 
                 
                 	PD_SolutionTime := M_UC_MinimizeTotalCost.SolutionTime;
@@ -1628,7 +1660,7 @@ Model Main_Thesis_Research {
                 	PI_TimeGranularity := 15;
                 
                 else
-                	PI_TimeGranularity := 1;
+                	PI_TimeGranularity := 5;
                 endif;
                 
                 UpdateTimeCalendar;
@@ -1662,6 +1694,13 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter DebugParameter {
+                Definition: {
+                    !sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
+                    !sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
+                     sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*1000000
+                }
+            }
             Parameter PO_OverGeneration {
                 IndexDomain: iTime;
                 Definition: sum(iBus,VC_OverGenerationSlack(iTime, iBus));
@@ -1930,49 +1969,47 @@ Model Main_Thesis_Research {
             Body: {
                 PI_PerturbationInterpolationLevel := 20;
                 
-                PE_SelectedModel := 'Economic Dispatch';
-                
-                
-                
-                !Run for Economic Dispatch
-                for(iScenario) do
-                
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  0,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  60,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  15,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
-                	);
-                RunScenario(
-                	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
-                	V_Granularity        :  5,
-                	V_EnableTransmission :  1,
-                	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
-                
-                endfor;
+                !PE_SelectedModel := 'Economic Dispatch';
+                !
+                !!Run for Economic Dispatch
+                !for(iScenario) do
+                !
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TN_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  0,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TN_ED.txt");
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  60,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_60_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  15,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_15_TY_ED.txt"
+                !	);
+                !RunScenario(
+                !	V_ScenarioFile       : PS_ScenarioFileNames(iScenario),
+                !	V_Granularity        :  5,
+                !	V_EnableTransmission :  1,
+                !	V_ScenarioName       :  PS_ScenarioNames(iScenario)+"_5_TY_ED.txt");
+                !
+                !endfor;
                 
                 PE_SelectedModel := 'Unit Commitment';
                 

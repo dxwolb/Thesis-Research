@@ -1,14 +1,1 @@
-﻿There is 72.969 Mb in use.
-Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
-Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
-Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
-Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
-Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
-Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
-Warning: The variable "VC_StorageDeviceCharge" is not initialized (default values are used).
-Warning: The variable "VC_OverGenerationSlack" is not initialized (default values are used).
-Warning: The variable "VC_StorageDeviceDischarge" is not initialized (default values are used).
-Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
+﻿There is 72.699 Mb in use.
