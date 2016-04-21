@@ -9,9 +9,9 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Wind Profile for Bus 122 in January\relax }}{15}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasSolarProfile} \relax }}{15}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Solar Profile for Bus 112 in January \relax }}{16}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Import page in AIMMS\relax }}{28}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Data Section Pages\relax }}{29}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Optimization Section Pages\relax }}{31}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Import page in AIMMS\relax }}{29}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Data Section Pages\relax }}{30}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Optimization Section Pages\relax }}{32}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Power Output for Scenario 1 with and without ramping constraints\relax }}{36}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Power Output for Scenario 1.\relax }}{37}
@@ -22,4 +22,5 @@
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Solution parameters for all instances in Scenario 3. Baseline: $\$5,015,405,153$\relax }}{42}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Maximum utilization per transmission line, scenario and model type(\%)\relax }}{43}
 \contentsline {figure}{\numberline {4.9}{\ignorespaces Average ramping of non-renewable generators, normalized by their maximum capacity.\relax }}{44}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Storage device profile status for Scenario 4.\relax }}{45}
 \addvspace {10\p@ }

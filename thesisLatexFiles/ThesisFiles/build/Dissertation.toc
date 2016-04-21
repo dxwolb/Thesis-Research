@@ -27,16 +27,17 @@
 \contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{22}
 \contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{22}
 \contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{23}
-\contentsline {section}{\numberline {3.3}Assumptions}{24}
-\contentsline {section}{\numberline {3.4}Implementation}{26}
-\contentsline {subsection}{\numberline {3.4.1}Software Selection}{26}
-\contentsline {subsubsection}{MATPOWER}{26}
-\contentsline {subsubsection}{PLEXOS \textregistered }{26}
-\contentsline {subsubsection}{AIMMS}{26}
-\contentsline {section}{\numberline {3.5}Software Features}{27}
-\contentsline {subsubsection}{Data Import}{27}
-\contentsline {subsubsection}{Data Settings}{27}
-\contentsline {subsubsection}{Optimization and Results}{28}
+\contentsline {section}{\numberline {3.3}Assumptions}{25}
+\contentsline {section}{\numberline {3.4}Implementation}{27}
+\contentsline {subsection}{\numberline {3.4.1}Software Selection}{27}
+\contentsline {subsubsection}{MATPOWER}{27}
+\contentsline {subsubsection}{PLEXOS \textregistered }{27}
+\contentsline {subsubsection}{AIMMS}{27}
+\contentsline {section}{\numberline {3.5}Software Features}{28}
+\contentsline {subsubsection}{Data Import}{28}
+\contentsline {subsubsection}{Data Settings}{28}
+\contentsline {subsubsection}{Optimization and Results}{29}
 \contentsline {chapter}{\numberline {4}Analysis}{33}
 \contentsline {subsection}{\numberline {4.0.1}Power Output per Generation Type}{34}
-\contentsline {chapter}{\numberline {5}Conclusion}{45}
+\contentsline {subsection}{\numberline {4.0.2}Scenario 4 Analysis}{44}
+\contentsline {chapter}{\numberline {5}Conclusion}{47}

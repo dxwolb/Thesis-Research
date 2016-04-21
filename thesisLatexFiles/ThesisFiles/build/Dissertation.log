@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  18 APR 2016 00:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.30)  21 APR 2016 01:43
 entering extended mode
 **Dissertation.tex
 (Dissertation.tex
@@ -203,6 +203,12 @@ gnatures.aux")
 dication.aux")
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\my
 abstract.aux")
+
+LaTeX Warning: Label `model:edTransmissionConstraints' multiply defined.
+
+
+LaTeX Warning: Label `model:simple_ED' multiply defined.
+
 
 LaTeX Warning: Label `fig:maximumutilizaton' multiply defined.
 
@@ -410,10 +416,7 @@ rPotentialBus112.png>]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [17]
-Underfull \vbox (badness 1460) has occurred while \output is active []
-
- [18]
+ [17] [18]
 Underfull \vbox (badness 4673) has occurred while \output is active []
 
  [19]
@@ -426,53 +429,63 @@ Overfull \hbox (32.26259pt too wide) in paragraph at lines 434--434
 Underfull \vbox (badness 1082) has occurred while \output is active []
 
  [23]
-[24] [25]
+Overfull \hbox (115.37622pt too wide) in paragraph at lines 442--442
+[] 
+ []
+
+
+Overfull \hbox (73.5631pt too wide) in paragraph at lines 450--450
+[] 
+ []
+
+[24] [25] [26]
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 473.
- [26] <aimmsScreenImportPage.png, id=137, 369.63094pt x 85.06781pt>
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 492.
+ [27]
+<aimmsScreenImportPage.png, id=140, 369.63094pt x 85.06781pt>
 File: aimmsScreenImportPage.png Graphic file (type png)
 
 <use aimmsScreenImportPage.png>
-Package pdftex.def Info: aimmsScreenImportPage.png used on input line 502.
+Package pdftex.def Info: aimmsScreenImportPage.png used on input line 521.
 (pdftex.def)             Requested size: 369.63002pt x 85.0676pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27] <aimmsDataPages.png, id=142, 998.22937pt x 1087.06125pt>
+[28] <aimmsDataPages.png, id=146, 998.22937pt x 1087.06125pt>
 File: aimmsDataPages.png Graphic file (type png)
 
 <use aimmsDataPages.png>
-Package pdftex.def Info: aimmsDataPages.png used on input line 516.
+Package pdftex.def Info: aimmsDataPages.png used on input line 535.
 (pdftex.def)             Requested size: 426.38193pt x 464.32542pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[28 <./aimmsScreenImportPage.png>]
+[29 <./aimmsScreenImportPage.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29 <./aimmsDataPages.png>]
-<aimmsOptimizationSectionPages.png, id=150, 983.17313pt x 877.02657pt>
+ [30 <./aimmsDataPages.png>]
+<aimmsOptimizationSectionPages.png, id=153, 983.17313pt x 877.02657pt>
 File: aimmsOptimizationSectionPages.png Graphic file (type png)
 
 <use aimmsOptimizationSectionPages.png>
 Package pdftex.def Info: aimmsOptimizationSectionPages.png used on input line 5
-49.
+68.
 (pdftex.def)             Requested size: 426.38669pt x 380.3526pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[30] [31 <./aimmsOptimizationSectionPages.png>] [32
-
-]
+[31] [32 <./aimmsOptimizationSectionPages.png>]
 Chapter 4.
-[33] [34] <PowerOutputScenario1_NR.png, id=168, 834.11626pt x 598.48593pt>
+[33
+
+] [34] <PowerOutputScenario1_NR.png, id=168, 834.11626pt x 598.48593pt>
 File: PowerOutputScenario1_NR.png Graphic file (type png)
 
 <use PowerOutputScenario1_NR.png>
-Package pdftex.def Info: PowerOutputScenario1_NR.png used on input line 595.
+Package pdftex.def Info: PowerOutputScenario1_NR.png used on input line 614.
 (pdftex.def)             Requested size: 426.39255pt x 305.94522pt.
 
 
@@ -482,14 +495,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: PowerOutputScenario1.png Graphic file (type png)
 
 <use PowerOutputScenario1.png>
-Package pdftex.def Info: PowerOutputScenario1.png used on input line 604.
+Package pdftex.def Info: PowerOutputScenario1.png used on input line 623.
 (pdftex.def)             Requested size: 426.3849pt x 340.9056pt.
  [35]
 <PowerOutputScenario2.png, id=173, 1269.99469pt x 1014.79124pt>
 File: PowerOutputScenario2.png Graphic file (type png)
 
 <use PowerOutputScenario2.png>
-Package pdftex.def Info: PowerOutputScenario2.png used on input line 627.
+Package pdftex.def Info: PowerOutputScenario2.png used on input line 646.
 (pdftex.def)             Requested size: 426.38588pt x 340.7043pt.
 
 Underfull \vbox (badness 2057) has occurred while \output is active []
@@ -499,14 +512,14 @@ Underfull \vbox (badness 2057) has occurred while \output is active []
 File: PowerOutputScenario3.png Graphic file (type png)
 
 <use PowerOutputScenario3.png>
-Package pdftex.def Info: PowerOutputScenario3.png used on input line 640.
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 659.
 (pdftex.def)             Requested size: 426.38205pt x 341.3082pt.
  [37 <./PowerOutputScenario1.png>] [38 <./PowerOutputScenario2.png>]
 <SolutionParametersS1.png, id=186, 603.75563pt x 301.125pt>
 File: SolutionParametersS1.png Graphic file (type png)
 
 <use SolutionParametersS1.png>
-Package pdftex.def Info: SolutionParametersS1.png used on input line 654.
+Package pdftex.def Info: SolutionParametersS1.png used on input line 673.
 (pdftex.def)             Requested size: 426.394pt x 212.66531pt.
 
 
@@ -517,7 +530,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: SolutionParametersS2.png Graphic file (type png)
 
 <use SolutionParametersS2.png>
-Package pdftex.def Info: SolutionParametersS2.png used on input line 665.
+Package pdftex.def Info: SolutionParametersS2.png used on input line 684.
 (pdftex.def)             Requested size: 426.39066pt x 223.54977pt.
 
 
@@ -527,10 +540,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: SolutionParametersS3.png Graphic file (type png)
 
 <use SolutionParametersS3.png>
-Package pdftex.def Info: SolutionParametersS3.png used on input line 676.
+Package pdftex.def Info: SolutionParametersS3.png used on input line 695.
 (pdftex.def)             Requested size: 426.39066pt x 223.54977pt.
 
-Underfull \hbox (badness 5637) in paragraph at lines 678--678
+Underfull \hbox (badness 5637) in paragraph at lines 697--697
 [][]|\OT1/cmr/m/n/10.95 So-lu-tion pa-ram-e-ters for all in-stances in Sce-nari
 o 3. Base-line:
  []
@@ -544,7 +557,7 @@ File: MaximumTransmissionLineUtilization.png Graphic file (type png)
 
 <use MaximumTransmissionLineUtilization.png>
 Package pdftex.def Info: MaximumTransmissionLineUtilization.png used on input l
-ine 701.
+ine 720.
 (pdftex.def)             Requested size: 426.40364pt x 375.21828pt.
 
 
@@ -554,7 +567,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: averageRamping.png Graphic file (type png)
 
 <use averageRamping.png>
-Package pdftex.def Info: averageRamping.png used on input line 712.
+Package pdftex.def Info: averageRamping.png used on input line 731.
 (pdftex.def)             Requested size: 426.37253pt x 291.1897pt.
 
 
@@ -563,20 +576,37 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 1215) has occurred while \output is active []
 
- [42 <./SolutionParametersS3.png>] [43 <./MaximumTransmissionLineUtilization.pn
-g>] [44 <./averageRamping.png>]
+ [42 <./SolutionParametersS3.png>]
+
+Package natbib Warning: Citation `fig:storageprofilestatus' on page 43 undefine
+d on input line 742.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [43 <./MaximumTransmissionLineUtilization.png>]
+<StorageProfileStatusS4.png, id=209, 1266.98344pt x 575.14874pt>
+File: StorageProfileStatusS4.png Graphic file (type png)
+
+<use StorageProfileStatusS4.png>
+Package pdftex.def Info: StorageProfileStatusS4.png used on input line 746.
+(pdftex.def)             Requested size: 426.39255pt x 193.55582pt.
+
+Underfull \vbox (badness 2326) has occurred while \output is active []
+
+ [44 <./averageRamping.png>] [45 <./StorageProfileStatusS4.png>] [46
+
+]
 Chapter 5.
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
-ssertation.bbl" [45
-
-] [46
+ssertation.bbl" [47] [48
 
 ]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
- [47]
+ [49]
 Overfull \hbox (8.57404pt too wide) in paragraph at lines 60--68
 \OT1/cmtt/m/n/12 http://www.sciencedirect.com/science/article/pii/S030142151101
 0007\OT1/cmr/m/n/12 . 
@@ -598,7 +628,7 @@ Underfull \hbox (badness 1888) in paragraph at lines 108--115
 rogramming-
  []
 
-[48]
+[50]
 Underfull \hbox (badness 10000) in paragraph at lines 179--184
 []\OT1/cmr/m/n/12 NREL.  \OT1/cmr/m/it/12 NREL: Dy-namic Maps, GIS Data, and An
 al-y-sis
@@ -610,20 +640,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 179--184
 n/12 .  Avail-able at
  []
 
-[49]
-Underfull \hbox (badness 2073) in paragraph at lines 216--220
+[51]
+Underfull \hbox (badness 2073) in paragraph at lines 221--225
 []\OT1/cmr/m/n/12 MIT Tech-nol-ogy Re-view.  \OT1/cmr/m/it/12 In-dia's Am-bi-ti
 ous Bid to Be-come a So-lar
  []
 
 
-Underfull \hbox (badness 2035) in paragraph at lines 216--220
+Underfull \hbox (badness 2035) in paragraph at lines 221--225
 \OT1/cmr/m/it/12 Power\OT1/cmr/m/n/12 .  Avail-able at http://www.technologyrev
 iew.com/s/535551/indias-
  []
 
-[50] [51]) [52]
+[52] [53]) [54]
 No file vita.tex.
+
+Package natbib Warning: There were undefined citations.
+
 
 ("D:\Thesis\AIMMS Project\Thesis Research\thesisLatexFiles\ThesisFiles\build\Di
 ssertation.aux"
@@ -642,10 +675,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4099 strings out of 493673
- 62132 string characters out of 3141526
- 118554 words of memory out of 3000000
- 7353 multiletter control sequences out of 15000+200000
+ 4111 strings out of 493673
+ 62452 string characters out of 3141526
+ 118630 words of memory out of 3000000
+ 7364 multiletter control sequences out of 15000+200000
  13644 words of font info for 51 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  36i,9n,43p,1451b,385s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -667,9 +700,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX
 onts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmtt12.pfb>
 Output written on "D:/Thesis/AIMMS Project/Thesis Research/thesisLatexFiles/The
-sisFiles/build/Dissertation.pdf" (61 pages, 3498023 bytes).
+sisFiles/build/Dissertation.pdf" (63 pages, 3631655 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
+ 301 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

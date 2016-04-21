@@ -1,94 +1,13 @@
-Warning at line 2957.
-The property "input" is not applicable for local string parameter "V_WorkbookName".
-The property "input" is not applicable for local string parameter "V_WorkbookName".
-Warning at line 3080.
-The parameter "PI_EnableStorageConstraints" is not initialized (default values are used).
-Warning at line 3080.
-The parameter "PI_BusXCoordinate" is not initialized (default values are used).
-Warning at line 3080.
-The element parameter "PE_GeneratorBus" is not initialized (default values are used).
-Warning at line 3080.
-The parameter "PI_BusYCoordinate" is not initialized (default values are used).
-Warning at line 3082.
-The element parameter "PE_GeneratorType" is not initialized (default values are used).
-Warning at line 3086.
-The variable "VC_StorageDeviceCharge" is not initialized (default values are used).
-Warning at line 3088.
-The variable "VC_StorageDeviceDischarge" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_PeakLoadMW" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_WindPotential" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
-Warning at line 3088.
-The element parameter "PE_UnitGroup" is not initialized (default values are used).
-Warning at line 3088.
-The parameter "PI_SolarPotential" is not initialized (default values are used).
-Warning at line 3088.
-The variable "VC_PowerGenerated" is not initialized (default values are used).
-Warning at line 3088.
-The variable "VC_PowerTransmitted" is not initialized (default values are used).
-Warning at line 4 in user-defined function section "RunOptimization".
-The parameter "PI_EnableRampingConstraints" is not initialized (default values are used).
-Warning at line 4 in user-defined function section "RunOptimization".
-The parameter "PI_EnableReserveConstraints" is not initialized (default values are used).
-Domain violation at line 21375, column 31.
-The number of arguments in the variable "VC_StorageDeviceDischarge" is not correct.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,213)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,103)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,104)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,105)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,101)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Syntax error at line 21400, column 1.
-The symbol "switch" is not expected.
-Syntax error at line 21403, column 1.
-The symbol "switch" is not expected.
-Syntax error at line 21406, column 1.
-The symbol "switch" is not expected.
-Syntax error at line 21409, column 1.
-The symbol "switch" is not expected.
-Syntax error at line 21412, column 1.
-The symbol "switch" is not expected.
-Syntax error at line 21416, column 1.
-The symbol "elseif" is not expected.
-Syntax error at line 21433, column 1.
-The symbol "endif" is not expected.
-Domain violation at line 21605, column 4.
-The scope of index "iStorageStatus" has not been specified.
-Warning at line 23020.
-The property "input" is not applicable for local string parameter "V_WorkbookName".
-The property "input" is not applicable for local string parameter "V_WorkbookName".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,101)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,101)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,325)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-The columns "VC_OverGenerationSlack(2015-07-06 00:00:00,323)" and "VC_OverGenerationSlack(2015-07-06 00:00:00,324)" are equal in the generated mathematical program "M_ED_MinimizeTotalCost". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
-Warning at line 4 in user-defined function section "RunOptimization".
-Only 3 out of 17424 duplicate column warnings were reported.  See also option limit_reported_duplicate_column_row_warnings.
+Warning: The parameter "PI_WindPotential" is not initialized (default values are used).
+Warning: The parameter "PI_UnitGroupCapacity" is not initialized (default values are used).
+Warning: The element parameter "PE_UnitGroup" is not initialized (default values are used).
+Warning: The parameter "PI_SolarPotential" is not initialized (default values are used).
+Warning: The element parameter "PE_GeneratorType" is not initialized (default values are used).
+Warning: The variable "VC_PowerGenerated" is not initialized (default values are used).
+Warning: The variable "VC_StorageDeviceCharge" is not initialized (default values are used).
+Warning: The variable "VC_OverGenerationSlack" is not initialized (default values are used).
+Warning: The variable "VC_StorageDeviceDischarge" is not initialized (default values are used).
+Warning: The parameter "PI_HourlyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_WeeklyPeakLoad" is not initialized (default values are used).
+Warning: The parameter "PI_DailyPeekLoad" is not initialized (default values are used).
+Warning: The parameter "PI_PeakLoadMW" is not initialized (default values are used).
