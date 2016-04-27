@@ -1,9 +1,12 @@
-\begin{thebibliography}{44}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[con()]{connolly}
+
 
 \bibitem[Ahlhaus and Stursberg(2013)]{6695322}
 P.~Ahlhaus and P.~Stursberg.
@@ -79,12 +82,6 @@ A.J. Conejo, R.~Garcia-Bertrand, and M.~Diaz-Salazar.
   984--992, May 2005.
 \newblock ISSN 0885-8950.
 \newblock \doi{10.1109/TPWRS.2005.846078}.
-
-\bibitem[Connolly et~al.(2010)Connolly, Lund, Mathiesen, and Leahy]{connolly}
-David Connolly, Henrik Lund, Brian~Vad Mathiesen, and Martin Leahy.
-\newblock A review of computer tools for analysing the integration of renewable
-  energy into various energy systems.
-\newblock \emph{Applied Energy}, 87\penalty0 (4):\penalty0 1059--1082, 2010.
 
 \bibitem[Deane et~al.(2014)Deane, Drayton, and Gallachóir]{deane}
 J.~P. Deane, G.~Drayton, and B.~P.~Ó Gallachóir.
@@ -212,6 +209,12 @@ B.~Palmintier and M.~Webster.
 \newblock ISBN 1944-9925.
 \newblock ID: 1.
 
+\bibitem[Rahman(2003)]{rahmangreen}
+Sazid Rahman.
+\newblock Going green-the growth of renewable energy.
+\newblock \emph{Power and Energy Magazine, IEEE}, 99\penalty0 (6):\penalty0
+  16--18, 2003.
+
 \bibitem[Rebours and Kirschen(2005)]{rebours}
 Yann Rebours and Daniel Kirschen.
 \newblock A survey of definitions and specifications of reserve services.
@@ -262,6 +265,13 @@ Walter Short, Patrick Sullivan, Trieu Mai, Matthew Mowers, Caroline Uriarte,
   Nate Blair, Donna Heimiller, and Andrew Martinez.
 \newblock Regional energy deployment system (reeds).
 \newblock \emph{Contract}, 303:\penalty0 275--3000, 2011.
+
+\bibitem[Tuohy et~al.(2007)Tuohy, Denny, and Malley]{tuohy}
+Aidan Tuohy, Eleanor Denny, and Mark~O Malley.
+\newblock Rolling unit commitment for systems with significant installed wind
+  capacity.
+\newblock In \emph{Power Tech, 2007 IEEE Lausanne}, pages 1380--1385. IEEE,
+  2007.
 
 \bibitem[Villumsen et~al.(2013)Villumsen, Bronmo, and Philpott]{6373775}
 J.C. Villumsen, G.~Bronmo, and A.B. Philpott.

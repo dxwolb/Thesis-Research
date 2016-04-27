@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.29)  31 MAR 2016 13:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.29)  26 APR 2016 18:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -195,26 +195,41 @@ LaTeX Warning: Unused global option(s):
     [LUDisStyle,twosided].
 
 (./Dissertation.aux (./coverCopyright.aux) (./signatures.aux) (./dedication.aux
-) (./myabstract.aux) (./vita.aux))
+) (./myabstract.aux)
+
+LaTeX Warning: Label `model:edTransmissionConstraints' multiply defined.
+
+
+LaTeX Warning: Label `model:simple_ED' multiply defined.
+
+
+LaTeX Warning: Label `section:uconoffstatus' multiply defined.
+
+
+LaTeX Warning: Label `my-label' multiply defined.
+
+
+LaTeX Warning: Label `fig:maximumutilizaton' multiply defined.
+
+(./vita.aux))
 \openout1 = `Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen124
@@ -315,7 +330,11 @@ No file dedication.tex.
 \tf@toc=\write3
 \openout3 = `Dissertation.toc'.
 
- [6] (./Dissertation.lot)
+ [6] (./Dissertation.lot
+
+Package natbib Warning: Citation `cain' on page vii undefined on input line 3.
+
+)
 \tf@lot=\write4
 \openout4 = `Dissertation.lot'.
 
@@ -323,117 +342,804 @@ No file dedication.tex.
 
 ] [8
 
-]
-(./Dissertation.lof)
+] (./Dissertation.lof
+
+Package natbib Warning: Citation `wongieee' on page ix undefined on input line 
+4.
+
+
+Package natbib Warning: Citation `texasWindProfile' on page ix undefined on inp
+ut line 8.
+
+
+Package natbib Warning: Citation `texasSolarProfile' on page ix undefined on in
+put line 10.
+
+
+Overfull \hbox (22.32738pt too wide) in paragraph at lines 22--22
+ [][] []\OT1/cmr/m/n/12 Solution pa-ram-e-ters for all in-stances in Sce-nario 
+1. Base-line: $$658\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 218\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 352\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 9$ []  
+ []
+
+
+Overfull \hbox (22.32738pt too wide) in paragraph at lines 23--23
+ [][] []\OT1/cmr/m/n/12 Solution pa-ram-e-ters for all in-stances in Sce-nario 
+2. Base-line: $$593\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 607\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 635\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3$ []  
+ []
+
+
+Overfull \hbox (36.07722pt too wide) in paragraph at lines 24--24
+ [][] []\OT1/cmr/m/n/12 Solution pa-ram-e-ters for all in-stances in Sce-nario 
+3. Base-line: $$264\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 009\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 305\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 965$ []  
+ []
+
+
+Overfull \hbox (36.07722pt too wide) in paragraph at lines 25--25
+ [][] []\OT1/cmr/m/n/12 Solution pa-ram-e-ters for all in-stances in Sce-nario 
+3. Base-line: $$264\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 009\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 305\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 965$ []  
+ []
+
+[9])
 \tf@lof=\write5
 \openout5 = `Dissertation.lof'.
 
- [9]
+ [10]
 \openout2 = `myabstract.aux'.
 
-
-No file myabstract.tex.
+ (./myabstract.tex)
 Chapter 1.
+
+Package natbib Warning: Citation `rahmangreen' on page 1 undefined on input lin
+e 42.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
 [1
 
 
 
-] [2
-
 ]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 61.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
+ [2]
+
+Package natbib Warning: Citation `greenhall:2012' on page 3 undefined on input 
+line 68.
+
+
+Package natbib Warning: Citation `matpower:2011' on page 3 undefined on input l
+ine 68.
+
+[3]
+
+Package natbib Warning: Citation `greenhall:2012' on page 4 undefined on input 
+line 70.
+
+
+Package natbib Warning: Citation `pyomo:2012' on page 4 undefined on input line
+ 71.
+
+[4]
 Chapter 2.
-[3] [4]
-Overfull \hbox (58.46191pt too wide) in paragraph at lines 85--98
+
+Package natbib Warning: Citation `cain' on page 5 undefined on input line 79.
+
+
+Package natbib Warning: Citation `cain' on page 5 undefined on input line 79.
+
+
+Package natbib Warning: Citation `cain' on page 5 undefined on input line 85.
+
+
+Package natbib Warning: Citation `cain' on page 5 undefined on input line 85.
+
+
+Overfull \hbox (58.46191pt too wide) in paragraph at lines 87--100
  [][] 
  []
 
-[5] [6
+
+Package natbib Warning: Citation `yamin' on page 5 undefined on input line 103.
+
+
+
+Package natbib Warning: Citation `yamin' on page 5 undefined on input line 103.
+
+
+
+Package natbib Warning: Citation `bertsimas' on page 5 undefined on input line 
+105.
+
+
+Package natbib Warning: Citation `bertsimas' on page 5 undefined on input line 
+105.
+
+[5
+
+]
+
+Package natbib Warning: Citation `padhy' on page 6 undefined on input line 107.
+
+
+
+Package natbib Warning: Citation `padhy' on page 6 undefined on input line 107.
+
+
+
+Package natbib Warning: Citation `connolly' on page 6 undefined on input line 1
+09.
+
+
+Package natbib Warning: Citation `connolly' on page 6 undefined on input line 1
+09.
+
+
+Package natbib Warning: Citation `kassakian' on page 6 undefined on input line 
+112.
+
+
+Package natbib Warning: Citation `kassakian' on page 6 undefined on input line 
+112.
+
+
+Package natbib Warning: Citation `palmintier' on page 6 undefined on input line
+ 114.
+
+
+Package natbib Warning: Citation `palmintier' on page 6 undefined on input line
+ 114.
+
+
+Package natbib Warning: Citation `hargreaves' on page 6 undefined on input line
+ 114.
+
+
+Package natbib Warning: Citation `hargreaves' on page 6 undefined on input line
+ 114.
+
+
+Package natbib Warning: Citation `deane' on page 6 undefined on input line 116.
+
+
+
+Package natbib Warning: Citation `deane' on page 6 undefined on input line 116.
+
+
+
+Underfull \vbox (badness 5924) has occurred while \output is active []
+
+ [6]
+
+Package natbib Warning: Citation `safaei' on page 7 undefined on input line 118
+.
+
+
+Package natbib Warning: Citation `safaei' on page 7 undefined on input line 118
+.
+
+
+Package natbib Warning: Citation `harris' on page 7 undefined on input line 118
+.
+
+
+Package natbib Warning: Citation `harris' on page 7 undefined on input line 118
+.
+
+
+Package natbib Warning: Citation `dwyer' on page 7 undefined on input line 118.
+
+
+
+Package natbib Warning: Citation `dwyer' on page 7 undefined on input line 118.
+
+
+[7] [8
 
 ]
 Chapter 3.
-<ieeetopology.png, id=55, 1795.70876pt x 2799.45876pt>
+
+Package natbib Warning: Citation `wongieee' on page 9 undefined on input line 1
+29.
+
+<ieeetopology.png, id=66, 1795.70876pt x 2799.45876pt>
 File: ieeetopology.png Graphic file (type png)
  <use ieeetopology.png>
-Package pdftex.def Info: ieeetopology.png used on input line 113.
+Package pdftex.def Info: ieeetopology.png used on input line 136.
 (pdftex.def)             Requested size: 370.83531pt x 578.12167pt.
 
 
-LaTeX Warning: Float too large for page by 33.56168pt on input line 116.
+Package natbib Warning: Citation `wongieee' on page 9 undefined on input line 1
+37.
 
-[7] [8 <./ieeetopology.png>]
+
+Package natbib Warning: Citation `wongieee' on page 9 undefined on input line 1
+37.
+
+
+LaTeX Warning: Float too large for page by 33.56168pt on input line 139.
+
+[9] [10 <./ieeetopology.png>]
+<totalSystemLoadJuly.png, id=76, 562.35094pt x 156.585pt>
+File: totalSystemLoadJuly.png Graphic file (type png)
+
+<use totalSystemLoadJuly.png>
+Package pdftex.def Info: totalSystemLoadJuly.png used on input line 151.
+(pdftex.def)             Requested size: 426.39255pt x 118.72867pt.
+
+<perturbationDifference.png, id=77, 608.2725pt x 159.59625pt>
+File: perturbationDifference.png Graphic file (type png)
+
+<use perturbationDifference.png>
+Package pdftex.def Info: perturbationDifference.png used on input line 159.
+(pdftex.def)             Requested size: 608.27103pt x 159.59584pt.
+
+Overfull \hbox (181.87848pt too wide) in paragraph at lines 159--160
+[][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<numberGeneratorsPerType.png, id=78, 362.10281pt x 217.5628pt>
+File: numberGeneratorsPerType.png Graphic file (type png)
+
+<use numberGeneratorsPerType.png>
+Package pdftex.def Info: numberGeneratorsPerType.png used on input line 167.
+(pdftex.def)             Requested size: 426.39255pt x 256.19405pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./totalSystemLoadJuly.png>]
+
+Package natbib Warning: Citation `mitindia' on page 12 undefined on input line 
+180.
+
+
+Package natbib Warning: Citation `fraunpower' on page 12 undefined on input lin
+e 180.
+
+
+Underfull \vbox (badness 3815) has occurred while \output is active []
+
+ [12 <./perturbationDifference.png> <./numberGeneratorsPerType.png>]
+
+Package natbib Warning: Citation `wongieee' on page 13 undefined on input line 
+187.
+
+
+Package natbib Warning: Citation `texasWindProfile' on page 13 undefined on inp
+ut line 187.
+
+<texasWindProfileWithBuses.png, id=87, 692.5875pt x 522.45187pt>
+File: texasWindProfileWithBuses.png Graphic file (type png)
+
+<use texasWindProfileWithBuses.png>
+Package pdftex.def Info: texasWindProfileWithBuses.png used on input line 190.
+(pdftex.def)             Requested size: 426.39255pt x 321.65277pt.
+
+
+Package natbib Warning: Citation `texasWindProfile' on page 13 undefined on inp
+ut line 191.
+
+
+Package natbib Warning: Citation `texasWindProfile' on page 13 undefined on inp
+ut line 191.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package natbib Warning: Citation `ercotGenerationWind' on page 13 undefined on 
+input line 196.
+
+<windPotentialBus122.png, id=88, 498.36188pt x 204.765pt>
+File: windPotentialBus122.png Graphic file (type png)
+
+<use windPotentialBus122.png>
+Package pdftex.def Info: windPotentialBus122.png used on input line 199.
+(pdftex.def)             Requested size: 426.39255pt x 175.19772pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<texasSolarProfileWithBuses.png, id=89, 492.33937pt x 477.28313pt>
+File: texasSolarProfileWithBuses.png Graphic file (type png)
+
+<use texasSolarProfileWithBuses.png>
+Package pdftex.def Info: texasSolarProfileWithBuses.png used on input line 210.
+
+(pdftex.def)             Requested size: 255.83812pt x 248.01385pt.
+
+
+Package natbib Warning: Citation `texasSolarProfile' on page 13 undefined on in
+put line 211.
+
+
+Package natbib Warning: Citation `texasSolarProfile' on page 13 undefined on in
+put line 211.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9]
+ [13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<solarPotentialBus112.png, id=93, 498.36188pt x 204.01219pt>
+File: solarPotentialBus112.png Graphic file (type png)
+
+<use solarPotentialBus112.png>
+Package pdftex.def Info: solarPotentialBus112.png used on input line 220.
+(pdftex.def)             Requested size: 341.11533pt x 139.64478pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [10]
-Underfull \vbox (badness 2277) has occurred while \output is active []
+ [14 <./texasWindProfileWithBuses.png>]
+Overfull \vbox (19.70164pt too high) has occurred while \output is active []
 
- [11]
-[12] [13] [14
 
-]
+[15 <./windPotentialBus122.png> <./texasSolarProfileWithBuses.png>]
+
+Package natbib Warning: Citation `shavel' on page 16 undefined on input line 23
+8.
+
+
+Package natbib Warning: Citation `shavel' on page 16 undefined on input line 23
+8.
+
+
+Package natbib Warning: Citation `shavel' on page 16 undefined on input line 23
+8.
+
+
+Package natbib Warning: Citation `shavel' on page 16 undefined on input line 24
+6.
+
+[16 <./solarPotentialBus112.png>]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [17]
+
+Package natbib Warning: Citation `shavel' on page 18 undefined on input line 26
+6.
+
+
+Package natbib Warning: Citation `shavel' on page 18 undefined on input line 26
+6.
+
+[18]
+Underfull \vbox (badness 4673) has occurred while \output is active []
+
+ [19]
+[20] [21]
+
+Package natbib Warning: Citation `palmintier' on page 22 undefined on input lin
+e 401.
+
+
+Package natbib Warning: Citation `james' on page 22 undefined on input line 401
+.
+
+[22]
+
+Package natbib Warning: Citation `dwyer' on page 23 undefined on input line 434
+.
+
+
+Overfull \hbox (32.26259pt too wide) in paragraph at lines 440--440
+[] 
+ []
+
+[23]
+Overfull \hbox (115.37622pt too wide) in paragraph at lines 448--448
+[] 
+ []
+
+
+Overfull \hbox (73.5631pt too wide) in paragraph at lines 456--456
+[] 
+ []
+
+
+Package natbib Warning: Citation `rebours' on page 24 undefined on input line 4
+59.
+
+
+Package natbib Warning: Citation `rebours' on page 24 undefined on input line 4
+59.
+
+[24]
+
+Package natbib Warning: Citation `short' on page 25 undefined on input line 473
+.
+
+
+Package natbib Warning: Citation `short' on page 25 undefined on input line 473
+.
+
+[25] [26]
+
+Package natbib Warning: Citation `zimmerman' on page 27 undefined on input line
+ 496.
+
+
+Package natbib Warning: Citation `zimmerman' on page 27 undefined on input line
+ 496.
+
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 498.
+
+Package natbib Warning: Citation `bisschop' on page 27 undefined on input line 
+505.
+
+[27]
+
+Package natbib Warning: Citation `bisschop' on page 28 undefined on input line 
+523.
+
+<aimmsScreenImportPage.png, id=145, 369.63094pt x 85.06781pt>
+File: aimmsScreenImportPage.png Graphic file (type png)
+
+<use aimmsScreenImportPage.png>
+Package pdftex.def Info: aimmsScreenImportPage.png used on input line 527.
+(pdftex.def)             Requested size: 369.63002pt x 85.0676pt.
+ [28 <./aimmsScreenImportPage.png>]
+<aimmsDataPages.png, id=149, 998.22937pt x 1087.06125pt>
+File: aimmsDataPages.png Graphic file (type png)
+
+<use aimmsDataPages.png>
+Package pdftex.def Info: aimmsDataPages.png used on input line 541.
+(pdftex.def)             Requested size: 426.38193pt x 464.32542pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[29]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30 <./aimmsDataPages.png>]
+<aimmsOptimizationSectionPages.png, id=157, 983.17313pt x 877.02657pt>
+File: aimmsOptimizationSectionPages.png Graphic file (type png)
+
+<use aimmsOptimizationSectionPages.png>
+Package pdftex.def Info: aimmsOptimizationSectionPages.png used on input line 5
+75.
+(pdftex.def)             Requested size: 426.38669pt x 380.3526pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31] [32 <./aimmsOptimizationSectionPages.png>]
 Chapter 4.
-[15] [16
+
+Overfull \hbox (162.1045pt too wide) detected at line 596
+\OML/cmm/m/it/12 < Scenario >[] TimeGranularity >[] TransmissionConstraintsON=O
+FF\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 TY=TN\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 >[]
+ ModelType\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 UC=ED\OT1/cmr/m/n/12 ) \OML/cmm/m/i
+t/12 >
+ []
+
+[33
+
+] <PowerOutputScenario1.png, id=169, 1269.24188pt x 1014.79124pt>
+File: PowerOutputScenario1.png Graphic file (type png)
+
+<use PowerOutputScenario1.png>
+Package pdftex.def Info: PowerOutputScenario1.png used on input line 624.
+(pdftex.def)             Requested size: 426.3849pt x 340.9056pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[34]
+Underfull \vbox (badness 3417) has occurred while \output is active []
+
+ [35 <./PowerOutputScenario1.png>]
+<PowerOutputScenario2.png, id=177, 1269.99469pt x 1014.79124pt>
+File: PowerOutputScenario2.png Graphic file (type png)
+
+<use PowerOutputScenario2.png>
+Package pdftex.def Info: PowerOutputScenario2.png used on input line 640.
+(pdftex.def)             Requested size: 426.38588pt x 340.7043pt.
+ [36 <./PowerOutputScenario2.png>]
+<PowerOutputScenario3.png, id=182, 1267.73625pt x 1014.79124pt>
+File: PowerOutputScenario3.png Graphic file (type png)
+
+<use PowerOutputScenario3.png>
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 655.
+(pdftex.def)             Requested size: 426.38205pt x 341.3082pt.
+
+
+Package natbib Warning: Citation `safaei' on page 37 undefined on input line 66
+4.
+
+
+Package natbib Warning: Citation `safaei' on page 37 undefined on input line 66
+4.
+
+
+Package natbib Warning: Citation `fig:storageprofilestatus' on page 37 undefine
+d on input line 664.
+
+[37] <StorageProfileStatusS4.png, id=186, 1266.98344pt x 575.14874pt>
+File: StorageProfileStatusS4.png Graphic file (type png)
+
+<use StorageProfileStatusS4.png>
+Package pdftex.def Info: StorageProfileStatusS4.png used on input line 668.
+(pdftex.def)             Requested size: 426.39255pt x 193.55582pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<loadfilledstorage.png, id=187, 554.82281pt x 319.1925pt>
+File: loadfilledstorage.png Graphic file (type png)
+
+<use loadfilledstorage.png>
+Package pdftex.def Info: loadfilledstorage.png used on input line 678.
+(pdftex.def)             Requested size: 426.39255pt x 245.30653pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Float too large for page by 80.13933pt on input line 743.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38 <./PowerOutputScenario3.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 2318) has occurred while \output is active []
+
+ [39 <./StorageProfileStatusS4.png>] <mipgap.png, id=196, 708.39656pt x 443.406
+56pt>
+File: mipgap.png Graphic file (type png)
+
+<use mipgap.png>
+Package pdftex.def Info: mipgap.png used on input line 754.
+(pdftex.def)             Requested size: 426.39255pt x 266.89848pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40 <./loadfilledstorage.png>]
+<SolutionParametersS1.png, id=201, 603.75563pt x 301.125pt>
+File: SolutionParametersS1.png Graphic file (type png)
+
+<use SolutionParametersS1.png>
+Package pdftex.def Info: SolutionParametersS1.png used on input line 771.
+(pdftex.def)             Requested size: 426.394pt x 212.66531pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41 <./mipgap.png>]
+<SolutionParametersS2.png, id=205, 604.50844pt x 316.93407pt>
+File: SolutionParametersS2.png Graphic file (type png)
+
+<use SolutionParametersS2.png>
+Package pdftex.def Info: SolutionParametersS2.png used on input line 788.
+(pdftex.def)             Requested size: 426.39066pt x 223.54977pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<genprofileS3.png, id=206, 560.8453pt x 301.125pt>
+File: genprofileS3.png Graphic file (type png)
+ <use genprofileS3.png>
+Package pdftex.def Info: genprofileS3.png used on input line 803.
+(pdftex.def)             Requested size: 426.39255pt x 228.93547pt.
+
+Underfull \hbox (badness 5637) in paragraph at lines 805--805
+[][]|\OT1/cmr/m/n/10.95 So-lu-tion pa-ram-e-ters for all in-stances in Sce-nari
+o 3. Base-line:
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[42 <./SolutionParametersS1.png>]
+<SolutionParametersS3.png, id=212, 607.51968pt x 316.93407pt>
+File: SolutionParametersS3.png Graphic file (type png)
+
+<use SolutionParametersS3.png>
+Package pdftex.def Info: SolutionParametersS3.png used on input line 814.
+(pdftex.def)             Requested size: 426.40108pt x 222.44716pt.
+
+Underfull \hbox (badness 4254) in paragraph at lines 816--816
+[][]|\OT1/cmr/m/n/10.95 So-lu-tion pa-ram-e-ters for all in-stances in Sce-nari
+o 3. Base-line:
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43 <./SolutionParametersS2.png>] [44 <./genprofileS3.png>]
+<MaximumTransmissionLineUtilization.png, id=220, 758.835pt x 889.07156pt>
+File: MaximumTransmissionLineUtilization.png Graphic file (type png)
+
+<use MaximumTransmissionLineUtilization.png>
+Package pdftex.def Info: MaximumTransmissionLineUtilization.png used on input l
+ine 834.
+(pdftex.def)             Requested size: 426.40364pt x 499.58601pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<averageRamping.png, id=221, 1849.66031pt x 1263.21938pt>
+File: averageRamping.png Graphic file (type png)
+
+<use averageRamping.png>
+Package pdftex.def Info: averageRamping.png used on input line 847.
+(pdftex.def)             Requested size: 426.37253pt x 291.1897pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[45 <./SolutionParametersS3.png>]
+<generationProfileNGCC.png, id=227, 1006.51031pt x 577.40718pt>
+File: generationProfileNGCC.png Graphic file (type png)
+
+<use generationProfileNGCC.png>
+Package pdftex.def Info: generationProfileNGCC.png used on input line 864.
+(pdftex.def)             Requested size: 426.39255pt x 244.60626pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46] <activeGeneratorsS1.png, id=231, 1262.46657pt x 571.38469pt>
+File: activeGeneratorsS1.png Graphic file (type png)
+
+<use activeGeneratorsS1.png>
+Package pdftex.def Info: activeGeneratorsS1.png used on input line 884.
+(pdftex.def)             Requested size: 426.39255pt x 192.98659pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<activeGeneratorsS2.png, id=232, 1262.46657pt x 572.1375pt>
+File: activeGeneratorsS2.png Graphic file (type png)
+
+<use activeGeneratorsS2.png>
+Package pdftex.def Info: activeGeneratorsS2.png used on input line 897.
+(pdftex.def)             Requested size: 426.39255pt x 193.24084pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<activeGeneratorsS3.png, id=233, 1262.46657pt x 572.1375pt>
+File: activeGeneratorsS3.png Graphic file (type png)
+
+<use activeGeneratorsS3.png>
+Package pdftex.def Info: activeGeneratorsS3.png used on input line 909.
+(pdftex.def)             Requested size: 426.39255pt x 193.24084pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[47] [48] [49 <./MaximumTransmissionLineUtilization.png>] [50 <./averageRamping
+.png>] [51 <./generationProfileNGCC.png>] [52 <./activeGeneratorsS1.png> <./act
+iveGeneratorsS2.png>] [53 <./activeGeneratorsS3.png>] [54
 
 ]
 Chapter 5.
-[17] [18
-
-]
-Appendix A.
-[19] [20
-
-]
-Appendix B.
-(./Dissertation.bbl [21] [22
+[55] [56] (./Dissertation.bbl [57] [58
 
 ]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ô in font cmr12!
+ [59]
+Overfull \hbox (8.57404pt too wide) in paragraph at lines 60--68
+\OT1/cmtt/m/n/12 http://www.sciencedirect.com/science/article/pii/S030142151101
+0007\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 5622) in paragraph at lines 70--74
+[]\OT1/cmr/m/n/12 The Wind Coali-tion.  \OT1/cmr/m/it/12 Texas Wind En-ergy Fac
+ts\OT1/cmr/m/n/12 .  Avail-able at
+ []
+
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ì in font cmr12!
 Missing character: There is no √ in font cmr12!
 Missing character: There is no ≥ in font cmr12!
 
-Underfull \hbox (badness 1888) in paragraph at lines 42--49
+Underfull \hbox (badness 1888) in paragraph at lines 108--115
 []\OT1/cmr/m/n/12 L. L. Garver.  Power gen-er-a-tion schedul-ing by in-te-ger p
 rogramming-
  []
 
-[23] [24]) [25]
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 179--184
+[]\OT1/cmr/m/n/12 NREL.  \OT1/cmr/m/it/12 NREL: Dy-namic Maps, GIS Data, and An
+al-y-sis
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--184
+\OT1/cmr/m/it/12 Tools - Re-new-able En-ergy Tech-ni-cal Po-ten-tial\OT1/cmr/m/
+n/12 .  Avail-able at
+ []
+
+[61]
+Underfull \hbox (badness 2073) in paragraph at lines 227--231
+[]\OT1/cmr/m/n/12 MIT Tech-nol-ogy Re-view.  \OT1/cmr/m/it/12 In-dia's Am-bi-ti
+ous Bid to Be-come a So-lar
+ []
+
+
+Underfull \hbox (badness 2035) in paragraph at lines 227--231
+\OT1/cmr/m/it/12 Power\OT1/cmr/m/n/12 .  Avail-able at http://www.technologyrev
+iew.com/s/535551/indias-
+ []
+
+[62] [63]) [64]
 \openout2 = `vita.aux'.
 
 
 No file vita.tex.
+
+Package natbib Warning: There were undefined citations.
+
 (./Dissertation.aux (./coverCopyright.aux) (./signatures.aux) (./dedication.aux
-) (./myabstract.aux) (./vita.aux)) ) 
+) (./myabstract.aux)
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+(./vita.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4214 strings out of 494957
- 60659 string characters out of 6180028
- 120643 words of memory out of 5000000
- 7358 multiletter control sequences out of 15000+600000
- 11663 words of font info for 43 fonts, out of 8000000 for 9000
+ 4492 strings out of 494957
+ 67181 string characters out of 6180028
+ 127891 words of memory out of 5000000
+ 7602 multiletter control sequences out of 15000+600000
+ 13644 words of font info for 51 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 38i,9n,40p,908b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti12.pfb>
-Output written on Dissertation.pdf (34 pages, 310253 bytes).
+ 38i,9n,39p,1520b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Dissertation.pdf (74 pages, 4017392 bytes).
 PDF statistics:
- 169 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 352 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

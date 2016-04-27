@@ -201,12 +201,6 @@ Model Main_Thesis_Research {
                              + VC_OnOffStatus(iTime - 1, iNonRenewableGenerator)
                         }
                     }
-                    Constraint DebugConstraint1 {
-                        IndexDomain: (iTime,iBus) | Ord(iTime) = 0;
-                        Definition: {
-                            VC_UnderGenerationSlack(iTime, iBus) = 0;
-                        }
-                    }
                 }
                 DeclarationSection UC_TransmissionConstraints {
                     Constraint CG_UC_MinimumTransmission {
@@ -392,8 +386,8 @@ Model Main_Thesis_Research {
                         Definition: {
                             sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
                             + sum((iNonRenewableGenerator,iTime),PD_GeneratorStartupCost(iNonRenewableGenerator)*VC_StartupStatus(iTime, iNonRenewableGenerator))
-                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*1000000
-                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*1
+                            + sum((iTime,iBus),VC_UnderGenerationSlack(iTime,iBus))*PI_EnableSlackVariables*100000
+                            + sum((iTime,iBus), VC_OverGenerationSlack(iTime, iBus))*PI_EnableSlackVariables*100000
                         }
                         Comment: "TEmporary change it to test.";
                     }
@@ -1613,8 +1607,9 @@ Model Main_Thesis_Research {
                 	PD_SolverStatus := M_ED_MinimizeTotalCost.SolverStatus;
                 else
                 !
-                	solve M_UC_MinimizeTotalCost where time_limit := 4*3600;
-                !	solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.01, time_limit := 3*3600 ;
+                	!solve M_UC_MinimizeTotalCost where time_limit := 4*3600;
+                	!solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.05, time_limit := 3*3600 ;
+                	solve M_UC_MinimizeTotalCost where MIP_Relative_Optimality_Tolerance := 0.05;
                 
                 
                 	PD_SolutionTime := M_UC_MinimizeTotalCost.SolutionTime;
@@ -1694,6 +1689,9 @@ Model Main_Thesis_Research {
     Section Optimal_Power_Flow_Models;
     Section Output_Information {
         DeclarationSection ResultsDeclaration {
+            Parameter PO_ObjectiveFunction {
+                Definition: M_UC_MinimizeTotalCost.bestbound;
+            }
             Parameter DebugParameter {
                 Definition: {
                     !sum((iNonRenewableGenerator,iTime),PD_VariableCost[iNonRenewableGenerator]*VC_PowerGenerated[iTime,iNonRenewableGenerator])*PI_TimeGranularity
@@ -1872,14 +1870,18 @@ Model Main_Thesis_Research {
     Section Test_Case {
         Procedure Procedure_1 {
             Body: {
+                !PI_TimeGranularity := 5;
+                !!UpdateGranularity;
+                !UpdateTimeCalendar;
+                !RunOptimization
                 
+                PE_SelectedModel := 'Unit Commitment';
                 
-                PI_TimeGranularity := 5;
-                
-                !UpdateGranularity;
-                UpdateTimeCalendar;
-                
-                RunOptimization
+                RunScenario(
+                	V_ScenarioFile       : PS_ScenarioFileNames('Scenario1'),
+                	V_Granularity        :  5,
+                	V_EnableTransmission :  1,
+                	V_ScenarioName       :  PS_ScenarioNames('Scenario1')+"_5_TY_UC.txt");
             }
         }
         Procedure ExportDataManual {

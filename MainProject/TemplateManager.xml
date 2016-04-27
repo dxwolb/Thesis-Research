@@ -31,4 +31,5 @@
 	<Page Name="Slack Variables" PageGUID="E472FFE3-8379-4C6B-B7AF-7A56D1A84DEE" />
 	<Page Name="[Data Page] PD_VariableCost" PageGUID="D41F1C65-B1F6-493D-B5E6-57BCC29B4321" />
 	<Page Name="[Data Page] PO_GenerationByGeneratorType" PageGUID="22342B7F-5D71-4E27-BB6B-FDC570B9F5D0" />
+	<Page Name="SolutionParameters" PageGUID="A3EA0E52-121E-4C2E-A201-DBAC6B7BFBB0" />
 </TemplateManager>

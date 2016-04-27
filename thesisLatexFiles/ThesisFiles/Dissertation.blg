@@ -8,44 +8,56 @@ A level-1 auxiliary file: myabstract.aux
 The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
-You've used 21 entries,
+Repeated entry---line 286 of file biblio.bib
+ : @article{short
+ :               ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "fig:storageprofilestatus"
+Warning--empty year in texasWindProfile
+Warning--empty year in ercotGenerationWind
+Warning--empty year in fraunpower
+Warning--empty year in texasSolarProfile
+Warning--empty year in mitindia
+Warning--empty journal in shavel
+You've used 45 entries,
             2773 wiz_defined-function locations,
-            727 strings with 8664 characters,
-and the built_in function-call counts, 11233 in all, are:
-= -- 969
-> -- 738
-< -- 11
-+ -- 249
-- -- 228
-* -- 992
-:= -- 1744
-add.period$ -- 72
-call.type$ -- 21
-change.case$ -- 137
-chr.to.int$ -- 21
-cite$ -- 42
-duplicate$ -- 453
-empty$ -- 864
-format.name$ -- 257
-if$ -- 2340
-int.to.chr$ -- 1
+            870 strings with 12792 characters,
+and the built_in function-call counts, 22178 in all, are:
+= -- 1949
+> -- 1363
+< -- 26
++ -- 463
+- -- 417
+* -- 1928
+:= -- 3450
+add.period$ -- 165
+call.type$ -- 45
+change.case$ -- 265
+chr.to.int$ -- 44
+cite$ -- 96
+duplicate$ -- 944
+empty$ -- 1742
+format.name$ -- 480
+if$ -- 4615
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 122
-num.names$ -- 84
-pop$ -- 247
+missing$ -- 43
+newline$ -- 263
+num.names$ -- 180
+pop$ -- 500
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 228
 quote$ -- 0
-skip$ -- 359
+skip$ -- 705
 stack$ -- 0
-substring$ -- 489
-swap$ -- 41
-text.length$ -- 3
+substring$ -- 862
+swap$ -- 94
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 226
-warning$ -- 0
-while$ -- 86
+type$ -- 480
+warning$ -- 6
+while$ -- 179
 width$ -- 0
-write$ -- 296
+write$ -- 636
+(There was 1 error message)

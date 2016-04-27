@@ -36,12 +36,13 @@
 \include{myabstract}
 \pagestyle{plain}
 
-\addcontentsline{toc}{chapter}{Introduction}
 \chapter{Introduction}
 
-By many accounts, renewables resources will likely play a key role in the electric grid system for many countries in the next decades.  Variable renewable energy (VRE) (e.g., wind and solar) have intermittent output, and thus do not behave like the dispatchable resources used for the vast majority of today’s electricity generation. The variability of these sources has led to concerns regarding the reliability of an electric grid that derives a large fraction of its energy from these sources as well as the cost of reliably integrating large amounts of variable generation into the electric grid. The electricity grid may incorporate additional technologies that provide one or more of the following attributes: fast ramping capabilities, load shifting, demand response, energy storage, and more.   Which technologies and grid configurations prevail are likely to be impacted by several factors including economics (i.e. the costs and benefits of each technology are weighed relative to the other available options), reliability, local and regional policies and other region-specific resource constraints.
+By many accounts, renewables resources will likely play a key role in the electric grid system for many countries in the next decades \cite{rahmangreen}.  Variable renewable energy (VRE) (e.g., wind and solar) have intermittent output, and thus do not behave like the dispatchable resources used for the vast majority of today’s electricity generation. The variability of these sources has led to concerns regarding the reliability of an electric grid that derives a large fraction of its energy from these sources as well as the cost of reliably integrating large amounts of variable generation into the electric grid. The electricity grid may incorporate additional technologies that provide one or more of the following attributes: fast ramping capabilities, load shifting, demand response, energy storage, and more.   Which technologies and grid configurations prevail are likely to be impacted by several factors including economics (i.e. the costs and benefits of each technology are weighed relative to the other available options), reliability, local and regional policies and other region-specific resource constraints.
 
-Underpinning many of the economic and reliability studies used to assess various technologies are optimization and simulation models.  These models make numerous approximations when determining optimal economic dispatch and power flow, the consequences of which are not fully understood, especially with substantially more variable renewable resources and different grid configurations.  This thesis investigates and attempts to characterize the subtleties that arise when making certain approximations to model day-ahead and real-time dispatch decisions. The investigated scenarios represents instances of real-world grid configurations on a shorter scale with different levels of variable resources penetration.
+Underpinning many of the economic and reliability studies used to assess various technologies are optimization and simulation models.  These models make numerous approximations when determining optimal economic dispatch and power flow, the consequences of which are not fully understood, especially with substantially more variable renewable resources and different grid configurations. 
+
+The first goal of this thesis is to investigate and attempt to characterize the subtleties that arise when making certain approximations to model day-ahead and real-time dispatch decisions. The investigated scenarios represent instances of real-world grid configurations on a shorter scale with different levels of renewable resource penetration.
 
 In general, power system models can be classified according to different features, that include:
 
@@ -56,28 +57,23 @@ In general, power system models can be classified according to different feature
 In its current form, the software developed in this thesis considers two of the most prominent optimization models: Economic Dispatch (ED) and Unit Commitment (UC). 
 
 \begin{itemize}
-\item Economic dispatch models are often deterministic linear optimization models that attempt to determine the minimum cost output of available generators to meet system load (demand), subject to transmission and operational constraints, in every time period over a fixed time horizon.  These models are typically formulated with a resolution of one hour or less with a short time horizon. Without transmission or operational constraints, ED models are simple to solve. Generators are first sorted in ascending order according to their marginal costs (forming a so-called ``merit-order curve'') and then dispatched in that same order until system load is met. The marginal cost of the final generator needed to meet load determines the system marginal cost, the cost of delivering one additional MWh of energy onto the system.  With transmission, operational, and/or environmental constraints, however, these models require more sophisticated optimization algorithms to determine the optimal generation allocation.  For most representations of transmission constraints, linear optimization models suffice.  For detailed AC transmission formulations, non-convex nonlinear NP-hard models arise. Historically, these models are hard to solve on a practical time, and that is one of the reasons why why Economic Dispatch is so popular for grid planners nowadays.
+\item Economic dispatch models are often deterministic linear optimization models that attempt to determine the minimum cost output of available generators to meet system load (demand), subject to transmission and operational constraints, in every time period over a fixed time horizon.  These models are typically formulated with a resolution of one hour or less with a short time horizon. Without transmission or operational constraints, ED models are simple to solve. Generators are first sorted in ascending order according to their marginal costs (forming a so-called ``merit-order curve'') and then dispatched in that same order until system load is met. The marginal cost of the final generator needed to meet load determines the system marginal cost, the cost of delivering one additional MWh of energy onto the system.  With transmission, operational, and/or environmental constraints, however, these models require more sophisticated optimization algorithms to determine the optimal generation allocation.  For most representations of transmission constraints, linear optimization models suffice.  For detailed AC transmission formulations, non-convex nonlinear NP-hard models arise. Historically, these models are hard to solve in a practical time, and that is one of the reasons why Economic Dispatch is so popular for grid planners nowadays.
 
 \item Unit commitment models most often refer to mathematical programs that attempt to schedule generators to meet system load in the future based on some forecast of net load (load minus generation from renewable sources).  Whereas ED models typically assume generator availability has already been determined (and, thus, is an input to an ED model), a UC model must determine on/off decisions for each generator in the fleet in each future time period.  Consequently, UC models are often formulated as mixed-integer linear programs and are more difficult to solve than ED models.  Stochastic and robust UC models include an additional layer of complexity by assuming that forecasted parameters are uncertain. The presence of additional binary variables in the model increases considerably the solution time. So, usually UC are solved for less than 24 hours horizon, on an hourly level. However, one of the goals for this project is evaluate what happens in terms of solution quality and time when the horizon is bigger and the time granularity is shorter.
 
 \end{itemize}
 
 A secondary goal of this thesis is the development of an open-source software tool for power systems optimization. Why develop another power systems software tool? 
-There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool ''for solving power flow and optimal power flow problems'' and thus is not ideal for problems with a time dimension.  In addition, one of the major drawbacks with Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Specially for starters, having an user-friendly intuitive tool with a simpler method can be much powerful than a powerful technical one with a hard interface to interact.
+There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool "for solving power flow and optimal power flow problems" and thus is not ideal for problems with a time dimension.  In addition, one of the major drawbacks with Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Specially for starters, having an user-friendly intuitive tool with a simpler method can be much more powerful than a powerful technical one with a hard interface with which to interact.
 
 The tool developed in this project more closely resembles the work done for Minpower \cite{greenhall:2012},
 an open-source toolkit coded in Python that relies on Pyomo \cite{pyomo:2012}. AIMMS provides a free academic license and thus can facilitate power systems optimization and analysis.
-It has plug-ins to all major optimization solver and other features, as well as the possibility to improve the mathematical programming as much as possible.
+It has plug-ins to all major optimization solvers and other features, as well as the ability to easily change and expand one's models to study new systems and configurations.
 
-%“Energy policies, both present and future, are creating a substantial transformation of the electrical power grid and pose significant challenges to the transmission and distribution IT systems needed to control and manage this grid.”
-%“Today’s electricity landscape is changing faster than ever before.  Generation patterns are shifting due to the replacement of old fossil-fueled plants with natural gas and renewable energy sources (RESs), resulting in more variability over time, more dependence on weather conditions, and widely dispersed energy sources throughout the power network.  This scenario has resulted in the need for better prediction and control to maintain the security of supply.  Increased cross-border flows as the result of merging energy markets are increasing system complexity.  Consequently, demand needs to become more flexible, and the call for competitive electricity prices and a reliable system becomes more essential.  This, in turn, impacts all areas of system planning and operation and will require major changes in the market’s organization and products.”
-
-
-\addcontentsline{toc}{chapter}{Literature Review}
 \chapter{Literature Review}
 
 
-As mentioned before, power planning is a popular topic in Operations Research, and it is becoming even more challengeable with the increase of wind and solar in the grid. \citeauthor{cain} \cite{cain} divides power flow formulations into 3 major categories: Power Flow (PF), Economic Dispatch (ED) and Optimal Power Flow (OPF) and describe them based on the assumptions and operational constraints, as shown in Table \ref{table:PowerSystemsCat} .
+As mentioned previously, power planning is a popular topic in Operations Research, and it is becoming even more challenging with the increase of wind and solar in the grid. \citeauthor{cain} \cite{cain} divides power flow formulations into 3 major categories: Power Flow (PF), Economic Dispatch (ED) and Optimal Power Flow (OPF) and describe them based on the assumptions and operational constraints, as shown in Table \ref{table:PowerSystemsCat} .
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -103,20 +99,24 @@ ED & ED &  &  &  &  & x & x \\ \hline
 
 \citeauthor{yamin} \cite{yamin} discusses different techniques to solve the unit commitment and economic dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them . 
 
-\citeauthor{bertsimas} \cite{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major key in the field. The authors points out the advantages of the method comparing to traditional planning methods. 
+\citeauthor{bertsimas} \cite{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major element in the field. The authors point out the advantages of the method comparing to traditional planning methods. 
 
-\citeauthor{padhy} \cite{padhy} formulates the unit commitment as a general optimization problem and presents a bibliographical survey of the main techniques in the last 30 years, from exhaustive methods such as priority listing, dynamic programming, mixed integer-programming until complex heuristics like fuzzy programming, genetic algorithms and evolutionary programming, emphasizing that these one were not exhaustively tested yet. 
+\citeauthor{padhy} \cite{padhy} formulates the unit commitment problem as a general optimization problem and presents a bibliographical survey of the main techniques in the last 30 years, from exhaustive methods such as priority listing, dynamic programming, mixed integer-programming until complex heuristics like fuzzy programming, genetic algorithms and evolutionary programming. However the authors state that further testing is required for those methods.
 
-\citeauthor{connolly} \cite{connolly} reviews 68 tools to power grid planning with renewable resources, discussing at the end goals, limitations and features of 37 tools. The authors emphasize that, although all the tools are essential to an accurate power planning with renewable resources, there is no perfect tool, and it should be chosen accordingly to project goals, data limitations, horizon and other features. 
+\citeauthor{connolly} \cite{connolly} review 68 tools to power grid planning with renewable resources, discussing, at the end, goals, limitations and features of 37 tools. The authors emphasize that, although all the tools are essential to accurate power planning with renewable resources, there is no perfect tool, and it should be chosen accordingly to project goals, data limitations, horizon and other features. 
 
 
-\citeauthor{kassakian} \cite{kassakian} discusses the main changes and challenges in the power system for the next years. One of important changes is the increase of VRE, that might have substantially impacts in operating costs, primarily due to the necessity of more reserve generations with different time responses. To mitigate it, 3 suggestions were proposed: improve wind and solar forecast techniques; expand the cooperation and interconnections among regions; reduce decision horizon and resolution levels, to capture a more realistic ramping and reserve effects.
+\citeauthor{kassakian} \cite{kassakian} discuss the main changes and challenges in the power system for future years. One of important changes is the increase of VRE, that might have substantial impacts in operating costs, primarily due to the necessity of more reserve generation with different time responses. To mitigate this increase in the operating costs, 3 suggestions were proposed: improve wind and solar forecast techniques, expand the cooperation and interconnections among regions and reduce decision horizon and resolution levels, to capture more realistic ramping and reserve effects.
 
-\citeauthor{palmintier} \cite{palmintier} studies the impact of UC models with expansion planning, enhancing that ignoring operating constraints on an expansion planning with VRE could provide higher operating costs and fuel emissions. \citeauthor{hargreaves}  \cite{hargreaves} proposes a method that combines simulation and stochastic UC to capture precisely the challenges of expanding the capacity with VRE.
+\citeauthor{palmintier} \cite{palmintier} study the impact of UC models with expansion planning, highlighting that ignoring operating constraints on an expansion planning with VRE could provide higher operating costs and emissions. \citeauthor{hargreaves}  \cite{hargreaves} propose a method that combines simulation and stochastic UC to capture precisely the challenges of expanding the capacity with VRE.
 
-Under a scenario where VRE have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} \cite{deane} evaluates the UC and ED results at different solving temporal resolutions under one year. The authors discuss that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution. 
+Under a scenario where VRE have a considerable penetration in the power system, it is necessary to study their impact. \citeauthor{deane} \cite{deane} evaluates the UC and ED results at different temporal resolutions under one year. The authors discuss that sub-hourly resolutions can deal more accurately with non-thermal inflexibilities, renewable demand variabilities and ramping behaviours than one-hour resolution. 
 
-One of the alternatives studied in the literature is the use of storage devices to stock energy when the demand is lower than the capacity and use it on an abrupt peak demand, avoiding the use of conventional generators.  \citeauthor{safaei} \cite{safaei} studies different storage technologies and their impact in the emission grid at a 15 minutes time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage are not economically justifiable. . In the other hand, \citeauthor{harris} \cite{harris} studies the viability of seasonal storage by analysing UC results of different storage scenarios and technologies on a city level, concluding that seasonal storage can bring operational benefits and reduce operating costs and fuel emissions in peak levels. \citeauthor{dwyer} \cite{dwyer} investigates the effect of storage for ED and stochastic UC plannings under a sub-hourly resolution, concluding that storage can improve system stability and reduce cyclical ramping rates for NVRE, saving operation costs. 
+One of the alternatives studied in the literature is the use of storage devices to stock energy when the demand is lower than the capacity and use it on an abrupt peak demand, avoiding the use of conventional generators.  \citeauthor{safaei} \cite{safaei} study different storage technologies and their impact on the emission grid at a 15 minute time resolution, without transmission constraints and forecast errors. The main insights are that cheap storage does not have major impact in the cost of reducing the carbonization, and seasonal storage is not economically justifiable. In the other hand, \citeauthor{harris} \cite{harris} study the viability of seasonal storage by analysing UC results of different storage scenarios and technologies on a city level, concluding that seasonal storage can bring operational benefits and reduce operating costs and fuel emissions at peak load. \citeauthor{dwyer} \cite{dwyer} investigate the effect of storage for ED and stochastic UC planning under a sub-hourly resolution, concluding that storage can improve system stability and reduce cyclical ramping rates for NVRE, saving operation costs. 
+
+This work trends to analyze the impact of green energy under 60, 15 and 5-minute level, for different levels of renewable resources penetrations, and comparing them in terms of parameters widely used in the power system world. The differential in this work is that we are using a very known dataset with adittionaly wind and solar power profiles from real data, having AIMMS as the supporting tool to provide all the modeling, data process and optimization. The models used in this thesis were widely explored in the literature, and there is nothing different in the formulation itself. However, some new assumptions were made to improve performance, specially on a small sub-hourly level with a considerable number of renewable generators.
+
+Most of the studies considers data from existing plants and evaluates storage as another feature to handle VRE variabilities, along with other energy sources. In our work, storage devices are studied under a hypothetical scenario that all the energy comes from renewable resources, and therefore there is no ramping flexibility at peak load. This work tries to estimate how much storage is necessary to guarantee power supply. %melhorar isso cara!
 
 \chapter{Development}
 \section{Data}
@@ -135,7 +135,7 @@ The system is divided into 3 areas with 24 buses each, connected by high capacit
   \label{fig:ieeetopology}
 \end{figure}
 
-The dataset describes a peak load for each bus. The absolute load in every hour is a percentage of the peak load based on 3 components: the week year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
+The dataset describes a peak load for each bus. The absolute load in every hour is a percentage of the peak load based on 3 components: the week of year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
 
 \begin{multline}
 L_{b = 108} =  (L_{yearweek = 27} = 75.5\%) \times (L_{dayofweek = friday} = 94\%) 
@@ -150,7 +150,7 @@ Figure \ref{fig:totalSystemLoadJuly} displays the total system load throughout t
   \label{fig:totalSystemLoadJuly}
 \end{figure}
 
-To generate instances with sub-hourly load profiles, the load during intra-hour periods is constructed using linear interpolation plus an additional perturbation, which follows a uniform $[-Pr,+Pr]\%$, where $Pr$ is a parameter in the range of [0,100] \%. The objective is to capture the ramping behaviour of NVRE on a sub hourly level. Figure \ref{fig:perturbationDifference} shows a difference between load curve on a 60-minute and 15-minute planning level. 
+To generate instances with sub-hourly load profiles, the load during intra-hour periods is constructed using linear interpolation plus an additional perturbation, which follows a uniform $[-Pr,+Pr]\%$, where $Pr$ is a parameter in the range of [0,100] \%. The objective is to capture the ramping behaviour of NVRE on a sub hourly level. Figure \ref{fig:perturbationDifference} shows a difference between load curves on a 60-minute and 15-minute planning level. 
 
 \begin{figure}[h] 
   \includegraphics[keepaspectratio]{perturbationDifference.png}
@@ -174,14 +174,14 @@ The total peak load is 8550 MW while the total generation capacity is 9975 MW.
 
 Although RTS-96 has most of the necessary data for this project, it does not contain any wind and solar generation information, the two fastest growing renewable sources in the world. This discrepancy is interesting in its own right as it reveals how much technology has changed in the two decades since the RTS-96 data set was published.
 
-Since wind and solar energy are expected to play a prominent role in the future grid (e.g., India has pledged to install 100 GW of solar capacity by 2022 \cite{mitindia}, while Germany has already installed 45 GW of wind capacity or roughly 25 \% of its total installed capacity\cite{fraunpower}, wind and solar profiles were also included in our test instances. Historical data for both sources was taken from the website of the Electric Reliability Council of Texas (ERCOT), the independent system operator that manages the flow of electric grid for the vast majority of Texas.  
+Since wind and solar energy are expected to play a prominent role in the future grid (e.g., India has pledged to install 100 GW of solar capacity by 2022 \cite{mitindia}, while Germany has already installed 45 GW of wind capacity, or roughly 25 \% of its total installed capacity\cite{fraunpower}, wind and solar profiles were also included in our test instances. Historical data for both sources was taken from the website of the Electric Reliability Council of Texas (ERCOT), the independent system operator that manages the flow of electric grid for the vast majority of Texas.  
 
-The wind and solar profiles defines the generation capacity for these renewable resources in a full year, and it is based on historical availability from the last 5 years in Texas. The geographic renewable potential in Texas were considered for each bus in the system, both for solar and wind generators.
+The wind and solar profiles define the generation capacity for these renewable resources in a full year, and it is based on historical availability from the last 5 years in Texas. The geographic renewable potential in Texas were considered for each bus in the system, both for solar and wind generators.
 
 \subsubsection{Wind Profile}
 
 
-Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the "panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. In result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
+Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the "panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. As a result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
@@ -190,7 +190,7 @@ Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and 
 \end{figure}
 
 
-To build the wind potential, each bus was associated with a Texas city or region along with the average historical wind generation for the past 5 years. The studied data is freely shared by ERCOT \cite{ercotGenerationWind}. Therefore each location has a wind potential on an hourly level throughout an entire year. In sub-hourly levels the availability follows the interpolation between the hours followed by a uniform perturbation, using the same logic as load. That said, the real generation for any wind generator is a factor of the percentage of the nameplate capacity followed by the profile where it is located. Figure \ref{fig:windProfileBus122January} shows the wind profile for the bus 122 in the month of January.
+To build the wind potential, each bus was associated with a Texas city or region along with the average historical wind generation for the past 5 years. The studied data is freely shared by ERCOT \cite{ercotGenerationWind}. Therefore each location has a wind potential on an hourly level throughout an entire year. In sub-hourly levels the availability follows the interpolation between the hours followed by a uniform perturbation, using the same logic as with load. That said, the real generation for any wind generator is a factor of the percentage of the nameplate capacity followed by the profile where it is located. Figure \ref{fig:windProfileBus122January} shows the wind profile for the bus 122 in the month of January.
 
 \begin{figure}[h!] 
   \includegraphics[width=\textwidth,keepaspectratio]{windPotentialBus122.png}
@@ -210,7 +210,7 @@ Figure \ref{fig:texasSolarProfile} displays the NREL's solar incidence report in
 \end{figure}
 
 
-It is important to notice that the highest incidence profile in the state of Texas is located in west, followed by northeast and center. The solar profile analysis follows the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
+It is important to notice that the highest incidence profile in the state of Texas is located in the west, followed by the northeast and center. The solar profile analysis follows the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
 
 \begin{figure}[h!] 
 	\begin{center}
@@ -223,24 +223,24 @@ It is important to notice that the highest incidence profile in the state of Tex
 
 \subsection{Costs}
 
-For our models, the costs were developed based on the RTS-96 data and some benchmarket values widely used in the industry for power generation studies. There are two type of costs associated with generation:
+For our models, the costs were developed based on the RTS-96 data and some benchmark values widely used in the industry for power generation studies. There are two type of costs associated with generation:
 
 \begin{itemize}
 \item Generation Cost ($\$/MW$): Cost to generate 1MW of a specific unit group.
 \item Start-up Cost ($\$/MW$): Cost to change the state of a specific generator type from off to on.
 \end{itemize}
 
-\subsection{Scenarios Description}
+\subsection{Scenarios Description} \label{section:ScenarioDesc}
 
-This project covered 3 different generators scenarios in the same load profile. The distribution is adapted from \citeauthor{shavel} \cite{shavel}, that describes the technical and economical potentials of exploring natural gas and VRE in the state of Texas \cite{shavel}. 
+This project covered 3 different generator scenarios in the same load profile. The distribution is adapted from \citeauthor{shavel} \cite{shavel}, that describes the technical and economical potentials of exploring natural gas and VRE in the state of Texas \cite{shavel}. 
 
 \subsubsection{Scenario 1: Reference}
 
-This scenario captures the existing ERCOT capacity mix. 88\% of generation comes from non-renewable energy sources. The remaining capacity is filled by wind generators, located in the buses that has the Texas Northwest's wind potential (Buses 111-124).
+This scenario captures the existing ERCOT capacity mix. 88\% of generation comes from non-renewable energy sources. The remaining capacity is filled by wind generators, located in the buses that have the Texas Northwest's wind potential (Buses 111-124).
 
 \subsubsection{Scenario 2: Stronger Federal Carbon Rule}
 
-Scenario 2 is build based on column "2032 Total" of table IV-10 in \cite{shavel}. This scenario is described as follows:
+Scenario 2 is built based on column "2032 Total" of table IV-10 in \cite{shavel}. This scenario is described as follows:
 
 \begin{quotation}
 "Our scenario with a strong federal carbon rule requires existing coal plants to capture and sequester 90\% of their CO2 output.(...)
@@ -252,7 +252,7 @@ In essence, 44\% of the generation is provided by natural gases, followed by 42\
 
 \subsubsection{Scenario 3: "Almost Green World"}
 
-This scenario is an extreme case of Scenario 2. All coal, nuclear and oil/steam generators have been retired and are no longer a part of the system. The grid runs entirely on wind and solar, with advanced natural gas combined cycle generators used primarily for ramping, flexibiliy and backup, i.e, to complete the demand whether there is not enough wind and solar to fulfil the load. Wind and solar generators are located throughout the map, following the concentration based on wind and solar profiles from figures \ref{fig:texasSolarProfile} and \ref{fig:texasWindProfile}.
+This scenario is an extreme case of Scenario 2. All coal, nuclear and oil/steam generators have been retired and are no longer a part of the system. The grid runs entirely on wind and solar, with advanced natural gas combined cycle generators used primarily for ramping, flexibiliy and backup, i.e, to complete the demand when there is not enough wind and solar to fulfil the load. Wind and solar generators are located throughout the map, following the concentration based on wind and solar profiles from figures \ref{fig:texasSolarProfile} and \ref{fig:texasWindProfile}.
 
 \subsubsection{Scenario 4: "Green World"}
 
@@ -260,12 +260,11 @@ In this scenario all the natural gases are replaced by battery storage. The gene
 
 \subsubsection{Generation per Scenario}
 
-The nameplate capacity of base case scenario described by \citeauthor{shavel} \cite{shavel} is 82,949 MW, where for RTS-96 is close to 10,000 MW. Therefore all absolute generator type capacities were adapted to the new baseline and the rates by type were mantained. The result is in Table \ref{table:ScenarioDataDescription}.
+The nameplate capacity of the base case scenario described by \citeauthor{shavel} \cite{shavel} is 82,949 MW, where for RTS-96 is close to 10,000 MW. Therefore all absolute generator type capacities were adapted to the new baseline and the rates by type were mantained. The result is in Table \ref{table:ScenarioDataDescription}.
 
 \begin{table}[h]
 \centering
 \caption{Capacity of each generator type expressed in MW as a percentage of total capacity in the 4 scenarios}
-\label{my-label}
 \begin{tabular}{|lllllll|l|l|}
 \hline
                & \multicolumn{2}{l}{\textbf{Scenario 1}} & \multicolumn{2}{l}{\textbf{Scenario 2}} & \multicolumn{2}{l|}{\textbf{Scenario 3}} & \multicolumn{2}{l|}{\textbf{Scenario 4}} \\ \hline
@@ -349,18 +348,18 @@ $ST^{discharge}_{sd,t} $& Amount of energy discharged in device sd in time t\\
 \end{tabular}
 
 \subsection{Models}
+The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions have been already made. The main objective function of the studied models is to minimize operational costs over the planning horizon, including fuel, start-up, storage and other variable costs.
+we
 
-The economic dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions has been already made. The main objective function of the studied models is to minimize operational costs over the planning horizon, including fuel, start-up, storage and other variable costs.
-
-The types of constraints that manages the optimal dispatching are:
+The types of constraints that manage the optimal dispatching are:
 
 \begin{itemize}
-\item \textbf{Load Constraints:} For each time period, the amount of power produced and discharge from storage should be equal to the total load and amount charged into a storage. Alternatively, in a node, this equations also considers the inbound and outbound power transmitted.
-\item \textbf{Ramping Constraints:}  Each generator has technical limitations that limits the amount of increase and decrease from one period to next one. This is specially important when there are considerable load and VRE fluctuations in consecutive periods.
+\item \textbf{Load Constraints:} For each time period, the amount of power produced and discharge from storage should be equal to the total load and amount charged into a storage. Alternatively, in a node, this equation also considers the inbound and outbound power transmitted.
+\item \textbf{Ramping Constraints:}  Each generator has technical limitations that limits the amount of increase and decrease from one period to the next. This is especially important when there are considerable load and VRE fluctuations in consecutive periods.
 \item \textbf{Generator Limit Constraints:} When turned on, each generator must produce within a minimum and maximum power limit, under normal operating conditions.
 \item \textbf{Transmission Constraints:} Transfer of power between buses is bounded by the nominal power capacity of the transmission line
-\item \textbf{Minimum Reserve Constraints:} These constraints are required to handle the variability and uncertainty of renewable generators. They state that the amount of extra generation must be at least some fraction of generation in that period.
-\item \textbf{Storage Constraints:} As well as generators, the charging and discharging rates in storage devices has also technological 
+\item \textbf{Reserve Constraints:} Each non-renewable generator must produce an ammount of reserve to satisfy operational and reliability parameters.
+\item \textbf{Storage Constraints:} As well as generators, the charging and discharging rates in storage devices also have technological limits, like total capacity and ramp rates.
 
 
 \end{itemize}
@@ -377,11 +376,11 @@ s.t. ~~~& \sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in
 \end{alignat} 
 \end{subequations}
 
-The constraint \ref{eq:loadBalanceConstraint} states the energy balance in every time. The constraints \ref{eq:rampDownRateConstraint} and \ref{eq:rampUpRateConstraint} states that every generator has to obey the ramp limits. The constraint \ref{eq:generationBounds} states the generation limits for each generator. The use of slack variables $V^{-}_{b,t}$ and $V^{+}_{b,t}$ is necessary to always have feasible solutions, and it is important for scenarios where there is a huge renewable penetrations, when there's an abrupt variation of generation and there is a over or under generation.   
+The constraint \ref{eq:loadBalanceConstraint} states the energy balance in every time. The constraints \ref{eq:rampDownRateConstraint} and \ref{eq:rampUpRateConstraint} state that every generator has to obey the ramp limits. The constraint \ref{eq:generationBounds} states the generation limits for each generator. The use of slack variables $V^{-}_{b,t}$ and $V^{+}_{b,t}$ is necessary to always have feasible solutions, and it is important for scenarios where there is a huge renewable penetration, when there's an abrupt variation of generation and there is a over or under generation.   
 
 \subsubsection{Economic Dispatch with Transmission Constraints}
 
-In this case, the model has to consider transmission limits and losses, without transmission costs associated. The objective function \ref{eq:ObjectiveFunction} remains the same, and the constraints \ref{eq:rampUpRateConstraint}, \ref{eq:rampDownRateConstraint} and \ref{eq:generationBounds} are als used. The constraint \ref{eq:loadBalanceConstraint} is replaced by  
+In this case, the model has to consider transmission limits and losses, without transmission costs associated. The objective function \ref{eq:ObjectiveFunction} remains the same, and the constraints \ref{eq:rampUpRateConstraint}, \ref{eq:rampDownRateConstraint} and \ref{eq:generationBounds} are also used. The constraint \ref{eq:loadBalanceConstraint} is replaced by:  
 
 \begin{subequations}\label{model:edTransmissionConstraints}
 \begin{alignat}{4}
@@ -390,10 +389,12 @@ In this case, the model has to consider transmission limits and losses, without 
 \end{alignat} 
 \end{subequations}
 
-Constraint \ref{eq:transmissionBalanceConstraint} guarantees that the energy balance is always satisfied for every bus: everything that is generated and received from other buses should be equal to what is loaded and sent throughout the line with the respective losses. If this balance is not satisfied then it is represented in the slack variables . The constraint \ref{eq:transmissionLimits} defines the transmission bounds for each line.
+Constraint \ref{eq:transmissionBalanceConstraint} guarantees that the energy balance is always satisfied for every bus: everything that is generated and received from other buses should be equal to what is loaded and sent throughout the line with the respective losses. If this balance is not satisfied then under and over generation slack variables become non-zero. This bounds could also be written according to the difference of phase angles, followed by the susceptance law. In pratice, this would just limit the transmission limits, while adding more complexity to the model. Thus simplifying this law by just limiting the transmission of real power makes it simple and comply with the project objectives.
+
+The constraint \ref{eq:transmissionLimits} defines the transmission bounds for each line.
 
 \subsubsection{Economic dispatch model with unit commitment constraints}
-Unit commitment is the decision of consider the sets of generators that are turned on and off for the planned time horizon. The model includes decision variables to capture ``on'' and ``off'' states for thermal generators in each time period,along with the start-up and shut-down decisions. \citep{palmintier}. The set of constraints are added to the previous model, and the binary nature of the variables makes the problem an MIP, naturally harder to solve computationally \cite{james}. 
+Unit commitment is the decision that considers the sets of generators that are turned on and off for the planned time horizon. The model includes decision variables to capture ``on'' and ``off'' states for thermal generators in each time period,along with the start-up and shut-down decisions. \citep{palmintier}. The set of constraints are added to the previous model, and the binary nature of the variables makes the problem an MIP, naturally harder to solve computationally \cite{james}. 
 
 \begin{subequations}\label{model:ucConstraints}
 \begin{alignat}{4}
@@ -402,7 +403,7 @@ Unit commitment is the decision of consider the sets of generators that are turn
 
 Constraint \ref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \ref{eq:mindownt} and \ref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
 
-When there is the decision of turning the generator on or off, ramping and transmitting only apply if the generator is on in a certain time period. Therefore these constraints has the corresponding binary variable, as shown in \ref{model:UC_NewConstraints}.
+When there is the decision of turning the generator on or off, ramping and transmitting only apply if the generator is on in a certain time period. Therefore these constraints have the corresponding binary variable, as shown in \ref{model:UC_NewConstraints}. %fix the ramping models
 
 \begin{subequations}\label{model:UC_NewConstraints}
 \begin{alignat}{4}
@@ -412,9 +413,10 @@ When there is the decision of turning the generator on or off, ramping and trans
 \end{alignat} 
 \end{subequations}
  
-It is important to highlight that if a generator is down in previous period so it can reaches the minimum generation level in the period it is on; otherwise it can not exceed the ramping rate <make it better here>
 
-In unit commitment model, each generator must satisfy a minimum period to remain on or off whether there is a state change on a certain period. Down time constraints are  useful to keep maintenance of a generating unit once has been shut down. Uptime constraints are useful to guarantee stability and to reduce equipment degradation. 
+%PUT THE NEW RAMPING CONSTRAINT HERE!! DO NOT FORGET!!
+
+In the unit commitment model, each generator must satisfy a minimum period to remain on or off whether  or not there is a state change in a certain period. Down time constraints are useful for maintenance of a generating unit once has been shut down. Uptime constraints are useful to guarantee stability and to reduce equipment degradation. 
 
 \begin{subequations}\label{model:ucMinDownUpConstraints}
 \begin{alignat}{4}
@@ -436,7 +438,7 @@ Under a scenario where renewable resources are the major source of energy, stora
 
 The load balance constraint at each bus \ref{eq:transmissionBalanceConstraint} also is modified, by incorporating the storage charging and discharging variables for storage devices located at the specific bus, as defined in equation \ref{eq:transmissionBalanceConstraintStorage}
 
-\begin{subequations}\label{model:edTransmissionConstraints}
+\begin{subequations}
 \begin{alignat}{4}
 &\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t}  + ST^{charge}_{sd \in b,t} = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t} + ST^{discharge}_{sd \in b,t}  &~& \forall b \in B, t \in t \label{eq:transmissionBalanceConstraintStorage}
 \end{alignat} 
@@ -444,13 +446,13 @@ The load balance constraint at each bus \ref{eq:transmissionBalanceConstraint} a
 
 In the case where there is no transmission constraints, the storage is incorporating in the general balance constraint \ref{eq:loadBalanceConstraint}
 
-\begin{subequations}\label{model:simple_ED}
+\begin{subequations}
 \begin{alignat}{4}
 s.t. ~~~& \sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in T}V^{-}_{b,t} + \sum_{sd \in \mc{SD}} ST^{discharge}_{sd,t} = \sum_{t \in T} D_{b,t}  + \sum_{t \in T}V^{+}_{b,t} + \sum_{sd \in \mc{SD}} ST^{charge}_{sd,t} &~& \forall t \in T  \label{eq:loadBalanceConstraintStorage}
 \end{alignat} 
 \end{subequations}
 
-It is important to highlight the difference between storage, reserve and slack variables in the power planning systems world.  \citeauthor{rebours} \cite{rebours} defines reserve as the capacity of generating active power that was still not committed yet during each time period, and it is used mainly to regulate the frequency, improve system stability and security and respond to unexpected events. Storage is the capability to retain the excess of power generated that was not used and can be used afterwards, either to respond to a low demand, an unexpected peak or a power outage from other generators. Both reserve and storage plays an important key the more VREs are present in the power system. Slack variables guarantees the optimal solution even in the case where there is an unbalance between demand and generation, and it is also an important parameters of analysis when wind and solar is available. In simple storage models, where storage capacity is considered infinite, slack variables can indicate bottlenecks in the transmission system, either indicating a failure in transmission of excess power from generator to the storage device or the necessary power from the storage device to a specific load. When transmission constraints is neglected, the over generation slack variable $V^{+}_{b,t}$ is not necessary, once every generation excess is stored for future uses.
+It is important to highlight the difference between storage, reserve and slack variables in the power systems planning context.  \citeauthor{rebours} \cite{rebours} defines reserve as the capacity of generating active power that was still not committed yet during each time period, and it is used mainly to regulate the frequency, improve system stability and security and respond to unexpected events. Storage is the capability to retain the excess of power generated that was not used and can be used afterwards, either to respond to a low demand, an unexpected peak or a power outage from other generators. Both reserve and storage plays an important key the more VREs are present in the power system. Slack variables guarantees the optimal solution even in the case where there is an unbalance between demand and generation, and it is also an important parameters of analysis when wind and solar is available. In simple storage models, where storage capacity is considered infinite, slack variables can indicate bottlenecks in the transmission system, either indicating a failure in transmission of excess power from generator to the storage device or the necessary power from the storage device to a specific load. When transmission constraints is neglected, the over generation slack variable $V^{+}_{b,t}$ is not necessary, once every generation excess is stored for future uses.
 
 
 
@@ -461,19 +463,19 @@ The following assumptions were made in the model and data during the research an
 \begin{enumerate}
 \item The load profile is deterministic. There is no forecast error and no variability in the hourly levels peak. For sub-hourly levels all the analysis were made assuming a $\pm20\%$ of perturbation
 \item In the Economic Dispatch model, the generation is upper bounded only. All generators can produce from 0 up to their maximum capacity
-\item All generators are assumed to be on and ready to generate according to their ramping policies.
+\item All generators are assumed to be on and ready to generate according to their ramping policies at time zero.
 \item There is no voltage angle constraint in the model.
 \item The model covers the DC version of the ED and UC problems, i.e., only active power is the set of study. There is no reactive power in the developed models.
 \item A transmission loss of 1 \% per 100 miles is assumed, which is a coarse representation of reality, but can be easily modelled withing a mixed-integer linear program. This percentage was estimated based on the work of \citeauthor{short} \cite{short}.
-\item The loads profiles for buses are positively correlated, and are ruled by the hour, day of week, season and day of week type (weekend or not).
-\item There following costs are not presented in the models: transmission, maintenance
-\item There is no maintenance factors in generators, like MTTR and MTBF, as well as scheduling. All generators are able to produce power 24 hours per day in ED model and if they are turned on in UC. The assumptions are made to transmission lines.
+\item The load profiles for buses are positively correlated, and are ruled by the hour, day of week, season and day of week type (weekend or not).
+\item The following costs are not presented in the model: transmission, maintenance and emission.
+\item There are no maintenance factors in generators, like MTTR and MTBF, as well as scheduling. All generators are able to produce power 24 hours per day in ED model and if they are turned on in UC. The same assumptions are made to transmission lines.
 \item The generation cost is linear per MW.
 \item Although the reserve requirements of NVRE is described in this thesis, they are not considered in this work. Therefore there is no reserve requirement and capacity for NVRE.
 \item The generation of renewable resources are not in the decision variables. The developed models only decides the generation for non-renewable resources. Therefore the generation is considered a deterministic parameter, not a variable in the model.
 \item The load profile is the same for every year.
 \item The peak load is constant and deterministic. No stochastic factor is considered in this study.
-\item Hear rates are assumed constant as a function of power output.
+\item Heath rates are assumed constant as a function of power output.
 \item For the storage scenarios, it is assumed unlimited storage capacity. Thus all the over generated power is stored for future uses.
 \item The storages are assumed to be 100\% efficient, so everything is stored is instantly available to fulfil the load.
 \end{enumerate}
@@ -487,26 +489,26 @@ During the briefing process, it was necessary to choose the software platform th
 
 \subsubsection{MATPOWER}
 
-MATPOWER is a powerfull tool designed to solve AC and DC Power Flow (PF) and Optimal Power Flow (PF) problems. It is an add-on to MATLAB, and is mainly used for education and research, with a small use on industry. \cite{zimmerman} Although \citeauthor{zimmerman} states that is is possible to dispatch the generators on a minimal quadratic or linear cost, it has limitations on committing them, i.e., starting up or shutting down on a multi-period environment. MATPOWER is very powerful on a single time period, but it can provide computational challenges for multi-periods on a larger horizon. Therefore we concluded this tool was not appropriate for this project.
+MATPOWER is a powerful tool designed to solve AC and DC Power Flow (PF) and Optimal Power Flow (PF) problems. It is an add-on to MATLAB, and is mainly used for education and research, with some small use on industry. \cite{zimmerman} Although \citeauthor{zimmerman} states that is is possible to dispatch the generators on a minimal quadratic or linear cost, it has limitations on committing them, i.e., solving the UC problem in a multi-period environment. MATPOWER is very powerful on a single time period, but it can provide computational challenges for multi-periods on a larger horizon. Therefore we concluded this tool was not appropriate for this project.
 
 \subsubsection{PLEXOS \textregistered }
 
-PLEXOS \textregistered is a commercial tool to power systems planning, widely used in power industry to energy resources planning and analysis. It provides academic license, although the process is long. One of reasons to not use it was the necessity to use commercial nature of the tool, which could lead to challenges in make everything developed in this thesis available to academic community.  
+PLEXOS \textregistered is a commercial tool for power systems planning, widely used in the power industry for energy resources planning and analysis. It provides an academic license, although the process of obtaining one is long. One of reasons for not using it was the commercial nature of the tool, which could lead to challenges in make everything developed in this thesis available to the academic community.  
 
 \subsubsection{AIMMS}
 
 
-AIMMS is a mathematical programming tool designed to solve optimization problems. It is as powerful as other optimization tools like AMPL, GAMS. Some features include \cite{bisschop}:
+AIMMS is a mathematical programming tool designed to solve optimization problems. It is as powerful as other optimization tools like AMPL and GAMS. Some features include \cite{bisschop}:
 
 \begin{itemize}
 \item Easy-to-use design of complex parameters
 \item Intuitive representation of calendar and time horizons
 \item Set of optimization tools to solve LP, QP, NLP and MINLP problems
 \item GUI to build end-user interfaces
-\item Open Data Base Connectivity (OBDC) and OLE interfaces, allowing data exchange between most common databases, as Oracle, SQL Server, etc.
+\item Open Data Base Connectivity (OBDC) and OLE interfaces, allowing data exchange between most common databases, such as Oracle, SQL Server, etc.
 \end{itemize}
 
-Due to easiness of use, the fact that an academic license provides 100\% of the tool functionality, and the previous experience of the members of this project, AIMMS was chosen as the supporting tool for this work. The software features are described in next section.
+Due to the easiness of use, the fact that an academic license provides 100\% of the tool functionality, and the previous experience of the members of this project, AIMMS was chosen as the supporting tool for this work. The software features are described in next section.
 
 \section{Software Features}
 
@@ -514,7 +516,7 @@ This section briefly cover all the screens and features developed in AIMMS for t
 
 \subsubsection{Data Import}
 
-The data import section allows the user to import all the data using the AIMMS specific structure for data text exchange. More details on how prepare the data can be found at \cite{bisschop}.
+The data import section allows the user to import all the data necessary for our model using the AIMMS specific structure for data text exchange. More details on how prepare the data can be found at \cite{bisschop}.
 
 \begin{figure}[h] 
 	\begin{center}
@@ -526,9 +528,9 @@ The data import section allows the user to import all the data using the AIMMS s
 
 \subsubsection{Data Settings}
 
-After the data has been imported, the user has the chance to add/edit and view some data on an intuitive way. In \textit{Network Page}, it is possible to see the location of buses (in yellow), as well as locations of generators per type. The user can change the list to see whatever type he wants. In \textit{Data Buses Page}, it is possible to edit the peak load of each bus in the system. The \textit{Costs Page} has the start-up and variable cost for each generator type and unit group. In \textit{General Data Page} the user can add, edit and remove the main components of the system, i.e., buses, generators and unit groups, as well as changing general configurations, such as horizon dates, granularity and perturbation level for load and wind profiles under a sub-hourly level. 
+After the data has been imported, the user has the chance to add/edit and view some data in an intuitive way. In \textit{Network Page}, it is possible to see the location of buses (in yellow), as well as locations of generators by type. The user can change the list to see whatever type he/she wants. In \textit{Data Buses Page}, it is possible to edit the peak load of each bus in the system. The \textit{Costs Page} has the start-up and variable cost for each generator type and unit group. In \textit{General Data Page} the user can add, edit and remove the main components of the system, i.e., buses, generators and unit groups, as well as changing general configurations, such as horizon dates, granularity and perturbation level for load and wind profiles under a sub-hourly level. 
 
-It is possible also to see the total load over time. In \textit{Generators Specification Page} it is possible to configure the main parameters that defines a generator, such as its type, unit group and bus where it is located. In \textit{Wind and Solar Availability Page} it is possible to view the Wind and Solar profile for the selected bus in the node, as well as locations that have either solar or wind profile mapped (marked with the blue ball). Lastly, the \textit{Summary Page} summarizes the total generation capacity and load, as well as total number of generators and its capacity per generator type.
+It is possible also to see the total load over time. In \textit{Generators Specification Page} it is possible to configure the main parameters that define a generator, such as its type, unit group and the bus where it is located. In \textit{Wind and Solar Availability Page} it is possible to view the Wind and Solar profile for the selected bus in the node, as well as locations that have either solar or wind profile mapped (marked with the blue ball). Lastly, the \textit{Summary Page} summarizes the total generation capacity and load, as well as total number of generators and its capacity per generator type.
 
 \begin{figure}[h] 
 	\begin{center}
@@ -541,7 +543,8 @@ It is possible also to see the total load over time. In \textit{Generators Speci
 
 \subsubsection{Optimization and Results}
 
-The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results on an intuitive way. 
+The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results in an intuitive way. 
+The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results in an intuitive way. 
 
 The user has the option either to solve the Economic Dispatch or Unit Commitment problems, with or without the following features:
 
@@ -553,7 +556,7 @@ The user has the option either to solve the Economic Dispatch or Unit Commitment
 \item Transmission Losses (if "Transmission Constraints" is chosen)
 \end{itemize}
 
-In \textit{Demand, Load and Transmission}, it is possible to see, for every bus in every time period, the load, generation and transmission flows in and out. It also is possible to see this same flow on a graphic way in \textit{Transmission Map} section, for each time time period, as well as the location of VRE(in green) and active(red) and inactive(gray) NVRE. The \textit{Average Load Distribution} contains the graph displaying the average load for each generator type within a day, while in \textit{Load Distribution Page} it is possible to see the generation distribution per time period, as well as the total load, being useful to identify over and under generation. The \textbf{Power Output Result} details the generation by each generator, in a table. Finally, the \textit{Location Marginal Prices} page contains the Shadow Prices per time for each location, and it is useful to identify potential investments or bottlenecks.
+In \textit{Demand, Load and Transmission}, it is possible to see, for every bus in every time period, the load, generation and transmission flows in and out. It also is possible to see this same flow in a graphic way in \textit{Transmission Map} section, for each time time period, as well as the location of VRE(in green) and active(red) and inactive(gray) NVRE. The \textit{Average Load Distribution} contains the graph displaying the average load for each generator type within a day, while in \textit{Load Distribution Page} it is possible to see the generation distribution per time period, as well as the total load, being useful to identify over and under generation. The \textit{Power Output Result} details the generation by each generator, in a table. Finally, the \textit{Location Marginal Prices} page contains the Shadow Prices by time period for each location, and it is useful to identify potential investments or bottlenecks.
 
 The \textit{Average Ramping} page is useful to compare the ramping behaviour of the generator sources, expressed as:
 
@@ -561,7 +564,7 @@ The \textit{Average Ramping} page is useful to compare the ramping behaviour of 
     AverageRamping_{gt \in \mc{GT}} = \overline{\dfrac{P^{NR}_{g,t} - P^{NR}_{g,t-1}}{G^{max}_{g}}}
 \end{equation}
 
-In other words, it expresses the average ramping grouped by each generator type , normalized by its maximum capacity. It avoids the misunderstanding of high-capacity generators being ramped more than the lower ones.
+In other words, it expresses the average ramping grouped by each generator type , normalized by its maximum capacity. It avoids the misunderstanding of high-capacity generators being ramped more quickly than the lower ones.
 
 \begin{figure}[h] 
 	\begin{center}
@@ -575,9 +578,7 @@ In other words, it expresses the average ramping grouped by each generator type 
 
 \chapter{Analysis}
 
-In the analysis make all the scenario runs, describe all the scenarios test, put a table with all the possibilities, and categorize them by model and describe then. Then, make an analysis by ramping, over and under generation, as well as results. Put graphs, tables, everything that supports your points of view.
-
-The analysis has the goal to evaluate the impact of the following components in UC and ED models:
+Our analysis has the primary goal of determining the impact of the following components in the UC and ED models:
 
 \begin{itemize}
 \item Time granularity: 1 hour, 15 minutes and 5 minutes
@@ -585,7 +586,14 @@ The analysis has the goal to evaluate the impact of the following components in 
 \item Level of VRE: Scenarios 1, 2 and 3
 \end{itemize}
 
-With all possible combinations of these factors, there are 36 data sets to analyse. These are defined as "test cases", as described in table Create the Table. The following parameters are object of analysis:
+With all possible combinations of these factors, there are 18 UD and 18 ED data sets to analyse. These are defined as "test cases". The scenario name format in the graphs and analysis follows the following pattern: 
+\begin{equation}
+<Scenario>_<Time Granularity>_<Transmission Constraints ON/OFF (TY/TN)>_<Model Type (UC/ED)>
+\end{equation}
+
+For example, $Scenario2_15_TY_UC$ test case represents the unit commitment model run on a 15-minute level with transmission constraints on in the generator profiles of Scenario 2.
+
+The following parameters are outputs of analysis:
 
 \begin{itemize}
 \item Power Output per generation type over time
@@ -594,30 +602,19 @@ With all possible combinations of these factors, there are 36 data sets to analy
 \item Ramping distribution for NVRE per generator type
 \end{itemize}
 
-\subsection{Power Output per Generation Type}
+All the tests were run on a Intel Core 2 Duo processor with 3.0 GB of RAM memory running under Windows 10 operating system. To sub-hourly levels the MIP optimality tolerance was set to
+%The MIP optimality tolerance for UC were set to 0.01\% of the optimal solution for relaxation. Without this tolerance it was not possible to reach any solution for UC models under sub-hourly levels.  
 
-Figures \ref{fig:powerOutputScenario1}, \ref{fig:powerOutputScenario2} and \ref{fig:powerOutputScenario3} has the power production for each generator type in a combination of model type (UC or ED), granularity (60, 15 and 5 minutes) and transmission constraints on and off. Each figure represents the result for each scenario described in the Data Section. All instances represent the same time period of one week of July, with the same load profile. The generator type colors are described at the bottom of the page, and to make the curve more analysis friendly all the x-axis were removed. There are some interesting analysis, which will be described by Scenario.
+\section{Power Output per Generation Type}
+
+Figures \ref{fig:powerOutputScenario1}, \ref{fig:powerOutputScenario2} and \ref{fig:powerOutputScenario3} show the power production for each generator type for each model type (UC or ED), granularity (60, 15 and 5 minutes) and transmission constraints on and off. Each combination of these factors are defined as instance. Each figure represents the result for each scenario described in the Data Section. All instances represent the same time period of one week of July, with the same load profile. The generator legend are described at the bottom of the figures, and to make the curves more analysis friendly, all the x-axis were removed. In a general result, for each scenario the instances led to very similar results, with minor particularities, as it will be described by each scenario.
+
+\subsection{Scenario 1}
 
 
-When there is no transmission constraints, there was no significant difference of generation distribution between time granularities on the Economic Dispatch version, except for the ramping behaviour of non-renewable resources. It is expected to ramping more due to the variability under a sub-hourly level. 
+For scenario 1 the generation profile was the same for nuclear, coal and oil sources for the economic dispatch model. When the model is solved with transmission constraints, NGCC-New generators are no longer sufficient to handle the demand at peak load, so they need to be complemented by NGCC-Old ones. The reason for this is that the transmission limits on power transmission, which does not allow NGCC-New generators to fill all the remaining demand at peak, thus NGCC-Old generators must supply it. As for Unit Commitment, different time levels led to minor difference in Oil and NGCC-Old behaviours. Still, the base sources (Nuclear, Coal and Oil) had predominantly the same conduct. These differences are better explored in the section \ref{section:uconoffstatus}.
 
-The generation profile is the same for nuclear, coal and oil sources for the economic dispatch model. When the model is solved with transmission constraints, only NGCC-New generators can not handle the demand under the peak, so they need to be complemented by NGCC-Old ones. The reason for that is the transmission limit on power transmission, wich does not allow NGCC-New generators to fill all the left demand at peak, letting NGCC-New generators supply it.
-
-As for Unit Commitment with Transmission Constraints on a 60-minute level, the NGC-Old generators were turned on during the running process, and remained until the end of the horizon, which reduced the generation of base generators during low demand,specially Nuclear types.
-
-When UC decisions were made on sub-hourly levels, the generation distribution profile differed from the other configurations significantly, which lead to a further investigation. On a 15 minute-level the optimizer decided to turn on most of natural gas generators (NGCC-New, NGCC-Old, NGCT-New) and use NGCT-Old generators to fulfil peak demands, cheaper start-up option than Oil and Coal, and keep few oil generators running at a minimal level. However for the first three days the total demand was not fulfilled during peak load, even for a penalty of \$10000 of MW not generated. We decided then to analyse which constraint was leading to this behaviour, so we disabled the ramping constraints and run the UC model on a 15-minute and 5-minute level. Disabling the constraints augmented the solution space, which could lead to unpractical solution time. Therefore the results has less than 1\% of optimality gap.
-
-The MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Relaxation for the 15-minute level and 300 minutes for a 5-minute. The comparison between Transmission on and Off are shown in \ref{fig:noRampingConstraint}. For both levels, when transmission constraints are not considered, NGCC-Old generators are turned on during peaks, and turned of afterwards. This solution is clearly less practical than turning on most of generators and letting them running at minimal level, and can lead to more maintenance costs.
-
-\begin{figure}[h] 
-	\begin{center}
-		\includegraphics[width=\textwidth,keepaspectratio]{PowerOutputScenario1_NR.png}
-	  	\caption{Power Output for Scenario 1 with and without ramping constraints}
-     	\label{fig:noRampingConstraint}
-	\end{center}
-\end{figure}
-
-\begin{figure} 
+\begin{figure}[!h]
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario1.png}
@@ -627,18 +624,11 @@ The MIP solution took 81 minutes to find a solution with a 0.06\% of the LP Rela
 \end{figure}
 
 
+\subsection{Scenario 2}
 
-The Economic Dispatch problems led to some generation distributions for all possible configurations. The similarities of the results between transmission on and off indicates that the transmission limits did not make influence in the final result. 
+For Scenario 2, in all instances Coal, Oil and Nuclear generator were set to run througout the whole planning horizon, where NGCC-New generators were chosen to handle load and renewable resources variabilities across the time. There are two main differences in the plannings per scenario: in Economic Dispatch models, at the beginning of horizon it is observed a minor ramp of Nuclear, Coal and Oil generators. The deeper the time planning level goes, more was the ramp. After that their generation remain stable during the whole period. In Unit Commitment levels, that does not happen. It was also observed a minor decrease in their generation during a period of low demand and high wind generation on the intance S2-5-TN-UC. This can be explained by the minimum generation levels of NGCC-New generators, so it was more economically beneficial to reduce the generation of cheaper generators then turning off and on some NGCC-New afterwards. However, the same behaviour was not observed on a 60 and 15 minutes level.
 
-%This can be seen better Figure **, that displays the utilization per transmission line in the 3 cases of Economic Dispatch versions, and it is easy to see there is no line with high utilization that could be a potential bottleneck.
-
-In the schedules generates by Economic Dispatch, Coal, Oil and Nuclear generator were set to run the whole horizon, where NGCC-New generators were chosen to handle load and wind and solar variabilities across the time. For Unit Commitment the planning of NVRE are different for three time scales. On a 60-minute level, the distribution is almost the same for the Economic Dispatch solutions, but in this case coal and nuclear generators reduce their production when the demand is low and let NGCC-New ones fill the gap. This can lead to increase of maintenance costs because of the ramping behaviour, where in the other hand it strengthen the use of green energy. The fact that the generators has to run under a minimum level and the cheapness of start-up costs for gas generators comparing to oil explains this behaviour difference between Economic Dispatch and Unit Commitment decisions.
-
-%*Generate Image Here.*
-
-Another important aspect to analyse is the UC generation profiles difference between the time scales. Whereas in the 60 minute level Oil, Nuclear and Coal generators are the base of energy, on a 15-minute is  Nuclear only, whereas NGCC-New fill this base while few NGCT-New runs under a minimal level during normal hours, and increases its production during peak hours. 
-
-Under a 15 minute-level more NGCT-Old generators were turned on when transmission limits is ON, caused by the limits of transmitting the energy of NGCC-New generators. Also it was observed the use of few oil generators during peak hours.
+%On a 60-minute level, the distribution is almost the same for the Economic Dispatch solutions, but in this case coal and nuclear generators reduce their production when the demand is low and let NGCC-New ones fill the gap. This can lead to increase of maintenance costs because of the ramping behaviour, where in the other hand it strengthen the use of green energy. 
 
 \begin{figure} 
   \centering
@@ -649,9 +639,11 @@ Under a 15 minute-level more NGCT-Old generators were turned on when transmissio
   \label{fig:powerOutputScenario2}
 \end{figure}
 
-Scenario 3 perhaps is the most challenging and uncertain set to plan, specially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, specially on peak hours and low wind generation. 
+\subsection{Scenario 3}
 
-In scenario 3 there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand on peak levels and to transmit energy coming from renewable resources. When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of Non-variable renewable energy (NVRE), having NCTG-Old a support to peak and low wind and solar generation moments. The UC decision decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by the line limits, so the solution turns on the generators from other locations. It is easy to see that the ramps are smoother for UC cases, mostly because of the minimum generation levels.
+Scenario 3 perhaps is the most challenging and uncertain set to plan, especially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, especially on peak hours and low wind generation. 
+
+Also, transmission made an important key in the power planning: there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfill the demand at peak levels and to transmit energy coming from renewable resources. When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVRE, having NCTG-Old as a support to peak and low wind and solar generation moments. The UC model decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation of them is bounded by line transmission limits, so the solution turns on generators from other locations. So, although the system is able to fulfill the demand majority in Scenario 3, it is not able to transmit it.
 
 \begin{figure} 
   \centering
@@ -663,56 +655,175 @@ In scenario 3 there is a considerable difference in the generation for non-renew
 \end{figure}
 
 
-Two important aspects to evaluate the quality of the optimization result are the final objective function value and the solution time. Figures \ref{fig:solutionparameterss1}, \ref{fig:solutionparameterss2} and \ref{fig:solutionparameterss3} compares these parameters for all the problem instances, per each scenario. The dashed bars represents results out of the y-axis, and their absolute results are in the tables below the graphs. 
+\subsection{Scenario 4 Storage Analysis}
 
-In scenario 1, as expected the cheapest and fastest solution were found when no transmission is considered, for 60 minutes level, because of the lower number of variables and constraints. However lower levels with transmission led to faster and cheaper results. In general the solution times for unit commitment are much bigger than economic dispatch instances, due to the MIP NP-Hard nature of the problem. The only exception found was when transmission is off on a 60-minute level, with only 9 of the baseline. The outliers of this curve are represented by dashed bars, and represents UC instances on a sub-hourly level. One can explain the huge values based on the under generation penalties, which was set to 10,000,000 / MW not satisfied. This huge value also could explain why UC instances took so long to solve. Even though, for pratical purposes it is recommended to solve the Unit Commitment on a hourly level.
+Scenario 4 deserves a special analysis, once all the energy comes from intermittent sources and there are storage devices in the system, which was not the case in the previous scenarios. As an extreme case, for the same RTS-96 load the objective is to use storage to avoid under-generation, which can incur several penalties. One common question, which was the object of study of \citeauthor{safaei} \cite{safaei} is: how much storage is necessary in a green world to guarantee power supply? Figure \cite{fig:storageprofilestatus} displays the results of the optimization models to economic dispatch, segmented by 4 categories: the power generated by wind and solar, the power charged, the power discharged and the power not charged (over generation slack). Since there is no NVRE generator and it is assumed that all renewable generators are on permanently there was no reason to run this scenario under unit commitment instances. It is observed no considerable difference in between instances with or without transmissions, once, in this scenario, storage devices were spread all over the network, to minimize transmission limits bounds, which would be the case in ideal situations. However, it is important to mention that even with unlimited capacity there were some over generation in isolated periods, and the reason is as follows: there was an abrupt ramping in VRE generation higher than the ramping limits for the storage devices, so they were not able to store it. 
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{StorageProfileStatusS4.png}
+	  	\caption{Storage device profile status for Scenario 4.}
+     	\label{fig:storageprofilestatus}
+	\end{center}
+\end{figure}
+
+To estimate the ammount of load that was satisfied by storage devices, we calculated the area of each instance described in figure \ref{fig:storageprofilestatus} of the total load (Generation + Discharge) and the Discharge curve itself, then divided both values. Figure \ref{fig:loadfilled} shows that in average nearly 47\% of the load had to be filled by storage devices, which corresponds to 4018.5 MW in a period of 7 days.
+
+\begin{figure}[h] 
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{loadfilledstorage.png}
+	  	\caption{Percentage of load filled by storage devices per instance}
+     	\label{fig:loadfilled}
+	\end{center}
+\end{figure}
+
+\section{Optimization Results} \ref{section:optimizationresults}
+
+Table \ref{table:modelparameters} describes the number of variables and parameters for each studied instance. 
+
+\begin{table}[h]
+\centering
+\caption{Optimization model parameters}
+\begin{tabular}{|l|l|l|}
+\hline
+Instance&Number of Variables&Number of Constraints\\
+\hline
+S1\_ 15\_TN\_ED&137,086&201,059\\
+S1\_15\_TN\_UC&185,667 (86,580 integer)&202,382\\
+S1\_15\_TY\_ED&240,982&235,691\\
+S1\_15\_TY\_UC&289,563 (86,580 integer)&237,014\\
+S1\_5\_TN\_ED&410,686&602,339\\
+S1\_5\_TN\_UC&556,227 (259,380 integer)&606,542\\
+S1\_5\_TY\_ED&721,942&706,091\\
+S1\_5\_TY\_UC&867,483 (259,380 integer)&710,294\\
+S1\_60\_TN\_ED&34,486&50,579\\
+S1\_60\_TN\_UC&46,707 (21,780 integer)&50,822\\
+S1\_60\_TY\_ED&60,622&59,291\\
+S1\_60\_TY\_UC&72,843 (21,780 integer)&59,534\\
+S2\_15\_TN\_ED&126,504&169,313\\
+S2\_15\_TN\_UC&251,083 (135,642 integer)&260,034\\
+S2\_15\_TY\_ED&230,400&203,945\\
+S2\_15\_TY\_UC&354,979 (135,642 integer)&294,666\\
+S2\_5\_TN\_ED&378,984&507,233\\
+S2\_5\_TN\_UC&752,203 (406,362 integer)&779,394\\
+S2\_5\_TY\_ED&690,240&610,985\\
+S2\_5\_TY\_UC&106,3459 (406,362 integer)&883,146\\
+S2\_60\_TN\_ED&31,824&42,593\\
+S2\_60\_TN\_UC&63,163 (34,122 integer)&65,274\\
+S2\_60\_TY\_ED&57,960&51,305\\
+S2\_60\_TY\_UC&89,299 (34,122 integer)&73,986\\
+S3\_15\_TN\_ED&115,441&136,124\\
+S3\_15\_TN\_UC&251,083 (135,642 integer)&235,984\\
+S3\_15\_TY\_ED&219,337&170,756\\
+S3\_15\_TY\_UC&354,979 (135,642 integer)&270,616\\
+S3\_5\_TN\_ED&345,841&407,804\\
+S3\_5\_TN\_UC&752,203 (406,362 integer)&707,344\\
+S3\_5\_TY\_ED&657,097&511,556\\
+S3\_5\_TY\_UC&1,063,459 (406,362 integer)&811,096\\
+S3\_60\_TN\_ED&29,041&34,244\\
+S3\_60\_TN\_UC&63,163 (34,122 integer)&59,224\\
+S3\_60\_TY\_ED&55,177&42,956\\
+S3\_60\_TY\_UC&89,299 (34,122 integer)&67,936\\
+S4\_15\_TN\_ED&101,973&32,184\\
+S4\_15\_TY\_ED&205,869&66,816\\
+S4\_5\_TN\_ED&305,493&96,504\\
+S4\_5\_TY\_ED&616,749&200,256\\
+S4\_60\_TN\_ED&25,653&8,064\\
+S4\_60\_TY\_ED&51,789&16,776\\
+
+
+\hline
+\end{tabular}
+\label{table:modelparameters}
+\end{table}
+
+
+
+It is noticed that unit commitment has much more variables than economic dispatch models, and reaching sub-hourly levels can lead to hundreds of thousands, even millions variables. This affects the solution time in a non-linear way, as it can be seen in Figures \ref{fig:solutionparameterss1}, \ref{fig:solutionparameterss2} and \ref{fig:solutionparameterss3}. These graphs shows two important aspects of the optimization: the solution time and the reached objective function in terms of the instance baseline for that scenario.
+
+The UC test was done as follow: at first, we realize it had a considerable decrease in solution time when transmission constraints is active, comparing to when it is not. With transmission constraints off, the solver was able to reach the integer optimal solution them with 1 \% of optimality gap (the difference between the actual solution and the linear programming relaxation) under at 60-minute level, except for Scenario 1 on a 5-minute level with transmission on. In that case, even running under a 12G GB RAM memory machine, there was memory overflow. In this case the optimality MIP gap was set to 10\%. The optimal gaps for unit commitment instances are described better in Figure \ref{fig:mipgap}.
+
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{mipgap.png}
+  
+  \caption{Optimality gap for unit commitment instances (\%)}
+  \label{fig:mipgap}
+\end{figure}
+
+
+\subsubsection{Scenario 1}
+In scenario 1, as expected the cheapest and fastest solution was found when no transmission is considered. It can be seen that 15 minute level led to a better solution then ones in 60 minute. In general, it is expected that the lower is the time granularity, more realistic is the demand variation between the periods, making the planing more accurate. The only exception was to the instance S1\_T5\_TN\_UC, that reached a value only 0.15 \% from the baseline, but took 20 minutes to solve. 
+
+In general the solution times for unit commitment are much bigger than economic dispatch instances, due to the binary variables. However, the instance S1\_60\_TN\_UC took only 8 seconds to reach the optimal solution. The extreme case found was for S1\_5\_TY\_UC instance, which took almost 13 hours to reach 9\% of gap, a solution not practical either in terms of final cost and solving time.
+
+
 
 \begin{figure}[h] 
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS1.png}
   
-  \caption{Solution parameters for all instances in Scenario 1. Baseline: $\$658,218,352.9$}
+  \caption{Solution parameters - Scenario 1. Baseline: $\$658,218,352.9$}
   \label{fig:solutionparameterss1}
 \end{figure}
 
-In scenario 2 all the economic dispatch instances generated results close to the baseline. With no transmission all the 3 models generated the same result quality, and the same applies for the ones with transmission activated. However solving the instance on a 5-minute level with transmission was slower than without. The same was observed for unit commitment, and the reason behind that is the expansion of binary solution space when there is no transmission constraints. For sub-hourly levels, the solution time and objective functions was way bigger than the others, due to the lack of generation, even for shorter periods.
+\subsubsection{Scenario 2}
+
+In scenario 2 all the solutions were relatively close to each other, with the maximum solution as only 3.7 \% of the baseline. The cheapest solution was found in the instance S2\_5\_TN\_UC, indicating that, even with more demand and wind variability under sub-hourly level the solver was able to make a better planning.
+
+It is easy to see that all the instances with transmission have the solution at least 3.5 \% of the baseline, with results similar closer to each other. . This is an indicative that in this case transmission limits plays an important key in the power planning, and it was observed in figure \ref{fig:powerOutputScenario2}.
+
+In general, unit commitment instances reached the optimal solutions in times closer to the ones in Scenario 1, except for 5 minute level. The no-transmission version took 29 minutes, whereas with transmission, took almost 2 hours. So, although it seems advantageous to plan the power distribution under sub-hourly levels for this scenario, solution time can be a counterpart.
 
 \begin{figure}[h] 
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS2.png}
   
-  \caption{Solution parameters for all instances in Scenario 2. Baseline: $\$594,939,053.9$}
+  \caption{Solution parameters - Scenario 2. Baseline: $\$593,607,635.3$}
   \label{fig:solutionparameterss2}
 \end{figure}
 
-Scenario 3 presented a behaviour that is harder to map, because of the undergeneration presented in most of instances, as observed in figure \ref{fig:powerOutputScenario3}. The presence of more variable energy sources bring challenges to solving even a LP model, taking 34 seconds to solve 5 minutes without transmission, and leading to a solution quality closer to the both cases of unit commitment with the same granularity. The more was the under generation in the solution more was its time to solve it. For 5 minute levels the solution was up to 1000 \% of the baseline found.
+\subsubsection{Scenario 3}
+
+Scenario 3 presented a different behaviour in terms of the final objective function, because of the under and over generation presented in most of instances, as observed in figure \ref{fig:powerOutputScenario3}. As a remember, the penalty for the under and over generation slack variables in this case is 100,000 per MW, and that explains why the baseline objective function is so large. To endorse this argument, this difference is also described by type of cost in Figure \ref{fig:genprofileS3}. It shows that the average differ
 
 \begin{figure}[h] 
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS3.png}
   
-  \caption{Solution parameters for all instances in Scenario 3. Baseline: $\$5,015,405,153$}
+  \caption{Solution parameters - Scenario 3. Baseline: $\$264,009,305,965$}
   \label{fig:solutionparameterss3}
 \end{figure}
 
+In general, the distribution of the objective functions values is similar to Scenario 2 in terms of the discrepancy between instances with transmission constraints on and off, which is in average 50 \%, as shown in figure    . This increase is due to the additional demand not met because of transmission limits, as seen in figure \ref{fig:powerOutputScenario3}.
 
-This results can lead to some interesting conclusions:
+\begin{figure}[h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{genprofileS3.png}
+  
+  \caption{Generation profile for all instances in Scenario 3.}
+  \label{fig:genprofileS3}
+\end{figure}
 
-\begin{itemize}
-\item Economic Dispatch models in general are easier and faster to solve, but in some cases that might not apply.
-\item Under sub-hourly levels, unit commitment is not efficient and, therefore, it must be used wisely.
-\item Under-generation slack variables with a high penalty can lead to numerical instabilities and non-feasible solution times.
-\item Transmission parameters plays an important rule in both solution times and quality, specially under high VRE levels.
-\end{itemize}
+In terms of solution time, Scenario 3 presents better results in all instances comparing to Scenarios 2 and 1. One can explain it based on the lower NVRE presence in the generation distribution, and consequently the number of decision variables. The highest solution time was set to the instance S3\_5\_TY\_UC, that took 18 minutes to solve for a weekly base. This results suggests that sub-hourly levels are more attractive to solve in this case.
 
-The influence of transmission constraints in the results described in this depends on the distribution of generators in the field and the transmission lines physical limits. The figure \label{fig:maximumutilizaton} shows the maximum utilization of each one of the 36 transmission lines in the field, per unit commitment and economic dispatch. For Scenario 1, 13 lines has their utilization above 80 \%,  19 between 80 \% and 50 \% and 93 below this value, for both economic dispatch and unit commitment models. 
 
-However, for scenario 2 the same range was 21, 13 and 86 for ED and 87, 19 and 14 for UC. One of the hypothesis is the minimum generation level constraint for NVRE, as well as the lack of transmission costs. Still, such results suggests the unit commitment solution for transmission may lead the grid to no be able to respond quickly to abrupt variations in the load or transmission, as well as reliability problems. As for Economic Dispatch, the transmissions seems to be more balanced.
 
-As for Scenario 3, both unit commitment and economic dispatch solutions suggests that the line is not balanced, i.e., the generators are not able to generate enough power in their locations, even though there is still lines with a low or none utilization : 76, 2 and 40, with 26 lines unused for ED. As for UC, this proportion is 95, 12 and 13. One can state that most of the low used lines are in the area C of the field, where there is no wind and solar generator. Therefore, for generation capacity expansion planning, this area can be very attractive.
+
+\section{Transmission Results}
+
+The influence of transmission constraints in the results described in this depends on the distribution of generators in the field and the transmission lines physical limits. The figure \label{fig:maximumutilizaton} shows the maximum utilization of each one of the 36 transmission lines in the field, per unit commitment and economic dispatch. 
+
+In Scenario 1 it is clear that more than 85 \% of the transmission lines had their maximum utilization under 60\%, with 41 lines not even used for transmission.  This can be explained by the spread distribution of high capacity NVRE generators across the field, specially Oil and Coal, and the few VRE generators location, as explained in section\ref{section:ScenarioDesc}. It is also possible to see that Unit Commitment and Economic Dispatch instances presented nearly the same utilization behaviour, except for 7 lines. 
+
+The same behavior is seen in Scenario 2: low average utilization of lines and proximity between UC and ED, except for few more lines with 100\% of maximum utilization capacity. Still, this results also suggests that transmission line is not a boundary here.
+
+As for Scenario 3, both unit commitment and economic dispatch solutions suggests that the line is not balanced, i.e., the generators are not able to generate enough power in their locations, even though there is still lines with a low or none utilization. One can state that most of the low used lines are in locations where there is no wind or solar located. Therefore, for generation capacity expansion planning, this area can be very attractive. Another noticed aspect regarding this metric is the difference in terms of utilization between UC and ED: the line utilization for UC is 13 \% than the ED instances. This can suggest that unit commitment decided to turn on and use different generations in its power planning comparing to EC, and transmission limits might be a parameters for that.
 
 \begin{figure}[!h] 
   \centering
@@ -723,7 +834,9 @@ As for Scenario 3, both unit commitment and economic dispatch solutions suggests
   \label{fig:maximumutilizaton}
 \end{figure}
 
-Another goals of this project is evaluating the impact of non-renewable generators ramping when the power planning is made on different granularities. The average ramping normalized by the generator type maximum capacity is shown in figure  \ref{fig:averageramping}. The normalization was necessary to avoid the idea of low-capacity generators ramping less than high-capacity ones.
+\section{Ramping Results} \label{section:ramping}
+
+Another goal of this project is to evaluate the impact of non-renewable generators ramping when the power planning is made on different granularities for different scenarios. The average ramping is normalized by the generator type maximum capacity. The normalization was necessary to avoid the idea of low-capacity generators ramping less than high-capacity ones. The results are displayed in figure  \ref{fig:averageramping}.
 
 \begin{figure}[!h] 
   \centering
@@ -732,32 +845,129 @@ Another goals of this project is evaluating the impact of non-renewable generato
   
   \caption{Average ramping of non-renewable generators, normalized by their maximum capacity.}
   \label{fig:averageramping}
+    
+\end{figure}
+
+The ramping results for the economic dispatch model seems to follow a pattern: the closer is the time scale higher is the average ramping. They also suggest that the more VREs are in the system, the more is the difference between time granularities. This results make sense; sub-hourly levels can capture the small variances in loads and the intermittence of energy sources accurately. 
+
+In Scenario 1 there is no significant difference between Unit Commitment and Economic Dispatch instances in terms or ramping, except in the case of NGCC-New generators. The reason for that is the absence of minimum generation in ED models and the use of this type of generator only during peak levels. The instance S1\_5\_TN\_ED generated a bigger average ramping result for NGCC-New generators. The optimal solution decided to not ramp the base generators during peak levels and let the NGCC-handle all the variabilites. Also, the fact that it is used only during peak and it is shutdown might be another reason.
+%Complete and try to explain why
+
+In Scenario 2, although transmission is not a bottleneck in the sense that it provides generation gaps, it definitely changed the way the generation profile of each individual NGCC-New generator. When transmission constraints are enable, the solution provides less intermittent generation profile then when is not. This was also observed in Unit Commitment instances, as observed in figure    \ref{fig:generationProfileNGCC}. The same applies for sub-hourly planning levels. A generation profile as seen in S2\_60\_TN\_ED definitely can increase the maintenance costs, due to this constant ramps.
+
+\begin{figure}[!h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{generationProfileNGCC.png}
+  
+  \caption{Generation profile for three individual NGCC-New generators for a 60-minute level.}
+  \label{fig:generationProfileNGCC}
   
 \end{figure}
 
-The ramping results for economic dispatch model seems to follow a pattern: the closer is the time scale so is the average ramping. They also suggest that the more is the VREs in the system more is the difference between time granularities. This results make sense, once sub-hourly levels can capture the small variances in loads and the intermittence of energy sources accurately. For unit commitment, the startup of a generator leads it to ramp to at least its minimum operating level. That explains why the averages ramps in general were bigger than the ones for economic dispatch. For some cases it was observed that, under 5-minute level the ramp were smaller than 15-minutes levels for the same instance. 
 
-\subsection{Scenario 4 Analysis}
+In Scenario 3, again, the transmission bottleneck also affects the ramping capability of generators, in a sense that it limits NGCC-New generators to respond to quick load and VREs variations. It is observed that the ramping profile is very similar between ED and UC instances when transmission is off. When it is on, NGCT-Old has a slight increase in its ramping, and the same is true for 5-minute level for NGCC-New generators. 
 
-Scenario 4 deserves a special analysis, once all the energy comes from intermittent sources and there are storage devices in the system, which was not the case in the previous scenarios. As an extreme case, for the same RTS-96 load the objective is to use storage to avoid under-generation, which can incur several penalties. One common question, which was the object of study of \citeauthor{safaei} \cite{safaei} is: how much storage is necessary in a green world to guarantee power supply? Figure \cite{fig:storageprofilestatus} displays the results of the optimization models to economic dispatch, segmented by 4 categories: the power generated by wind and solar, the power charged, the power discharged and the power not charged (over generation slack) . Since there is no NVRE generator and it is assumed that all renewable generators are on permanently there was no reason to run this scenario under unit commitment model. 
+\section{Unit commitment start-up / shutdown levels} \label{section:uconoffstatus}
 
-\begin{figure}[h] 
-	\begin{center}
-		\includegraphics[width=\textwidth,keepaspectratio]{StorageProfileStatusS4.png}
-	  	\caption{Storage device profile status for Scenario 4.}
-     	\label{fig:storageprofilestatus}
-	\end{center}
+The last analysis of this report discusses about the start up/shutdown behavior of NVRE types provided by Unit Commitment results. Figures \ref{fig:activeGeneratorsS1}, \ref{fig:activeGeneratorsS2} and \ref{fig:activeGeneratorsS3} demonstrate the number of active generators over time.
+
+Scenario 1 is the one that has most of the different startup profile between the 6 instances. In General, the number of Oil and Nuclear active generators are set, although some minor changes were observed in peak hours for Oil. Some Coal and NGCC-New generators are shutdown on low demand times. When transmission is off, 5 NGCC-New generators were turned on during peak hours, whereas when transmission is on,, only 4. To fill this gap, in average 2 NGCC-Old generators are turned on, while NGCT-Old are used only to respond to quick unexpected ramping events.
+
+
+\begin{figure}[!h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{activeGeneratorsS1.png}
+  
+  \caption{Number of active generators by type over time for Scenario 1.}
+  \label{fig:activeGeneratorsS1}
+  
+  
+An essential difference in Scenario 2 is between time granularities, especially then transmission constraints is active. Under 15 and 5 minute level the solution turned on and off more NGCC-New generators, respecting their minimum up and downtime, in order to fulfill sub-hourly load variability while generating at minimal cost. This can incurs in more start-up and shutdown costs, as well as maintenance ones. Also, it was observed a minor use of NGCT-Old generators, for the same reason as Scenario 1.
+  
+\end{figure}
+
+\begin{figure}[!h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{activeGeneratorsS2.png}
+  
+  \caption{Number of active generators by type over time for Scenario 2.}
+  \label{fig:activeGeneratorsS2}
+  
+\end{figure}
+
+In Scenario 3, the quick up and downtime requirements for gas generators allows solutions to quickly start-up and shutdown them when it is convenient. It is noticed that NGCT-Old generators are activated only during peak demand, and deactivated afterwards, whereas NGCC-New are activated also in low wind and solar variability. As previously discussed, the transmission limits in this scenario limits the number of 4 NGCC-New generators running at the same time, comparing to 6 when transmission is not considered.
+
+\begin{figure}[!h] 
+  \centering
+  
+	  \includegraphics[width=\textwidth,keepaspectratio]{activeGeneratorsS3.png}
+  
+  \caption{Number of active generators by type over time for Scenario 2.}
+  \label{fig:activeGeneratorsS3}
+  
 \end{figure}
 
 
 
+\chapter{Conclusions}
 
-\chapter{Conclusion}
+\section{Discussions}
 
-\appendix
-%\chapter{Power Systems Operation Background}
+As discussed in the introduction, this thesis had the main objective to evaluate the impact of unit commitment and economic dispatch classic views under different aspects. The arise and necessity of the world to use more green energy rather than traditional sources could bring several challenges in terms or power planning, under different aspects, as can be observed in the Analysis section. 
 
-%\chapter{Data and Analysis}
+In the power systems planning field, it is common to use default test cases from IEEE to test different methodologies in power systems planning, like power flow techniques, reliability tests and so on. However,the RTS-96 was developed 20 years ago, a time that renewable energy was just starting to emerge and be studied. That is why we decided to update the generation profile, adding more green sources not present originally in the model, like natural gases, wind and solar. All the new parameters, costs, modelling and technical details were extracted and analysed from real data and academically trusted sources. Therefore, one argue that all the results discussed in the analysis section is valid and represents a real-world power system, in a minor scale.
+
+The results exposed in the Analysis section could lead to the following questions:
+
+\begin{itemize}
+\item Which model should I use ?
+\item What is the ideal time level ? Hourly or sub-hourly levels ?
+\item What should be my planning horizon ?
+\item Should I have storage or not ?
+\item etc,etc,etc...
+\end{itemize}
+
+Well, there is no easy answer for these questions. Even two simple and well-know models as Economic Dispatch and Unit Commitment can lead to different results under different configurations, scenarios and perspectives, as we can see in the Analysis section. So, this chapter highlights some findings that might helps on answering that questions.
+
+%Economic Dispatch models in general are easier and faster to solve, but in some cases that might not apply.
+The first discussion is the difference between the use of Economic Dispatch and Unit Commitment models in different VRE levels. First, sub-hourly levels instances of economic dispatch was able to capture with more precision the fluctuations of load demand, allowing the planer to be more specific. Plus, as we were able to see in the Scenario 3, the more is the penetration of intermittent power sources more different is the power behaviour of non-renewable sources between different time scales. As discussed in section \ref{section:ramping}, differences in average ramping in Scenario 3 for different instances of ED suggests that hourly planning could lead to an underestimation of the ramping behaviour for NRVEs in the system. Therefore the first important conclusion is: the more VRE's in the system, more necessary is the power planning under sub-hourly levels.
+
+%Under sub-hourly levels, unit commitment is not efficient and, therefore, it must be used wisely.
+Economic Dispatch is a model easy to solve since it is LP and there is not too much complexity increase when solved under sub-hourly levels. Nevertheless the same is not true for Unit Commitment. As shown in section \label{section:optimizationresults}, at a 5-minute level the solver took minutes, sometimes even hours to reach an acceptable gap, with a power profile generation slightly close to the hourly levels. Of course this thesis solved this problem over one week, using the traditional modelling. In a scenario of high VRE penetration, the more is necessary is to use smarter techniques of commiting generators rather than just solving the MIP technique. One of these is rolling horizon algorithm, described by \citeauthor{tuohy} \cite{tuohy}, which divides the problem into small MIP problems, solves them in a period and uses the result an an input to solve in the next one. Unit commitment levels does not seem advantageous to solve under sub-hourly levels. 
+
+The proximity of solution quality between models in different time granularity indicates that it might not be a vantage to run them under a different time level on a long planning horizon. So, either it runs on a 60-minute level, or reduce the planning horizon. Under high penetration levels, the 5 minute level seems to be more reasonable to solve, unit commitment level, it is more reasonable to solve, and has to be considered carefully. Of course this project assumed that the wind and solar availability are deterministic parameters of the model. This can change when these variables are stochastic.
+
+
+%\item Under-generation slack variables with a high penalty can lead to numerical instabilities and non-feasible solution times.
+Another important aspect is how do deal with slack variables in the system. Although they are important to always reach a "feasible" solution in the planning, during our numerical runs of all the instances we dealt with some numerical issues with them, specially in Scenario 3. A lower penalty led the solver to choose to pay the penalty instead of turning on a generator, ramp and generate power during peak levels. In the other hand, when we set these penalties to a big value, e.g. \$ 100,000,000.00 per MW, it impacted the solver negatively in terms of solution time, specially in Unit Commitment levels. Therefore, it is necessary to estimate wisely what would be the penalty for not generate or curtail power, issues that are important under a high penetration of VRE.
+
+%\item Transmission parameters plays an important rule in both solution times and quality, specially under high VRE levels.
+
+%\item Storage definitely is an important key for the green world scenario. However the minimum required storage capacity starts to not be attractive if implementation and maintenance costs are big. 
+
+
+
+%\item Adittionaly, Unit Commitment were not able to capture precisely the ramping levels for NVRE's. Therefore it might not be advantageous. The advantage is  
+
+%\item Also, sometimes it is necessary to understand the generation profile for each individual generator, as it was discussed in ramping section.
+%\item More start-up and shutdowns of generators as observed in Scenario 2. This can incurs in more start-up and shutdown costs, as well as maintenance ones. To mitigate that, one can limit the number of start-ups and shutdowns as a constraints, although it would add more complexity to the model.
+
+\section{Future Improvements}
+
+This project had the achievement to build a full test scenario that represents a real power planning system world, with capability to explore and analyse the data intuitively under a powerful mathematical modelling tool. To make this work even more interesting, there are suggestions of future improvements:
+
+\begin{itemize}
+\item Implement other planning techniques under different levels. There are a lot of different advanced techniques that has proven to be useful.
+\item Explore more the storage devices, and use them with expansion planning models to evaluate the impact of build them instead of generators
+\item Explore the transmission constraints better, adding more physical restrictions, like voltage angle, reactive power  , transmission outages rates
+\item Also, evaluate the transmission reliability system tests, such as N-1, as suggested in a work of
+\item This work considered all the demand and renewable energy forecasts as accurate, with 0 error. A suggestion is add forecast errors, and evaluate what would be the impact of them in the power planning. So it is suggested to add a real-time simulation of the system, with a stochastic nature embedded.
+\item Also, make the costs changing over time. The beauty of UC and ED is to plan the generation according to the current costs, and they can change along the time planning. Also, consider the costs as stochastic, and run robust and stochastic version of unit commitment and economic dispatch.
+
+\end{itemize}
 
 \bibliographystyle{plainnat}
 \nocite{*}
