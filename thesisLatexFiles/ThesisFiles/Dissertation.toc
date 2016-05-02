@@ -1,3 +1,6 @@
+\contentsline {chapter}{List of Tables}{viii}
+\contentsline {chapter}{List of Figures}{ix}
+\contentsline {chapter}{Abstract}{1}
 \contentsline {chapter}{\numberline {1}Introduction}{3}
 \contentsline {chapter}{\numberline {2}Literature Review}{7}
 \contentsline {chapter}{\numberline {3}Development}{11}
@@ -20,12 +23,12 @@
 \contentsline {subsection}{\numberline {3.2.4}Models}{24}
 \contentsline {subsubsection}{Simple Economic Dispatch Model}{25}
 \contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{25}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{26}
+\contentsline {subsubsection}{Economic Dispatch model with Unit Commitment commitment constraints}{26}
 \contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{27}
-\contentsline {section}{\numberline {3.3}Assumptions}{28}
+\contentsline {section}{\numberline {3.3}Assumptions}{29}
 \contentsline {section}{\numberline {3.4}Implementation}{30}
 \contentsline {subsection}{\numberline {3.4.1}Software Selection}{30}
-\contentsline {subsubsection}{MATPOWER}{30}
+\contentsline {subsubsection}{MATPOWER}{31}
 \contentsline {subsubsection}{PLEXOS \textregistered }{31}
 \contentsline {subsubsection}{AIMMS}{31}
 \contentsline {section}{\numberline {3.5}Software Features}{32}
@@ -44,7 +47,8 @@
 \contentsline {subsubsection}{Scenario 3}{47}
 \contentsline {section}{\numberline {4.3}Transmission Results}{49}
 \contentsline {section}{\numberline {4.4}Ramping Results}{50}
-\contentsline {section}{\numberline {4.5}Unit commitment start-up / shutdown levels}{53}
-\contentsline {chapter}{\numberline {5}Conclusion}{57}
+\contentsline {section}{\numberline {4.5}Unit Commitment start-up / shutdown levels}{53}
+\contentsline {chapter}{\numberline {5}Conclusions}{57}
 \contentsline {section}{\numberline {5.1}Discussions}{57}
 \contentsline {section}{\numberline {5.2}Future Improvements}{60}
+\contentsline {chapter}{Vita}{69}
