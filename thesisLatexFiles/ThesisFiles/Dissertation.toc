@@ -1,53 +1,50 @@
-\contentsline {chapter}{List of Tables}{vi}
-\contentsline {chapter}{List of Figures}{vii}
-\contentsline {chapter}{Abstract}{1}
-\contentsline {chapter}{Introduction}{1}
-\contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{Literature Review}{4}
-\contentsline {chapter}{\numberline {2}Literature Review}{5}
-\contentsline {chapter}{\numberline {3}Development}{9}
-\contentsline {section}{\numberline {3.1}Data}{9}
-\contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{9}
-\contentsline {subsection}{\numberline {3.1.2}Renewable Generators Data}{11}
-\contentsline {subsubsection}{Wind Profile}{13}
-\contentsline {subsubsection}{Solar Profile}{14}
-\contentsline {subsection}{\numberline {3.1.3}Costs}{15}
-\contentsline {subsection}{\numberline {3.1.4}Scenarios Description}{16}
-\contentsline {subsubsection}{Scenario 1: Reference}{16}
-\contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{17}
-\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{17}
-\contentsline {subsubsection}{Scenario 4: "Green World"}{18}
-\contentsline {subsubsection}{Generation per Scenario}{18}
-\contentsline {section}{\numberline {3.2}Models}{18}
-\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{19}
-\contentsline {subsection}{\numberline {3.2.2}Parameters}{19}
-\contentsline {subsection}{\numberline {3.2.3}Variables}{20}
-\contentsline {subsection}{\numberline {3.2.4}Models}{20}
-\contentsline {subsubsection}{Simple Economic Dispatch Model}{21}
-\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{22}
-\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{22}
-\contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{23}
-\contentsline {section}{\numberline {3.3}Assumptions}{25}
-\contentsline {section}{\numberline {3.4}Implementation}{27}
-\contentsline {subsection}{\numberline {3.4.1}Software Selection}{27}
-\contentsline {subsubsection}{MATPOWER}{27}
-\contentsline {subsubsection}{PLEXOS \textregistered }{27}
-\contentsline {subsubsection}{AIMMS}{27}
-\contentsline {section}{\numberline {3.5}Software Features}{28}
-\contentsline {subsubsection}{Data Import}{28}
-\contentsline {subsubsection}{Data Settings}{29}
-\contentsline {subsubsection}{Optimization and Results}{29}
-\contentsline {chapter}{\numberline {4}Analysis}{33}
-\contentsline {section}{\numberline {4.1}Power Output per Generation Type}{34}
-\contentsline {subsection}{\numberline {4.1.1}Scenario 1}{34}
-\contentsline {subsection}{\numberline {4.1.2}Scenario 2}{35}
-\contentsline {subsection}{\numberline {4.1.3}Scenario 3}{36}
-\contentsline {subsection}{\numberline {4.1.4}Scenario 4 Storage Analysis}{37}
-\contentsline {section}{\numberline {4.2}Optimization Results}{39}
-\contentsline {subsubsection}{Scenario 1}{40}
-\contentsline {subsubsection}{Scenario 2}{41}
-\contentsline {subsubsection}{Scenario 3}{42}
-\contentsline {section}{\numberline {4.3}Transmission Results}{43}
-\contentsline {section}{\numberline {4.4}Ramping Results}{45}
-\contentsline {section}{\numberline {4.5}Unit commitment start-up / shutdown levels}{46}
-\contentsline {chapter}{\numberline {5}Conclusion}{55}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {chapter}{\numberline {2}Literature Review}{7}
+\contentsline {chapter}{\numberline {3}Development}{11}
+\contentsline {section}{\numberline {3.1}Data}{11}
+\contentsline {subsection}{\numberline {3.1.1}Reliability Test System Data}{11}
+\contentsline {subsection}{\numberline {3.1.2}Renewable Generators Data}{15}
+\contentsline {subsubsection}{Wind Profile}{16}
+\contentsline {subsubsection}{Solar Profile}{18}
+\contentsline {subsection}{\numberline {3.1.3}Costs}{19}
+\contentsline {subsection}{\numberline {3.1.4}Scenarios Description}{19}
+\contentsline {subsubsection}{Scenario 1: Reference}{19}
+\contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{20}
+\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{20}
+\contentsline {subsubsection}{Scenario 4: "Green World"}{21}
+\contentsline {subsubsection}{Generation per Scenario}{21}
+\contentsline {section}{\numberline {3.2}Models}{22}
+\contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{22}
+\contentsline {subsection}{\numberline {3.2.2}Parameters}{23}
+\contentsline {subsection}{\numberline {3.2.3}Variables}{23}
+\contentsline {subsection}{\numberline {3.2.4}Models}{24}
+\contentsline {subsubsection}{Simple Economic Dispatch Model}{25}
+\contentsline {subsubsection}{Economic Dispatch with Transmission Constraints}{25}
+\contentsline {subsubsection}{Economic dispatch model with unit commitment constraints}{26}
+\contentsline {subsubsection}{Economic Dispatch/Unit Commitment with Storage Constraints}{27}
+\contentsline {section}{\numberline {3.3}Assumptions}{28}
+\contentsline {section}{\numberline {3.4}Implementation}{30}
+\contentsline {subsection}{\numberline {3.4.1}Software Selection}{30}
+\contentsline {subsubsection}{MATPOWER}{30}
+\contentsline {subsubsection}{PLEXOS \textregistered }{31}
+\contentsline {subsubsection}{AIMMS}{31}
+\contentsline {section}{\numberline {3.5}Software Features}{32}
+\contentsline {subsubsection}{Data Import}{32}
+\contentsline {subsubsection}{Data Settings}{32}
+\contentsline {subsubsection}{Optimization and Results}{35}
+\contentsline {chapter}{\numberline {4}Analysis}{37}
+\contentsline {section}{\numberline {4.1}Power Output per Generation Type}{38}
+\contentsline {subsection}{\numberline {4.1.1}Scenario 1}{38}
+\contentsline {subsection}{\numberline {4.1.2}Scenario 2}{39}
+\contentsline {subsection}{\numberline {4.1.3}Scenario 3}{40}
+\contentsline {subsection}{\numberline {4.1.4}Scenario 4 Storage Analysis}{41}
+\contentsline {section}{\numberline {4.2}Optimization Results}{44}
+\contentsline {subsubsection}{Scenario 1}{46}
+\contentsline {subsubsection}{Scenario 2}{46}
+\contentsline {subsubsection}{Scenario 3}{47}
+\contentsline {section}{\numberline {4.3}Transmission Results}{49}
+\contentsline {section}{\numberline {4.4}Ramping Results}{50}
+\contentsline {section}{\numberline {4.5}Unit commitment start-up / shutdown levels}{53}
+\contentsline {chapter}{\numberline {5}Conclusion}{57}
+\contentsline {section}{\numberline {5.1}Discussions}{57}
+\contentsline {section}{\numberline {5.2}Future Improvements}{60}

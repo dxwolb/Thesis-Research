@@ -1,32 +1,32 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces RTS-96 topology \cite {wongieee}\relax }}{10}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Total system load (MW) in July 2015\relax }}{11}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces System load (MW) for 5 days in July with 15- and 60-minute resolution.\relax }}{12}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Total number of generators per type.\relax }}{12}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasWindProfile} \relax }}{14}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Wind Profile for Bus 122 in January\relax }}{15}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasSolarProfile} \relax }}{15}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Solar Profile for Bus 112 in January \relax }}{16}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Import page in AIMMS\relax }}{28}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Data Section Pages\relax }}{30}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Optimization Section Pages\relax }}{32}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces RTS-96 topology \cite {wongieee}\relax }}{12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Total system load (MW) in July 2015\relax }}{13}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces System load (MW) for 5 days in July with 15- and 60-minute resolution.\relax }}{14}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Total number of generators per type.\relax }}{14}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasWindProfile} \relax }}{16}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Wind Profile for Bus 122 in January\relax }}{17}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite {texasSolarProfile} \relax }}{18}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Solar Profile for Bus 112 in January \relax }}{19}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Data Import page in AIMMS\relax }}{32}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Data Section Pages\relax }}{34}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Optimization Section Pages\relax }}{36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Power Output for Scenario 1.\relax }}{35}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Power Output for Scenario 2.\relax }}{36}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Power Output for Scenario 3.\relax }}{38}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Storage device profile status for Scenario 4.\relax }}{39}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Percentage of load filled by storage devices per instance\relax }}{40}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Optimality gap for unit commitment instances (\%)\relax }}{41}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Solution parameters for all instances in Scenario 1. Baseline: $\$658,218,352.9$\relax }}{42}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Solution parameters for all instances in Scenario 2. Baseline: $\$593,607,635.3$\relax }}{43}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Solution parameters for all instances in Scenario 3. Baseline: $\$264,009,305,965$\relax }}{44}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Solution parameters for all instances in Scenario 3. Baseline: $\$264,009,305,965$\relax }}{45}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Power Output for Scenario 1.\relax }}{39}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Power Output for Scenario 2.\relax }}{40}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Power Output for Scenario 3.\relax }}{42}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Storage device profile status for Scenario 4.\relax }}{43}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Percentage of load filled by storage devices per instance\relax }}{43}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Optimality gap for unit commitment instances (\%)\relax }}{45}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Solution parameters - Scenario 1. Baseline: $\$658,218,352.9$\relax }}{46}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Solution parameters - Scenario 2. Baseline: $\$593,607,635.3$\relax }}{47}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Solution parameters - Scenario 3. Baseline: $\$264,009,305,965$\relax }}{48}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Generation profile cost for all instances in Scenario 3.\relax }}{48}
 \contentsline {figure}{\numberline {4.11}{\ignorespaces Maximum utilization per transmission line, scenario and model type(\%)\relax }}{49}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Average ramping of non-renewable generators, normalized by their maximum capacity.\relax }}{50}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Generation profile for three individual NGCC-New generators for a 60-minute level.\relax }}{51}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Number of active generators by type over time for Scenario 1.\relax }}{52}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Number of active generators by type over time for Scenario 2.\relax }}{52}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Number of active generators by type over time for Scenario 2.\relax }}{53}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Average ramping of non-renewable generators, normalized by their maximum capacity.\relax }}{51}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Generation profile for three individual NGCC-New generators for a 60-minute level.\relax }}{52}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Number of active generators by type over time for Scenario 1.\relax }}{53}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Number of active generators by type over time for Scenario 2.\relax }}{54}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Number of active generators by type over time for Scenario 2.\relax }}{54}
 \addvspace {10\p@ }

@@ -1,4 +1,4 @@
-\begin{thebibliography}{45}
+\begin{thebibliography}{46}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -268,6 +268,13 @@ Walter Short, Patrick Sullivan, Trieu Mai, Matthew Mowers, Caroline Uriarte,
   Nate Blair, Donna Heimiller, and Andrew Martinez.
 \newblock Regional energy deployment system (reeds).
 \newblock \emph{Contract}, 303:\penalty0 275--3000, 2011.
+
+\bibitem[Tuohy et~al.(2007)Tuohy, Denny, and Malley]{tuohy}
+Aidan Tuohy, Eleanor Denny, and Mark~O Malley.
+\newblock Rolling unit commitment for systems with significant installed wind
+  capacity.
+\newblock In \emph{Power Tech, 2007 IEEE Lausanne}, pages 1380--1385. IEEE,
+  2007.
 
 \bibitem[Villumsen et~al.(2013)Villumsen, Bronmo, and Philpott]{6373775}
 J.C. Villumsen, G.~Bronmo, and A.B. Philpott.

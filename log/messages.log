@@ -1,6 +1,1 @@
-﻿There is 70.734 Mb in use.
-Warning: After 1767294 iterations CPLEX 12.6.2 found an integer solution to M_UC_MinimizeTotalCost.
-The minimum found for VC_UC_TotalCost is 786483417.712.
-Warning: The parameter "PI_EnableStorageConstraints" is not initialized (default values are used).
-Warning: The shadowprice of constraint "CE_Model0_GenerationSatisfiesTotalLoadOverTime" is not initialized (default values are used).
-Warning: The shadowprice of constraint "CE_Model0ED_EnergyBalance" is not initialized (default values are used).
+﻿There is 71.508 Mb in use.

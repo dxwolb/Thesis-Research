@@ -4,60 +4,55 @@ The top-level auxiliary file: Dissertation.aux
 A level-1 auxiliary file: coverCopyright.aux
 A level-1 auxiliary file: signatures.aux
 A level-1 auxiliary file: dedication.aux
-A level-1 auxiliary file: myabstract.aux
+A level-1 auxiliary file: myAbstract.aux
 The style file: plainnat.bst
 A level-1 auxiliary file: vita.aux
 Database file #1: biblio.bib
-Repeated entry---line 286 of file biblio.bib
- : @article{short
- :               ,
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "fig:storageprofilestatus"
 Warning--empty year in texasWindProfile
 Warning--empty year in ercotGenerationWind
 Warning--empty year in fraunpower
 Warning--empty year in texasSolarProfile
 Warning--empty year in mitindia
 Warning--empty journal in shavel
-You've used 45 entries,
+You've used 46 entries,
             2773 wiz_defined-function locations,
-            870 strings with 12792 characters,
-and the built_in function-call counts, 22178 in all, are:
-= -- 1949
-> -- 1363
-< -- 26
-+ -- 463
-- -- 417
-* -- 1928
-:= -- 3450
-add.period$ -- 165
-call.type$ -- 45
-change.case$ -- 265
-chr.to.int$ -- 44
-cite$ -- 96
-duplicate$ -- 944
-empty$ -- 1742
-format.name$ -- 480
-if$ -- 4615
+            874 strings with 12948 characters,
+and the built_in function-call counts, 22862 in all, are:
+= -- 2020
+> -- 1393
+< -- 27
++ -- 473
+- -- 426
+* -- 1978
+:= -- 3540
+add.period$ -- 169
+call.type$ -- 46
+change.case$ -- 271
+chr.to.int$ -- 45
+cite$ -- 98
+duplicate$ -- 979
+empty$ -- 1799
+format.name$ -- 490
+if$ -- 4771
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 43
-newline$ -- 263
-num.names$ -- 180
-pop$ -- 500
+missing$ -- 44
+newline$ -- 268
+num.names$ -- 184
+pop$ -- 515
 preamble$ -- 1
-purify$ -- 228
+purify$ -- 233
 quote$ -- 0
-skip$ -- 705
+skip$ -- 734
 stack$ -- 0
-substring$ -- 862
-swap$ -- 94
-text.length$ -- 6
+substring$ -- 908
+swap$ -- 107
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 480
+type$ -- 491
 warning$ -- 6
-while$ -- 179
+while$ -- 186
 width$ -- 0
-write$ -- 636
-(There was 1 error message)
+write$ -- 650
+(There were 6 warnings)
