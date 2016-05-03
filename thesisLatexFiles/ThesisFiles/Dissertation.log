@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.29)  2 MAY 2016 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.29)  2 MAY 2016 19:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,44 +441,39 @@ Missing character: There is no ù in font cmr12!
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [22]
+[22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
 [24] [25]
-Overfull \hbox (8.40889pt too wide) in paragraph at lines 396--396
+Overfull \hbox (8.40889pt too wide) in paragraph at lines 397--397
 []\OT1/cmr/bx/n/12 Economic Dis-patch model with Unit Com-mit-ment com-mit-ment
  con-straints 
  []
 
 [26]
-Overfull \hbox (32.26259pt too wide) in paragraph at lines 443--443
+Overfull \hbox (32.26259pt too wide) in paragraph at lines 444--444
 [] 
  []
 
 [27] [28] [29] [30]
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 505.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 508.
  [31]
 <aimmsScreenImportPage.png, id=164, 369.63094pt x 85.06781pt>
 File: aimmsScreenImportPage.png Graphic file (type png)
 
 <use aimmsScreenImportPage.png>
-Package pdftex.def Info: aimmsScreenImportPage.png used on input line 534.
+Package pdftex.def Info: aimmsScreenImportPage.png used on input line 537.
 (pdftex.def)             Requested size: 369.63002pt x 85.0676pt.
- [32 <./aimmsScreenImportPage.png>]
-<aimmsDataPages.png, id=169, 998.22937pt x 1087.06125pt>
+ [32 <./aimmsScreenImportPage.png>] [33]
+<aimmsDataPages.png, id=172, 998.22937pt x 1087.06125pt>
 File: aimmsDataPages.png Graphic file (type png)
 
 <use aimmsDataPages.png>
-Package pdftex.def Info: aimmsDataPages.png used on input line 548.
+Package pdftex.def Info: aimmsDataPages.png used on input line 553.
 (pdftex.def)             Requested size: 426.38193pt x 464.32542pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [34 <./aimmsDataPages.png>] [35]
@@ -487,7 +482,7 @@ File: aimmsOptimizationSectionPages.png Graphic file (type png)
 
 <use aimmsOptimizationSectionPages.png>
 Package pdftex.def Info: aimmsOptimizationSectionPages.png used on input line 5
-82.
+87.
 (pdftex.def)             Requested size: 426.38669pt x 380.3526pt.
  [36 <./aimmsOptimizationSectionPages.png>]
 Chapter 4.
@@ -497,130 +492,127 @@ Chapter 4.
 File: PowerOutputScenario1.png Graphic file (type png)
 
 <use PowerOutputScenario1.png>
-Package pdftex.def Info: PowerOutputScenario1.png used on input line 627.
+Package pdftex.def Info: PowerOutputScenario1.png used on input line 632.
 (pdftex.def)             Requested size: 426.3849pt x 340.9056pt.
  [38] [39 <./PowerOutputScenario1.png>]
 <PowerOutputScenario2.png, id=197, 1269.99469pt x 1014.79124pt>
 File: PowerOutputScenario2.png Graphic file (type png)
 
 <use PowerOutputScenario2.png>
-Package pdftex.def Info: PowerOutputScenario2.png used on input line 641.
+Package pdftex.def Info: PowerOutputScenario2.png used on input line 646.
 (pdftex.def)             Requested size: 426.38588pt x 340.7043pt.
  [40 <./PowerOutputScenario2.png>]
 <PowerOutputScenario3.png, id=202, 1267.73625pt x 1014.79124pt>
 File: PowerOutputScenario3.png Graphic file (type png)
 
 <use PowerOutputScenario3.png>
-Package pdftex.def Info: PowerOutputScenario3.png used on input line 654.
+Package pdftex.def Info: PowerOutputScenario3.png used on input line 656.
 (pdftex.def)             Requested size: 426.38205pt x 341.3082pt.
- [41]
-<StorageProfileStatusS4.png, id=206, 1266.98344pt x 575.14874pt>
+ [41 <./PowerOutputScenario3.png>] [42]
+<StorageProfileStatusS4.png, id=210, 1266.98344pt x 575.14874pt>
 File: StorageProfileStatusS4.png Graphic file (type png)
 
 <use StorageProfileStatusS4.png>
-Package pdftex.def Info: StorageProfileStatusS4.png used on input line 666.
+Package pdftex.def Info: StorageProfileStatusS4.png used on input line 674.
 (pdftex.def)             Requested size: 426.39255pt x 193.55582pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [42 <./PowerOutputScenario3.png>]
-<loadfilledstorage.png, id=211, 554.82281pt x 319.1925pt>
+ [43 <./StorageProfileStatusS4.png>]
+<loadfilledstorage.png, id=215, 554.82281pt x 319.1925pt>
 File: loadfilledstorage.png Graphic file (type png)
 
 <use loadfilledstorage.png>
-Package pdftex.def Info: loadfilledstorage.png used on input line 676.
+Package pdftex.def Info: loadfilledstorage.png used on input line 686.
 (pdftex.def)             Requested size: 255.83812pt x 147.18587pt.
- [43 <./StorageProfileStatusS4.png> <./loadfilledstorage.png>]
+ [44 <./loadfilledstorage.png>]
 Underfull \vbox (badness 1210) has occurred while \output is active []
 
- [44]
-<mipgap.png, id=219, 708.39656pt x 443.40656pt>
+ [45]
+<mipgap.png, id=222, 708.39656pt x 443.40656pt>
 File: mipgap.png Graphic file (type png)
  <use mipgap.png>
-Package pdftex.def Info: mipgap.png used on input line 750.
+Package pdftex.def Info: mipgap.png used on input line 761.
 (pdftex.def)             Requested size: 298.47348pt x 186.82487pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45 <./mipgap.png>] <SolutionParametersS1.png, id=223, 603.75563pt x 301.125pt
+ [46 <./mipgap.png>] <SolutionParametersS1.png, id=226, 603.75563pt x 301.125pt
 >
 File: SolutionParametersS1.png Graphic file (type png)
 
 <use SolutionParametersS1.png>
-Package pdftex.def Info: SolutionParametersS1.png used on input line 763.
+Package pdftex.def Info: SolutionParametersS1.png used on input line 774.
 (pdftex.def)             Requested size: 341.11334pt x 170.13133pt.
- [46 <./SolutionParametersS1.png>]
-<SolutionParametersS2.png, id=229, 604.50844pt x 316.93407pt>
+ [47 <./SolutionParametersS1.png>]
+<SolutionParametersS2.png, id=232, 604.50844pt x 316.93407pt>
 File: SolutionParametersS2.png Graphic file (type png)
 
 <use SolutionParametersS2.png>
-Package pdftex.def Info: SolutionParametersS2.png used on input line 778.
+Package pdftex.def Info: SolutionParametersS2.png used on input line 789.
 (pdftex.def)             Requested size: 341.11436pt x 178.84077pt.
 
-<SolutionParametersS3.png, id=230, 607.51968pt x 316.93407pt>
+<SolutionParametersS3.png, id=233, 607.51968pt x 316.93407pt>
 File: SolutionParametersS3.png Graphic file (type png)
 
 <use SolutionParametersS3.png>
-Package pdftex.def Info: SolutionParametersS3.png used on input line 789.
+Package pdftex.def Info: SolutionParametersS3.png used on input line 800.
 (pdftex.def)             Requested size: 341.11716pt x 177.9558pt.
- [47 <./SolutionParametersS2.png>]
-<genprofileS3.png, id=235, 560.8453pt x 301.125pt>
+ [48 <./SolutionParametersS2.png>]
+<genprofileS3.png, id=238, 560.8453pt x 301.125pt>
 File: genprofileS3.png Graphic file (type png)
  <use genprofileS3.png>
-Package pdftex.def Info: genprofileS3.png used on input line 800.
+Package pdftex.def Info: genprofileS3.png used on input line 811.
 (pdftex.def)             Requested size: 341.11533pt x 183.14838pt.
 
-[48 <./SolutionParametersS3.png> <./genprofileS3.png>]
-<MaximumTransmissionLineUtilization.png, id=240, 758.835pt x 889.07156pt>
+[49 <./SolutionParametersS3.png> <./genprofileS3.png>]
+<MaximumTransmissionLineUtilization.png, id=244, 758.835pt x 889.07156pt>
 File: MaximumTransmissionLineUtilization.png Graphic file (type png)
 
 <use MaximumTransmissionLineUtilization.png>
 Package pdftex.def Info: MaximumTransmissionLineUtilization.png used on input l
-ine 813.
+ine 824.
 (pdftex.def)             Requested size: 426.40364pt x 499.58601pt.
- [49 <./MaximumTransmissionLineUtilization.png>] [50] <averageRamping.png, id=2
-49, 1849.66031pt x 1263.21938pt>
+ [50 <./MaximumTransmissionLineUtilization.png>] [51] <averageRamping.png, id=2
+52, 1849.66031pt x 1263.21938pt>
 File: averageRamping.png Graphic file (type png)
 
 <use averageRamping.png>
-Package pdftex.def Info: averageRamping.png used on input line 834.
+Package pdftex.def Info: averageRamping.png used on input line 845.
 (pdftex.def)             Requested size: 426.37253pt x 291.1897pt.
- [51 <./averageRamping.png>]
-<generationProfileNGCC.png, id=254, 1006.51031pt x 577.40718pt>
+ [52 <./averageRamping.png>]
+<generationProfileNGCC.png, id=257, 1006.51031pt x 577.40718pt>
 File: generationProfileNGCC.png Graphic file (type png)
 
 <use generationProfileNGCC.png>
-Package pdftex.def Info: generationProfileNGCC.png used on input line 851.
+Package pdftex.def Info: generationProfileNGCC.png used on input line 862.
 (pdftex.def)             Requested size: 426.39255pt x 244.60626pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [52 <./generationProfileNGCC.png>]
-<activeGeneratorsS1.png, id=258, 1262.46657pt x 571.38469pt>
+ [53 <./generationProfileNGCC.png>]
+<activeGeneratorsS1.png, id=261, 1262.46657pt x 571.38469pt>
 File: activeGeneratorsS1.png Graphic file (type png)
 
 <use activeGeneratorsS1.png>
-Package pdftex.def Info: activeGeneratorsS1.png used on input line 870.
+Package pdftex.def Info: activeGeneratorsS1.png used on input line 881.
 (pdftex.def)             Requested size: 341.11533pt x 154.38927pt.
 
-<activeGeneratorsS2.png, id=259, 1262.46657pt x 572.1375pt>
+<activeGeneratorsS2.png, id=262, 1262.46657pt x 572.1375pt>
 File: activeGeneratorsS2.png Graphic file (type png)
 
 <use activeGeneratorsS2.png>
-Package pdftex.def Info: activeGeneratorsS2.png used on input line 879.
+Package pdftex.def Info: activeGeneratorsS2.png used on input line 890.
 (pdftex.def)             Requested size: 341.11533pt x 154.59267pt.
- [53 <./activeGeneratorsS1.png>]
-<activeGeneratorsS3.png, id=263, 1262.46657pt x 572.1375pt>
+ [54 <./activeGeneratorsS1.png>]
+<activeGeneratorsS3.png, id=266, 1262.46657pt x 572.1375pt>
 File: activeGeneratorsS3.png Graphic file (type png)
 
 <use activeGeneratorsS3.png>
-Package pdftex.def Info: activeGeneratorsS3.png used on input line 890.
+Package pdftex.def Info: activeGeneratorsS3.png used on input line 901.
 (pdftex.def)             Requested size: 341.11533pt x 154.59267pt.
- [54 <./activeGeneratorsS2.png> <./activeGeneratorsS3.png>] [55] [56
-
-]
+ [55 <./activeGeneratorsS2.png> <./activeGeneratorsS3.png>] [56]
 Chapter 5.
-[57] [58] [59] [60] (./Dissertation.bbl [61] [62
+[57
+
+] [58] [59] [60] (./Dissertation.bbl [61] [62
 
 ]
 Missing character: There is no ‚ in font cmr12!
@@ -683,7 +675,7 @@ iew.com/s/535551/indias-
 Here is how much of TeX's memory you used:
  4552 strings out of 494957
  68007 string characters out of 6180028
- 140036 words of memory out of 5000000
+ 139036 words of memory out of 5000000
  7654 multiletter control sequences out of 15000+600000
  13644 words of font info for 51 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -705,7 +697,7 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Dissertation.pdf (81 pages, 4078557 bytes).
+Output written on Dissertation.pdf (81 pages, 4078819 bytes).
 PDF statistics:
  374 PDF objects out of 1000 (max. 8388607)
  233 compressed objects within 3 object streams

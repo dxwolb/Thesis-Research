@@ -75,7 +75,7 @@ As mentioned previously, power planning is a popular topic in Operations Researc
 % \usepackage{multirow}
 \begin{table}[h!]
 \centering
-\caption{Optimal power flow categories \cite{cain}}
+\caption{Optimal power flow categories. \cite{cain}}
 \resizebox{\linewidth}{!}{%
 \label{table:PowerSystemsCat}
 \begin{tabular}{|l|l|l|l|l|l|l|l|}
@@ -129,7 +129,7 @@ The system is divided into 3 areas with 24 buses each, connected by high capacit
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ieeetopology.png}
-  \caption{RTS-96 topology \cite{wongieee}}
+  \caption{RTS-96 topology. \cite{wongieee}}
   \label{fig:ieeetopology}
 \end{figure}
 
@@ -144,7 +144,7 @@ Figure \ref{fig:totalSystemLoadJuly} displays the total system load throughout t
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{totalSystemLoadJuly.png}
-  \caption{Total system load (MW) in July 2015}
+  \caption{Total system load (MW) in July 2015.}
   \label{fig:totalSystemLoadJuly}
 \end{figure}
 
@@ -184,7 +184,7 @@ Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and 
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
-  \caption{Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasWindProfile} }
+  \caption{Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasWindProfile}. }
   \label{fig:texasWindProfile}
 \end{figure}
 
@@ -193,7 +193,7 @@ To build the wind potential, each bus was associated with a Texas city or region
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,keepaspectratio]{windPotentialBus122.png}
-  \caption{Wind Profile for Bus 122 in January}
+  \caption{Wind Profile for Bus 122 in January.}
   \label{fig:windProfileBus122January}
 \end{figure}
 
@@ -205,7 +205,7 @@ Figure \ref{fig:texasSolarProfile} displays the NREL's solar incidence report in
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.6\textwidth,height=\textheight,keepaspectratio]{texasSolarProfileWithBuses.png}
-	  	\caption{Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasSolarProfile} }	  		\label{fig:texasSolarProfile}
+	  	\caption{Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasSolarProfile}. }	  		\label{fig:texasSolarProfile}
 	\end{center}
 \end{figure}
 
@@ -215,7 +215,7 @@ It is important to notice that the highest incidence profile in the state of Tex
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.8\textwidth,keepaspectratio]{solarPotentialBus112.png}
-	  	\caption{Solar Profile for Bus 112 in January }
+	  	\caption{Solar Profile for Bus 112 in January.}
      	\label{fig:solarProfileBus112January}
 	\end{center}
 \end{figure}
@@ -264,7 +264,7 @@ The nameplate capacity of the base case scenario described by \citeauthor{shavel
 
 \begin{table}[H]
 \centering
-\caption{Capacity of each generator type expressed in MW as a percentage of total capacity in the 4 scenarios}
+\caption{Capacity of each generator type expressed in MW as a percentage of total capacity in the 4 scenarios.}
 \begin{tabular}{|lllllll|l|l|}
 \hline
                & \multicolumn{2}{l}{\textbf{Scenario 1}} & \multicolumn{2}{l}{\textbf{Scenario 2}} & \multicolumn{2}{l|}{\textbf{Scenario 3}} & \multicolumn{2}{l|}{\textbf{Scenario 4}} \\ \hline
@@ -306,6 +306,7 @@ $g \in \mc{G^{b}} $& Set of generators in each bus b \\
 
 \end{tabular}
 
+\newpage
 \subsection{Parameters}
 
 \begin{tabular}{ll}
@@ -458,8 +459,10 @@ In the case where there is no transmission constraints, the storage is incorpora
 
 \begin{subequations}
 \begin{align}
+\begin{split}
 \sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in T}V^{-}_{b,t} + \sum_{sd \in \mc{SD}} ST^{discharge}_{sd,t} &
 \\ = \sum_{t \in T} D_{b,t}  + \sum_{t \in T}V^{+}_{b,t} + \sum_{sd \in \mc{SD}} ST^{charge}_{sd,t} & \forall t \in T  \label{eq:loadBalanceConstraintStorage}
+\end{split}
 \end{align} 
 \end{subequations}
 
@@ -532,21 +535,23 @@ The data import section allows the user to import all the data necessary for our
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[keepaspectratio]{aimmsScreenImportPage.png}
-	  	\caption{Data Import page in AIMMS}
+	  	\caption{Data Import page in AIMMS.}
      	\label{fig:aimmsScreenImportPage}
 	\end{center}
 \end{figure}
 
+\newpage
 \subsubsection{Data Settings}
 
 After the data has been imported, the user has the chance to add/edit and view some data in an intuitive way. In \textit{Network Page}, it is possible to see the location of buses (in yellow), as well as locations of generators by type. The user can change the list to see whatever type he/she wants. In \textit{Data Buses Page}, it is possible to edit the peak load of each bus in the system. The \textit{Costs Page} has the start-up and variable cost for each generator type and unit group. In \textit{General Data Page} the user can add, edit and remove the main components of the system, i.e., buses, generators and unit groups, as well as changing general configurations, such as horizon dates, granularity and perturbation level for load and wind profiles under a sub-hourly level. 
 
 It is possible also to see the total load over time. In \textit{Generators Specification Page} it is possible to configure the main parameters that define a generator, such as its type, unit group and the bus where it is located. In \textit{Wind and Solar Availability Page} it is possible to view the Wind and Solar profile for the selected bus in the node, as well as locations that have either solar or wind profile mapped (marked with the blue ball). Lastly, the \textit{Summary Page} summarizes the total generation capacity and load, as well as total number of generators and its capacity per generator type.
 
+\newpage
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{aimmsDataPages.png}
-	  	\caption{Data Section Pages}
+	  	\caption{Data Section Pages.}
      	\label{fig:dataSectionPages}
 	\end{center}
 \end{figure}
@@ -580,7 +585,7 @@ In other words, it expresses the average ramping grouped by each generator type 
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{aimmsOptimizationSectionPages.png}
-	  	\caption{Optimization Section Pages}
+	  	\caption{Optimization Section Pages.}
      	\label{fig:optimizationSectionPages}
 	\end{center}
 \end{figure}
@@ -597,7 +602,7 @@ Our analysis has the primary goal of determining the impact of the following com
 \item Level of VRE: Scenarios 1, 2 and 3.
 \end{itemize}
 
-With all possible combinations of these factors, there are 18 UD and 18 ED data sets to analyse. These are defined as "test cases". The scenario name format in the graphs and analysis follows the following pattern:
+With all possible combinations of these factors, there are 18 UD and 18 ED data sets to analyse. These are defined as \textit{test cases}. The scenario name format in the graphs and analysis follows the following pattern:
 "Scenario Name" \_ "Time Granularity" \_ "Transmission Constraints ON/OFF (TY/TN)" \_ "Model Type (UC/ED)". For example, Scenario2\_15\_TY\_UC test case represents the Unit Commitment model run on a 15-minute level with transmission constraints on in the generator profiles of Scenario 2.
 
 The following metrics are outputs of analysis:
@@ -643,23 +648,26 @@ For Scenario 2, in all instances Coal, Oil and Nuclear generators were set to ru
   \label{fig:powerOutputScenario2}
 \end{figure}
 
+\newpage
 \subsection{Scenario 3}
 
-Scenario 3 is perhaps the most challenging and uncertain set to plan, especially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, especially in peak hours and low wind generation. 
-
-Also, transmission assumptions made a very important key in the power planning results: there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand at peak levels and to transmit energy coming from renewable resources. When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVRE, having NCTG-Old as a support to peak and low wind and solar generation moments. The UC model decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation is bounded by line transmission limits, so the solution turns on generators from other locations. Thus, although the system is able to fulfill most of the demand in Scenario 3, it is not able to transmit it.
-
-\begin{figure} 
+\begin{figure}[H] 
   \centering
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{PowerOutputScenario3.png}
   \caption{Power Output for Scenario 3.}
   \label{fig:powerOutputScenario3}
 \end{figure}
 
+Scenario 3 is perhaps the most challenging and uncertain set to plan, especially because of high variable resource penetration and their variability over time. In all configurations the demand was not entirely met, especially in peak hours and low wind generation. 
 
+Also, transmission assumptions made a very important key in the power planning results: there is a considerable difference in the generation for non-renewable resources when comparing transmission on and off, for both optimization models. The transmission is a bottleneck in two cases: to fulfil the demand at peak levels and to transmit energy coming from renewable resources. 
+
+When comparing the generation between UC and ED instances NGCC-New generators are the predominant source of NVRE, having NCTG-Old as a support to peak and low wind and solar generation moments. The UC model decided to turn on most of NGCC-Generators and keep them running at a minimal level during low demand when transmission is not consider. For the other case the generation is bounded by line transmission limits, so the solution turns on generators from other locations. Thus, although the system is able to fulfill most of the demand in Scenario 3, it is not able to transmit it.
+
+
+
+\newpage
 \subsection{Scenario 4 Storage Analysis}
-
-Scenario 4 deserves special analysis, since all the energy comes from intermittent sources and there are storage devices in the system (which was not the case in the previous scenarios). As an extreme case, for the same RTS-96 load, the objective is to use storage to avoid under-generation which can incur several penalties. One common question, which was the object of study of \citeauthor{safaei} \cite{safaei} is: how much storage is necessary in a green world to guarantee power supply? Figure \ref{fig:storageprofilestatus} displays the results of the optimization models to Economic Dispatch, segmented by 4 categories: the power generated by wind and solar, the power charged, the power discharged and the power not charged (over generation slack). Since there is no NVRE generator and it is assumed that all renewable generators are on permanently there was no reason to run this scenario under Unit Commitment instances. We observed no significant difference in between instances with or without transmission, since, in this scenario, storage devices were spread all over the network to minimize transmission limit bounds, which would be the case in ideal situations. However, it is important to mention that even with unlimited capacity there was some over generation in isolated periods, and the reason is as follows: there was an abrupt ramping in VRE generation higher than the ramping limits for the storage devices, so they were not able to store it. 
 
 \begin{figure}[H] 
 	\begin{center}
@@ -669,16 +677,19 @@ Scenario 4 deserves special analysis, since all the energy comes from intermitte
 	\end{center}
 \end{figure}
 
+Scenario 4 deserves special analysis, since all the energy comes from intermittent sources and there are storage devices in the system (which was not the case in the previous scenarios). As an extreme case, for the same RTS-96 load, the objective is to use storage to avoid under-generation which can incur several penalties. One common question, which was the object of study of \citeauthor{safaei} \cite{safaei} is: how much storage is necessary in a green world to guarantee power supply? Figure \ref{fig:storageprofilestatus} displays the results of the optimization models to Economic Dispatch, segmented by 4 categories: the power generated by wind and solar, the power charged, the power discharged and the power not charged (over generation slack). Since there is no NVRE generator and it is assumed that all renewable generators are on permanently there was no reason to run this scenario under Unit Commitment instances. We observed no significant difference in between instances with or without transmission, since, in this scenario, storage devices were spread all over the network to minimize transmission limit bounds, which would be the case in ideal situations. However, it is important to mention that even with unlimited capacity there was some over generation in isolated periods, and the reason is as follows: there was an abrupt ramping in VRE generation higher than the ramping limits for the storage devices, so they were not able to store it. 
+
 To estimate the amount of load that was satisfied by storage devices, we calculated the area of each instance described in figure \ref{fig:storageprofilestatus} of the total load (Generation + Discharge) and the Discharge curve itself, then divided both values. Figure \ref{fig:loadfilled} shows that in average nearly 47\% of the load had to be filled by storage devices, which corresponds to 4018.5 MW in a period of 7 days.
 
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.6\textwidth,keepaspectratio]{loadfilledstorage.png}
-	  	\caption{Percentage of load filled by storage devices per instance}
+	  	\caption{Percentage of load filled by storage devices per instance.}
      	\label{fig:loadfilled}
 	\end{center}
 \end{figure}
 
+\newpage
 \section{Optimization Results} \label{section:optimizationresults}
 
 Table \ref{table:modelparameters} describes the number of variables and parameters for each studied instance. 
@@ -687,7 +698,7 @@ Table \ref{table:modelparameters} describes the number of variables and paramete
 
 \begin{table}[H]
 \centering
-\caption{Optimization model parameters}
+\caption{Optimization model parameters.}
 \resizebox{0.5\linewidth}{!}{%
 \begin{tabular}{|l|l|l|}
 \hline
@@ -748,7 +759,7 @@ The UC model test was done as follows: at first, we realize it had a considerabl
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.7\textwidth,keepaspectratio]{mipgap.png}
-  \caption{Optimality gap for Unit Commitment instances (\%)}
+  \caption{Optimality gap for Unit Commitment instances (\%).}
   \label{fig:mipgap}
 \end{figure}
 
@@ -761,7 +772,7 @@ In general the solution times for Unit Commitment are much higher than Economic 
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS1.png}
-  \caption{Solution parameters - Scenario 1. Baseline: $\$658,218,352.9$}
+  \caption{Solution parameters - Scenario 1. Baseline: $\$658,218,352.9$.}
   \label{fig:solutionparameterss1}
 \end{figure}
 
@@ -776,7 +787,7 @@ In general, Unit Commitment instances reached the optimal solutions in times clo
 \begin{figure}[H] 
   \centering  
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS2.png}  
-  \caption{Solution parameters - Scenario 2. Baseline: $\$593,607,635.3$}
+  \caption{Solution parameters - Scenario 2. Baseline: $\$593,607,635.3$.}
   \label{fig:solutionparameterss2}
 \end{figure}
 
@@ -787,7 +798,7 @@ Scenario 3 presented different behaviour in terms of the final objective functio
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS3.png}
-  \caption{Solution parameters - Scenario 3. Baseline: $\$264,009,305,965$}
+  \caption{Solution parameters - Scenario 3. Baseline: $\$264,009,305,965$.}
   \label{fig:solutionparameterss3}
 \end{figure}
 
@@ -812,7 +823,7 @@ constraints is nearly 50 \%.
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{MaximumTransmissionLineUtilization.png}
   
-  \caption{Maximum utilization per transmission line, scenario and model type(\%)}
+  \caption{Maximum utilization per transmission line, scenario and model type(\%).}
   \label{fig:maximumutilizaton}
 \end{figure}
 
@@ -889,7 +900,7 @@ Scenario 1 is the one that has the most different startup profile between the 6 
   
 	  \includegraphics[width=0.8\textwidth,keepaspectratio]{activeGeneratorsS3.png}
   
-  \caption{Number of active generators by type over time for Scenario 2.}
+  \caption{Number of active generators by type over time for Scenario 3.}
   \label{fig:activeGeneratorsS3}
   
 \end{figure}
@@ -949,9 +960,12 @@ This project had the achievement of building a full test scenario that represent
 
 \end{itemize}
 
+
 \bibliographystyle{plainnat}
 \nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{biblio}
+
 %\addcontentsline{toc}{chapter}{Vita}
 \include{vita}
 \end{document}
