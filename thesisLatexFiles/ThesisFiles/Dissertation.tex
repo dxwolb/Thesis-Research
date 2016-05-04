@@ -61,7 +61,7 @@ Economic Dispatch (ED) models are often deterministic linear optimization models
 
 Unit Commitment (UC) models most often refer to mathematical programs that attempt to schedule generators to meet system load in the future based on some forecast of net load (load minus generation from renewable sources).  Whereas ED models typically assume generator availability has already been determined (and, thus, is an input to an ED model), a UC model must determine on/off decisions for each generator in the fleet in each future time period.  Consequently, UC models are often formulated as mixed-integer linear programs and are more difficult to solve than ED models. Stochastic and robust UC models include an additional layer of complexity by assuming that forecasted parameters are uncertain. The presence of additional binary variables in the model considerably increases the solution time. So, usually UC models are solved for less than a 24 hour horizon, on an hourly level. However, one of the goals for this project is evaluate what happens in terms of solution quality and time when the horizon is bigger and the time granularity is shorter.
 
-A secondary goal of this thesis is the development of an open-source software tool for power systems optimization. Why develop another power systems software tool? There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool "for solving power flow and optimal power flow problems" and thus is not ideal for multi period problems. In addition, one of the major drawbacks of Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Especially for starters, having a user-friendly intuitive tool with a simpler method can be much more powerful than a powerful technical one with a hard interface with which to interact.
+A secondary goal of this thesis is the development of an open-source software tool for power systems optimization. Why develop another power systems software tool? There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool ``for solving power flow and optimal power flow problems" and thus is not ideal for multi period problems. In addition, one of the major drawbacks of Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Especially for starters, having a user-friendly intuitive tool with a simpler method can be much more powerful than a powerful technical one with a hard interface with which to interact.
 
 The tool developed in this project more closely resembles the work done for Minpower \cite{greenhall:2012},
 an open-source toolkit coded in Python that relies on Pyomo \cite{pyomo:2012}. AIMMS provides a free academic license and thus can facilitate power systems optimization and analysis.
@@ -95,7 +95,7 @@ ED & ED &  &  &  &  & x & x \\ \hline
 \end{table}
 
 
-\citeauthor{yamin} \cite{yamin} discusses different techniques to solve the Unit Commitment and Economic Dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them . 
+\citeauthor{yamin} \cite{yamin} discusses different techniques to solve the Unit Commitment and Economic Dispatch problems, categorizing them in deterministic, heuristic or stochastic, pointing out the computational challenges and the quality of results for each one of them. 
 
 \citeauthor{bertsimas} \cite{bertsimas} proposes a two-stage robust optimization to mitigate demand and variability uncertainties to solve UC when renewable resources are a major element in the field. The authors point out the advantages of the method by comparing to traditional planning methods. 
 
@@ -125,12 +125,14 @@ To evaluate the proposed models and compare them with the existing literature, i
 
 The first version was developed in 1976 with load data, known as RTS-76, and two other versions were released with data improvements, RTS-86 and RTS-96. Only the RTS-96 has production costs for generating units, a required parameter for the proposed models in this thesis.
 
-The system is divided into 3 areas with 24 buses each, connected by high capacity transmission lines. The topology and the buses relative geographic positions are shown in figure \ref{fig:ieeetopology} \cite{wongieee}.
+The system is divided into 3 areas with 24 buses each, connected by high capacity transmission lines. The topology and the buses relative geographic positions are shown in Figure \ref{fig:ieeetopology} \cite{wongieee}.
 
 \begin{figure}[H]
-  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ieeetopology.png}
+\begin{center}
+  \includegraphics[width=\textwidth,height=0.95\textheight,keepaspectratio]{ieeetopology.png}
   \caption{RTS-96 Topology.}
   \label{fig:ieeetopology}
+\end{center}
 \end{figure}
 
 The dataset describes a peak load for each bus. The absolute load in every hour is a percentage of the peak load based on 3 components: the week of year, the day of week an the hour of the day. The hourly peak changes according to the season and if it is in a weekend or not. For example, the peak load of bus 101 is 108MW. On 01/07 at 12:00 PM the load is:
@@ -156,7 +158,7 @@ To generate instances with sub-hourly load profiles, the load during intra-hour 
   \label{fig:perturbationDifference}
 \end{figure}
 
-The original RTS-96 system has 87 generators distributed across the test field, with the distribution described in figure \ref{fig:generatorDistribution}. Sync generators are not considered for this study.
+The original RTS-96 system has 87 generators distributed across the test field, with the distribution described in Figure \ref{fig:generatorDistribution}. Sync generators are not considered for this study.
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{numberGeneratorsPerType.png}
@@ -178,7 +180,7 @@ The wind and solar profiles define the generation capacity for these renewable r
 \subsubsection{Wind Profile}
 
 
-Figure \ref{fig:texasWindProfile}, adapted from \cite{texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the "panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. As a result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
+Figure \ref{fig:texasWindProfile}, adapted from \cite{texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the ``panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. As a result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
@@ -208,8 +210,9 @@ Figure \ref{fig:texasSolarProfile}, adapted from \cite{texasSolarProfile}, displ
 \end{figure}
 
 
-It is important to notice that the highest incidence profile in the state of Texas is located in the west, followed by the northeast and center. The solar profile analysis follows the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in figure \ref{fig:solarProfileBus112January}.
+It is important to notice that the highest incidence profile in the state of Texas is located in the west, followed by the northeast and center. The solar profile analysis follows the same logic developed in the wind case. However, only buses located in the mentioned area had their profiles built. As an example, the solar profile for bus 112 (in far northeast of Texas) on January is shown in Figure \ref{fig:solarProfileBus112January}.
 
+\newpage
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.8\textwidth,keepaspectratio]{solarPotentialBus112.png}
@@ -238,21 +241,21 @@ This scenario captures the existing ERCOT capacity mix. 88\% of generation comes
 
 \subsubsection{Scenario 2: Stronger Federal Carbon Rule}
 
-Scenario 2 is built based on column "2032 Total" of table IV-10 in \cite{shavel}. This scenario is described as follows:
+Scenario 2 is built based on column ``2032 Total" of Table IV-10 in \cite{shavel}. This scenario is described as follows:
 
 \begin{quotation}
-"Our scenario with a strong federal carbon rule requires existing coal plants to capture and sequester 90\% of their CO2 output.(...)
-As one would expect, this case shows that most of the ERCOT coal plant fleet retires in 2025, the year we assume the carbon rule goes into effect. At this point, 16 GW of coal capacity providing more than 30\% of all ERCOT energy rapidly shifts to gas and renewable supply sources: 6 GW of new CC capacity and 3 GW of new wind capacity. In the next several years, another 3 GW of CC capacity is added, along with another 19 GW of wind. Solar becomes rapidly cost-effective in this scenario and quickly rises to over 8 GW installed by 2029. For the remainder of the scenario horizon, all additional load growth is met by solar and wind additions.”
+``Our scenario with a strong federal carbon rule requires existing coal plants to capture and sequester 90\% of their CO2 output.(...)
+As one would expect, this case shows that most of the ERCOT coal plant fleet retires in 2025, the year we assume the carbon rule goes into effect. At this point, 16 GW of coal capacity providing more than 30\% of all ERCOT energy rapidly shifts to gas and renewable supply sources: 6 GW of new CC capacity and 3 GW of new wind capacity. In the next several years, another 3 GW of CC capacity is added, along with another 19 GW of wind. Solar becomes rapidly cost-effective in this scenario and quickly rises to over 8 GW installed by 2029. For the remainder of the scenario horizon, all additional load growth is met by solar and wind additions."
 \end{quotation}
 
 In essence, 44\% of the generation is provided by natural gases, followed by 42\% of NVRE and 14\% of other sources. Most of the wind generators are located at buses 111-124, with some in 211-224. Solar generators are at buses 101-110.
 
 
-\subsubsection{Scenario 3: "Almost Green World"}
+\subsubsection{Scenario 3: ``Almost Green World''}
 
-This scenario is an extreme case of Scenario 2. All coal, nuclear and oil/steam generators have been retired and are no longer a part of the system. The grid runs entirely on wind and solar, with advanced natural gas combined cycle generators used primarily for ramping, flexibiliy and backup, i.e, to complete the demand when there is not enough wind and solar to fulfil the load. Wind and solar generators are located throughout the map, following the concentration based on wind and solar profiles from figures \ref{fig:texasSolarProfile} and \ref{fig:texasWindProfile}.
+This scenario is an extreme case of Scenario 2. All coal, nuclear and oil/steam generators have been retired and are no longer a part of the system. The grid runs entirely on wind and solar, with advanced natural gas combined cycle generators used primarily for ramping, flexibiliy and backup, i.e, to complete the demand when there is not enough wind and solar to fulfil the load. Wind and solar generators are located throughout the map, following the concentration based on wind and solar profiles from Figures \ref{fig:texasSolarProfile} and \ref{fig:texasWindProfile}.
 
-\subsubsection{Scenario 4: "Green World"}
+\subsubsection{Scenario 4: ``Green World"}
 
 In this scenario all the natural gases are replaced by battery storage. The generation is 100\% provided by wind and solar generators, with nameplate capacity bigger than Scenario 3. To mitigate the transmission generation limits, wind generators are located all over the field, while solar generators are still located in north east. There is no decision to turn on and off any generator, and the main decision is only how the storage behaviours in order to minimize under generation.
 
@@ -341,14 +344,13 @@ $S^{off}_{g,t} $& Shut-down status of generator g at time n\\
 $V^{-}_{b,t} $& Under generation slack variable at each bus b in time t\\
 $V^{+}_{b,t} $& Over generation slack variable at each bus b in time t\\
 $ST^{max}_{sd,t} $& Amount of energy stored in storage device sd in time t\\
-$ST^{charge}_{sd,t} $& Amount of energy charged in device sd in time t\\
-$ST^{discharge}_{sd,t} $& Amount of energy discharged in device sd in time t\\
+$ST^{ch}_{sd,t} $& Amount of energy charged in device sd in time t\\
+$ST^{disch}_{sd,t} $& Amount of energy discharged in device sd in time t\\
 
 \end{tabular}
 
 \subsection{Models}
 The Economic Dispatch model satisfies the load and transmission requirements at a minimum cost, following operational requirements such as generation, transmission and ramp limits. In this model, we assume that the commitment decisions have been already made. The main objective function of the studied models is to minimize operational costs over the planning horizon, including fuel, start-up, storage and other variable costs.
-we
 
 The types of constraints that manage the optimal dispatching are:
 
@@ -375,22 +377,32 @@ s.t. ~~~& \sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in
 \end{alignat} 
 \end{subequations}
 
-The constraint \ref{eq:loadBalanceConstraint} states the energy balance in every time. The constraints \ref{eq:rampDownRateConstraint} and \ref{eq:rampUpRateConstraint} state that every generator has to obey the ramp limits. The constraint \ref{eq:generationBounds} states the generation limits for each generator. The use of slack variables $V^{-}_{b,t}$ and $V^{+}_{b,t}$ is necessary to always have feasible solutions, and it is important for scenarios where there is a huge renewable penetration, when there's an abrupt variation of generation and there is a over or under generation.   
+The constraint \eqref{eq:loadBalanceConstraint} states the energy balance in every time. The constraints \eqref{eq:rampDownRateConstraint} and \eqref{eq:rampUpRateConstraint} state that every generator has to obey the ramp limits. The constraint \eqref{eq:generationBounds} states the generation limits for each generator. The use of slack variables $V^{-}_{b,t}$ and $V^{+}_{b,t}$ is necessary to always have feasible solutions, and it is important for scenarios where there is a huge renewable penetration, when there is an abrupt variation of generation and there is a over or under generation.   
 
 \subsubsection{Economic Dispatch with Transmission Constraints}
 
-In this case, the model has to consider transmission limits and losses, without transmission costs associated. The objective function \ref{eq:ObjectiveFunction} remains the same, and the constraints \ref{eq:rampUpRateConstraint}, \ref{eq:rampDownRateConstraint} and \ref{eq:generationBounds} are also used. The constraint \ref{eq:loadBalanceConstraint} is replaced by:  
+In this case, the model has to consider transmission limits and losses, without transmission costs associated. The objective function \eqref{eq:ObjectiveFunction} remains the same, and the constraints \eqref{eq:rampUpRateConstraint}, \eqref{eq:rampDownRateConstraint} and \eqref{eq:generationBounds} are also used. The constraint \eqref{eq:loadBalanceConstraint} is replaced by:  
+
+%\begin{subequations}\label{model:edTransmissionConstraints}
+%\begin{alignat}{4}
+%&\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t} = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t}  &~& \forall b \in B, t \in t \label{eq:transmissionBalanceConstraint} \\
+%& T^{min}_{l} \leq T_{b^{in},b^{out},t} \leq T^{max}_{l}  \forall b \in B, t \in t &~&  \label{eq:transmissionLimits}
+%\end{alignat} 
+%\end{subequations}
 
 \begin{subequations}\label{model:edTransmissionConstraints}
-\begin{alignat}{4}
-&\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t} = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t}  &~& \forall b \in B, t \in t \label{eq:transmissionBalanceConstraint} \\
-& T^{min}_{l} \leq T_{b^{in},b^{out},t} \leq T^{max}_{l}  &~& \forall b \in B, t \in t \label{eq:transmissionLimits}
-\end{alignat} 
+\begin{align}
+\begin{split}
+\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t} &
+\\ = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t}  &\forall b \in B, t \in t \label{eq:transmissionBalanceConstraint}
+\end{split}
+\\ T^{min}_{l} \leq T_{b^{in},b^{out},t} \leq T^{max}_{l} & \forall b \in B, t \in t \label{eq:transmissionLimits}
+\end{align} 
 \end{subequations}
 
-Constraint \ref{eq:transmissionBalanceConstraint} guarantees that the energy balance is always satisfied for every bus: everything that is generated and received from other buses should be equal to what is loaded and sent throughout the line with the respective losses. If this balance is not satisfied then under and over generation slack variables become non-zero. This bounds could also be written according to the difference of phase angles, followed by the susceptance law. In pratice, this would just limit the transmission limits, while adding more complexity to the model. Thus simplifying this law by just limiting the transmission of real power makes it simple and comply with the project objectives.
+Constraint \eqref{eq:transmissionBalanceConstraint} guarantees that the energy balance is always satisfied for every bus: everything that is generated and received from other buses should be equal to what is loaded and sent throughout the line with the respective losses. If this balance is not satisfied then under and over generation slack variables become non-zero. This bounds could also be written according to the difference of phase angles, followed by the susceptance law. In pratice, this would just limit the transmission limits, while adding more complexity to the model. Thus simplifying this law by just limiting the transmission of real power makes it simple and comply with the project objectives.
 
-The constraint \ref{eq:transmissionLimits} defines the transmission bounds for each line.
+The constraint \eqref{eq:transmissionLimits} defines the transmission bounds for each line.
 
 \subsubsection{Economic Dispatch model with Unit Commitment commitment constraints}
 Unit Commitment is the decision that considers the sets of generators that are turned on and off for the planned time horizon. The model includes decision variables to capture ``on'' and ``off'' states for thermal generators in each time period,along with the start-up and shut-down decisions. \citep{palmintier}. The set of constraints are added to the previous model, and the binary nature of the variables makes the problem an MIP, naturally harder to solve computationally \cite{james}. 
@@ -400,7 +412,7 @@ Unit Commitment is the decision that considers the sets of generators that are t
 & S_{g,t} = S^{on}_{g,t} - S^{off}_{g,t} + S_{g,t}  &~& \forall g \in \mc{G}^{NR} , t \in \mc{T} \label{eq:logconst}\end{alignat} 
 \end{subequations}
 
-Constraint \ref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \ref{eq:mindownt} and \ref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
+Constraint \eqref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \eqref{eq:mindownt} and \eqref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
 
 When there is the decision of turning the generator on or off, ramping and transmitting only apply if the generator is on in a certain time period. Therefore these constraints have the corresponding binary variable, as shown in \ref{model:UC_NewConstraints}. %fix the ramping models
 
@@ -421,7 +433,7 @@ In the Unit Commitment model, each generator must satisfy a minimum period to re
 \end{alignat} 
 \end{subequations}
 
-The ramping constraints \ref{eq:rampUpRateConstraint} and \ref{eq:rampDownRateConstraint} are replaced by constraints \ref{eq:rampUpRateUCConstraint} and \ref{eq:rampDownRateUCConstraint}.
+The ramping constraints \eqref{eq:rampUpRateConstraint} and \eqref{eq:rampDownRateConstraint} are replaced by constraints \eqref{eq:rampUpRateUCConstraint} and \eqref{eq:rampDownRateUCConstraint}.
 
 \begin{subequations}
 \begin{alignat}{4}
@@ -433,33 +445,34 @@ The ramping constraints \ref{eq:rampUpRateConstraint} and \ref{eq:rampDownRateCo
 
 \subsubsection{Economic Dispatch/Unit Commitment with Storage Constraints}
 
-Under a scenario where renewable resources are the major source of energy, storage devices are crucial to address fluctuations and uncertainties in generation, so they are an important key to keep the system stable \cite{dwyer}. When storage devices are available in the system, their operations are governed by the following constraints:
+Under a scenario where renewable resources are the major source of energy, storage devices are crucial to address fluctuations and uncertainties in generation, so they are an important key to keep the system stable \cite{dwyer}. When storage devices are available in the system, their operations are governed by constraints \eqref{eq:storageLimits}, \eqref{eq:storageRampingDown} and \eqref{eq:storageRampingUp}.
 
 \begin{subequations}\label{model:storageConstraints}
 \begin{alignat}{4}
-& ST^{max}_{sd,t} = ST^{max}_{sd,t - 1} + ST^{charge}_{sd,t} - ST^{discharge}_{sd,t}  &~& \forall sd \in SD, t \in t \label{eq:storageLimits} \\
-&  -ST^{ramp} \leq (ST^{charge}_{sd,t} - ST^{charge}_{sd,t-1}) + (ST^{discharge}_{sd,t} - ST^{discharge}_{sd,t-1}) \leq ST^{ramp}  &~& \forall sd \in SD, t \in t \label{eq:storageRamping}
+& ST^{max}_{sd,t} = ST^{max}_{sd,t - 1} + ST^{ch}_{sd,t} - ST^{disch}_{sd,t}  &~& \forall sd \in SD, t \in t \label{eq:storageLimits} \\
+& (ST^{ch}_{sd,t} - ST^{ch}_{sd,t-1}) + (ST^{disch}_{sd,t} - ST^{disch}_{sd,t-1}) \geq -ST^{ramp} &~& \forall sd \in SD, t \in t \label{eq:storageRampingDown} \\
+& (ST^{ch}_{sd,t} - ST^{ch}_{sd,t-1}) + (ST^{disch}_{sd,t} - ST^{disch}_{sd,t-1}) \leq ST^{ramp}  &~& \forall sd \in SD, t \in t \label{eq:storageRampingUp}
 \end{alignat} 
 \end{subequations}
 
-The load balance constraint at each bus \ref{eq:transmissionBalanceConstraint} also is modified, by incorporating the storage charging and discharging variables for storage devices located at the specific bus, as defined in equation \ref{eq:transmissionBalanceConstraintStorage}
+The load balance constraint at each bus \eqref{eq:transmissionBalanceConstraint} also is modified, by incorporating the storage charging and discharging variables for storage devices located at the specific bus, as defined in equation \eqref{eq:transmissionBalanceConstraintStorage}
 
 \begin{subequations}
 \begin{align}
 \begin{split}
-\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t}  + ST^{charge}_{sd \in b,t} &
-\\ = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t} + ST^{discharge}_{sd \in b,t}  & \forall b \in B, t \in t \label{eq:transmissionBalanceConstraintStorage}
+\sum_{g \in G^{b}} P^{NR}_{g,t} + \sum_{g \in G^{b}} P^{R}_{g,t} + \sum_{b^{in} \in B} T_{b^{in},b,t} + V^{-}_{b,t}  + ST^{ch}_{sd \in b,t} &
+\\ = D_{b,t}  + V^{+}_{b,t} + \sum_{b^{out} \in B} T_{b,b^{out},t} + ST^{disch}_{sd \in b,t}  & \forall b \in B, t \in t \label{eq:transmissionBalanceConstraintStorage}
 \end{split}
 \end{align} 
 \end{subequations}
 
-In the case where there is no transmission constraints, the storage is incorporating in the general balance constraint \ref{eq:loadBalanceConstraint}
+In the case where there is no transmission constraints, the storage is incorporating in the general balance constraint \eqref{eq:loadBalanceConstraint}.
 
 \begin{subequations}
 \begin{align}
 \begin{split}
-\sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in T}V^{-}_{b,t} + \sum_{sd \in \mc{SD}} ST^{discharge}_{sd,t} &
-\\ = \sum_{t \in T} D_{b,t}  + \sum_{t \in T}V^{+}_{b,t} + \sum_{sd \in \mc{SD}} ST^{charge}_{sd,t} & \forall t \in T  \label{eq:loadBalanceConstraintStorage}
+\sum_{t \in T} P^{NR}_{g,t} + \sum_{t \in T} P^{R}_{g,t} + \sum_{t \in T}V^{-}_{b,t} + \sum_{sd \in \mc{SD}} ST^{disch}_{sd,t} &
+\\ = \sum_{t \in T} D_{b,t}  + \sum_{t \in T}V^{+}_{b,t} + \sum_{sd \in \mc{SD}} ST^{ch}_{sd,t} & \forall t \in T  \label{eq:loadBalanceConstraintStorage}
 \end{split}
 \end{align} 
 \end{subequations}
@@ -557,17 +570,14 @@ It is possible also to see the total load over time. In \textit{Generators Speci
 
 \subsubsection{Optimization and Results}
 
-The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results in an intuitive way. 
-The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results in an intuitive way. 
-
-The user has the option either to solve the Economic Dispatch or Unit Commitment problems, with or without the following features:
+The optimization section contains all the required settings to run the optimization, as well as the tables and graphs to analyse the results in an intuitive way. The user has the option either to solve the Economic Dispatch or Unit Commitment problems, with or without the following features:
 
 \begin{itemize}
 \item Ramping Constraints
 \item Transmission Constraints
 \item Reserve Constraints
 \item Slack Variables
-\item Transmission Losses (if "Transmission Constraints" is chosen)
+\item Transmission Losses (if ``Transmission Constraints" is chosen)
 \end{itemize}
 
 In \textit{Demand, Load and Transmission}, it is possible to see, for every bus in every time period, the load, generation and transmission flows in and out. It also is possible to see this same flow in a graphic way in \textit{Transmission Map} section, for each time time period, as well as the location of VRE(in green) and active(red) and inactive(gray) NVRE. The \textit{Average Load Distribution} contains the graph displaying the average load for each generator type within a day, while in \textit{Load Distribution Page} it is possible to see the generation distribution per time period, as well as the total load, being useful to identify over and under generation. The \textit{Power Output Result} details the generation by each generator, in a table. Finally, the \textit{Location Marginal Prices} page contains the Shadow Prices by time period for each location, and it is useful to identify potential investments or bottlenecks.
@@ -601,7 +611,7 @@ Our analysis has the primary goal of determining the impact of the following com
 \end{itemize}
 
 With all possible combinations of these factors, there are 18 UD and 18 ED data sets to analyse. These are defined as \textit{test cases}. The scenario name format in the graphs and analysis follows the following pattern:
-"Scenario Name" \_ "Time Granularity" \_ "Transmission Constraints ON/OFF (TY/TN)" \_ "Model Type (UC/ED)". For example, Scenario2\_15\_TY\_UC test case represents the Unit Commitment model run on a 15-minute level with transmission constraints on in the generator profiles of Scenario 2.
+``Scenario Name" \_ ``Time Granularity" \_ ``Transmission Constraints ON/OFF (TY/TN)" \_ ``Model Type (UC/ED)". For example, Scenario2\_15\_TY\_UC test case represents the Unit Commitment model run on a 15-minute level with transmission constraints on in the generator profiles of Scenario 2.
 
 The following metrics are outputs of analysis:
 
@@ -677,7 +687,7 @@ When comparing the generation between UC and ED instances NGCC-New generators ar
 
 Scenario 4 deserves special analysis, since all the energy comes from intermittent sources and there are storage devices in the system (which was not the case in the previous scenarios). As an extreme case, for the same RTS-96 load, the objective is to use storage to avoid under-generation which can incur several penalties. One common question, which was the object of study of \citeauthor{safaei} \cite{safaei} is: how much storage is necessary in a green world to guarantee power supply? Figure \ref{fig:storageprofilestatus} displays the results of the optimization models to Economic Dispatch, segmented by 4 categories: the power generated by wind and solar, the power charged, the power discharged and the power not charged (over generation slack). Since there is no NVRE generator and it is assumed that all renewable generators are on permanently there was no reason to run this scenario under Unit Commitment instances. We observed no significant difference in between instances with or without transmission, since, in this scenario, storage devices were spread all over the network to minimize transmission limit bounds, which would be the case in ideal situations. However, it is important to mention that even with unlimited capacity there was some over generation in isolated periods, and the reason is as follows: there was an abrupt ramping in VRE generation higher than the ramping limits for the storage devices, so they were not able to store it. 
 
-To estimate the amount of load that was satisfied by storage devices, we calculated the area of each instance described in figure \ref{fig:storageprofilestatus} of the total load (Generation + Discharge) and the Discharge curve itself, then divided both values. Figure \ref{fig:loadfilled} shows that in average nearly 47\% of the load had to be filled by storage devices, which corresponds to 4018.5 MW in a period of 7 days.
+To estimate the amount of load that was satisfied by storage devices, we calculated the area of each instance described in Figure \ref{fig:storageprofilestatus} of the total load (Generation + Discharge) and the Discharge curve itself, then divided both values. Figure \ref{fig:loadfilled} shows that in average nearly 47\% of the load had to be filled by storage devices, which corresponds to 4018.5 MW in a period of 7 days.
 
 \begin{figure}[H] 
 	\begin{center}
@@ -778,7 +788,7 @@ In general the solution times for Unit Commitment are much higher than Economic 
 
 In scenario 2 all the solutions were relatively close to each other, with the maximum solution as only 3.7 \% of the baseline. The cheapest solution was found in the instance S2\_5\_TN\_UC, indicating that, even with more demand and wind variability under sub-hourly level the solver was able to make a better plan.
 
-It is easy to see that all the instances with transmission have a solution at least 3.5 \% of the baseline, with results similarly closer to each other. This indicates that in this case transmission limits play an important part in power planning, as was observed in figure \ref{fig:powerOutputScenario2}.
+It is easy to see that all the instances with transmission have a solution at least 3.5 \% of the baseline, with results similarly closer to each other. This indicates that in this case transmission limits play an important part in power planning, as was observed in Figure \ref{fig:powerOutputScenario2}.
 
 In general, Unit Commitment instances reached the optimal solutions in times closer to the ones in Scenario 1, except for the 5 minute level. The no-transmission version took 29 minutes, whereas with transmission, took almost 2 hours. So, although it seems advantageous to plan the power distribution under sub-hourly levels for this scenario, solution time can be a problem.
 
@@ -791,7 +801,7 @@ In general, Unit Commitment instances reached the optimal solutions in times clo
 
 \subsubsection{Scenario 3}
 
-Scenario 3 presented different behaviour in terms of the final objective function, because of the under and over generation presented in most of instances, as observed in figure \ref{fig:powerOutputScenario3}. In terms of solution time, Scenario 3 presents better results in all instances compared to Scenarios 2 and 1. One can explain it based on the lower NVRE presence in the generation distribution, and consequently the number of decision variables. The highest solution time was set to the instance S3\_5\_TY\_UC, that took 18 minutes to solve for a weekly base. This result suggests that sub-hourly levels are more attractive to solve in this case.
+Scenario 3 presented different behaviour in terms of the final objective function, because of the under and over generation presented in most of instances, as observed in Figure \ref{fig:powerOutputScenario3}. In terms of solution time, Scenario 3 presents better results in all instances compared to Scenarios 2 and 1. One can explain it based on the lower NVRE presence in the generation distribution, and consequently the number of decision variables. The highest solution time was set to the instance S3\_5\_TY\_UC, that took 18 minutes to solve for a weekly base. This result suggests that sub-hourly levels are more attractive to solve in this case.
 
 \begin{figure}[H] 
   \centering
@@ -835,14 +845,14 @@ As for Scenario 3, both Unit Commitment and Economic Dispatch solutions suggests
 
 \section{Ramping Results} \label{section:ramping}
 
-Another goal of this project is to evaluate the impact on non-renewable generators ramping when the power planning done at different granularities for different scenarios. The average ramping is normalized by the generator type maximum capacity. The normalization was necessary to avoid the idea of low-capacity generators ramping less than high-capacity ones. The results are displayed in figure  \ref{fig:averageramping}.
+Another goal of this project is to evaluate the impact on non-renewable generators ramping when the power planning done at different granularities for different scenarios. The average ramping is normalized by the generator type maximum capacity. The normalization was necessary to avoid the idea of low-capacity generators ramping less than high-capacity ones. The results are displayed in Figure  \ref{fig:averageramping}.
 
 \begin{figure}[H] 
   \centering
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{averageRamping.png}
   
-  \caption{Average Ramping of Non-renewable Generators, Normalized by Maximum Capacity.}
+  \caption{Average Ramping of Non-renewable Generators, Normalized by their Maximum Capacity.}
   \label{fig:averageramping}
     
 \end{figure}
@@ -852,7 +862,7 @@ The ramping results for the Economic Dispatch model seem to follow a pattern: th
 In Scenario 1 there is no significant difference between Unit Commitment and Economic Dispatch instances in terms or ramping, except in the case of NGCC-New generators. The reason for this is the absence of minimum generation in ED models and the use of this type of generator only during peak levels. The instance S1\_5\_TN\_ED generated a bigger average ramping result for NGCC-New generators. The optimal solution decided to not ramp the base generators during peak levels and let the NGCC-handle all the variabilites. Also, the fact that it is used only during peak and then it is shutdown might be another reason.
 %Complete and try to explain why
 
-In Scenario 2, although transmission is not a bottleneck in the sense that it provides generation gaps, it definitely changed the generation profile of each individual NGCC-New generator. When transmission constraints are enabled, the solution provides less intermittent generation than when it is not. This was also observed in Unit Commitment instances, as observed in figure    \ref{fig:generationProfileNGCC}. The same applies for sub-hourly planning levels. A generation profile as seen in S2\_60\_TN\_ED definitely can increase the maintenance costs, due to this constant ramps.
+In Scenario 2, although transmission is not a bottleneck in the sense that it provides generation gaps, it definitely changed the generation profile of each individual NGCC-New generator. When transmission constraints are enabled, the solution provides less intermittent generation than when it is not. This was also observed in Unit Commitment instances, as observed in Figure    \ref{fig:generationProfileNGCC}. The same applies for sub-hourly planning levels. A generation profile as seen in S2\_60\_TN\_ED definitely can increase the maintenance costs, due to this constant ramps.
 
 \begin{figure}[H] 
   \centering

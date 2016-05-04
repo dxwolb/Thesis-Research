@@ -13,8 +13,8 @@
 \contentsline {subsection}{\numberline {3.1.4}Scenarios Description}{19}
 \contentsline {subsubsection}{Scenario 1: Reference}{19}
 \contentsline {subsubsection}{Scenario 2: Stronger Federal Carbon Rule}{20}
-\contentsline {subsubsection}{Scenario 3: "Almost Green World"}{20}
-\contentsline {subsubsection}{Scenario 4: "Green World"}{21}
+\contentsline {subsubsection}{Scenario 3: ``Almost Green World''}{20}
+\contentsline {subsubsection}{Scenario 4: ``Green World"}{21}
 \contentsline {subsubsection}{Generation per Scenario}{21}
 \contentsline {section}{\numberline {3.2}Models}{22}
 \contentsline {subsection}{\numberline {3.2.1}Indices and Sets}{22}
