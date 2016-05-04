@@ -75,7 +75,7 @@ As mentioned previously, power planning is a popular topic in Operations Researc
 % \usepackage{multirow}
 \begin{table}[h!]
 \centering
-\caption{Optimal power flow categories. \cite{cain}}
+\caption{Optimal Power Flow Categories.}
 \resizebox{\linewidth}{!}{%
 \label{table:PowerSystemsCat}
 \begin{tabular}{|l|l|l|l|l|l|l|l|}
@@ -125,11 +125,11 @@ To evaluate the proposed models and compare them with the existing literature, i
 
 The first version was developed in 1976 with load data, known as RTS-76, and two other versions were released with data improvements, RTS-86 and RTS-96. Only the RTS-96 has production costs for generating units, a required parameter for the proposed models in this thesis.
 
-The system is divided into 3 areas with 24 buses each, connected by high capacity transmission lines. The topology and the buses relative geographic positions are shown in figure \ref{fig:ieeetopology}.
+The system is divided into 3 areas with 24 buses each, connected by high capacity transmission lines. The topology and the buses relative geographic positions are shown in figure \ref{fig:ieeetopology} \cite{wongieee}.
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ieeetopology.png}
-  \caption{RTS-96 topology. \cite{wongieee}}
+  \caption{RTS-96 Topology.}
   \label{fig:ieeetopology}
 \end{figure}
 
@@ -144,7 +144,7 @@ Figure \ref{fig:totalSystemLoadJuly} displays the total system load throughout t
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{totalSystemLoadJuly.png}
-  \caption{Total system load (MW) in July 2015.}
+  \caption{Total System Load (MW) in July 2015.}
   \label{fig:totalSystemLoadJuly}
 \end{figure}
 
@@ -152,7 +152,7 @@ To generate instances with sub-hourly load profiles, the load during intra-hour 
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{perturbationDifference.png}
-  \caption{System load (MW) for 5 days in July with 15- and 60-minute resolution.}
+  \caption{System Load (MW) for 5 Days in July With 15- and 60-minute Resolution.}
   \label{fig:perturbationDifference}
 \end{figure}
 
@@ -160,11 +160,9 @@ The original RTS-96 system has 87 generators distributed across the test field, 
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{numberGeneratorsPerType.png}
-  \caption{Total number of generators per type.}
+  \caption{Total Number of Generators per Type.}
   \label{fig:generatorDistribution}
 \end{figure}
-
-
 
 The total peak load is 8550 MW while the total generation capacity is 9975 MW. 
 
@@ -180,11 +178,11 @@ The wind and solar profiles define the generation capacity for these renewable r
 \subsubsection{Wind Profile}
 
 
-Figure \ref{fig:texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the "panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. As a result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
+Figure \ref{fig:texasWindProfile}, adapted from \cite{texasWindProfile} shows the Texas Annual Average Wind speed and the relative geographic positions of RTS-96 buses \cite{wongieee}. The flat northern border is known as the "panhandle" because the state of Oklahoma, north of Texas, is shaped like a pan. The handle of this pan is where most of the wind potential resides. As a result, most of the new generators are being installed in northwest \cite{texasWindProfile}.
 
 \begin{figure}[H] 
   \includegraphics[width=\textwidth,keepaspectratio]{texasWindProfileWithBuses.png}
-  \caption{Wind Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasWindProfile}. }
+  \caption{Wind Potential for Texas with RTS-96 Bus Locations.}
   \label{fig:texasWindProfile}
 \end{figure}
 
@@ -200,12 +198,12 @@ To build the wind potential, each bus was associated with a Texas city or region
 \newpage
 \subsubsection{Solar Profile}
 
-Figure \ref{fig:texasSolarProfile} displays the NREL's solar incidence report in the state of Texas and the relative geographic positions of RTS-96 buses. 
+Figure \ref{fig:texasSolarProfile}, adapted from \cite{texasSolarProfile}, displays the NREL's solar incidence report in the state of Texas and the relative geographic positions of RTS-96 buses. 
 
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.6\textwidth,height=\textheight,keepaspectratio]{texasSolarProfileWithBuses.png}
-	  	\caption{Solar Potential for Texas with RTS-96 Bus Locations. Adapted from \cite{texasSolarProfile}. }	  		\label{fig:texasSolarProfile}
+	  	\caption{Solar Potential for Texas with RTS-96 Bus Locations.}	  		\label{fig:texasSolarProfile}
 	\end{center}
 \end{figure}
 
@@ -264,7 +262,7 @@ The nameplate capacity of the base case scenario described by \citeauthor{shavel
 
 \begin{table}[H]
 \centering
-\caption{Capacity of each generator type expressed in MW as a percentage of total capacity in the 4 scenarios.}
+\caption{Capacity of Each Generator Type Expressed in MW as a Percentage of Total Capacity in the 4 Scenarios.}
 \begin{tabular}{|lllllll|l|l|}
 \hline
                & \multicolumn{2}{l}{\textbf{Scenario 1}} & \multicolumn{2}{l}{\textbf{Scenario 2}} & \multicolumn{2}{l|}{\textbf{Scenario 3}} & \multicolumn{2}{l|}{\textbf{Scenario 4}} \\ \hline
@@ -535,7 +533,7 @@ The data import section allows the user to import all the data necessary for our
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[keepaspectratio]{aimmsScreenImportPage.png}
-	  	\caption{Data Import page in AIMMS.}
+	  	\caption{Data Import Page in AIMMS.}
      	\label{fig:aimmsScreenImportPage}
 	\end{center}
 \end{figure}
@@ -672,7 +670,7 @@ When comparing the generation between UC and ED instances NGCC-New generators ar
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=\textwidth,keepaspectratio]{StorageProfileStatusS4.png}
-	  	\caption{Storage device profile status for Scenario 4.}
+	  	\caption{Storage Device Profile Status for Scenario 4.}
      	\label{fig:storageprofilestatus}
 	\end{center}
 \end{figure}
@@ -684,7 +682,7 @@ To estimate the amount of load that was satisfied by storage devices, we calcula
 \begin{figure}[H] 
 	\begin{center}
 		\includegraphics[width=0.6\textwidth,keepaspectratio]{loadfilledstorage.png}
-	  	\caption{Percentage of load filled by storage devices per instance.}
+	  	\caption{Percentage of Load Filled by Storage Devices per Instance.}
      	\label{fig:loadfilled}
 	\end{center}
 \end{figure}
@@ -698,7 +696,7 @@ Table \ref{table:modelparameters} describes the number of variables and paramete
 
 \begin{table}[H]
 \centering
-\caption{Optimization model parameters.}
+\caption{Optimization Model Parameters.}
 \resizebox{0.5\linewidth}{!}{%
 \begin{tabular}{|l|l|l|}
 \hline
@@ -759,7 +757,7 @@ The UC model test was done as follows: at first, we realize it had a considerabl
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.7\textwidth,keepaspectratio]{mipgap.png}
-  \caption{Optimality gap for Unit Commitment instances (\%).}
+  \caption{Optimality Gap for Unit Commitment Instances (\%).}
   \label{fig:mipgap}
 \end{figure}
 
@@ -772,7 +770,7 @@ In general the solution times for Unit Commitment are much higher than Economic 
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS1.png}
-  \caption{Solution parameters - Scenario 1. Baseline: $\$658,218,352.9$.}
+  \caption{Solution Parameters - Scenario 1. Baseline: $\$658,218,352.9$.}
   \label{fig:solutionparameterss1}
 \end{figure}
 
@@ -787,7 +785,7 @@ In general, Unit Commitment instances reached the optimal solutions in times clo
 \begin{figure}[H] 
   \centering  
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS2.png}  
-  \caption{Solution parameters - Scenario 2. Baseline: $\$593,607,635.3$.}
+  \caption{Solution Parameters - Scenario 2. Baseline: $\$593,607,635.3$.}
   \label{fig:solutionparameterss2}
 \end{figure}
 
@@ -798,7 +796,7 @@ Scenario 3 presented different behaviour in terms of the final objective functio
 \begin{figure}[H] 
   \centering
 	  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{SolutionParametersS3.png}
-  \caption{Solution parameters - Scenario 3. Baseline: $\$264,009,305,965$.}
+  \caption{Solution Parameters - Scenario 3. Baseline: $\$264,009,305,965$.}
   \label{fig:solutionparameterss3}
 \end{figure}
 
@@ -810,7 +808,7 @@ constraints is nearly 50 \%.
   
 	  \includegraphics[width=0.8\textwidth,keepaspectratio]{genprofileS3.png}
   
-  \caption{Generation profile cost for all instances in Scenario 3.}
+  \caption{Generation Profile Cost for All Instances in Scenario 3.}
   \label{fig:genprofileS3}
 \end{figure}
 
@@ -823,7 +821,7 @@ constraints is nearly 50 \%.
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{MaximumTransmissionLineUtilization.png}
   
-  \caption{Maximum utilization per transmission line, scenario and model type(\%).}
+  \caption{Maximum Utilization per Transmission Line, Scenario and Model Type(\%).}
   \label{fig:maximumutilizaton}
 \end{figure}
 
@@ -844,7 +842,7 @@ Another goal of this project is to evaluate the impact on non-renewable generato
   
 	  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{averageRamping.png}
   
-  \caption{Average ramping of non-renewable generators, normalized by their maximum capacity.}
+  \caption{Average Ramping of Non-renewable Generators, Normalized by Maximum Capacity.}
   \label{fig:averageramping}
     
 \end{figure}
@@ -861,7 +859,7 @@ In Scenario 2, although transmission is not a bottleneck in the sense that it pr
   
 	  \includegraphics[width=\textwidth,keepaspectratio]{generationProfileNGCC.png}
   
-  \caption{Generation profile for 3 individual NGCC-New generators for a 60-minute level.}
+  \caption{Generation Profile for 3 Individual NGCC-New Generators for a 60-minute Level.}
   \label{fig:generationProfileNGCC}
   
 \end{figure}
@@ -880,7 +878,7 @@ Scenario 1 is the one that has the most different startup profile between the 6 
   
 	  \includegraphics[width=0.8\textwidth,keepaspectratio]{activeGeneratorsS1.png}
   
-  \caption{Number of active generators by type over time for Scenario 1.}
+  \caption{Number of Active Generators by Type over Time for Scenario 1.}
   \label{fig:activeGeneratorsS1}
   \end{figure}
   
@@ -889,7 +887,7 @@ Scenario 1 is the one that has the most different startup profile between the 6 
   
 	  \includegraphics[width=0.8\textwidth,keepaspectratio]{activeGeneratorsS2.png}
   
-  \caption{Number of active generators by type over time for Scenario 2.}
+  \caption{Number of Active Generators by Type over Time for Scenario 2.}
   \label{fig:activeGeneratorsS2}
   
 \end{figure}
@@ -900,7 +898,7 @@ Scenario 1 is the one that has the most different startup profile between the 6 
   
 	  \includegraphics[width=0.8\textwidth,keepaspectratio]{activeGeneratorsS3.png}
   
-  \caption{Number of active generators by type over time for Scenario 3.}
+  \caption{Number of Active Generators by Type over Time for Scenario 3.}
   \label{fig:activeGeneratorsS3}
   
 \end{figure}
