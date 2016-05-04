@@ -61,7 +61,7 @@ Economic Dispatch (ED) models are often deterministic linear optimization models
 
 Unit Commitment (UC) models most often refer to mathematical programs that attempt to schedule generators to meet system load in the future based on some forecast of net load (load minus generation from renewable sources).  Whereas ED models typically assume generator availability has already been determined (and, thus, is an input to an ED model), a UC model must determine on/off decisions for each generator in the fleet in each future time period.  Consequently, UC models are often formulated as mixed-integer linear programs and are more difficult to solve than ED models. Stochastic and robust UC models include an additional layer of complexity by assuming that forecasted parameters are uncertain. The presence of additional binary variables in the model considerably increases the solution time. So, usually UC models are solved for less than a 24 hour horizon, on an hourly level. However, one of the goals for this project is evaluate what happens in terms of solution quality and time when the horizon is bigger and the time granularity is shorter.
 
-A secondary goal of this thesis is the development of an open-source software tool for power systems optimization. Why develop another power systems software tool? There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{matpower:2011}, which is advertised as a tool ``for solving power flow and optimal power flow problems" and thus is not ideal for multi period problems. In addition, one of the major drawbacks of Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Especially for starters, having a user-friendly intuitive tool with a simpler method can be much more powerful than a powerful technical one with a hard interface with which to interact.
+A secondary goal of this thesis is the development of an open-source software tool for power systems optimization. Why develop another power systems software tool? There are a number of existing tools available in the power systems community (see the references given in \cite{greenhall:2012}). For example, one of the most popular open-source tools is MatPower \cite{zimmerman}, which is advertised as a tool ``for solving power flow and optimal power flow problems" and thus is not ideal for multi period problems. In addition, one of the major drawbacks of Matlab is that it lacks a user-friendly algebraic modelling interface.  Instead, one must enter constraints as vectors or matrices, which is less natural than the algebraic models that students are taught and practitioners use in the optimization community. Especially for starters, having a user-friendly intuitive tool with a simpler method can be much more powerful than a powerful technical one with a hard interface with which to interact.
 
 The tool developed in this project more closely resembles the work done for Minpower \cite{greenhall:2012},
 an open-source toolkit coded in Python that relies on Pyomo \cite{pyomo:2012}. AIMMS provides a free academic license and thus can facilitate power systems optimization and analysis.
@@ -414,7 +414,7 @@ Unit Commitment is the decision that considers the sets of generators that are t
 
 Constraint \eqref{eq:logconst} specifies the logical condition between the binary variables, assuring that a generator can not be on if it was not turned on. The same is valid for turning it off. Constraints \eqref{eq:mindownt} and \eqref{eq:minupt} forces the generator to follow their minimum downtime and uptime periods when they are turned on or off. 
 
-When there is the decision of turning the generator on or off, ramping and transmitting only apply if the generator is on in a certain time period. Therefore these constraints have the corresponding binary variable, as shown in \ref{model:UC_NewConstraints}. %fix the ramping models
+When there is the decision of turning the generator on or off, ramping and transmitting only apply if the generator is on in a certain time period. Therefore these constraints have the corresponding binary variable, as shown in \eqref{model:UC_NewConstraints}. %fix the ramping models
 
 \begin{subequations}\label{model:UC_NewConstraints}
 \begin{alignat}{4}
@@ -877,7 +877,7 @@ In Scenario 2, although transmission is not a bottleneck in the sense that it pr
 
 In Scenario 3, again, the transmission bottleneck also affects the ramping capability of generators in the sense that it limits NGCC-New generators from responding to quick load and VREs variations. It is observed that the ramping profile is very similar between ED and UC instances when transmission is off. When it is on, NGCT-Old has a slight increase in its ramping, and the same is true for 5-minute level for NGCC-New generators. 
 
-\section{Unit Commitment start-up / shutdown levels} \label{section:uconoffstatus}
+\section{Unit Commitment Binary Variables Results} \label{section:uconoffstatus}
 
 The last analysis of this report discusses the start up/shutdown behavior of NVRE types provided by Unit Commitment results. Figures \ref{fig:activeGeneratorsS1}, \ref{fig:activeGeneratorsS2} and \ref{fig:activeGeneratorsS3} demonstrate the number of active generators over time.
 
@@ -891,7 +891,7 @@ Scenario 1 is the one that has the most different startup profile between the 6 
   \caption{Number of Active Generators by Type over Time for Scenario 1.}
   \label{fig:activeGeneratorsS1}
   \end{figure}
-  
+
   \begin{figure}[H] 
   \centering
   
@@ -969,7 +969,8 @@ This project had the achievement of building a full test scenario that represent
 \end{itemize}
 
 
-\bibliographystyle{plainnat}
+%\bibliographystyle{plainnat}
+\bibliographystyle{IEEEtranSN}
 \nocite{*}
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{biblio}

@@ -47,7 +47,7 @@
 \contentsline {subsubsection}{Scenario 3}{48}
 \contentsline {section}{\numberline {4.3}Transmission Results}{50}
 \contentsline {section}{\numberline {4.4}Ramping Results}{51}
-\contentsline {section}{\numberline {4.5}Unit Commitment start-up / shutdown levels}{54}
+\contentsline {section}{\numberline {4.5}Unit Commitment Binary Variables Results}{54}
 \contentsline {chapter}{\numberline {5}Conclusions}{57}
 \contentsline {section}{\numberline {5.1}Discussions}{57}
 \contentsline {section}{\numberline {5.2}Future Improvements}{60}

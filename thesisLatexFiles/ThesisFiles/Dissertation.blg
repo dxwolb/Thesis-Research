@@ -5,54 +5,63 @@ A level-1 auxiliary file: coverCopyright.aux
 A level-1 auxiliary file: signatures.aux
 A level-1 auxiliary file: dedication.aux
 A level-1 auxiliary file: myAbstract.aux
-The style file: plainnat.bst
+The style file: IEEEtranSN.bst
 A level-1 auxiliary file: vita.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: biblio.bib
-Warning--empty year in texasWindProfile
-Warning--empty year in ercotGenerationWind
-Warning--empty year in fraunpower
-Warning--empty year in texasSolarProfile
-Warning--empty year in mitindia
+-- IEEEtranSN.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--empty journal in shavel
-You've used 46 entries,
-            2773 wiz_defined-function locations,
-            874 strings with 12948 characters,
-and the built_in function-call counts, 22862 in all, are:
-= -- 2020
-> -- 1393
-< -- 27
-+ -- 473
-- -- 426
-* -- 1978
-:= -- 3540
-add.period$ -- 169
-call.type$ -- 46
-change.case$ -- 271
-chr.to.int$ -- 45
-cite$ -- 98
-duplicate$ -- 979
-empty$ -- 1799
-format.name$ -- 490
-if$ -- 4771
-int.to.chr$ -- 2
+
+Done.
+You've used 45 entries,
+            5174 wiz_defined-function locations,
+            1256 strings with 16158 characters,
+and the built_in function-call counts, 46991 in all, are:
+= -- 4433
+> -- 1709
+< -- 361
++ -- 760
+- -- 417
+* -- 2599
+:= -- 6949
+add.period$ -- 86
+call.type$ -- 45
+change.case$ -- 225
+chr.to.int$ -- 804
+cite$ -- 91
+duplicate$ -- 2826
+empty$ -- 2982
+format.name$ -- 514
+if$ -- 10537
+int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 44
-newline$ -- 268
-num.names$ -- 184
-pop$ -- 515
+missing$ -- 434
+newline$ -- 159
+num.names$ -- 180
+pop$ -- 1157
 preamble$ -- 1
-purify$ -- 233
-quote$ -- 0
-skip$ -- 734
+purify$ -- 183
+quote$ -- 2
+skip$ -- 3487
 stack$ -- 0
-substring$ -- 908
-swap$ -- 107
-text.length$ -- 7
+substring$ -- 1913
+swap$ -- 2192
+text.length$ -- 88
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 491
-warning$ -- 6
-while$ -- 186
+top$ -- 6
+type$ -- 1053
+warning$ -- 1
+while$ -- 242
 width$ -- 0
-write$ -- 650
-(There were 6 warnings)
+write$ -- 553
+(There was 1 warning)
