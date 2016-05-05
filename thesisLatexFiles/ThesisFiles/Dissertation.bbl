@@ -78,9 +78,10 @@ J.~P. Deane, G.~Drayton, and B.~P.~√. Gallach√≥ir, ``The impact of sub-hourly
   modelling in power systems with significant levels of renewable generation,''
   \emph{Applied Energy}, vol. 113, pp. 152--158, 1 2014.
 
-\bibitem[{ERCOT}()]{ercotGenerationWind}
-{ERCOT}, \emph{Generation}, available at
-  http://www.ercot.com/gridinfo/generation.
+\bibitem[{Electric Reliability Council of Texas
+  (ERCOT)}()]{ercotGenerationWind}
+{Electric Reliability Council of Texas (ERCOT)}, \emph{Generation}, available
+  at http://www.ercot.com/gridinfo/generation.
 
 \bibitem[Fairley(2015)]{mitindia}
 P.~Fairley, \emph{India's Ambitious Bid to Become a Solar Power}, 2015,
@@ -92,9 +93,9 @@ E.~B. Fisher, R.~P. O'Neill, and M.~C. Ferris, ``Optimal transmission
   switching,'' \emph{IEEE Transactions on Power Systems}, vol.~23, no.~3, pp.
   1346--1355, 2008.
 
-\bibitem[Fraunhofer()]{fraunpower}
-Fraunhofer, \emph{Installed power in Germany}, available at
-  http://www.energy-charts.de/power\_inst.htm.
+\bibitem[{Fraunhofer Institute for Solar Energy Systems ISE}()]{fraunpower}
+{Fraunhofer Institute for Solar Energy Systems ISE}, \emph{Installed power in
+  Germany}, available at http://www.energy-charts.de/power\_inst.htm.
 
 \bibitem[Garver(1962)]{RefWorks:6}
 L.~L. Garver, ``Power generation scheduling by integer programming-development
@@ -145,10 +146,10 @@ A.~Khodaei, M.~Shahidehpour, and S.~Kamalinia, ``Transmission switching in
   expansion planning,'' \emph{IEEE Transactions on Power Systems}, vol.~25,
   no.~3, pp. 1722--1733, Aug 2010.
 
-\bibitem[NREL()]{texasSolarProfile}
-NREL, \emph{NREL: Dynamic Maps, GIS Data, and Analysis Tools - Renewable Energy
-  Technical Potential}, available at http://www.nrel.gov/gis/repotential.html.
-  Acessed on 04/03/2016.
+\bibitem[{National Renewable Energy Laboratory (NREL)}()]{texasSolarProfile}
+{National Renewable Energy Laboratory (NREL)}, \emph{NREL: Dynamic Maps, GIS
+  Data, and Analysis Tools - Renewable Energy Technical Potential}, available
+  at http://www.nrel.gov/gis/repotential.html.
 
 \bibitem[O'Dwyer and Flynn(2015)]{dwyer}
 C.~O'Dwyer and D.~Flynn, ``Using energy storage to manage high net load
